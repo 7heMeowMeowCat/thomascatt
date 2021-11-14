@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>REAL QUICC JS CAL</title>
+	<style type="text/css">
+		body{
+			font-family: Arial;
+			background-color: #eee;
+			padding: 40px;
+		}
+
+		.card{
+			background-color: #fff;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 8px #ccc;
+			border-radius: 10px;
+			padding: 60px;
+			margin: 10px 0;
+		}
+
+		h1, h2, h3, h4, h5, h6{
+			border-bottom: 1px solid #aaa;
+			font-weight: bolder;
+		}
+
+		.mono{
+			font-family: consolas;
+			background: #eee;
+			border-radius: 3px;
+			padding: 2px;
+			margin: 3px;
+			border: 1px solid #777;
+		}
+		li{
+			margin-bottom: 15px;
+		}
+		.hint{
+			color: #666;
+		}
+		img{
+			margin: 5px;
+			box-shadow: 0 0 4px #ddd;
+			border-radius: 5px;
+		}
+
+		.ptn{
+			background: #ffa;
+			width:30%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin: 15px 0;
+			border-radius: 4px;
+		}
+		button{
+			padding: 10px;
+			background-color: royalblue;
+			border: none;
+			margin: 2px;
+			color: white;
+			box-shadow: 0 0 3px #333;
+			cursor: pointer;
+			transition-duration: 200ms;
+			font-size: 15px;
+			border-radius: 4px;
+		}
+		button:hover{
+			font-weight: bold;
+			background-color: white;
+			box-shadow: 0 0 10px #666;
+			color: royalblue;
+		}
+		button:active{
+			transition-duration: 0;
+			opacity: 0.5;
+			transform: scale(0.99);
+		}
+		input{
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: 2px solid #aaf;
+			transition-duration: 200ms;
+			background-color: #fff;
+		}
+		input:hover{
+			box-shadow: 0 0 5px royalblue;
+		}
+		input:focus{
+			border: 2px solid royalblue;
+			background-color: #ddf;
+			outline: none;
+			box-shadow: 0 0 5px royalblue;
+		}
+		input[type=checkbox], input[type=file]{
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="goaway" class="card" style="width: 690px; margin: auto; display: none;">
+		<b id="text">then why are you here, leave</b><br><br>
+		<button onclick="location.reload()" id="bt" style="width: 100%">start over</button>
+	</div>
+	<div id="prompt" class="card" style="width: 690px; margin: auto; display: inherit;">
+		<h1>JS Calculator</h1>
+		<p>Do you want to use the calculator?</p>
+		<button style="width: 100%;" onclick="showTerms()">yes</button>
+		<button style="width: 100%;" onclick="noInStart()">no</button>
+	</div>
+	<div id="terms" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Terms and conditions</h1>
+		<p>Read the following terms if you agree</p>
+		<p class="mono" style="padding: 30px; height: 200px; overflow-y: scroll; font-family: Arial; line-height: 1.6;">
+			We're no strangers to love You know the rules and so do I A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it And if you ask me how I'm feeling Don't tell me you're too blind to see Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give, never gonna give (Give you up) We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye <br><br>We're no strangers to love You know the rules and so do I A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it And if you ask me how I'm feeling Don't tell me you're too blind to see Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give, never gonna give (Give you up) We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye <br><br>We're no strangers to love You know the rules and so do I A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it And if you ask me how I'm feeling Don't tell me you're too blind to see Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give, never gonna give (Give you up) We've known each other for so long Your heart's been aching but you're too shy to say it Inside we both know what's been going on We know the game and we're gonna play it I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye
+		</p>
+		<input type="checkbox" id="termsCheck"><span>I agree to the terms and conditions</span>
+		<button style="float: right;" onclick="agreeTerms()">Proceed</button>
+	</div>
+	<div id="account" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Create an account</h1>
+		<span>name</span><input type="text" id="thing1" placeholder="name"><br>
+		<span>email</span><input type="text" id="thing2" placeholder="email"><br>
+		<span>password</span><input type="password" id="thing3" placeholder="password"><br>
+		<span>nationality</span><input type="text" id="thing4" placeholder="nationality"><br>
+		<span>date of birth</span><input type="number" id="thing5" placeholder="date of birth"><br>
+		<span>date of death</span><input type="number" id="thing6" placeholder="date of death"><br>
+		<span>pp size in cm</span><input type="number" id="thing7" placeholder="pp size in cm"><br>
+		<span>color</span>
+		<select>
+			<option>nigga</option>
+			<option>white</option>
+		</select>
+		<br>
+
+		<button style="float: right;" onclick="createAccount()">Create Account</button>
+	</div>
+	<div id="verify" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Verification Email sent.</h1>
+		<p>Please enter the code in the verification email to start using calculator:</p>
+		<b id="verificationCodeLength">Verification Code: </b><input type="number" id="verifyCodeInput" required onkeydown="createAccount()" placeholder="Verification Code"><br>
+		<button style="width: 100%;" onclick="verifyCode(el('verifyCodeInput').value)">confirm</button>
+		<button style="width: 100%;" onclick="noInStart()">no</button> <br><br>
+		<button style="width: 100%;" onclick="otherOpt()">other options</button>
+	</div>
+	<div id="otherOptions" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Other options:</h1>
+		<button style="width: 100%;" onclick="el('verifyColor').style.display = 'inherit'; el('otherOptions').style.display = 'none'">verify color</button>	
+		<button style="width: 100%;" onclick="el('verifyPp').style.display = 'inherit'; el('otherOptions').style.display = 'none'">verify pp size 😳</button>	
+		<button style="width: 100%;" onclick="el('verifyNationality').style.display = 'inherit'; el('otherOptions').style.display = 'none'">verify nationality</button>	
+	</div>
+	<div id="verifyColor" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Verifiy color.</h1>
+		<p>Submit a picture of your face below:</p>
+		<input type="file">
+		<button style="width: 100%;" onclick="el('verifyColor').style.display = 'none'; el('verifyColorSubmit').style.display = 'inherit';">submit</button>
+		<br><br>
+		<button style="width: 100%;" onclick="otherOpt()">other options</button>
+	</div>
+	<div id="verifyNationality" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Verifiy nationality.</h1>
+		<p>Are you from <span id="nationality"></span>?</p>
+		<div id="verifyNationalityOptions">
+			<button onclick="
+				el('verifyNationality').style.display = 'none'
+				el('verificationDone').style.display = 'inherit'
+			">yes</button>
+			<button onclick="noInStart()">no</button>			
+		</div>
+	</div>
+	<div id="verifyPp" class="card" style="width: 690px; margin: auto; display: none;">
+		<h1>Verifiy pp size.</h1>
+		<p>Submit a picture of your pp below:</p>
+		<input type="file">
+		<button style="width: 100%;" onclick="el('verifyPp').style.display = 'none'; el('verifyPpSubmit').style.display = 'inherit';">submit</button>
+		<br><br>
+		<button style="width: 100%;" onclick="otherOpt()">other options</button>
+	</div>
+	<div id="verifyPpSubmit" class="card" style="width: 690px; margin: auto; display: none;">
+		<p>The submitted picture wasnt a pp pic 😳😳😳, try another option:</p>
+		<button style="width: 100%;" onclick="el('verifyPpSubmit').style.display = 'none'; otherOpt()">other options</button>
+	</div>
+	<div id="verifyColorSubmit" class="card" style="width: 690px; margin: auto; display: none;">
+		<p>Your face was sent for approval. you can either wait, or try other options:</p>
+		<button style="width: 100%;" onclick="el('verifyPpSubmit').style.display = 'none'; otherOpt()">other options</button>
+	</div>
+	<div id="verificationDone" class="card" style="width: 690px; margin: auto; display: none;">
+		<p>Your account verification is complete! It has been sent for human approval.</p>
+		<p>now what? you want the calculator? here:</p>
+		<div class="card" style="margin: auto; width: 120px;">		
+			<br><p id="calDisplay" style="width: 100px; height: 30px" class="mono"></p>
+			<button onclick="addDigitToCal(this.innerText)">1</button>
+			<button onclick="addDigitToCal(this.innerText)">2</button>
+			<button onclick="addDigitToCal(this.innerText)">3</button><br>
+			<button onclick="addDigitToCal(this.innerText)">4</button>
+			<button onclick="addDigitToCal(this.innerText)">5</button>
+			<button onclick="addDigitToCal(this.innerText)">6</button><br>
+			<button onclick="addDigitToCal(this.innerText)">7</button>
+			<button onclick="addDigitToCal(this.innerText)">8</button>
+			<button onclick="addDigitToCal(this.innerText)">9</button><br>
+			<button onclick="addDigitToCal(this.innerText)">*</button>
+			<button onclick="addDigitToCal(this.innerText)">0</button>
+			<button onclick="addDigitToCal(this.innerText)">#</button>
+		</div>
+		<p class="hint">human approval is required for the calculator to actually function</p>
+	</div>
+
+	
+	<script type="text/javascript">
+
+		var codeLength = Math.floor(Math.random()*10)+1
+
+		function el(name) {
+			return document.getElementById(name)
+		}
+
+		function showTerms() {
+			document.getElementById('prompt').style.display = 'none'
+			document.getElementById('terms').style.display = 'inherit'
+		}
+
+		function noInStart() {
+			document.getElementById('verify').style.display = 'none'
+			document.getElementById('prompt').style.display = 'none'
+			document.getElementById('verifyNationality').style.display = 'none'
+			document.getElementById('account').style.display = 'none'
+			document.getElementById('terms').style.display = 'none'
+			document.getElementById('goaway').style.display = 'inherit'
+		}
+
+		function agreeTerms() {
+			if (document.getElementById('termsCheck').checked) {
+				el("terms").style.display = "none"
+				el("account").style.display = "inherit"
+			} else {
+				noInStart(	)
+				el("text").innerText = "you had to read the terms, now start over"
+				el("bt").style.display = "inline"
+			}
+		}
+
+		function createAccount() {
+			if (el("thing1").value == "" || el("thing2").value == "" || el("thing3").value == "" || el("thing4").value == "" || el("thing5").value == "" || el("thing6").value == "" || el("thing7").value == "") {
+				noInStart()
+				el("text").innerText = "Fill all fields you dumb fuck"
+			} else {
+				codeLength = Math.floor(Math.random()*11)
+				el("verificationCodeLength").innerText = codeLength + " digit verification code:"
+				document.getElementById('account').style.display = 'none'
+				document.getElementById('verify').style.display = 'inherit'
+				el("text").innerText = "lol ok"
+			}
+		}
+
+		function verifyCode(code) {
+			if (code.length != codeLength) {
+				noInStart()
+				el("text").innerText = "I said, "+codeLength+" digits, not "+code.length+", you dumb fuck, now start over"
+			} else {
+				alert("sorry, verification unexpectedly failed, try other options")
+			}
+		}
+
+		function otherOpt() {
+			el('nationality').innerText = el('thing4').value
+			el('otherOptions').style.display = 'inherit'
+			el('verify').style.display = 'none'
+			el('verifyColor').style.display = 'none'
+			el('verifyPp').style.display = 'none'
+			el('verifyColorSubmit').style.display = 'none'
+			el('verifyPpSubmit').style.display = 'none'
+		}
+
+		function addDigitToCal(num) {
+			el('calDisplay').innerText += num
+		}
+
+	</script>
+</body>
+</html>

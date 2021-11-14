@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML run</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Run HTML Code</h1>
+	<div class="card" style="display: flex; height: 100%;">	
+		<textarea id="input" placeholder="Enter some HTML" style="width: 50%; height: 100%; font-family: Consolas;" onkeyup="runCode()"></textarea>
+		<div id="output" style="width: 50%; height: 100%;" class="card">
+			<i class="hint">output will be displayed here</i>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function runCode() {
+			document.getElementById('output').innerHTML = document.getElementById('input').value
+		}
+	</script>
+</body>
+</html>

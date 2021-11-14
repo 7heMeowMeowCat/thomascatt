@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Document 1</title>
+	<style type="text/css">
+		.styled{
+			font-family: Arial;
+			background-color: #eee;
+			padding: 40px;
+		}
+		*{
+			transition-duration: 100ms;
+		}
+
+		.styled.dark {
+			background: #222;
+			color: white;
+		}
+
+		.styled a{
+			color: royalblue;
+			font-style: italic;
+			text-decoration: none;
+		}
+
+		.styled.dark a{
+			color: lightblue;
+			font-style: italic;
+		}
+
+		.styled a:hover{
+			color: blue;
+		}
+
+		.styled .card{
+			background-color: #fff;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 8px #ccc;
+			border-radius: 10px;
+			padding: 60px;
+			margin: 10px 0;
+		}
+
+		.styled.dark .card{
+			background: #333;
+			border: 1px solid #444;
+			box-shadow: 0 0 8px #000;
+		}
+
+		.styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+			border-bottom: 1px solid #aaa;
+			font-weight: bolder;
+		}
+
+		.styled code, .styled .mono{
+			font-family: consolas;
+			background: #eee;
+			border-radius: 3px;
+			padding: 2px;
+			margin: 3px;
+			border: 1px solid #777;
+			font-size: 12px;
+		}
+
+		.styled.dark code, .styled.dark .mono{
+			background: #666;
+		}
+
+		.styled .p-tag{
+			display: block;
+			width: 100%
+		}
+
+		.styled li{
+			margin-bottom: 15px;
+		}
+		.styled .hint{
+			color: #666;
+		}
+		.styled.dark .hint{
+			color: #999;
+		}
+		.styled img{
+			margin: 5px;
+			box-shadow: 0 0 4px #ddd;
+			border-radius: 5px;
+		}
+
+		.styled .ptn{
+			background: #ffa;
+			width:30%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin: 15px 0;
+			border-radius: 4px;
+		}
+
+		.styled.dark .ptn{
+			border: 1px solid #444;
+			background: #663;
+
+		}
+
+		.styled .task-to-do{
+			background: #aaf;
+			width:30%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin: 15px 0;
+			border-radius: 4px;
+		}
+
+		.styled.dark .task-to-do{
+			border: 1px solid #444;
+			background: #88a;
+
+		}
+
+		.styled button{
+			padding: 10px;
+			background-color: royalblue;
+			border: none;
+			margin: 2px;
+			color: white;
+			box-shadow: 0 0 3px #333;
+			cursor: pointer;
+			transition-duration: 200ms;
+			font-size: 15px;
+			border-radius: 4px;
+		}
+		.styled button:hover{
+			background-color: white;
+			box-shadow: 0 0 10px #666;
+			color: royalblue;
+		}
+		.styled button:active{
+			transition-duration: 0;
+			opacity: 0.5;
+			transform: scale(0.95);
+		}
+		.styled input{
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: 2px solid #aaf;
+			transition-duration: 200ms;
+			background-color: #fff;
+		}
+		.styled input:hover{
+			box-shadow: 0 0 5px royalblue;
+		}
+		.styled input:focus{
+			border: 2px solid royalblue;
+			background-color: #ddf;
+			outline: none;
+			box-shadow: 0 0 5px royalblue;
+		}
+		.styled input[type=checkbox], input[type=file]{
+			cursor: pointer;
+		}
+
+		.styled .html-editor{
+			border: 1px solid #888;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 0 8px #ccc;
+		}
+		.styled.dark .html-editor{
+			border: 1px solid #444;
+			box-shadow: 0 0 8px #000;
+		}
+
+		.styled .html-editor textarea:focus{
+			background: #fff;
+		}
+		.styled .html-editor textarea{
+			background: #eee;
+			transition-duration: 100ms;
+			border: none;
+			resize: none;
+			outline: none;
+			font-size: 17px;
+			width: 50%;
+			padding: 10px;
+			height: 100%;
+			font-family: Consolas;
+			border-right: 1px solid #888;
+			min-height: 75vh;
+			font-weight: 100;
+		}
+		
+		.styled.dark .html-editor textarea{
+			background: #333;
+			color: white;
+		}
+		.styled.dark .html-editor textarea:focus{
+			background: #181818;
+		}
+
+		.styled .html-editor #output{
+			width: 50%;
+			height: 100%;
+			padding: 10px;
+			overflow-x: auto;
+			text-overflow: ellipsis;
+		}
+
+		.styled .play-btn{
+			transition-duration: 200ms;
+			border-radius: 5%;
+		}
+		.styled .play-btn:hover{
+			background-color: #f8f8f8;
+			box-shadow: 0 0 8px #ccc;
+		}
+		.styled .play-btn:active{
+			box-shadow: 0 0 4px #888;
+		}
+
+		.styled table {
+			width: 100%;
+			border-collapse: collapse;
+			border: 1px solid #aaa;
+		}
+		.styled table th{
+			background: #ddd;
+			border: 1px solid #aaa;
+		}
+		.styled table .styled tr, .styled th, .styled td{
+			border: 1px solid #aaa;
+			padding: 10px;
+			color: black;
+		}
+
+		.styled.dark table {
+			border: 1px solid #444;			
+		}
+		.styled.dark table th{
+			background: #666;
+			border: 1px solid #333;
+		}
+		.styled.dark table tr, .styled th, .styled td{
+			border: 1px solid #666;
+			color: white;
+		}
+
+
+		/*copied from w3schools :D*/
+		/* width */
+		.styled::-webkit-scrollbar {
+		  width: 5px;
+		}
+
+		/* Track */
+		.styled::-webkit-scrollbar-track {
+		  background: #888;
+		  border-radius: 10px;
+		}
+
+		.styled::-webkit-scrollbar-track:hover {
+		  background: #ccc;
+		  border-radius: 10px; 
+		}
+
+		/* Handle */
+		.styled::-webkit-scrollbar-thumb {
+		  background: #444;
+		  border-radius: 10px;
+		}
+
+		/* Handle on hover */
+		.styled::-webkit-scrollbar-thumb:hover {
+		  background: #333;
+		}
+
+		/* Handle on hover */
+		.styled::-webkit-scrollbar-thumb:active {
+		  background: #111;
+		}
+	</style>
+</head>
+<body class="styled dark" style="opacity: 0">
+	<div class="card" style="margin: auto;">
+		<h1 class="title">CSS Document 1</h1>
+		<p>Alright, here we are, finally, CSS. CSS is in fact pretty easy (if you don't try to do it all at once) so nothing to care about here either :D</p><br>
+
+		<div class="ptn">
+			<h4>Table of contents:</h4>
+			<ul>
+				<li><a href="#css-intro">CSS Introduction</a></li>
+				<ul>
+					<li><a href="#what-is-css">What is CSS?</a></li>
+					<li><a href="#writing-css">How to write CSS?</a></li>
+					<ul>
+						<li><a href="#writing-css-1">Inline Styling</a></li>
+						<li><a href="#writing-css-2">The style tag</a></li>
+						<li><a href="#writing-css-3">External CSS</a></li>
+						
+					</ul>
+				</ul>
+				<li><a href="#css-concepts">Important CSS concepts</a></li>
+				<ul>
+					<li><a href="#css-concepts-classes">Classes</a></li>
+					<li><a href="#css-concepts-properties">CSS Properties</a></li>
+					<li><a href="#css-concepts-use-classes">How to use classes?</a></li>
+				</ul>
+				<li><a href="#css-properties">Some CSS Properties</a></li>
+				<li><a href="#important-links">Important Links</a></li>
+			</ul>
+		</div>
+		<div class="card" style="padding: 15px; width: 20vw;">
+			<input type="checkbox" id="dark-toggle" checked="true" onclick="document.body.classList.toggle('dark')">
+			<label for="dark-toggle"><b>DARK MODE</b></label>
+		</div>
+	</div><br>
+	<div class="card">
+		<h1 id="css-intro">CSS Introduction:</h1>
+		<p>CSS is like an extension to HTML, which enables us to add beauty to a website.</p>
+		<br>
+		<h2 id="what-is-css">What is CSS?</h2>
+		<p>CSS greately improves the looks of a website (even this one, you can press <button onclick="document.body.classList.toggle('styled')">this button</button> to toggle CSS on this page [you will regret it]). It's written into an HTML file (but you can choose to write it in a separate <code>.css</code> file if you want). CSS includes text colors, fonts, background colors, content alignment, margin & padding, borders, shadows, transitions, and MUCH more :D.</p>
+		<br>
+		<h2 id="writing-css">How to write CSS?</h2>
+		<p>There are three ways:</p>
+		<ol>
+			<li>Inline Styling (Using the <code>style</code> attribute in an element)</li>
+			<li>Using the <code>style</code> tag</li>
+			<li>External Styling (Using an external <code>.css</code> file)</li>
+		</ol>
+		
+
+		<h4 id="writing-css-1">1. Inline Styling:</h4>
+		<p>In inline styling, the CSS is written in the <code>style</code> attribute of the element. This way, the written CSS gets applied to its element:</p>
+		<code id="inline-ex"></code>
+		<p class="hint">The CSS will be applied onto the text "Some Text"</p>
+		<p>This is one of the most frequent ways of writing CSS. Personally, I use this when I want some CSS to exclusively target one specific element. When I want to use CSS for the whole page, I use <b>the style tag:</b></p>
+		
+		<h4 id="writing-css-2">2. The <code>style</code> tag:</h4>
+		<p>This type is used when you want some CSS to apply on the whole page. In this procedure, <b>you have to add a <code>style</code> tag in the <code>head</code> tag of the document:</b></p>
+		<pre><code class="p-tag" id="style-tag-ex"></code></pre>
+		<p class="hint">The CSS will be applied according to the <i>class name, ID, or the tag name specified.</i> You will learn more about this later.</p>
+		<p> This type is also used alot, but in professional websites, developers often prefer external CSS.</p>
+
+		<h4 id="writing-css-3">3. External CSS:</h4>
+		<p>This type is also used while applying some CSS to whole page. In this type, <b>you have to add a separate file (the name is usually <code>style.css</code>), and link this file to the main HTML file. The CSS in the <code>style.css</code> file will be written exactly as how CSS is written inside the <code>style</code> tag in the above type.</b></p>
+		<p>How to link the <code>style.css</code> file to the HTML file? In the <code>head</code> tag, add this:</p>
+		<pre><code class="p-tag" id="ext-css-ex"></code></pre>
+		<p>You dont need to remember this whole line, just type <i>link</i> and hit tab, Sublime will take care of the rest of the line	</p>
+
+		<p> This type is mostly seen in public websites.</p>
+
+		<div class="ptn">
+			<b>Even though I have specified which type to use where, its ultimately upto you, that which type you will use for your work; it's not a rule to follow my guidelines, things will work without them. But since my guidelines seem to be the most reasonable and easy to me, I think you should follow me.</b>
+		</div>
+		<div class="task-to-do">
+			<h2>Task to do 1: Link an external <code>.css</code> file</h2>
+			<p>Make a <code>style.css</code>, and try to link that file using the <code>link</code> tag.</p>
+		</div>
+	</div>
+	<br>
+	<div class="card">
+		<h1 id="css-concepts">Important CSS concepts:</h1>
+		<h2 id="css-concepts-classes">Classes:</h2>
+		<p class="hint">You are in class 10... no no no no, not those classes- No wait, I think they can be used to explain.</p>
+		<p>Classes, are names you give to a group of elements. You are in class 10 means there is a class, named 10, and you are a member of it. Your classfellows are in the same class, and hence are more similar to you, than students of the class 9, or 8.</p>
+		<p>Different classes differentiate the properties of its members. CSS classes are the same. But the difference is, <b>you</b> define its properties (color, border, alignment, etc.). You can have a <code>card</code> class, in which all elements are styled to look like a floating card. A <code>mono</code> class could be used, which could be styled to give its elements a monospace font, hence giving a code-y look. Similarly, a <code>hint</code> class could be used for hints.</p>
+		<p>In fact, all the examples above are actually being used, right now, in this document!</p>
+		<span class="mono">I am some code!</span>
+		<p class="hint">I am a hint!</p>
+		<div class="card">
+			<span>I am inside a card!</span>
+		</div>
+
+		<p>The code of above 3 elements is:</p>
+		<pre>
+			<code class="p-tag" id="classes-ex">
+			
+			</code>
+		</pre>
+
+		<p class="hint">Notice the class attribute in each of these elements.</p>
+		<p>I hope you understood what classes mean. Now, how do you use classes? Like, how do you define the properties of a class. For that, let me first discuss what exactly is a <b>CSS property:</b></p>
+		<h2 id="css-concepts-properties">CSS Properties:</h2>
+		<p>A CSS property is the main CSS thing. A CSS property defines a property of an element. Every CSS property looks like this:</p>
+		<code class="p-tag">property: value;</code>
+		<p>For example: <code>color: red;</code> or <code>font-size: 20px;</code>. In both of these examples, the first part, (before the <code>:</code>) is called <b>property</b>, and the second is called its <b>value</b>. The <code>:</code> in the middle separates the property from the value, and the <code>;</code> is the <b>Statement Terminator</b>.</p>
+
+		<div class="ptn">
+			<h2>What's a Statement Terminator?</h2>
+			<p>Now, if you <i>actually</i> studied PHP, you should already know what is it. However if you didnt, then, a statement terminator is like a full stop of English. It indicates that a line of code has been ended here. Statement terminators are mandatory in CSS.</p>
+		</div>
+
+		<div class="task-to-do">
+			<h2>Task to do 2: Give a <code>span</code> a red color</h2>
+			<p>Congrats! You just learned your first CSS properties! This means that you can use these properties in your HTML file right now! Go ahead, and try to give a <code>span</code> a red color. (Write the property using inline styling)</p><br>
+			<span style="color: red;">It should look like this :D</span>
+		</div>
+		<h2 id="css-concepts-use-classes">How to use classes?</h2>
+		<p>Classes are used in the <code>style</code> tag, or while using external CSS. A regular CSS rule consists of the following:</p>
+<pre><code class="p-tag">selector {
+   property: value;
+}
+</code></pre>
+		The <code>selector</code> defines the element(s) to target the CSS. It can be:
+		<ul>
+			<li>
+				<b>A tag name:</b> this will target all the elements with the specified tag name. For example:<br>
+				<pre><code class="p-tag">span{
+   property: value;
+}</code></pre> <i>Targets all the <code>span</code>s on the page</i>
+			</li>
+			<li>
+				<b>A class name:</b> this will target all the elements with the specified class. They are written with a <code>.</code> and the name of the class For example:<br>
+				<pre><code class="p-tag">.card{
+   property: value;
+}</code></pre> <i>Targets all the elements with the class <code>card</code></i>
+			</li>
+			<li>
+				<b>An ID (irrelevant for now):</b> this will target all the elements with the specified ID. They are written with a <code>#</code> and the ID. For example:<br>
+				<pre><code class="p-tag">#input-email{
+   property: value;
+}</code></pre> <i>Targets the element with the ID <code>input-email</code></i>
+			</li>
+		</ul>
+
+		<p>These were the simple selectors. CSS selectors can get really complicated too! You can visit <a href="https://www.w3schools.com/css/css_selectors.asp">this w3schools page</a> for a detail on these selectors. This w3schools page contains some useful selectors, so I suggest you should read it.</p>
+
+		<br>
+		<p>
+			You can also select HTML elements in a certain state (like hover, active, focus) by adding the condition after the selector you write:
+			<pre><code class="p-tag">a:hover {
+   color: blue;
+}</code></pre>
+			This will set the color of all <code>a</code> tags to blue when hovered on, roughly like the <code>a</code> tags on this page (but without the short animation).	
+		</p>
+		<br>
+
+		<div class="task-to-do">
+			<h2>Task to do 3:</h2>
+			<p>Give a class <code>error</code> to a <code>b</code> tag, and set its color to red using the <code>style</code> tag.</p>
+		</div>
+
+		<p class="hint">You can learn more about CSS properties and selectors from <a href="https://www.w3schools.com/css/css_syntax.asp">this w3schools page</a>.</p>
+	</div><br>
+	<div class="card">
+		<h1 id="css-properties">Some CSS properties (well, a lot actually):</h1>	
+		<p>Here, I'll tell CSS properties, you can use them, and see the results of each of them in the editor provided below all of these properties.</p>
+		<table border="1">
+			<tr>
+				<th>Property Name</th>
+				<th>Description</th>
+				<th>(related) Possible values</th>
+				<th>Try it</th>
+			</tr>
+			<tr>
+				<td><code class="p-tag">color</code></td>
+				<td>Gives a color to text.</td>
+				<td>HEX/RGB/RGBA color code or some common color names. Hit <code>Ctrl</code> + <code>space</code> after typing <code>color: </code> to view all options.</td>
+				<td><button onclick='tryProperty(`<span style="color: #4285F4;">I am in blue</span>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">font-size</code></td>
+				<td>Change font size of some text.</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc.</td>
+				<td><button onclick='tryProperty(`<span style="font-size: 40px;">I am some big text</span>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">font-weight</code></td>
+				<td>Add weight to some text.</td>
+				<td>Any number between 100 and 1000, <code>bold</code>, <code>bolder</code>, <code>lighter</code>, or <code>normal</code></td>
+				<td><button onclick='tryProperty(`<p style="font-weight: 1000;">I am some bold text</p>\n<p style="font-weight: bold;">I am some less bolder text</p>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">font-style</code></td>
+				<td>Add formatting to some text.</td>
+				<td><code>italic</code>, <code>normal</code> or <code>oblique</code></td>
+				<td><button onclick='tryProperty(`<p style="font-style: italic;">I am in italics</p>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">font-family</code></td>
+				<td>Change the font family of a text. <br><b>Pro tip:</b> If you want to change the font of the complete page, just add this property to the body tag, by:<br><pre><code class="p-tag">body {
+   font-family: [FONT NAME];
+}</code></pre></td>
+				<td>Name of any of the installed fonts. (if you want to use a custom font, just google it lol)</td>
+				<td><button onclick='tryProperty(`<p style="font-family: Times New Roman font">I am in Times New Roman</p>\n<p style="font-family: Calibri">I am in Calibri font</p>\n<p style="font-family: Impact">I am in Impact font</p>\n`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">background-color</code></td>
+				<td>Add a background color to anything.</td>
+				<td>HEX/RGB/RGBA color code or some common color names. Hit <code>Ctrl</code> + <code>space</code> after typing <code>background-color: </code> to view all options.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: red;">\n<p style="white">I am inside a div which is colored red</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">border</code></td>
+				<td>Gives a border to an element.</td>
+				<td><code>border</code> is actually a shortcut to completely add a border. Normally, some other properties like <code>border-color</code>, <code>border-style</code>, etc. are used one by one, but here, you can achieve it quickly by "<code>width(px)</code> <code>style(usually solid)</code> <code>color</code>" (without double quotes, <b>spaces in between are mandatory</b>). Visit <a href="https://www.w3schools.com/css/css_border_shorthand.asp">this w3schools page</a> for more info.<br>For example: a 1px red border would appear by <code>border: 1px solid red;</code></td>
+				<td><button onclick='tryProperty(`<div style="border: 1px solid gray">\n<p style="white">I am inside a div which has a grey border</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">border-radius</code></td>
+				<td>Used to round the corners of an element. This either requires a border, or a background color to be visible.</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; border-radius: 10px;">\n<p style="white">I am inside a rounded grey div</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">box-shadow</code></td>
+				<td>Gives a shadow to any element.</td>
+				<td>Ok this is a complex one, pay attention:<br><code>x-position y-position softness color</code> (<b>spaces are mandatory</b>)<br><code>x-position</code>, <code>y-position</code> and <code>softness</code>: Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc. <br><code>color</code>: HEX/RGB/RGBA color code or some common color names. Hit <code>Ctrl</code> + <code>space</code> to view all options.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; box-shadow: 0 0 5px black">\n<p style="white">I am inside a grey div with black shadow</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">margin</code></td>
+				<td>Adds spacing <b><i><u>outside</u></i></b> an element.</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; margin: 30px;">\n<p style="white">I am inside a grey div, with a margin</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">padding</code></td>
+				<td>Adds spacing <b><i><u>inside</u></i></b> an element, before its inner elements.</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; padding: 30px;">\n<p style="white">I am inside a grey div, with a padding</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">width</code></td>
+				<td>Width!</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>%</code>, <code>em</code>, etc.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; width: 50%;">\n<p style="white">I am inside a grey div, which is of 50% width</p>\n</div>`)'>Try</button></td>
+			</tr>
+			<tr>
+				<td><code class="p-tag">height</code></td>
+				<td>Height! <b>Note: </b>For some reason, percentage values in <code>height</code> don't work. If you <i>really</i> want height proportional to the parent height, then you can use <code>vh</code> (viewport height) which works similar to <code>%</code> (100vh = full height)</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>em</code>, <code>vh</code>, etc.</td>
+				<td><button onclick='tryProperty(`<div style="background-color: grey; height: 200px;">\n<p style="white">I am inside a grey div with a height of 200 pixels</p>\n</div>`)'>Try</button></td>
+			</tr>
+		</table>
+		<p>These are pretty much all of the properties used in this whole document! :D Be sure to try all of these, I spent a lot of time making this huge table, so you should too</p>
+		<p>These definitely aren't <i>all</i> of the CSS properties in existance. If you are looking for one you can't find here, you can google it.</p>
+		<div class="ptn">
+			<h2>Important difference between margin and padding:</h2>
+			<p>Many beginners don't understand the actual difference between margin and padding, and hence take both of them as a means of adding spacing.</p>
+			<b>Margin adds spacing <i>outside</i> an element</b><br>
+			<b>Padding adds spacing <i>inside</i> an element</b>
+			<p>For more information, visit <a href="https://www.w3schools.com/css/css_boxmodel.asp">this w3schools page</a>.</p>
+		</div>
+		<br>
+		<div id="html-editor" class="html-editor" style="display: flex; width: 100%;">	
+			<textarea id="input" placeholder="Enter some HTML" spellcheck="false" onkeydown="document.getElementById('output').innerHTML = document.getElementById('input').value" onkeyup="document.getElementById('output').innerHTML = document.getElementById('input').value"></textarea>
+			<div id="output">
+				<i class="hint">output will be displayed here</i>
+			</div>
+		</div>
+		<p class="hint">CSS can be hard too! I'll make a document 2, in which ill put properties related to aligning stuff. Aligning stuff in CSS can be pretty complex sometimes</p>
+	</div><br>
+	<div class="card" id="important-links">
+		<h1>Some Important Links:</h1>
+		<ul>
+			<li><a href="https://www.w3schools.com/css/css_howto.asp">How to write CSS</a></li>
+			<li><a href="https://www.w3schools.com/css/css_syntax.asp">CSS Syntax</a></li>
+			<li><a href="https://www.w3schools.com/css/css_selectors.asp">CSS Selectors</a></li>
+			<li><a href="https://www.w3schools.com/css/css_boxmodel.asp">Margin and padding differentiation</a></li>
+			<li><a href="https://www.w3schools.com/css/css_margin.asp">Margins</a></li>
+			<li><a href="https://www.w3schools.com/css/css_padding.asp">Paddings</a></li>
+			<li><a href="https://www.w3schools.com/css/css_border.asp">Borders</a></li>
+			<li><a href="https://www.w3schools.com/css/css_border_shorthand.asp">Borders Shortcut</a></li>
+		</ul>
+	</div>
+	<div class="card">
+		<h3>Task to do answers:</h3>
+		<ol>
+			<li>Create a <code>style.css</code> file and add <code id="ttd-ans1"></code> in the <code>head</code> tag.</li>
+			<li><code id="ttd-ans2"></code></li>
+			<li><pre><code class="p-tag" id="ttd-ans3"></code></pre></li>
+		</ol>
+	</div>
+<script type="text/javascript">
+	function el(name) {
+		return document.getElementById(name)
+	}
+
+	function tryProperty(name) {
+		el('input').value = name
+		el('input').onkeyup()
+		el('input').focus()
+	}
+
+	el('inline-ex').innerText = "<p style=\"[CSS GOES HERE]\">Some Text</p>"
+	el('style-tag-ex').innerText = "<head>\n   <title>Page title</title>\n   <style>\n      [CSS GOES HERE]\n   </style>\n</head>"
+	el('ext-css-ex').innerText = "<link rel=\"stylesheet\" type=\"text/css\" href=\"[.CSS FILE NAME]\">"
+	el('classes-ex').innerText = "<span class=\"mono\">I am some code!</span>\n\n<p class=\"hint\">I am a hint!</p>\n\n<div class=\"card\">\n   <span>I am inside a card!</span>\n</div>"
+
+	el('ttd-ans1').innerText = "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">"
+	el('ttd-ans2').innerText = "<span style=\"color: red;\">Some Text</span>"
+	el('ttd-ans3').innerText = "<html>\n<head>\n   <style>\n      .error {\n         color: red;\n      }\n   </style>\n</head>\n<body>\n   <b class=\"error\">Some Text</b>\n</body>\n</html>"
+	el('input').onkeyup()
+
+	document.body.style.opacity = 1
+
+</script>
+</body>
+</html>
