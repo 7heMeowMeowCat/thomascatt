@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Document 2</title>
+	<style type="text/css">
+
+		.styled{
+			font-family: Arial;
+			background-color: #eee;
+			padding: 40px;
+			margin: 0 150px;
+		}
+		@media screen and (max-width: 800px){
+			.styled{
+				margin: 0 0;
+			}
+		}
+		*{
+			transition-duration: 100ms;
+		}
+
+		.styled.dark {
+			background: #222;
+			color: white;
+		}
+
+		.styled a{
+			color: royalblue;
+			font-style: italic;
+			text-decoration: none;
+		}
+
+		.styled.dark a{
+			color: lightblue;
+			font-style: italic;
+		}
+
+		.styled a:hover{
+			color: blue;
+		}
+
+		.styled .card{
+			background-color: #fff;
+			padding: 20px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 8px #ccc;
+			border-radius: 10px;
+			padding: 60px;
+			margin: 10px 0;
+		}
+
+		.styled.dark .card{
+			background: #333;
+			border: 1px solid #444;
+			box-shadow: 0 0 8px #000;
+		}
+
+		.styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+			border-bottom: 1px solid #aaa;
+			font-weight: bolder;
+		}
+
+		.styled code, .styled .mono{
+			font-family: consolas;
+			background: #eee;
+			border-radius: 3px;
+			padding: 2px;
+			margin: 3px;
+			border: 1px solid #777;
+			font-size: 12px;
+		}
+
+		.styled.dark code, .styled.dark .mono{
+			background: #666;
+		}
+
+		.styled .p-tag{
+			display: block;
+			width: 100%
+		}
+
+		.styled li{
+			margin-bottom: 15px;
+		}
+		.styled .hint{
+			color: #666;
+		}
+		.styled.dark .hint{
+			color: #999;
+		}
+		.styled img{
+			margin: 5px;
+			box-shadow: 0 0 4px #ddd;
+			border-radius: 5px;
+		}
+
+		.styled .ptn{
+			background: #ffa;
+			width:30%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin: 15px 0;
+			border-radius: 4px;
+		}
+
+		.styled.dark .ptn{
+			border: 1px solid #444;
+			background: #663;
+
+		}
+
+		.styled .task-to-do{
+			background: #aaf;
+			width:30%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			margin: 15px 0;
+			border-radius: 4px;
+		}
+
+		.styled.dark .task-to-do{
+			border: 1px solid #444;
+			background: #88a;
+
+		}
+
+		.styled select{
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			border: 1px solid #fff;
+			background: #eee;
+		}
+
+		.styled button{
+			padding: 10px;
+			background-color: royalblue;
+			border: none;
+			margin: 2px;
+			color: white;
+			box-shadow: 0 0 3px #333;
+			cursor: pointer;
+			transition-duration: 200ms;
+			font-size: 15px;
+			border-radius: 4px;
+		}
+		.styled button:hover{
+			background-color: white;
+			box-shadow: 0 0 10px #666;
+			color: royalblue;
+		}
+		.styled button:active{
+			transition-duration: 0;
+			opacity: 0.5;
+			transform: scale(0.95);
+		}
+		.styled input{
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: 2px solid #aaf;
+			transition-duration: 200ms;
+			background-color: #fff;
+		}
+		.styled input:hover{
+			box-shadow: 0 0 5px royalblue;
+		}
+		.styled input:focus{
+			border: 2px solid royalblue;
+			background-color: #ddf;
+			outline: none;
+			box-shadow: 0 0 5px royalblue;
+		}
+		.styled input[type=checkbox], input[type=file]{
+			cursor: pointer;
+		}
+
+		.styled .html-editor{
+			border: 1px solid #888;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 0 8px #ccc;
+		}
+		.styled.dark .html-editor{
+			border: 1px solid #444;
+			box-shadow: 0 0 8px #000;
+		}
+
+		.styled .html-editor textarea:focus{
+			background: #fff;
+		}
+		.styled .html-editor textarea{
+			background: #eee;
+			transition-duration: 100ms;
+			border: none;
+			resize: none;
+			outline: none;
+			font-size: 17px;
+			width: 50%;
+			padding: 10px;
+			height: 100%;
+			font-family: Consolas;
+			border-right: 1px solid #888;
+			min-height: 75vh;
+			font-weight: 100;
+		}
+		
+		.styled.dark .html-editor textarea{
+			background: #333;
+			color: white;
+		}
+		.styled.dark .html-editor textarea:focus{
+			background: #181818;
+		}
+
+		.styled .html-editor #output{
+			width: 50%;
+			height: 100%;
+			padding: 10px;
+			overflow-x: auto;
+			text-overflow: ellipsis;
+		}
+
+		.styled .play-btn{
+			transition-duration: 200ms;
+			border-radius: 5%;
+		}
+		.styled .play-btn:hover{
+			background-color: #f8f8f8;
+			box-shadow: 0 0 8px #ccc;
+		}
+		.styled .play-btn:active{
+			box-shadow: 0 0 4px #888;
+		}
+
+		.styled table {
+			width: 100%;
+			border-collapse: collapse;
+			border: 1px solid #aaa;
+		}
+		.styled table th{
+			background: #ddd;
+			border: 1px solid #aaa;
+		}
+		.styled table .styled tr, .styled th, .styled td{
+			border: 1px solid #aaa;
+			padding: 10px;
+			color: black;
+		}
+
+		.styled.dark table {
+			border: 1px solid #444;			
+		}
+		.styled.dark table th{
+			background: #666;
+			border: 1px solid #333;
+		}
+		.styled.dark table tr, .styled.dark th, .styled.dark td{
+			border: 1px solid #666;
+			color: white;
+		}
+
+
+		/*copied from w3schools :D*/
+		/* width */
+		.styled::-webkit-scrollbar {
+		  width: 5px;
+		}
+
+		/* Track */
+		.styled::-webkit-scrollbar-track {
+		  background: #888;
+		  border-radius: 10px;
+		}
+
+		.styled::-webkit-scrollbar-track:hover {
+		  background: #ccc;
+		  border-radius: 10px; 
+		}
+
+		/* Handle */
+		.styled::-webkit-scrollbar-thumb {
+		  background: #444;
+		  border-radius: 10px;
+		}
+
+		/* Handle on hover */
+		.styled::-webkit-scrollbar-thumb:hover {
+		  background: #333;
+		}
+
+		/* Handle on hover */
+		.styled::-webkit-scrollbar-thumb:active {
+		  background: #111;
+		}
+	</style>
+</head>
+<body class="styled dark" style="opacity: 0" onmousemove="">
+	<!-- <img id="stonks" src="https://i.pinimg.com/originals/6f/8b/24/6f8b2450519fbe80ba623e041121a32c.png" width="40" style="box-shadow: none; border: none; position: absolute; top: 0; left: 0;"> -->
+		<div style="position: fixed; top: 0; left: 0; width: 96%; padding: 5%; margin: -3%; background-image: linear-gradient(#111, #00000000);">
+			<span style="font-size: 30px; font-weight: bold; color: white;">CSS DOCUMENT 2</span>
+			<div style="float: right;">
+				<a style="padding: 0 10px; color: lightblue;" href="#advanced-css">Advanced CSS</a>
+				<a style="padding: 0 10px; color: lightblue;" href="#css-properties">Some CSS Properties</a>
+				<a style="padding: 0 10px; color: lightblue;" href="#important-links">Important Links</a>				
+			</div>
+		</div>
+		<br><br><br>
+	<div class="card" style="margin: auto;">
+		<h1 class="title">CSS Document 2</h1>
+		<p>Heres some advanced CSS stuff you need. Take dis</p><br>
+
+		<div class="ptn">
+			<h4>Table of contents:</h4>
+			<ul>
+				<li><a href="#advanced-css">Advanced CSS</a></li>
+				<li><a href="#css-properties">Some CSS Properties</a></li>
+				<li><a href="#important-links">Important Links</a></li>
+			</ul>
+		</div>
+		<div class="card" style="padding: 15px; width: 20vw;">
+			<input type="checkbox" id="dark-toggle" checked="true" onclick="document.body.classList.toggle('dark')">
+			<label for="dark-toggle"><b>DARK MODE</b></label>
+		</div>
+	</div><br>
+	<div class="card" id="advanced-css">
+		<h1>Advanced CSS</h1>
+		<p>CSS is not just about styling stuff and shadows and stuff etc. Advanced CSS also introduces alignment: which is a hard task (because <a href="https://media4.giphy.com/media/13FrpeVH09Zrb2/giphy.gif?cid=790b7611b76ddcf7b31b919033aeb54ff55032354bb9d73f&rid=giphy.gif&ct=g">CSS is trash, as most people assume</a>). But being hard, its not impossible! Because Google is always there for you :D</p>
+		<h2>The <code>position</code> property:</h2>
+		<p>Being one of the hardest properties I don't understand, the <code>position</code> property can have these values:</p>
+		<ul>
+			<li><code>relative</code></li>
+			<li><code>absolute</code></li>
+			<li><code>sticky</code></li>
+			<li>and many ore IDGAF about</li>
+		</ul>
+		<h3>Sticky:</h3>
+			<p>Position sticky... uh it makes elements stick. Try this:</p>
+			<div style="position: sticky; top: 0; width: 100px; height: 100px; background: grey; border-radius: 5px; border: 1px solid #aaa; padding: 10px">Scroll Past me!</div>
+		<p></p>
+		<h3>Ok fuck it, heres the link:</h3>
+		<p>Make <b><i><u>SURE</u></i></b> to read it.</p>
+		<p><b><u><i>SURE</i></u></b>, I mean</p>
+		<a href="https://www.w3schools.com/cssref/pr_class_position.asp">https://www.w3schools.com/cssref/pr_class_position.asp</a>
+		<p>Position <code>absolute</code> aligns the elements relative to the page. This way, the elements are not aligned onto each other, but according to their specified positions (given by the <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties). The <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties act as x and y positions for the element (<code>left</code> being the amount of distance from left, <code>top</code> meaning distance from the top, etc.). Used if you want to position some items precisely (mostly used with JS). </p>
+		<p>Position <code>sticky</code> sticks stuff to the top, like this square you see</p>
+		<p>Position <code>static</code> is being used on this header, its just <code>absolute</code> but it doesnt scroll away (i think)</p>
+		<br><div class="ptn">Almost all of these properties work with <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties. If you dont use them, the desired effect may not be obtained.</div>
+
+		<h2>Some MORE advanced stuff: Flexbox</h2>
+		<p>Flexbox is a CSS <i>technique</i> to align items more easily. You can use the following code to completely center align something:</p>
+		<p class="mono" id="ver-cen"></p>
+		<div style="background: green; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center;">
+			<div style="background: blue; width: 50px; height: 50px; ">
+			</div>
+		</div>
+		<p>Ok i dont know shit about this, and since you dont seem to have primary interest in webdev anymore, you can simple leave this :|</p>
+		<p>Or you can GOOGLE stuff if you want:</p>
+
+		<button onclick="window.open('https://'+document.getElementById('sorchEngine').options[document.getElementById('sorchEngine').options.selectedIndex].value+'.com/search?q='+prompt('Enter Text to Search'))">Click me to search anything</button>
+		<select id="sorchEngine">
+			<option value="google" disabled selected>Select Search Engine</option>
+			<option value="google">Google</option>
+			<option value="bing">Bing</option>
+		</select>
+	</div>
+	<div class="card" id="css-properties">
+		<h1>Some more CSS properties:</h1>	
+		<table border="1">
+			<tr>
+				<th>Property Name</th>
+				<th>Description</th>
+				<th>(related) Possible values</th>
+				<th>Try it</th>
+			</tr>
+			<tr>
+				<td><code class="p-tag">line-height</code></td>
+				<td>Line height :|<br>You should already know this :|</td>
+				<td>Any number + unit <b>(without space)</b>. Unit can be <code>px</code>, <code>em</code>, <code>vh</code>, etc.</td>
+				<td><button onclick='tryProperty(`<p>I am some Normal Text! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n\n<hr>\n\n<p style="line-height: 4;">I am some Text with line height! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>`)'>Try</button></td>
+			</tr>
+		</table>
+		<br>
+		<h1>Try:</h1>
+		<div id="html-editor" class="html-editor" style="display: flex; width: 100%;">	
+			<textarea id="input" placeholder="Enter some HTML" spellcheck="false" onkeydown="updateIframe()" onkeyup="updateIframe()"></textarea>
+			<iframe id="output" style="background: #fff; height: 75vh;">
+				<i class="hint">output will be displayed here</i>
+			</iframe>
+		</div>
+	</div><br>
+	<div class="card" id="important-links">
+		<h1>Some Important Links:</h1>
+		<ul>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_howto.asp">How to write CSS</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_syntax.asp">CSS Syntax</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_selectors.asp">CSS Selectors</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_boxmodel.asp">Margin and padding differentiation</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_margin.asp">Margins</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_padding.asp">Paddings</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_border.asp">Borders</a></li>
+			<li><a target="_blank" href="https://www.w3schools.com/css/css_border_shorthand.asp">Borders Shortcut</a></li>
+		</ul>
+	</div>
+<script type="text/javascript">
+	try{
+		var cursor = document.getElementById('stonks')
+
+		function updateIframe() {
+			document.getElementById('output').src = "data:text/html;charset=utf-8," + escape(document.getElementById('input').value);
+		}
+
+		function mousemove(event) {
+			cursor.style.top = event.y.toString()
+			cursor.style.left = event.x.toString()
+			console.log("Mouse Move")
+		}
+		function el(name) {
+			return document.getElementById(name)
+		}
+
+		function tryProperty(name) {
+			el('input').value = name
+			updateIframe()
+			el('input').focus()
+		}
+
+
+		el('input').onkeyup()
+		el('ver-cen').innerText += '<div style="background: green; width: 300px; height: 300px; display: flex; justify-content: center; align-items: center;">'
+		el('ver-cen').innerHTML += '<br>&nbsp&nbsp&nbsp'
+		el('ver-cen').innerText += '<div style="background: blue; width: 50px; height: 50px; "></div>'
+		el('ver-cen').innerHTML += '<br>'
+		el('ver-cen').innerText += '</div>'
+
+		document.body.style.opacity = 1
+	} catch (e) {
+		document.body.innerHTML = ("<span style='color: red;'><h1>JS ERROR CAME</h1>Ok g error scene :(((((((((((((<br><br>Heres the details: </span><pre>"+e+"</pre>")
+	}
+
+</script>
+</body>
+</html>
