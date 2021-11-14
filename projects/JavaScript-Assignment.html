@@ -1,0 +1,897 @@
+<html>
+    <head>
+        <title>Assignment 4</title>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
+        <style type="text/css">
+
+            .hidden {
+                display: none;
+            }
+
+            .styled{
+                font-family: 'Nunito', Arial;
+                background-color: #eee;
+                padding: 40px;
+                margin: auto;
+                width: 75%;
+                letter-spacing: 0.5;
+            }
+            @media screen and (max-width: 1000px){
+                .styled, .styled header{
+                    width: 95%;
+                    padding: 20px;
+                    margin: 0;
+                }
+            }
+            * {
+                transition-duration: 300ms;
+            }
+
+            .styled.dark {
+                background: #111;
+                color: white;
+            }
+
+            .styled header{
+                /* height: 150px; */
+                padding: 40px;
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translate(-50%);
+                width: 70%;
+                transition-duration: 250ms;
+                overflow-y: hidden;
+                z-index: 10000000;
+                border: none;
+            }
+            
+            .styled header.sticky-header {
+                margin: 0;
+                top: 0px;
+                border-radius: 0px;
+                height: 30px;
+                padding: 25px;
+                width: 100%;
+                background-color: #00000033;
+                box-shadow: 0 0 50px 50px #00000033;                
+            }
+            .styled.dark header.sticky-header {
+                background-color: #000000aa;
+                box-shadow: 0 0 50px 50px #000000aa;
+            }
+            .styled header #other-body{
+                margin-top: 50px;
+            }
+            .styled header.sticky-header #other-body{
+                opacity: 0;
+            }
+            .styled header h1{
+                position: absolute;
+                top: 0px;
+                left: 40px;
+            }
+            .styled header.sticky-header h1{
+                top: 0px;
+                left: 50%;
+                font-size: 25px;
+                transform: translate(-50%);
+            }
+            .styled hr {
+                opacity: 0.2;
+            }
+
+            .styled a{
+                color: royalblue;
+                font-style: italic;
+                text-decoration: none;
+            }
+
+            .styled.dark a{
+                color: lightblue;
+                font-style: italic;
+            }
+
+            .styled a:hover{
+                color: blue;
+            }
+
+            .styled .card{
+                background-color: #fff;
+                border: 1px solid #eee;
+                box-shadow: 0 0 50px 2px #ddd;
+                border-radius: 15px;
+                padding: 40px;
+                margin: 10px 0;
+            }
+
+            .styled.dark .card{
+                background: #181818;
+                border: 1px solid #222;
+                box-shadow: 0 0 50px 2px #080808;
+            }
+
+            .styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+                border-bottom: 1px solid #aaa;
+                font-weight: bolder;
+                text-transform: uppercase;
+            }
+
+            .styled code, .styled .mono{
+                font-family: consolas;
+                background: #eee;
+                border-radius: 3px;
+                padding: 2px;
+                margin: 3px;
+                word-break: break-word;
+                white-space: nowrap;
+                border: 1px solid #777;
+                font-size: 12px;
+            }
+            
+            .styled .tag {
+                padding: 10px;
+                margin: 5px; 
+                background-color: #88888844;
+                border-radius: 20px;
+                border: 1px solid #888;
+            }
+
+            .styled pre{
+                overflow-x: auto;
+                white-space: pre-wrap;
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .styled.dark code, .styled.dark .mono{
+                background: #666;
+            }
+
+            .styled .p-tag{
+                display: block;
+                width: 100%
+            }
+
+            .styled li{
+                margin-bottom: 15px;
+            }
+            .styled .hint{
+                color: #666;
+            }
+            .styled.dark .hint{
+                color: #999;
+            }
+            .styled img{
+                margin: 5px;
+                box-shadow: 0 0 4px #ddd;
+                border-radius: 5px;
+            }
+
+            .styled .ptn{
+                background: #ffa;
+                width:30%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin: 15px 0;
+                border-radius: 4px;
+            }
+
+            .styled.dark .ptn{
+                border: 1px solid #444;
+                background: #663;
+
+            }
+
+            .styled .task-to-do{
+                background: #aaf;
+                width:30%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin: 15px 0;
+                border-radius: 4px;
+            }
+
+            .styled.dark .task-to-do{
+                border: 1px solid #444;
+                background: #88a;
+
+            }
+
+            .styled select{
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                border: 1px solid #fff;
+                background: #eee;
+            }
+
+            .styled button{
+                padding: 10px;
+                background-color: royalblue;
+                border: none;
+                margin: 2px;
+                color: white;
+                box-shadow: 0 0 3px #333;
+                cursor: pointer;
+                transition-duration: 200ms;
+                font-size: 15px;
+                border-radius: 4px;
+            }
+            .styled button:hover{
+                background-color: white;
+                box-shadow: 0 0 10px #666;
+                color: royalblue;
+            }
+            .styled button:active{
+                transition-duration: 0ms;
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+            .styled input{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                border: 2px solid #aaf;
+                transition-duration: 200ms;
+                background-color: #fff;
+            }
+            .styled input:hover{
+                box-shadow: 0 0 5px royalblue;
+            }
+            .styled input:focus{
+                border: 2px solid royalblue;
+                background-color: #ddf;
+                outline: none;
+                box-shadow: 0 0 5px royalblue;
+            }
+            .styled input[type=checkbox], input[type=file]{
+                cursor: pointer;
+            }
+
+            .styled .html-editor{
+                border: 1px solid #888;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 0 8px #ccc;
+            }
+            .styled.dark .html-editor{
+                border: 1px solid #444;
+                box-shadow: 0 0 8px #000;
+            }
+
+            .styled .html-editor textarea:focus{
+                background: #fff;
+            }
+            .styled .html-editor textarea{
+                background: #eee;
+                transition-duration: 100ms;
+                border: none;
+                resize: none;
+                outline: none;
+                font-size: 17px;
+                width: 50%;
+                padding: 10px;
+                height: 100%;
+                font-family: Consolas;
+                border-right: 1px solid #888;
+                min-height: 75vh;
+                font-weight: 100;
+            }
+            
+            .styled.dark .html-editor textarea{
+                background: #333;
+                color: white;
+            }
+            .styled.dark .html-editor textarea:focus{
+                background: #181818;
+            }
+
+            .styled .html-editor #output{
+                width: 50%;
+                height: 100%;
+                padding: 10px;
+                overflow-x: auto;
+                text-overflow: ellipsis;
+            }
+
+            .styled .play-btn{
+                transition-duration: 200ms;
+                border-radius: 5%;
+            }
+            .styled .play-btn:hover{
+                background-color: #f8f8f8;
+                box-shadow: 0 0 8px #ccc;
+            }
+            .styled .play-btn:active{
+                box-shadow: 0 0 4px #888;
+            }
+
+            .styled table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #aaa;
+            }
+            .styled table th{
+                background: #ddd;
+                border: 1px solid #aaa;
+            }
+            .styled table .styled tr, .styled th, .styled td{
+                border: 1px solid #aaa;
+                padding: 10px;
+                color: black;
+            }
+
+            .styled.dark table {
+                border: 1px solid #444;			
+            }
+            .styled.dark table th{
+                background: #666;
+                border: 1px solid #333;
+            }
+            .styled.dark table tr, .styled.dark th, .styled.dark td{
+                border: 1px solid #666;
+                color: white;
+            }
+            .styled .collabsible {
+                border-radius: 5px;
+                background-color: #00000022;
+                height: 0px;
+                transition-duration: 300ms;
+                overflow-y: auto;
+            }
+            .styled .sticky {
+                position: sticky;
+                top: -15px;;
+                left: -15px;
+                background:#00000066;
+            }
+            .styled #end-letters span {
+                transition-duration: 500ms;
+                border: 1px solid #00000000;
+                font-weight: 100;
+            }
+            .styled #end-letters span:hover {
+                font-weight: 1000;
+                margin: 10px;
+                font-size: 60px;
+                cursor: none;
+            }
+
+            /*copied from w3schools :D*/
+            /* width */
+            .styled::-webkit-scrollbar {
+                
+            width: 5px;
+            }
+
+            /* Track */
+            .styled::-webkit-scrollbar-track {
+            background: #888;
+            border-radius: 10px;
+            }
+
+            .styled::-webkit-scrollbar-track:hover {
+            background: #ccc;
+            border-radius: 10px; 
+            }
+
+            /* Handle */
+            .styled::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            .styled::-webkit-scrollbar-thumb:hover {
+            background: #333;
+            }
+
+            /* Handle on hover */
+            .styled::-webkit-scrollbar-thumb:active {
+            background: #111;
+            }
+            </style>       
+    </head>
+    <body class="styled dark">
+        <header class="card">
+            <h1>Assignment 4</h1>
+            <div id="other-body">
+                <p>Ok so this one is a  big assignment. Do it carefully, and take it seriously (for once, please). You will be making a web app using HTML, CSS, AND JavaScript. Apply everything you know (try to impress me :) )</p>
+                <b style="font-size: 30px;">DUE DATE: <span style="color: green;">NONE</span></b>
+            </div>
+        </header>
+            
+            <div class="card" style="margin-top: 250px;">
+                
+                <h1>Important: Must read:</h1>
+                <div class="ptn" style="display: inline-block;">
+                    <h4>I will not be responsible for your carelessness about wrong information in your mind</h4>
+                    <p>Information written in this assignment is very specific. Do pay attention while reading, and while building up thoughts on solutions. I will not be responsibe (as you think I am) for any of careless reading done by you. In account of mistaken information from you, <b>you</b> will have to face it since it is obviously your fault.</p>
+                    <hr>
+                    <label onclick="checkAgreements()" style="cursor: pointer;"><input type="checkbox" id="header-check1"> <b>I have read the above, and I agree that any information misunderstood by me will be considered my fault and I will accept the marks deducted in that account</b></label>
+                </div>
+                <div class="ptn" style="display: inline-block;">
+                    <h4>Don't get overwhelmed by the hardness of this assignment; there is a reason why it has no due date</h4>
+                    <p>I made this assignment so that you can have a big side project, in which you keep adding things along with learning them. Apply as you learn. Do as much you know, if there is some <b>concept</b> you don't understand then you can ask me (or google). This assignment is not expected to be done immediately. But if you are able to, then that is really good :)</p>
+                    <hr>
+                    <label onclick="checkAgreements()" style="cursor: pointer;"><input type="checkbox" id="header-check2"> <b>I acknowledge that I dont have to get frustrated on such an assignment since I am not expected to perform too good at this level yet</b></label>
+                </div>
+                <div class="ptn" style="display: inline-block;">
+                    <h4>Do as much as you can, this is a really big app (for this level)</h4>
+                    <p>You need to be adding things to this, step by step, but you don't need to be fast. This assignment has some relatively harder aspects which are difficult and more challanging to solve. But you don't need to get overwhelmed by it since right at this level I don't expect you to do this assignment all at once. Do as much as you can, ask others stuff, and learn along. That's what I expect.</p>
+                    <hr>
+                    <label onclick="checkAgreements()" style="cursor: pointer;"><input type="checkbox" id="header-check3"> <b>I understand the above passage, that I need to keep learning and improving my concepts until my skill level is good enough to complete this assignment</b></label>
+                </div>
+                <br>
+                <button onclick="document.body.classList.toggle('dark')">Toggle Theme</button>
+                <button onclick="document.body.classList.toggle('styled')">Toggle CSS</button>
+            </div>
+
+            
+        <br>
+        <center id="read-above">Read the above before proceeding.</center>
+        <div id="assignment-page-body" class="hidden">
+                
+            <div class="card">
+                <h2>Task: Create a web page builder</h2>
+                <p>Create a single page applcation, which lets the user to add and remove HTML tags, and apply basic CSS to them too, in their initially blank canvas. Each element should be clickable to view and edit its properties, and an export all function should be present to export the created webpage into HTML for actual use.</p>
+
+                <h3>Overview:</h3>
+                <p>The page should have 2 side bars, one on the left, and one on the right. Left one should contain controls to add HTML elements, and right one should be the properties bar, containing the properties controls. Bootstrap needs to be completely utilized on common elements like buttons, input fields etc.</p>
+                
+                <h3>Page Layout:</h3>
+                <p>The page should consist of 3 sections/panes, vertically visible when the page is being viewed. The right and left panes shouldn't scroll when the center canvas becomes scrollable; they should be fixed on the screen:</p>
+                <center>
+                    <div style="width: 50vw; height: 28vw; padding: 0; background: #444; font-size: 12px; display: flex; justify-content: center; align-items: center; border-radius: 6px;">
+                        <center style="display: inline-block; background: red; width: 17%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111;">Add Elements Bar</center>
+                        <center style="display: inline-block; background: grey; width: 60%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111; z-index: 100;">Main Screen</center>
+                        <center style="display: inline-block; background: blue; width: 17%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111;"><span style="color: darkgrey"><p style="color: white;">Properties Bar</p> Visible only when an element is selected</span></center>
+                    </div>
+                </center>
+                <p>The properties pane should initially be hidden, and only be visible when a user-created element from the canvas is clicked</p>
+
+                <h3>Main functionality:</h3>
+                <p>The application should allow the user to append (or prepend) the specified HTML tags (see the left sidebar section), along with the class list. The user should be allowed to freely create, update or remove class elements as they desire. The user should obviously also be allowed to add inner tag body. Two buttons, saying <b>Prepend to page</b> and <b>Append to page</b> should be visible to add the desired element according to the desired way.</p>
+                <p>The center view/canvas should act as the container for all the user generated tags. When any of the generated element is clicked, it should show a border (or any indicator that that element is now selected), and the right pane should appear into view.</p>
+                <p>The right page should allow all customizations, custom CSS, class list, and inner tag body. This pane should disappear once the user clicks anywhere other than the generated tags.</p>
+
+                <h3>Left sidebar: Elements inserter</h3>
+                <p>The left sidebar is the main application control section. It should display the title of the app, in such a way that the first sight of the user hits this title, and the user immediately understands what this app is about. These are important design techniques which leave a better impression when the user visits the landing page.</p>
+                <div class="ptn">You can also make an info button right beside the title (or anywhere else you like), which opens a Bootstrap modal and describes how to use this app, +4 marks if this optional task is fulfilled entirely.</div>
+                <p>Apart from the title, there should be a few elements that let the user to add elements to the canvas.</p>
+                <b>Select tag:</b><br>
+                <p>There should be a <code>select</code> tag which contains all the possible insertable tags. These tags should be insertable, with the descriptions visible to the user as follows:</p>
+                <ul>
+                    <li>Text (p)</li>
+                    <li>Inline Text (span)</li>
+                    <li>Division (div)</li>
+                    <li>Bold Text (b)</li>
+                    <li>Italic Text (i)</li>
+                    <li>Underlined Text (u)</li>
+                    <li>Horizontal Line (hr)</li>
+                    <li>Hyperlink (a)</li>
+                    <li>Large Heading (h1)</li>
+                    <li>Smaller Heading (h3)</li>
+                    <li>Image (img)</li>
+                </ul>
+                <p>When the user selects any of the above option, the elements below (further details for the tag) should update according to the specific element attributes (if any). For example, if the user selects the image tag, then automatically an <i>"Enter Image Link"</i> field should appear, so that the user can enter the link of their desired image.</p>
+
+                <b>Tag detail fields:</b><br>
+                <p>There should be present some fields, from which the user can edit the inner tag body and customize the class list completely. The user should be allowed to freely create, update or remove class elements as they desire. This structure will be complex, since it will contain more buttons to edit or remove individual classes.</p>
+                <p>There should be a button to add a classname, which opens a textfield to input the name of the class, and a confirm button, which when pressed, should add the classname to the list.</p>
+                <p>The added classname should appear as a <code>div</code>, with options to edit or delete that classname. To edit the classname, a textfield and a confirm button should appear right inside the classname <code>div</code>, to edit the name and confirm the change.</p>
+                <p>If you couldnt precisely understand the classname explaination, then you just need to achieve the 3 specified actions: create, edit and deletion of classnames. No matter whichever system of elements you use. </p>
+                
+                <b>Add buttons:</b><br>
+                <p>Next, the actual action buttons. There should exist two buttons, named <b>Prepend to page</b> and <b>Append to page</b>, which should add the desired tag, with the desired options (class list, tag specific options, etc.) to the canvas. The append button should add the element at the end of the canvas, and the prepend button should add the element at the start of the canvas.</p>
+                <p>Once any of these two buttons are pressed, all the input fields and the select tag should reset their values for next use.</p>
+
+                <b>Export button:</b><br>
+                <p>Lastly, the export button. They should generate HTML of all the created canvas content and show all that to the user to copy it (in any sort of way possible)</p>
+                <p class="hint">This button should be present anywhere in the left pane.    </p>
+
+                <h3>Main Window: Page View</h3>
+                <p>The main window/canvas should only show the contents of the user-created page, and should act as the canvas for the creation.</p>
+                <div class="ptn"><b>Optional (+4 points): </b>By default there should be a <code>p</code> tag in <code>grey</code> color, saying: <p class="hint">(Add elements to this canvas from the left pane)</p>This element should be entirely interactable like other elements generated by the user.</div>
+                <p>If any element is clicked in this screen, it should show some sort of highlighting (a border is in my mind right now, you can use the <code>outline</code> property which works exactly like <code>border</code>property, but won't interfere with the border of the element itself), so that the user determines that this element is now selected. Once any element is selected, then the right pane should appear into view, giving the user the options to edit or remove the specified element. There shouldn't be any possibility of two elements getting selected at once. And if the user clicks anywhere in the canvas, outside of any user generated element, then the currently selected element should unselect, along with the sidebar disappearing.</p>
+                <p class="hint">You can also have a hover effect for every element in the canvas too if you like.</p>
+
+                <h3>Right sidebar: Properties bar</h3>
+                <p>The right sidebar should only appear when an element from the main canvas is selected, apart from that, it should stay hidden. And the area of the sidebar should be filled by the main canvas when it is hidden, like this:</p>
+                <center>
+                    <div style="width: 50vw; height: 28vw; padding: 0; background: #444; font-size: 12px; display: flex; justify-content: center; align-items: center; border-radius: 6px;">
+                        <center style="display: inline-block; background: red; width: 17%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111;">Add Elements Bar</center>
+                        <center style="display: inline-block; background: grey; width: 100%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111; z-index: 100;">Main Canvas</center>
+                        <center style="display: inline-block; background: blue; width: 17%; height: 95%; margin: 0.5%; display: flex; justify-content: center; align-items: center; border-radius: 3px; box-shadow: 0 0 10px #111; overflow: hidden;"><button style="cursor: pointer;" onclick="this.parentElement.style.width = '0%'">Click here<br><hr><br>The main canvas should expand upon click.</button></center>
+                    </div>
+                </center>
+                <p>This sidebar should contain all the properties that can be edited in your app. A few sections shall be placed here:</p>
+                <ul>
+                    <li>
+                        <h5>Tagname and inner body text:</h5>
+                        <p>The tagname should be displayed (uneditable), and the inner text should also be placed, but it should be editable. (Use any text field for it; <code>input</code> or <code>textarea</code>, etc.)</p>
+                    </li>
+                    <li>
+                        <h5>Classlist:</h5>
+                        <p>The same classlist management structure as used in the left side bar, you can copy and paste it :)</p>
+                    </li>
+                    <li>
+                        <h5>CSS Properties:</h5>
+                        <p>This should be a bigger section. This should contain a label, and an input field, for all the editable properties in your app. You can use as many properties as you want, but the items marked with a <b>*</b> are required:</p>
+                        <ul>
+                            <li><b>*Text color</b></li>
+                            <li><b>*Text size<sup>[2]</sup></b></li>
+                            <li><b>*Shadow<sup>[3]</sup></b></li>
+                            <li><b>*Width & Height<sup>[2]</sup></b></li>
+                            <li><b>*Margin & Padding<sup>[2]</sup></b></li>
+                            <li><b>*Background Color</b></li>
+                            <li>Font (like <i>Times New Roman</i>, <i>Arial</i>, <i>Calibri</i>, <i>Consolas</i>, <i>cursive</i>, etc. there would be more too but only these are in my mind right now)<sup>[1]</sup></li>
+                            <li>Text style (bold, italic, etc.)<sup>[1]</sup></li>
+                            <li>Corner Radius<sup>[2]</sup></li>
+                            <li>Text Shadow<sup>[3]</sup></li>
+                            <li>Opacity</li>
+                            <li>Display (block/inline two options only)<sup>[1]</sup></li>
+                            <li>Text Align (center, left, right)<sup>[1]</sup></li>
+                            <p class="hint"><sup>[1]</sup>Should only show available options in a <code>select</code> tag</p>
+                            <p class="hint"><sup>[2]</sup>Should show an input field (of number type) and available options (px / % / vw / vh / em etc. how much ever you want) in a <code>select</code> tag</p>
+                            <p class="hint"><sup>[3]</sup>Should show three fields, one input field of number type, one <code>select</code> tag for available options available options (px / % / vw / vh / em etc.) and the third input field for color.</p>
+                            <div class="ptn"><i>+1 Point extra for every extra property created :)</i></div>
+                        </ul>
+                    </li>
+                    <li>
+                        <h5>Remove button</h5>
+                        <p>A simple remove button should be present which removes the element from the canvas, and hides the right sidebar.</p>
+                    </li>
+                </ul>
+
+                <br>
+                <p><b><u>Any</u> change made using the above fields (text change/option selected, etc.) should be applied in the canvas immediately.</b></p>
+
+                <h3>Export as HTML</h3>
+                <p>This option will be really simple. This should be present anywhere in the left sidebar. When this is clicked, it should show a copyable text of all the HTML (of the canvas), along with an indication that this is the resultant HTML. The exported html should contain a link to bootstrap as well, so that the output has the same styling as your app has. You can achieve this using a simple <code>prompt()</code>, or a bootstrap modal as well if you want to give the app a more modern look.</p>
+                
+            </div>
+            <div class="card">
+                <h2>Marks distribution & folder structure:</h2>
+                <p>The marks distribution along with the rewards are specified below:</p>
+                <h3>Marks Distribution:</h3>
+                <p>Negative marking will be applied on very important parts.</p>
+                <table>
+                    <tr>
+                        <th width="55%">Topic</th>
+                        <th width="15%">Marks</th>
+                        <th width="15%">Negative Marks</th>
+                        <th width="15%">Obtained Marks</th>
+                    </tr>
+                    <tr>
+                        <th><b>OVERALL</b></th>
+                    </tr>
+                    <tr>
+                        <td>App Pane Layout</td>
+                        <td class="marks-total-single">3</td>
+                        <td>-3</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Proper Bootstrap usage</td>
+                        <td class="marks-total-single">8</td>
+                        <td>-4</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Main Canvas Expansion when right sidebar is hidden</td>
+                        <td class="marks-total-single">5</td>
+                        <td>-1</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Proper/Clean folder structure</td>
+                        <td class="marks-total-single">4</td>
+                        <td>-2</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td><b>EXTRA:</b> External CSS and/or JS</td>
+                        <td class="marks-total-single-extra">2</td>
+                        <td>(Extra)</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <th><b>LEFT SIDEBAR</b></th>
+                    </tr>
+                    <tr>
+                        <td>App Title</td>
+                        <td class="marks-total-single">3</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td><b>EXTRA:</b> Info button</td>
+                        <td class="marks-total-single-extra">4</td>
+                        <td>(Extra)</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Element Selection: <code>select</code> tag overall styling & behaviour</td>
+                        <td class="marks-total-single">2</td>
+                        <td>-1</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Element Selection: All specified tags implemented</td>
+                        <td class="marks-total-single">3</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Classlist editor: all features implemented</td>
+                        <td class="marks-total-single">4</td>
+                        <td>-4</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Classlist editor: UI</td>
+                        <td class="marks-total-single">2</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Prepend/Appent buttons: Functionality</td>
+                        <td class="marks-total-single">5</td>
+                        <td>-2</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Prepend/Appent buttons: Input fields reset</td>
+                        <td class="marks-total-single">2</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    
+                    <tr>
+                        <th><b>MAIN WINDOW</b></th>
+                    </tr>
+                    <tr>
+                        <td><b>EXTRA:</b> Default Text</td>
+                        <td class="marks-total-single-extra">4</td>
+                        <td>(Extra)</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Main canvas Selection implementation</td>
+                        <td class="marks-total-single">12</td>
+                        <td>-3</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Main canvas Selection Indicator</td>
+                        <td class="marks-total-single">4</td>
+                        <td>-4</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <th><b>RIGHT SIDEBAR</b></th>
+                    </tr>
+                    <tr>
+                        <td>Properties: inner text editable</td>
+                        <td class="marks-total-single">3</td>
+                        <td>-1</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: Classlist editing</td>
+                        <td class="marks-total-single">4</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: Well presented CSS Properties editor</td>
+                        <td class="marks-total-single">2</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td><b>EXTRA: Extra CSS Properties (1 Point Each)</b></td>
+                        <td class="marks-total-single-extra">7</td>
+                        <td>(Extra)</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: CSS Properties editable</td>
+                        <td class="marks-total-single">4</td>
+                        <td>-2</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: CSS Properties Input fields guidelines</td>
+                        <td class="marks-total-single">4</td>
+                        <td>-4</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: Remove button</td>
+                        <td class="marks-total-single">3</td>
+                        <td>-2</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Properties: Changes immediately applied upon interaction</td>
+                        <td class="marks-total-single">3</td>
+                        <td>-3</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <th><b>EXPORT BUTTON</b></th>
+                    </tr>
+                    <tr>
+                        <td>Easy to understand user interface & location</td>
+                        <td class="marks-total-single">3</td>
+                        <td>-1</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <td>Actual functionality: contains all the <code>html</code>, <code>body</code> etc. tags</td>
+                        <td class="marks-total-single">2</td>
+                        <td>0</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>    
+                        <td>Actual functionality: gives the same output as the canvas<br>(exported html should contain a link to bootstrap as well)</td>
+                        <td class="marks-total-single">5</td>
+                        <td>-2</td>
+                        <td class="marks-obtained-single">-</td>
+                    </tr>
+                    <tr>
+                        <th><B>TOTAL</B></th>
+                        <th id="total-marks">Marks</th>
+                        <th>Negative Marks</th>
+                        <th id="obtained-marks">-</th>
+                    </tr>
+                </table>
+                <h3 style="display: inline-block;">Total extra:</h3>&nbsp;<span id="total-extra-load">0 tasks (0 marks)</span>
+                <p><b>Extra marks:</b> <span class="hint">Extra marks are not part of the total obtainable marks, but will be awarded when the specified task is completed accurately.</span></p>
+                <p><b>Negative marks:</b> <span class="hint">Negative marks will be deducted from the total obtained, when the specified task is not fulfilled at all, or is improperly done.</span></p>
+
+                <h3>Folder Structure:</h3>
+                <p>The folder structure should be a lot simpler than any other assignment you have created before. Folder structure also has marking, so make sure that your file and folder structure and naming sense is correct, and is as specified. Following structure is expected:</p>
+                <ul>
+                    <li><code>assignment-4.zip</code> (name of <code>zip</code> can be anything, no restriction)</li>
+                    <ul>
+                        <li><code>resources</code> (no restriction on folder name)</li>
+                        <ul>
+                            <li><code>...</code> (any icons/videos/content other than styling and scripting goes here.)</li>
+                        </ul>
+                        <li><code>index.html</code></li>
+                        <li>(Optional file) <code>script.js</code></li>
+                        <li>(Optional file) <code>style.css</code></li>
+                    </ul>
+                </ul>
+                <a href="#" onclick="
+                event.preventDefault()
+console.group('assignment-4.zip (name of zip can be anything, no restriction)')
+
+console.group('resources (no restriction on folder name)')
+console.log('... (any icons/videos/content other than styling and scripting goes here.)')
+console.groupEnd('resources (no restriction on folder name)')
+
+console.log('(Optional file) script.js')
+console.log('(Optional file) style.css')
+
+console.groupEnd('assignment-4.zip (name of zip can be anything, no restriction)')                
+                ">Click here to print the above structure onto the console.</a>
+                
+                <h2>Rewarding Criteria:</h3>
+                <p>Upon good performance, following rewarding criteria will be applied after the assignment is completed and checked:</p>
+                <div style="font-size: 20px; background: linear-gradient(green, #2f2, yellowgreen, yellow, orange, orangered, #f55, #f00); padding-left: 5px; border-radius: 5px;">
+                    <div class="card" style="padding: 0; margin: 0; box-shadow: none; border-radius: 0px; border: none; padding-left: 10px;">
+                        <b> <span style="color: green;">105</span> or above Marks:</b> <sub>Direct jump to <b>C#</b> <span style="color: gray;">(after one short conceptual test)</span></sub><br>
+                        <b> <span style="color: #2f2;">95</span> or above Marks:</b> <sub>One final JS assignment & jump to <b>C#</b></sub><br>
+                        <b> <span style="color: yellowgreen;">85</span> or above Marks:</b> <sub>One week (7 days) of <b>rocket league multiplayer</b></sub><br>
+                        <b> <span style="color: yellow;">70</span> or above Marks:</b> <sub>4 days of <b>rocket league multiplayer</b></sub><br>
+                        <b> <span style="color: orange;">60</span> or above Marks:</b> <sub>2 days of <b>rocket league multiplayer</b></sub><br>
+                        <b> <span style="color: orangered;">45</span> or above Marks:</b> <sub>-</sub><br>
+                        <b> <span style="color: #f55;">Below 45</span> Marks [FAIL]:</b> <sub>1 CSS <b>assignment</b> (restricted help on JS)</sub><br>
+                        <b> <span style="color: #f00;">Below 25</span> Marks [FAIL]:</b> <sub>1 HTML+CSS <b>assignment</b> (restricted help on JS)</sub><br>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <center id="end-letters" style="font-size: 70px;"><span onmousemove="rancolor(event.target)">G</span><span onmousemove="rancolor(event.target)">O</span><span onmousemove="rancolor(event.target)">O</span><span onmousemove="rancolor(event.target)">D</span><span onmousemove="rancolor(event.target)">&nbsp;</span><span onmousemove="rancolor(event.target)">L</span><span onmousemove="rancolor(event.target)">U</span><span onmousemove="rancolor(event.target)">C</span><span onmousemove="rancolor(event.target)">K</span>                                        
+                </center>
+            </div>
+        </div>
+
+        <script>
+            function init() {
+                console.log("NO HECK PLS ;-;")
+                var header = document.querySelector('header')
+  
+                window.toggleCollapse = function(event, id, passcode, retry) {
+                    retry = retry ? retry : ''
+                    event.preventDefault()
+                    var toCollapse = document.querySelector("#"+id);
+                    if (toCollapse.style.height == "0px") {
+                        toCollapse.style.height = "600px"
+                        toCollapse.style.padding = "15px"
+                        event.target.innerText = "Hide"
+                        
+                    } else {
+                        toCollapse.style.height = "0px"
+                        toCollapse.style.padding = "0px"
+                        event.target.innerText = "Show"
+                    }
+                }
+
+                window.random = function(min, max) {
+                    return (Math.round((Math.random()*(100000000000))) % max) - (min-2)
+                }
+                
+                window.rancolor = function (self) {
+                    var colors = ["violet", "indigo", "blue", "gree", "yellow", "orange", "red"]
+                    var randomcolor = colors[random(2, colors.length)]
+                    self.style.color = randomcolor
+                    self.style.textShadow = "0 0 20px "+randomcolor;
+                }
+
+                var bodi = document.getElementById('assignment-page-body')
+                var readabove = document.getElementById('read-above')
+                var check1 = document.getElementById('header-check1')
+                var check2 = document.getElementById('header-check2')
+                var check3 = document.getElementById('header-check3')
+                window.checkAgreements = function() {
+                    localStorage.check1checked = check1.checked
+                    localStorage.check2checked = check2.checked
+                    localStorage.check3checked = check3.checked
+
+                    if (check1.checked && check2.checked && check3.checked) {
+                        bodi.classList.value = ""
+                        readabove.classList.value = "hint hidden"
+                    } else {
+                        bodi.classList.value = "hidden"
+                        readabove.classList.value = "hint "
+                    }
+                }
+                check1.checked = (localStorage.check1checked === undefined || localStorage.check1checked === 'false') ? false : true
+                check2.checked = (localStorage.check2checked === undefined || localStorage.check2checked === 'false') ? false : true
+                check3.checked = (localStorage.check3checked === undefined || localStorage.check3checked === 'false') ? false : true
+
+                if ((localStorage.check1checked && localStorage.check2checked && localStorage.check3checked) && (localStorage.storageThanks == undefined)) {
+                    alert("Thanks to you, now I know about localStorage and was able to save the checkboxes onto the localStorage :D")
+                }
+                if (localStorage.check1checked) 
+                    localStorage.storageThanks = true
+                checkAgreements()
+
+
+                var marksTotal = 0;
+                var marksTotalElems = document.querySelectorAll('.marks-total-single').forEach( v => marksTotal +=  parseFloat(v.innerText) )
+                var marksTotalExtra = 0;
+                var marksTotalExtraElems = document.querySelectorAll('.marks-total-single-extra').forEach( v => marksTotalExtra +=  parseFloat(v.innerText) )
+                document.getElementById('total-marks').innerText = marksTotal
+                
+
+                document.getElementById('total-extra-load').innerText = document.querySelectorAll('.marks-total-single-extra').length + " extra tasks (" + marksTotalExtra + " marks)"
+                
+                // var marksObtained = 0;
+                // var marksObtainedElems = document.querySelectorAll('.marks-obtained-single').forEach( v => marksObtained +=  parseFloat(v.innerText) )
+                // document.getElementById('obtained-marks').innerText = marksObtained
+                
+                setInterval(function () {
+                    rancolor(document.getElementById('end-letters').children[random(2, document.getElementById('end-letters').children.length)])
+                }, 100);
+
+                document.body.onscroll = function (event) {
+                    if (document.body.scrollTop > 175) header.classList.value = ('sticky-header')
+                    else header.classList.value = ('card')
+                }
+            }
+            
+            try {
+                init()
+            } catch(e) {
+                document.body.innerHTML = "<pre class='card' style='color: red;'>"+e
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,729 @@
+<html>
+    <head>
+        <title>JavaScript | Practice Task 3</title>
+        <style type="text/css">
+
+            .styled{
+                font-family: Arial;
+                background-color: #eee;
+                padding: 40px;
+                margin: 0 150px;
+            }
+            @media screen and (max-width: 1000px){
+                .styled{
+                    margin: 0 0;
+                    padding: 20px;;
+                }
+            }
+            *{
+                transition-duration: 100ms;
+            }
+
+            .styled.dark {
+                background: #222;
+                color: white;
+            }
+
+            .styled hr {
+                opacity: 0.2;
+            }
+
+            .styled a{
+                color: royalblue;
+                font-style: italic;
+                text-decoration: none;
+            }
+
+            .styled.dark a{
+                color: lightblue;
+                font-style: italic;
+            }
+
+            .styled a:hover{
+                color: blue;
+            }
+
+            .styled .card{
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ccc;
+                box-shadow: 0 0 8px #ccc;
+                border-radius: 10px;
+                padding: 60px;
+                margin: 10px 0;
+            }
+
+            .styled.dark .card{
+                background: #333;
+                border: 1px solid #444;
+                box-shadow: 0 0 8px #000;
+            }
+
+            .styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+                border-bottom: 1px solid #aaa;
+                font-weight: bolder;
+            }
+
+            .styled code, .styled .mono{
+                font-family: consolas;
+                background: #eee;
+                border-radius: 3px;
+                padding: 2px;
+                margin: 3px;
+                word-break: break-word;
+                white-space: nowrap;
+                border: 1px solid #777;
+                font-size: 12px;
+            }
+            
+            .styled .tag {
+                padding: 10px;
+                margin: 5px; 
+                background-color: #88888844;
+                border-radius: 20px;
+                border: 1px solid #888;
+            }
+
+            .styled pre{
+                overflow-x: auto;
+                white-space: pre-wrap;
+                font-size: 18px;
+                padding: 10px;
+            }
+
+            .styled.dark code, .styled.dark .mono{
+                background: #666;
+            }
+
+            .styled .p-tag{
+                display: block;
+                width: 100%
+            }
+
+            .styled li{
+                margin-bottom: 15px;
+            }
+            .styled .hint{
+                color: #666;
+            }
+            .styled.dark .hint{
+                color: #999;
+            }
+            .styled img{
+                margin: 5px;
+                box-shadow: 0 0 4px #ddd;
+                border-radius: 5px;
+            }
+
+            .styled .ptn{
+                background: #ffa;
+                width:30%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin: 15px 0;
+                border-radius: 4px;
+            }
+
+            .styled.dark .ptn{
+                border: 1px solid #444;
+                background: #663;
+
+            }
+
+            .styled .task-to-do{
+                background: #aaf;
+                width:30%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                margin: 15px 0;
+                border-radius: 4px;
+            }
+
+            .styled.dark .task-to-do{
+                border: 1px solid #444;
+                background: #88a;
+
+            }
+
+            .styled select{
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                border: 1px solid #fff;
+                background: #eee;
+            }
+
+            .styled button{
+                padding: 10px;
+                background-color: royalblue;
+                border: none;
+                margin: 2px;
+                color: white;
+                box-shadow: 0 0 3px #333;
+                cursor: pointer;
+                transition-duration: 200ms;
+                font-size: 15px;
+                border-radius: 4px;
+            }
+            .styled button:hover{
+                background-color: white;
+                box-shadow: 0 0 10px #666;
+                color: royalblue;
+            }
+            .styled button:active{
+                transition-duration: 0;
+                opacity: 0.5;
+                transform: scale(0.95);
+            }
+            .styled input{
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                border: 2px solid #aaf;
+                transition-duration: 200ms;
+                background-color: #fff;
+            }
+            .styled input:hover{
+                box-shadow: 0 0 5px royalblue;
+            }
+            .styled input:focus{
+                border: 2px solid royalblue;
+                background-color: #ddf;
+                outline: none;
+                box-shadow: 0 0 5px royalblue;
+            }
+            .styled input[type=checkbox], input[type=file]{
+                cursor: pointer;
+            }
+
+            .styled .html-editor{
+                border: 1px solid #888;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 0 8px #ccc;
+            }
+            .styled.dark .html-editor{
+                border: 1px solid #444;
+                box-shadow: 0 0 8px #000;
+            }
+
+            .styled .html-editor textarea:focus{
+                background: #fff;
+            }
+            .styled .html-editor textarea{
+                background: #eee;
+                transition-duration: 100ms;
+                border: none;
+                resize: none;
+                outline: none;
+                font-size: 17px;
+                width: 50%;
+                padding: 10px;
+                height: 100%;
+                font-family: Consolas;
+                border-right: 1px solid #888;
+                min-height: 75vh;
+                font-weight: 100;
+            }
+            
+            .styled.dark .html-editor textarea{
+                background: #333;
+                color: white;
+            }
+            .styled.dark .html-editor textarea:focus{
+                background: #181818;
+            }
+
+            .styled .html-editor #output{
+                width: 50%;
+                height: 100%;
+                padding: 10px;
+                overflow-x: auto;
+                text-overflow: ellipsis;
+            }
+
+            .styled .play-btn{
+                transition-duration: 200ms;
+                border-radius: 5%;
+            }
+            .styled .play-btn:hover{
+                background-color: #f8f8f8;
+                box-shadow: 0 0 8px #ccc;
+            }
+            .styled .play-btn:active{
+                box-shadow: 0 0 4px #888;
+            }
+
+            .styled table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #aaa;
+            }
+            .styled table th{
+                background: #ddd;
+                border: 1px solid #aaa;
+            }
+            .styled table .styled tr, .styled th, .styled td{
+                border: 1px solid #aaa;
+                padding: 10px;
+                color: black;
+            }
+
+            .styled.dark table {
+                border: 1px solid #444;			
+            }
+            .styled.dark table th{
+                background: #666;
+                border: 1px solid #333;
+            }
+            .styled.dark table tr, .styled.dark th, .styled.dark td{
+                border: 1px solid #666;
+                color: white;
+            }
+            .styled .collabsible {
+                border-radius: 5px;
+                background-color: #00000022;
+                height: 0px;
+                transition-duration: 300ms;
+                overflow-y: auto;
+            }
+            .styled .sticky {
+                position: sticky;
+                top: -15px;;
+                left: -15px;
+                background:#00000066;
+            }
+
+
+            /*copied from w3schools :D*/
+            /* width */
+            .styled::-webkit-scrollbar {
+            width: 5px;
+            }
+
+            /* Track */
+            .styled::-webkit-scrollbar-track {
+            background: #888;
+            border-radius: 10px;
+            }
+
+            .styled::-webkit-scrollbar-track:hover {
+            background: #ccc;
+            border-radius: 10px; 
+            }
+
+            /* Handle */
+            .styled::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            .styled::-webkit-scrollbar-thumb:hover {
+            background: #333;
+            }
+
+            /* Handle on hover */
+            .styled::-webkit-scrollbar-thumb:active {
+            background: #111;
+            }
+        </style>       
+    </head>
+    <body class="styled dark">
+        <div class="card">
+            <h1>JavaScript Practice</h1>
+            <p>Aight um here are some well, JS programming tasks to do for practice, <b>but with solutions so no need to worry :)</b></p>
+            
+            <button onclick="document.body.classList.toggle('dark')">Toggle Theme</button>
+            <button onclick="document.body.classList.toggle('styled')">Toggle CSS</button>
+            <p><b>Fun thing to play with:</b> This is made with CSS & JS:</p>
+            <a href="" onclick="toggleCollapse(event, 'collapse-me-pls')">Show</a>
+            <div class="collabsible" id="collapse-me-pls" style="height: 0px;">
+                <div class="card">When</div>
+                <div class="card">the</div>
+                <div class="card">Impostor</div>
+                <div class="card">Is</div>
+                <div class="card">Sus</div>
+                <h1 class="card">😳</h1>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Task 1: Create a simple Calculator:</h2>
+            <b>Type: </b><span>Pure JS (No HTML interface required)</span><br><br>
+            <b>Tags: </b><span> <span class="tag">prompt</span><span class="tag">if</span> </span>
+            <br><hr><br>
+            <p>In this task, you have to input 3 things from the user, to give the calculation result:</p>
+            <ul>
+                <li>First number</li>
+                <li>Second number</li>
+                <li>Operation (+, -, *, /)</li>
+            </ul>
+            <p>First, take first number as input, then take second number as input, and then take their operation as input. </p>
+            <p>The program should check that which operation is inputted, and perform the coresponding operation with the two inputted numbers.</p>
+            <b>The program should say "Invalid Operation" and exit, if the user inputs anything other than the 4 valid operands (+, -, *, /) while inputting the operation.</b>
+
+            <h3>Images:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task1-img')">Show</a>
+            <div class="collabsible" id="task1-img" style="height: 0px;">
+                <h4>Normal Behaviour:</h4>
+                <img src="https://i.imgur.com/itF2oIB.png" alt="Task 1 Image" title="Multiplication" style="margin: 25px;">
+                <img src="https://i.imgur.com/JGPWS7T.png" alt="Task 1 Image" title="Subtraction" style="margin: 25px;">
+                <h4>Invalid Operand:</h4>
+                <img src="https://i.imgur.com/vTZA2qm.png" alt="Task 1 Image" title="Invalid Operand" style="margin: 25px;">
+            </div>
+
+            <h3>Solution:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task1-sol', true)">Show</a>
+            <div class="collabsible" id="task1-sol" style="height: 0px;">
+                <p>First, lets break the whole task down to smaller tasks:</p>
+                <ol>
+                    <li>Input both numbers (using <code>prompt()</code>)</li>
+                    <li>Input the operation (using <code>prompt()</code>)</li>
+                    <li>Check the operation using <code>if</code> statements (and say "Invalid Operation" if its invalid)</li>
+                    <li>Perform the inputted operation</li>
+                    <li><code>alert()</code> the result</li>
+                </ol>
+                <div>
+                    <h3 class="sticky">1. Input both numbers</h3>
+                    <p>This is obviously really simple, you have done it before. Store the <code>prompt()</code> value in a variable. Don't forget to convert it to number before storing, i.e. cover the <code>prompt()</code> expression with a <code>parseInt()</code> like this:</p>
+                    <div class="mono"><pre>var firstNumber = parseInt(prompt("Enter first number"));
+var secondNumber = parseInt(prompt("Enter second number"));</pre></div>
+                    <p>Now we have both numbers as we need them. In the number form.</p>
+                </div>    
+                <div>    
+                    <h3 class="sticky">2. Input the operation</h3>
+                    <p>This is also same as before; but the only difference is, we dont need to convert the operations into a numeric form. </p>
+                    <div class="mono"><pre>var operation = prompt("Enter the operation between the two numbers: (=, -, * or /)");</pre></div>
+                    <p>Now we have all the data we need. Let's process it and give the user an output (the result).</p>
+                </div>    
+                <div>    
+                    <h3 class="sticky">3. Check the operation</h3>
+                    <p>Now, we need to <b>check</b>, that which expression did the user give us in the prompt box, and perform that operation. This one might seem tricky at first, but its just a bunch of <code>if</code> statements.</p>
+                    <p>We are going to check, that if the <code>operation</code> variable is '+'. If so, add both numbers. If not, check that if the <code>operation</code> variable is '-'. If so, subtract both numbers. If not, then check the same for multiplication, and then eventually, for division.</p>
+                    <p>This would happen like this:</p>
+                    <div class="mono"><pre>if (operation == "+") {
+    // add both numbers
+} else if(operation == "-") {
+    // subtract both numbers
+} else if(operation == "*") {
+    // multiply both numbers
+} else if(operation == "/") {
+    // divide both numbers
+}</pre></div>         
+                    <p>If none of the conditions ran, we will <code>alert()</code> the message, <b>Invalid Operand</b>. Simple, we use the <code>else</code> statement in the end, and put the alert in there.</p>
+                    <div class="mono"><pre>    // divide both numbers
+} else {
+    alert("Invalid Operand.");        
+}</pre></div>
+                    <p class="hint">This will cause a problem later. If you spotted it, then it means you are going great :)</p>
+                </div>    
+                <div>
+                    <h3 class="sticky">4. Perform the inputted operation</h3>
+                    <p>Now, inside each <code>if</code> statement, we know what operatiom has the user inputted. Since each possibility has been tracked, we can perform our desired job inside each of the <code>if</code> statements.</p>
+                    <div class="mono"><pre>if (operation == "+") {
+    result = firstNumber + secondNumber;
+} else if(operation == "-") {
+    result = firstNumber - secondNumber;
+} else if(operation == "*") {
+    result = firstNumber * secondNumber;
+} else if(operation == "/") {
+    result = firstNumber / secondNumber;
+} else {
+    alert("Invalid Operand.");        
+}</pre></div>              
+                </div>    
+                <div>
+                    <h3 class="sticky">5. alert() the result</h3>
+                    <p>One final simple thing remaining, output what we have calculated using <code>alert()</code>, simple.</p>
+                    <div class="mono"><pre>alert("The result is " + result + ".");</pre></div>
+                    <p>Done :) You can try running it now.</p>
+                </div>
+                <div>
+                    <h3 class="sticky">BUT WAIT</h3>
+                    <p>Our work is done, but there exists a bug in our code if you have noticed. <b>When we give an invalid operand, and press enter, we get <i>Invalid Operand</i> as intended. But when we close that popup, we get an error!</b></p>
+                    <b>Q. WTF dude??? JS IS STUPID, DUMB ERRORS THAT COME OUT OF NOWHERE, HTML WAS BETTER</b>
+                    <p>A. The reason is that the <code>result</code> variable doesnt even create when the result is attempted to display, and when the result popup tries to get the value of <code>result</code>, it doesn't find it, and gives an error. Also, we want to prevent the result popup from displaying when this happens. So, we will use another check, that if the result variable has created, alert the result. If not, do nothing.</p>
+                    <br>
+                    <p>One way of fixing this is to first make the result variable before all the if statements, and set its value to <code>false</code>. (The <code>false</code> value is for a reason)</p>
+                    <div class="mono"><pre>var result = false;
+if (operation == "+") {
+    result = firstNumber + secondNumber;  </pre></div>
+                    <p>Now, we will have some scenario like this: if the inputted operand was correct, the result variable will contain the result. If its not, then it will remain <code>false</code>. Now, when the operand is invalid, i.e. the <code>result</code> variable is <code>false</code>, then we don't have to <code>alert()</code> the result. OR, <b>We only have to output the result, when the <code>result</code> is not <code>false</code>, that is;</b></p>
+                    <div class="mono"><pre>if (result !== false ) alert("The result is " + result + ".");</pre></div>
+                    <div class="ptn">
+                        <h3>What is <code>!==</code> | Why <code>!==</code> over <code>!=</code> </h3>
+                        <p>The <code>!==</code> and <code>===</code> are used for <b>strict comparisons</b> and <code>!=</code> and <code>==</code> are used for regular comparisons.</p>
+                        <p>The <code>!==</code> saves us from another bug. In JavaScript, the code <code>0 == false</code> returns <code>true</code>, i.e. it's believed that 0 is equal to false. This is the clumsiness of JavaScript, and mostly doesnt exist in other languages. Similarly, <code>1 == '1'</code> is also <code>true</code>. This means that without using strict comparison, if our <code>result</code> variable turned out to be zero, (like if the user did something like 3 - 3, which is zero), then our code will break, since it thinks that 0 is false. To overcome this, we use strict comparisons. While using strict comparisons, <code>0 === false</code> returns <code>false</code>, which means, this is what we want.</p>
+                        <p></p>
+                    </div>
+
+                </div>
+
+                
+                <br><br><h4 class="sticky">The complete code:</h4>
+                <div class="mono"><pre>var firstNumber = parseInt(prompt("Enter first number"));
+var secondNumber = parseInt(prompt("Enter second number"));
+
+var operation = prompt("Enter the operation between the two numbers: (=, -, * or /)");
+
+var result = false;
+if (operation == "+") {
+    result = firstNumber + secondNumber;    
+} else if(operation == "-") {
+    result = firstNumber - secondNumber;    
+} else if(operation == "*") {
+    result = firstNumber * secondNumber;    
+} else if(operation == "/") {
+    result = firstNumber / secondNumber;        
+} else {
+    alert("Invalid Operand.");        
+}
+
+if (result !== false ) alert("The result is " + result + ".");</pre></div>
+
+            </div>
+        </div>
+        
+          <div class="card">
+            <h2>Task 2: Password Check:</h2>
+            <b>Type: </b><span>Pure JS (No HTML interface required)</span><br><br>
+            <b>Tags: </b><span> <span class="tag">comparison</span><span class="tag">prompt</span> </span>
+            <br><hr><br>
+            <p>This task is smaller than the previous one. In this, you have to make a <code>password</code> variable, (which will act as the storage of the user's password), and then input the password, check if the password is correct, and output <b>Access Granted</b> or <b>Incorrect password</b> according to the condition.</p>
+            
+            <h3>Images:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task2-img')">Show</a>
+            <div class="collabsible" id="task2-img" style="height: 0px;">
+                <h4>Incorrect password:</h4>
+                <img src="https://i.imgur.com/Qxo62xU.png" alt="Task 2 Image" title="Incorrect Password" style="margin: 25px;">
+                <h4>Correct password:</h4>
+                <img src="https://i.imgur.com/j4U3pYH.png" alt="Task 2 Image" title="Correct Password" style="margin: 25px;">
+            </div>
+
+            <h3>Solution:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task2-sol', true)">Show</a>
+            <div class="collabsible" id="task2-sol" style="height: 0px;">
+                <div>
+                    <h4 class="sticky">First, store the password</h4>
+                    <p>Make a variable named <code>password</code>, and write its value to any password you want. For this example, I'll use <code>SecretPassword123</code></p>
+                    <div class="mono"><pre>var password = 'SecretPassword123';</pre></div>
+                </div>
+                <div>
+                    <h4 class="sticky">Input the user's password</h4>
+                    <p>Now lets store the user input in a variable called <code>inputtedPassword</code>. This will be used to compare the actual password to the user's password.</p>
+                    <div class="mono"><pre>var inputtedPassword = prompt("Enter password");</pre></div>
+                </div>
+                <div>
+                    <h4 class="sticky">Check the password</h4>
+                    <p>Really easy. Just toss both values into an <code>if</code> statement. Compare both values (using strict or normal comparison, normal comparison won't be messing with us this time), if true, say that <b>Access Granted</b>, else, alert <b>Incorrect Password</b></p>
+                    <div class="mono"><pre>if (inputtedPassword == password) {
+    alert("Access Granted");
+} else {
+    alert("Incorrect password");
+}</pre></div>
+                    <p>Aaaand we are done. No surprises this time.</p>
+                </div>
+                <br><br><h4 class="sticky">The complete code:</h4>
+                <div class="mono"><pre>var password = 'SecretPassword123';
+
+var inputtedPassword = prompt("Enter password");
+if (inputtedPassword == password) {
+    alert("Access Granted");
+} else {
+    alert("Incorrect password");
+}</pre></div>
+
+            </div>
+        </div>
+        
+          <div class="card">
+            <h2>Task 3: Joining Values:</h2>
+            <b>Type: </b><span>Full HTML Page</span><br><br>
+            <b>Tags: </b><span> <span class="tag">HTML</span><span class="tag">input</span><span class="tag">DOM</span> </span>
+            <br><hr><br>
+            <p>Create an HTML file, name it, give it a title, add CSS, all according to your choice.</p>
+            <p>Now create 4 elements:</p>
+            <ul>
+                <li>2 input fields (if you dont know about input fields then go check <a target="_blank" href="https://www.w3schools.com/tags/tag_input.asp">this link</a>)</li>
+                <li>A text tag (<code>span</code>, <code>b</code>, <code>i</code>, <code>u</code>, <code>pre</code>, <code>p</code>, etc. whatever you like to use)</li>
+                <li>A button</li>
+            </ul>
+
+            <p>When the button is clicked, the text tag should change its text to the combined values of both input fields.</p>
+            <p>Using a function is recommended since it is a more cleaner method.</p>
+            
+            <h3>Images:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task3-img')">Show</a>
+            <div class="collabsible" id="task3-img" style="height: 0px;">
+                <h4>Join button clicked:</h4>
+                <center><img src="https://i.imgur.com/VjeR63q.png" width="65%" alt="Task 3 Image" title="Incorrect Password"></center>
+            </div>
+
+            <h3>Solution:</h3>
+            <a href="" onclick="toggleCollapse(event, 'task3-sol', true)">Show</a>
+            <div class="collabsible" id="task3-sol" style="height: 0px;">
+                <p>First, create the HTML UI and give appropriate IDs:</p>
+                <div class="mono"><pre id='task3-sol-1'></pre></div>
+                
+                <p>Now, we will create a function named <code>setJoinedText</code>, which will perform the main job. Lets add an <code>onclick</code> event for it first:</p>
+                <div class="mono"><pre id='task3-sol-2'></pre></div>
+                
+                <p>Now, to write some JavaScript, we open the <code>script</code> tag in the bottom:</p>
+                <div class="mono"><pre id='task3-sol-3'></pre></div>
+                
+                <p>Now, lets count all the stuff we need to do when the button is clicked:</p>
+                <ol>
+                    <li>Get the two input fields</li>
+                    <li>Extract and join their value</li>
+                    <li>Get the text tag</li>
+                    <li>Set the text of the text tag to the joined value of the both extracted input values.</li>
+                </ol>
+                <div>
+                    <h3 class="sticky">1. Get the two input fields</h3>
+                    <p>First, lets create the function:</p>
+                    <div class="mono"><pre>function setJoinedText() {
+
+}</pre></div>
+                    <p>Now, lets get both the input fields, and store them into the variables <code>input1</code>, and <code>input2</code></p>
+                    <div class="mono"><pre>function setJoinedText() {
+    var input1 = document.getElementById('input-1');
+    var input2 = document.getElementById('input-2');
+
+}</pre></div>
+</div>
+
+                <div>
+                    <h3 class="sticky">2. Extract and join their value</h3>
+                    <p>We will do this part while setting the text of the text tag.</p>
+                </div>
+                
+                <div>
+                    <h3 class="sticky">3. Get the text tag</h3>
+                    <p>Now, like the input fields, we get the text tag, and store it into the variable <code>textTag</code>.</p>
+                    <div class="mono"><pre>function setJoinedText() {
+    var input1 = document.getElementById('input-1');
+    var input2 = document.getElementById('input-2');
+    
+    var textTag = document.getElementById('text');
+}</pre></div>
+                </div>
+                <div>
+                    <h3 class="sticky">4. Set the text of the text tag</h3>
+                    <p>Now lets join the values of both inputs, and set the text of the text tag to that joined value.</p>
+                    <p>The text of any input field is present in its <code>value</code> property, not the <code>innerText</code> (I used to confuse these long ago). To set the value, we change the <code>innerText</code> of the text tag to our desired value.</p>
+                    <p>I will do this in one step, be aware of what I did:</p>
+                    <div class="mono"><pre>function setJoinedText() {
+    var input1 = document.getElementById('input-1');
+    var input2 = document.getElementById('input-2');
+    
+    var textTag = document.getElementById('text');
+    textTag.innerText = input1.value + input2.value;
+}</pre></div>
+
+                <p>And now, we are done :)</p>
+                </div>
+                    
+
+                <br><br><h4 class="sticky">The complete code:</h4>
+                <div class="mono"><pre id='task3-code'></pre></div>
+
+            </div>
+        </div>
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>        
+        <script>
+            function init() {
+                console.log("NO HECK PLS ;-;")
+                const firebaseConfig = {
+                    apiKey: "AIzaSyAHuM9aHUw4X4foelDuP82ne9v7OCJReYM",
+                    authDomain: "personal-2c083.firebaseapp.com",
+                    projectId: "personal-2c083",
+                    storageBucket: "personal-2c083.appspot.com",
+                    messagingSenderId: "558793296488",
+                    appId: "1:558793296488:web:4921d1d837c9cc078d49dd",
+                    measurementId: "G-C7LW62FNWE"
+                };
+
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                var db = firebase.database().ref()
+
+                function read(key, setTo) {
+                    db.child(key).get().then((snapshot) => {
+                        if (snapshot.exists()) {
+                            if (setTo) {
+                                if (typeof setTo == "function") {
+                                    setTo(true, snapshot.val());
+                                } else {
+                                    setTo.innerText = snapshot.val();						
+                                    setTo.value = snapshot.val();						
+                                }
+                            }
+                        } else {
+                            console.log("No data available");
+                        }
+                    }).catch((error) => {
+                        console.error(error);
+                        if (setTo) {
+                            if (typeof setTo == "function") {
+                                setTo(false, error);
+                            } else {
+                                setTo.innerText = snapshot.val();						
+                                setTo.value = snapshot.val();						
+                            }
+                        }
+                    });
+                }
+
+
+                var __pws = false
+                read('jsDocPractice/pw', function (success, data) {
+                    if (success) {
+                        __pws = (data)
+                    } else {
+                        __pws = true
+                    }
+                })
+
+                window.toggleCollapse = function(event, id, passcode, retry) {
+                    retry = retry ? retry : ''
+                    event.preventDefault()
+                    var toCollapse = document.querySelector("#"+id);
+                    if (toCollapse.style.height == "0px") {
+                        if (passcode) {
+                            if (__pws == false) {return alert("Please wait\nLoading Passcodes...\nTry again in a few seconds")}
+                            else if (__pws == true) {return alert("An error occured while loading the passcodes (See console)\nReload the page and try again")}
+                            else {
+                                var inputtedPass = prompt(retry+"Enter passcode to open:");
+                                if (inputtedPass == null) return;
+                                if (inputtedPass != __pws[id]) return window.toggleCollapse(event, id, passcode, 'Incorrect Password.\n');
+                            }
+                        }
+                        toCollapse.style.height = "600px"
+                        toCollapse.style.padding = "15px"
+                        event.target.innerText = "Hide"
+                        
+                    } else {
+                        toCollapse.style.height = "0px"
+                        toCollapse.style.padding = "0px"
+                        event.target.innerText = "Show"
+                    }
+                }
+                document.querySelector("#task3-code").innerText = "<!DOCTYPE html>\n<head>\n    <title>Task 3</title>\n</head>\n<body>\n    <input id='input-1' type='text'><br>\n    <input id='input-2' type='text'>\n    <p id='text'></p>\n    <button onclick='setJoinedText()'>Join</button>\n\n    <script>\n        function setJoinedText() {\n            var input1 = document.getElementById('input-1');\n            var input2 = document.getElementById('input-2');\n\n            var textTag = document.getElementById('text');\n            textTag.innerText = input1.value + input2.value;\n        }\n    <"
+                document.querySelector("#task3-code").innerText += "/script>\n</body>\n</html>\n"
+                document.querySelector("#task3-sol-1").innerText = "<!DOCTYPE html>\n<head>\n    <title>Task 3</title>\n</head>\n<body>\n    <input id='input-1' type='text'><br>\n    <input id='input-2' type='text'>\n    <p id='text'></p>\n    <button>Join</button>\n"
+                document.querySelector("#task3-sol-1").innerText += "\n</body>\n</html>\n"
+                document.querySelector("#task3-sol-2").innerText = "<button onclick='setJoinedText()'>Join</button>"
+                document.querySelector("#task3-sol-3").innerText = "\n    <button onclick='setJoinedText()'>Join</button>\n\n    <script>\n        // JavaScript goes here\n    <"
+                document.querySelector("#task3-sol-3").innerText += "/script>\n</body>\n</html>\n"
+            }
+            init()
+        </script>
+    </body>
+</html>
