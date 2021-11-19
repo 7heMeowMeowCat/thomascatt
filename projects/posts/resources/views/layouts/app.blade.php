@@ -9,8 +9,11 @@
 
     <title>{{ config('app.name') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Scripts at the bottom -->
+    
+    <!-- React -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -74,10 +77,24 @@
                 </div>
             </div>
         </nav>
+        <div id="__info" hidden>
+            @csrf
+            <?php echo json_encode(Auth::user()) ?>
+        </div>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/commons.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
