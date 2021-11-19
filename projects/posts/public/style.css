@@ -1,0 +1,11 @@
+.post {
+    margin-top: 20px;
+}
+
+.logo-color, .logo-color * {
+    color: blue;
+}
+
+.ownpost {
+    background: #eef;
+}
