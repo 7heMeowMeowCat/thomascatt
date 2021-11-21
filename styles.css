@@ -1,13 +1,41 @@
-html {background: #ddd;}
+html {background: #fafafa;}
+* {
+	transition-duration: 150ms; 
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 hr {opacity: 0.15;}
 
 body {
-    font-family: Consolas;
-    margin: 0 15%;
-    background: #fff;
-    box-shadow: 0 0 6px #aaa;
-    min-height: 85vh;
+	margin: 0 15%;
+	background: #fff;
+	box-shadow: 0 0 16px #fff;
+	min-height: 85vh;
+	font-size: 1vw
+}
+
+h1, h2, h3, h4, h5, h6, h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+	font-family: 'Segoe UI';
+}
+
+a,a:visited {
+	color: #007;
+	text-decoration: none;
+	font-style: italic;
+	border-bottom: 0.1vw solid #007;
+	border-radius: 5px;
+	font-weight: bold;
+	margin-right: 3px;
+}
+
+a:hover {
+	color: #33f;
+	border-bottom: 0.6vw solid #33f;
+}
+
+a:active {
+	border-bottom: 0.3vw solid #007;
+	opacity: 0.5;
 }
 
 body .body{
@@ -15,20 +43,44 @@ body .body{
 }
 
 footer {
-  background: #eee; 
+  background: linear-gradient(#fff, #eee); 
   padding: 30px;
+  padding-top: 120px;
 }
 
 footer p{
-    color: darkgrey;
+	color: darkgrey;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    box-shadow: none;
-    margin: 0;
-  }
-  html {
-      background: #fff;
-  }
+.card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fafafa;
+}
+
+.card-link {
+	display: block;
+}
+
+.card-link{
+	color: black;
+	text-decoration: none;
+}
+
+.card-link:hover {
+	background: #ddF;
+	
+}
+
+@media only screen and (max-width: 1000px) {
+	body {
+		box-shadow: none;
+		margin: 0;
+		font-size: 3vw
+	}
+	html {
+		background: #fff;
+	}
 }
