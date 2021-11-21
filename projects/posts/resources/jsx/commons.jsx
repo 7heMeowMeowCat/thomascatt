@@ -4,20 +4,326 @@ try {
     window.csrf_field = document.querySelector('#__info input').outerHTML
     window.csrf = document.querySelector('#__info input').value
     document.querySelector('#__info').outerHTML = ""
-
+    
     window.likePost = function (id, like) {
+        request({
+            action: like ? "likePost" : "unlikePost",
+            id: id,
+            post: true
+        })
+    }
+    
+    window.likeComment = function (id, like) {
+        request({
+            action: like ? "likePost" : "unlikePost",
+            id: id,
+            post: false
+        })
+    }
+    
+    window.request = function (body, callback) {
+        callback = callback || ((a) => true)
         fetch('/', {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrf,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                action: like ? "likePost" : "unlikePost",
-                id: id
-            }),
-        })
+            body: JSON.stringify(body),
+        }).then(a => a.json()).then(callback)
     }
+
+    var likePost = window.likePost
+    var request = window.request
+    var csrf = window.csrf
+    var data = window.data
+    var csrf_field = window.csrf_field
+    
+    window.splitNewlines = function (s) {
+        return s.split('\n').map(a => <p>{a}</p>)
+    }
+    
+    window.ErrorMessage = class ErrorMessage extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return <center style={{padding: "15px"}}>
+                <span style={{color: "grey"}}><b>{this.props.title}:</b> {this.props.desc} </span>
+            </center>
+        }
+    }
+    
+    window.PostComment = class PostComment extends React.Component {
+        static defaultProps = {
+            id: undefined,
+            author: '[unknown]',
+            content: "Failed to load post.",
+            likes: [],
+        }
+
+        constructor(props) {
+            super(props)
+            this.state = {
+                liked: this.props.likes.includes(data.name),
+                likes: this.props.likes,
+
+                author: this.props.author,
+                content: this.props.content,
+                id: this.props.id,
+                
+                loaded: true,
+                error: ''
+            }
+
+            if (this.props.id == undefined) {
+                this.state.loaded = 'error' 
+                this.state.error = 'An unknown error occured' 
+            }
+            
+            this.toggleCommentLike = this.toggleCommentLike.bind(this)
+        }
+
+        toggleCommentLike() {
+            var likesToSet = this.state.likes
+            if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
+            else likesToSet = likesToSet.filter(a => a != data.name)
+            this.setState({liked: !this.state.liked, likes: likesToSet})
+
+            likeComment(this.state.id, !this.state.liked)
+        }
+
+        render() {
+            if (this.state.loaded == false) return <Loading text=" "/>
+            else if (this.state.loaded == 'error') return <ErrorMessage title="Failed to load comment" desc={this.state.error} />
+            
+            return (
+                <div style={{display: "block", margin: '0', padding: "4px 10px", borderBottom: "0px solid #bbb"}}>
+                    <div style={{fontSize: "12px", paddingBottom: '0'}}>
+                        <b>{this.state.author}</b> commented:
+                    </div>
+                    <div className={"comment "+(this.state.author == data.name ? "ownpost" : "")}>
+                        <div style={{padding: "5px 10px", marginBottom: "0px"}}>
+                            <span key={this.state.id}>{(this.state.content)}</span>
+                        </div>
+                    </div>
+                    <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.toggleCommentLike} style={{margin: '8px 12px'}}>
+                        <i className="fa fa-thumbs-up"></i>
+                        &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
+                    </button>
+                </div>
+            )
+        }
+        
+    }
+    
+    window.Post = class Post extends React.Component {
+        static defaultProps = {
+            id: undefined,
+            author: '[unknown]',
+            content: "Failed to load post.",
+            likes: [],
+            fetch: false,
+            comments: false
+        }
+
+        constructor(props) {
+            super(props)
+            this.state = {
+                liked: this.props.likes.includes(data.name),
+                likes: this.props.likes,
+
+                author: this.props.author,
+                content: this.props.content,
+                id: this.props.id,
+                comments: this.props.comments,
+                
+                loaded: true,
+                error: ''
+            }
+
+            if (this.props.id == undefined) {
+                this.state.loaded = 'error' 
+                this.state.error = 'An unknown error occured' 
+            }
+            
+            this.togglePostLike = this.togglePostLike.bind(this)
+            this.postLoaded = this.postLoaded.bind(this)
+
+            if (this.props.fetch) {
+                this.state.loaded = false
+                request({
+                    action: "getPost",
+                    id: this.props.fetch
+                }, this.postLoaded)
+            }
+        }
+
+        postLoaded(post) {
+            if (post.error !== undefined) this.setState({loaded: 'error', error: post.error})
+            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
+        }
+
+        togglePostLike() {
+            var likesToSet = this.state.likes
+            if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
+            else likesToSet = likesToSet.filter(a => a != data.name)
+            this.setState({liked: !this.state.liked, likes: likesToSet})
+
+            likePost(this.state.id, !this.state.liked)
+        }
+
+        render() {
+            if (this.state.loaded == false) return <Loading key={this.state.id} text=" "/>
+            else if (this.state.loaded == 'error') return <ErrorMessage title="Failed to load post" desc={this.state.error} />
+            
+            return (
+                <div>
+                    <div className={"card post "+(this.state.author == data.name ? "ownpost" : "")}>
+                        <div className="card-header">
+                            {this.state.author == data.name ? <b>Your Post</b> : <span>Posted by <b>{this.state.author}</b></span>}
+                        </div>
+                        <div className="card-body">
+                            <p style={{fontSize: "24px"}}>{this.state.content}</p>
+                            <hr/>
+                            <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.togglePostLike}>
+                                <i className="fa fa-thumbs-up"></i>
+                                &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
+                            </button>
+                            {
+                                this.state.comments == false && 
+                                <a href={"posts/" + (this.state.id)} style={{float: "right"}} className="primary-link">
+                                    View Comments
+                                </a>
+                            }
+                        </div>
+                    </div>
+
+                    {this.state.comments && <div style={{marginTop: "10px"}}><br/><PostComments key={this.state.id} post_id={this.state.id}/></div>}
+
+                </div>
+            )
+        }
+        
+    }
+
+    window.SubmitComment = class SubmitComment extends React.Component {
+        static defaultProps = {
+            post_id: undefined
+        }
+
+        constructor(props) {
+            super(props)
+            this.submitComment = this.submitComment.bind(this)    
+            this.state = {
+                content: (
+                    <form onSubmit={(e) => e.preventDefault()} className="input-group" style={{marginTop: "15px"}}>
+                        <textarea required id="comment-submit-textbox" className="form-control" rows="1" name="content" placeholder={"Comment as " + data.name} style={{resize: "none"}}></textarea>
+                        <input type="submit" className="btn btn-outline-primary group-append" onClick={this.submitComment} value="Submit"/>
+                    </form>
+                )
+            }
+            if (this.props.post_id == undefined) {this.state.content = <ErrorMessage title="Failed to load comments" desc="Post ID not received"/>}
+        }
+
+        submitComment() {
+            var textbox = document.querySelector('#comment-submit-textbox')
+            var content = textbox.value
+            if (content.replaceAll(' ', '') == '') {return textbox.reportValidity()}
+            this.props.reload(false, true)
+            request({
+                action: "addComment",
+                content: content,
+                post_id: this.props.post_id
+            }, this.props.reload)
+        }
+        
+        render() {
+            return <span key={Math.random()}>{this.state.content}</span>
+        }
+    }
+
+    window.PostComments =  class PostComments extends React.Component {
+        static defaultProps = {
+            post_id: undefined
+        }
+        
+        constructor(props) {
+            super(props)
+            this.state = {
+                content: <Loading text="Loading Comments"/>
+            }
+
+            this.loadComments = this.loadComments.bind(this)
+            this.reloadComments = this.reloadComments.bind(this)
+            
+            if (this.props.post_id == undefined) {this.state.content = <ErrorMessage title="Failed to load comments" desc="Post ID not received"/>}
+            else {
+
+                this.reloadComments(true)
+            }
+        }
+        reloadComments(set, loadOnly) {
+            var toSet = <Loading key={this.props.post_id} text="Adding Comment..."/>
+            if (!set) this.setState({content: (toSet)})
+            else this.state.content = (
+                <Loading key={this.props.post_id} text="Loading Comments..."/>
+            )
+            if (loadOnly) return false
+            
+            request({
+                action: 'getComments',
+                id: this.props.post_id
+            }, this.loadComments)
+
+        }
+
+        loadComments(comments) {
+            var commentsList = [];
+            if (comments.length == 0) {
+                commentsList.push(<ErrorMessage key={10*this.props.post_id} title="No comments" desc="No comments found for this post. Add one below." />)
+            } else 
+            commentsList = comments.map(function (comment) {
+                return <PostComment key={comment.id} id={comment.id} author={comment.author} content={comment.content} likes={JSON.parse(comment.likes)} />
+            })
+            commentsList.push(<SubmitComment key={this.props.post_id} reload={this.reloadComments} style={{marginTop: "15px"}} post_id={this.props.post_id}/>)
+
+            this.setState({content: commentsList})                
+        }
+
+        render() {
+            return (
+                <div className="card">
+                    <div className="card-header">
+                        <h2>Comments:</h2>
+                    </div>
+                    <div className="card-body">
+                        {this.state.content}
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    window.Loading = class Loading extends React.Component {
+        static defaultProps = {
+            text: "Loading..."
+        }
+        constructor(props) {
+            super(props)
+        }
+
+        render() {
+            return (
+                <center>
+                    <img src={imgbase64} className="loader"/>
+                    <span style={{color: "grey"}}>{this.props.text}</span>
+                </center>      
+            )
+        }
+    }
+
 
     var loadingInterval = setInterval(function () {
         document.querySelectorAll(".loader").forEach(

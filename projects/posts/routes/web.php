@@ -25,7 +25,7 @@ Route::get('logout', function () {
 });
 
 Route::get('posts/{post_id}', function ($post_id) {
-    return "Coming Soon uwu";
+    return view('post', ['post_id' => $post_id]);
 });
 
 Route::get('posts', function () {

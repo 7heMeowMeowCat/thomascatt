@@ -96,5 +96,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/commons.js') }}"></script>
     @yield('scripts')
+    <script src="{{ asset('js/secure_internals.js') }}"></script>
 </body>
 </html>
