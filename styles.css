@@ -1,40 +1,48 @@
-html {background: #fafafa;}
+html {background: #1a1a1a;}
 * {
 	transition-duration: 150ms; 
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: 'Segoe UI', Arial;
+	font-weight: 100;
+	color: #ddd;
 }
 
 hr {opacity: 0.15;}
 
 body {
 	margin: 0 15%;
-	background: #fff;
-	box-shadow: 0 0 16px #fff;
+	background: #222;
 	min-height: 85vh;
-	font-size: 1vw
+	font-size: 1vw;
+	/* opacity: 0; */
 }
 
-h1, h2, h3, h4, h5, h6, h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
-	font-family: 'Segoe UI';
+.b {box-shadow: #222 0 0 20px 16px; opacity: 1;}
+
+h1, h2, h3, h4, h5, h6, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Segoe UI', Arial;
+	font-weight: bold;
+}
+b {
+	font-weight: bold;
 }
 
 a,a:visited {
-	color: #007;
+	color: #bbf;
 	text-decoration: none;
 	font-style: italic;
-	border-bottom: 0.1vw solid #007;
+	border-bottom: 0.1vw solid #bbf;
 	border-radius: 5px;
 	font-weight: bold;
 	margin-right: 3px;
 }
 
 a:hover {
-	color: #33f;
-	border-bottom: 0.6vw solid #33f;
+	color: #ccf;
+	border-bottom: 0.6vw solid #ccf;
 }
 
 a:active {
-	border-bottom: 0.3vw solid #007;
+	border-bottom: 0.3vw solid #bbf;
 	opacity: 0.5;
 }
 
@@ -43,9 +51,9 @@ body .body{
 }
 
 footer {
-  background: linear-gradient(#fff, #eee); 
+  background: #202020; 
+  border-top: 4px solid #282828;
   padding: 30px;
-  padding-top: 120px;
 }
 
 footer p{
@@ -55,9 +63,9 @@ footer p{
 .card {
   margin: 10px;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #333;
   border-radius: 5px;
-  background: #fafafa;
+  background: #222;
 }
 
 .card-link {
