@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Page Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="resources/style.css">
+</head>
+<body onload="$('#how-to-use').click()">
+    <div id="page-layout" class="container" style="margin: 0; padding: 0;">
+        <div class="row" style="width: 100vw;">
+            <div class="col-3" id="elements-insert-pane">
+                <div class="card" style="height: 100vh;">
+                    <div class="card-header">
+                        <h4>HTML Page Builder</h4>
+                    </div>
+                    <div class="card-body" style=" overflow-y: auto; background-color: #efefef;">
+                        <h4>Add Element</h4>
+                        <div id="insert-element-container"class="card">
+                            <div class="card-header"><b>Select element:</b></div>
+                            <div class="card-body">
+                                <select id="insert-element-select" class="form-select" onchange="insertSelect(event)">
+                                    <option value="p">Text (p tag)</option>
+                                    <option value="span">Inline Text (span tag)</option>
+                                    <option value="div">Division (div tag)</option>
+                                    <option value="b">Bold Text (b tag)</option>
+                                    <option value="i">Italic Text (i tag)</option>
+                                    <option value="u">Underlined Text (u tag)</option>
+                                    <option value="a">Hyperlink (a tag)</option>
+                                    <option value="h1">Large Heading (h1 tag)</option>
+                                    <option value="h3">Smaller Heading (h3 tag)</option>
+                                    <option value="img">Image (img tag)</option>                                                        
+                                </select>
+                                <div id="insert-innertext-container">
+                                    <p>Element Body:</p>
+                                    <textarea id="insert-innertext" class="form-control" placeholder="Element Body" style="resize: vertical; height: 200px;"></textarea>
+                                </div>
+                                <div id="insert-link-container" style="display: none;">
+                                    <p>Link URL:</p>
+                                    <input type="text" id="insert-link" class="form-control" placeholder="Link URL">
+                                </div>
+                                <div id="insert-img-link-container" style="display: none;">
+                                    <p>Image URL:</p>
+                                    <input type="text" id="insert-img-link" class="form-control" placeholder="Image URL">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="insert-classlist-container" class="card">
+                            <div class="card-header"><b>Edit Classlist:</b></div>
+                            <div class="card-body" id="insert-classlist-list">
+                                
+                            </div>
+                            <div class="card-footer" style="display: flex;">
+                                <input type="text" placeholder="Enter Class name" class="form-control" id="insert-classlist-classname">
+                                <button class="btn btn-outline-primary" onclick="modifyClasslist('add', $('#insert-classlist-classname').value)">Add</button>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <button style="display: inline-block; width: 43%;" onclick="addElement('prepend')" class="btn btn-sm btn-outline-primary">Prepend to page</button>
+                        <button style="display: inline-block; width: 55%;" onclick="addElement('appendChild')" class="btn btn-primary">Append to page</button>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" id="how-to-use" data-bs-toggle="modal" data-bs-target="#howToUseModal">How to use?</a>
+                        <button class="btn btn-outline-success" style="float: right;" onclick="exportHTML()">Export as HTML</button>
+                    </div>    
+                </div>
+            </div>
+            <div id="builder-canvas-container" class="col-9" style="overflow-y: auto;">
+                <div id="builder-canvas" style="overflow-y: auto; height: 100vh; padding: 10px;">
+                    <p style="color: grey;">(Add elements to this canvas from the left pane)</p>
+                </div>
+            </div>
+            <div class="col-3 zero-width" id="element-properties-pane" style="position: fixed; right: 0; top: 0; margin: 0; padding: 0;">
+                <div class="card" style="height: 100vh">
+                    <div class="card-header" style="overflow: hidden; min-height: 50px;">
+                        <h4 style="display: inline-block;">Element Properties</h4>
+                        <button style="font-size: 20px; float: right;" class="btn btn-sm btn-outline-secondary" onclick='hideSidebar()'>&times; Close</button>
+                    </div>
+                    <div class="card-body" id="element-properties-controls" style="overflow-y: auto; background-color: #efefef">
+                        <p>Tagname: <code id="properties-tagname"></code></p>
+                        <hr>
+                        <div id="properties-innertext-container">
+                            <p>Element Body:</p>
+                            <textarea id="properties-innertext" class="form-control" placeholder="Element Body" style="resize: vertical; height: 200px;"></textarea>
+                        </div>
+                        <br>
+                        <div id="properties-classlist-container" class="card">
+                            <div class="card-header"><b>Edit Classlist:</b></div>
+                            <div class="card-body" id="properties-classlist-list">
+                                
+                            </div>
+                            <div class="card-footer" style="display: flex;">
+                                <input type="text" placeholder="Enter Class name" class="form-control" id="properties-classlist-classname">
+                                <button class="btn btn-outline-primary" onclick="modifyElementClasslist('add', $('#properties-classlist-classname').value)">Add</button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-header"><b>Edit Properties</b></div>
+                            <div class="card-body">
+                                <div class="properties-propertycontainer">
+                                    <span>Text Color</span>
+                                    <input type="text" class="form-control" placeholder="e.g. #XXXXXX" id="color">
+                                    <br><br>
+
+                                    <span>Background Color</span>
+                                    <input type="text" class="form-control" placeholder="e.g. #XXXXXX" id="backgroundColor">
+                                    <br><br>
+
+                                    <span>Opacity (0 to 1)</span>
+                                    <input type="number" class="form-control" step="0.1" max="1" min="0" placeholder="0 lowest, 1 highest" id="opacity">
+                                    <br><br>
+                                    
+                                    <span>Text Align</span>
+                                    <select id="textAlign" class="form-select">
+                                        <option value="left">Left</option>
+                                        <option value="center">Middle</option>
+                                        <option value="right">Right</option>
+                                    </select>
+                                    <br><br>
+                                    
+                                    <span>Text Style</span>
+                                    <select id="fontStyle" class="form-select">
+                                        <option value="initial">Normal</option>
+                                        <option value="italic">Italic</option>
+                                    </select>
+                                    <br><br>
+                                    
+                                    <span>Font Face</span>
+                                    <select id="fontFamily" class="form-select">
+                                        <option value="">Default</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Arial">Arial</option>
+                                        <option value="Calibri">Calibri</option>
+                                        <option value="Consolas">Consolas</option>
+                                        <option value="Sans Serif">Sans Serif</option>
+                                        <option value="Serif">Serif</option>
+                                        <option value="cursive">Cursive</option>
+                                    </select>
+                                    <br><br>
+                                    
+                                    <span>Display</span>
+                                    <select id="display" class="form-select">
+                                        <option value="block">Default</option>
+                                        <option value="inline-block">Inline</option>
+                                    </select>
+                                    <br><br>
+
+                                    <span>Corner Radius</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="borderRadius-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="borderRadius-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                    <span>Padding</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="padding-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="padding-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                    <span>Margin</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="margin-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="margin-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                    <span>Width</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="width-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="width-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                    <span>Height</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="height-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="height-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                    <span>Text Size</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td>
+                                                <input type="number" class="form-control" placeholder="Amount" id="fontSize-num">                                                
+                                            </td>
+                                            <td>
+                                                <select id="fontSize-unit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+                                    
+                                    <span>Shadow</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td style="width: 44%">
+                                                <input type="number" class="form-control" placeholder="Blur Amount" id="boxShadow-blurAmount">
+
+                                            </td>
+                                            <td style="width: 26%">
+                                                <select id="boxShadow-blurUnit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>                                                
+                                            </td>
+                                            <td style="width: 26%">
+                                                <input type="text" class="form-control" placeholder="Color" id="boxShadow-color">                                    
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+                                    
+                                    <span>Text Shadow</span>
+                                    <table class="properties-alignment-table">
+                                        <tr>
+                                            <td style="width: 44%">
+                                                <input type="number" class="form-control" placeholder="Blur Amount" id="textShadow-blurAmount">
+
+                                            </td>
+                                            <td style="width: 26%">
+                                                <select id="textShadow-blurUnit" class="form-select">
+                                                    <option value="px">Pixels</option>
+                                                    <option value="%">Percentage</option>
+                                                    <option value="vw">Viewport width</option>
+                                                    <option value="vh">Viewport height</option>
+                                                </select>                                                
+                                            </td>
+                                            <td style="width: 26%">
+                                                <input type="text" class="form-control" placeholder="Color" id="textShadow-color">                                    
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer"><button class="btn form-control btn-danger" onclick="removeElement()">Remove Element</button></div>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="howToUseModal" tabindex="-1" aria-labelledby="howToUseModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="howToUseModalLabel">HTML Page Builder: How to use?</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 24px; color: #888;">With the HTML page builder, you can create a webpage (almost) exactly according to your liking.</p>
+        <br><h5>Create elements</h5>
+        <p>Use the left sidebar to insert items into the canvas. You can customize the type of element, its body, and its classlist from this menu. You can use <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">bootstrap</a> class names on your webpage.</p>
+        <br><h5>Main canvas selection</h5>
+        <p>The middle screen is the canvas. All your created elements appear here. You can select these elements with the mouse pointer to further customize them from the right sidebar.</p>
+        <br><h5>Element modification</h5>
+        <p>The right sidebar allows in-depth modification. It gives options to change the body of the element, and the classlist, along with the CSS Properties for the element. A large variety of CSS properties are available. This way you can fully customize your elements according to your needs.</p>
+        <br><h5>Classlist editing</h5>
+        <p>The <b>Edit classlist</b> section available on both sidebars enables you to add, edit, or remove your classlist items. This feature may not have greater importance for normal users, so if you can't understand this, you can safely leave it. You can use the Add button to create an item in the list, or press the edit or remove buttons to take action accordingly.</p>
+        <br><h5>Export your page</h5>
+        <p>You can export your built HTML page using the <b>Export as HTML</b> button. This button gives an option to copy all the HTML source code for your built website. This way, you can use your built HTML page for production use.</p>
+        <br>
+        <center style="color: grey">Made as an <a href="https://thomas-catt.github.io/projects/JavaScript-Assignment.html">assignment</a> by <b>Thomas Catt</b></center>
+      </div>
+    </div>
+  </div>
+</div>    
+
+    <script src="resources/script.js"></script>
+</body>
+</html>

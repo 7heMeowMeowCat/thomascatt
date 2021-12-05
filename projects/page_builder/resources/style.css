@@ -1,0 +1,44 @@
+* {
+    transition-duration: 200ms;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+    overflow: hidden;
+}
+
+#builder-canvas *{
+    cursor: pointer;
+    user-select: none;
+}
+#builder-canvas *:active{
+    background: #88888888;
+}
+#builder-canvas *:hover{
+    box-shadow: inset 0 0 8px #88f !important;
+}
+
+#builder-canvas-container {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.zero-width {
+    width: 0px;
+}
+
+.canvas-selected {
+    border: 3px solid #88f;
+    background: #eef;
+}
+
+.properties-propertycontainer *{
+    display: inline-block;
+}
+
+.properties-alignment-table td{
+    width: 49%;
+}

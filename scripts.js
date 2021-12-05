@@ -7,7 +7,8 @@ window.tmplts = {
     p_cal: "Um, it doesn't really... well, work :/",
     p_reddit: "Honestly the actual website is better imo",
     p_htmlrun: "Um you can run HTML code with this real quick :|",
+    p_pagebuilder: "An HTML page builder I made, you can create beaultiful HTML pages with it",
     p_fallingblocks: "It's really good I swear just try it:D",
 }
 
-document.querySelectorAll('.tmplt').forEach(a => a.innerText = window.tmplts[a.innerText])
+document.querySelectorAll('.tmplt').forEach(a => a.innerHTML = window.tmplts[a.innerText])
