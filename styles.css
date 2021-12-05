@@ -16,6 +16,10 @@ body {
 	/* opacity: 0; */
 }
 
+#page-title {
+	font-size: 4vw;
+}
+
 .b {box-shadow: #222 0 0 20px 16px; opacity: 1;}
 
 h1, h2, h3, h4, h5, h6, h1, h2, h3, h4, h5, h6 {
@@ -91,4 +95,23 @@ footer p{
 	html {
 		background: #fff;
 	}
+	.header td{
+		text-align: center;
+		margin: auto;
+		display: inline;
+		width: 100vw;
+		padding: 0;
+		font-size: 60px;
+	}	
+	.header p{
+		font-size: 50px;
+	}
+
+	#page-title {
+		font-size: 120px;
+	}
+	.header td img {
+		width: 100vw;
+		margin: auto;
+	}	
 }
