@@ -1,0 +1,37 @@
+.post {
+    margin-top: 20px;
+}
+.post *{
+    white-space: pre-wrap;
+}
+
+.comment {
+    background: #efefef;
+    margin-bottom: 4px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    min-width: 60px;
+    max-width: 80%;
+    font-size: 16px;
+    z-index: 1000;
+    white-space: pre-wrap;
+}
+
+.comment div{
+    padding: 8px;    
+}
+
+.logo-color, .logo-color * {
+    color: blue;
+}
+
+.ownpost {
+    background: #eef;
+}
+
+.loader {
+    margin: 10px;
+    width: 20px;
+    user-select: none;
+}
