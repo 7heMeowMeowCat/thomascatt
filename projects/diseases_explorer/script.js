@@ -68,7 +68,7 @@ try {
                         "div",
                         null,
                         diseases.map(function (a) {
-                            return React.createElement(Post, { id: a.id, key: a.id, author: a.author, content: a.content, likes: a.likes == '' ? [] : JSON.parse(a.likes) });
+                            return React.createElement("div", { id: a.id, key: a.id, author: a.author, content: a.content, likes: a.likes == '' ? [] : JSON.parse(a.likes) });
                         })
                     ), diseasesLoaded: true });
             }

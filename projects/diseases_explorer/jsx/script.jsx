@@ -41,7 +41,11 @@ try {
         }
 
         setDiseases(diseases) {
-            this.setState({content: <div>{diseases.map(a => <Post id={a.id} key={a.id} author={a.author} content={a.content} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)}</div>, diseasesLoaded: true})
+            this.setState({content: <div>
+                {
+                    diseases.map(a => <div id={a.id} key={a.id} author={a.author} content={a.content} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)
+                }
+            </div>, diseasesLoaded: true})
         }
         
         render() {
