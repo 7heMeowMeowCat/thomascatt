@@ -1,5 +1,24 @@
 [
     {
-        "Note": "This app is in alpha right now, and nothing works here. If you landed here by accident, then you are politely requested to leave."
-    }
+        "name": "Coolophobia", 
+        "short_desc": "People try to look cool, even though they shouldn't.",
+        "tags": ["disease", "cool"],
+        "details": {
+            "symptoms": "Looking cool",                 
+        },
+        "content": [
+            {"More Information:": "Helo here goes some more information regarding this disease, it looks stupid tho, :("}
+        ]
+    },
+    {
+        "name": "Gayphobia", 
+        "short_desc": "When gay",
+        "tags": ["gayphobia", "gay", "geh"],
+        "details": {
+            "symptoms": "lookin geh", 
+        },
+        "content": [
+            {"More Information:": "This is just a second name to being gay. Gayphobia is a widespead with over millions of patients. It's a life threatning disease."}
+        ]
+    },
 ]
