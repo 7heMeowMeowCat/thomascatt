@@ -43,7 +43,7 @@ try {
         setDiseases(diseases) {
             this.setState({content: <div>
                 {
-                    diseases.map(a => <div id={a.id} key={a.id} author={a.author} content={a.content} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)
+                    diseases.map(a => <div>{JSON.stringify(a)}</div>)
                 }
             </div>, diseasesLoaded: true})
         }
