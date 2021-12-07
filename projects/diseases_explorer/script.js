@@ -7,42 +7,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 try {
-    var CreatePostSection = function CreatePostSection() {
+    var SearchDiseases = function SearchDiseases() {
         return React.createElement(
             "div",
-            { className: "card" },
-            React.createElement(
-                "div",
-                { className: "card-header" },
-                "Welcome"
-            ),
-            React.createElement(
-                "div",
-                { className: "card-body" },
-                React.createElement(
-                    "form",
-                    { action: "/", method: "POST" },
-                    React.createElement("input", { type: "hidden", name: "action", value: "submit" }),
-                    React.createElement(
-                        "div",
-                        { className: "input-group" },
-                        React.createElement("textarea", { required: true, className: "form-control", rows: "1", name: "content", placeholder: "Post something...", style: { resize: "none" } }),
-                        React.createElement(
-                            "button",
-                            { className: "btn btn-outline-primary group-append" },
-                            "Submit"
-                        )
-                    )
-                )
-            )
+            { className: "search" },
+            React.createElement("input", { type: "text", placeholder: "Search the diseases list" }),
+            React.createElement("i", { className: "fa fa-search" })
         );
     };
 
     var loadDiseases = function loadDiseases(callback) {
-        request("data.json", callback);
+        if (location.href.includes(".github.io")) request("data.json", callback);else {
+            var data = testData;
+            setTimeout(function () {
+                return callback(data);
+            }, 200);
+        }
     };
 
     var request = window.request;
+    var testData = window.testData;
 
     var Diseases = function (_React$Component) {
         _inherits(Diseases, _React$Component);
@@ -70,8 +54,20 @@ try {
                         diseases.map(function (a) {
                             return React.createElement(
                                 "div",
-                                null,
-                                JSON.stringify(a)
+                                { className: "card card-body", key: Math.random() },
+                                Object.keys(a).map(function (k) {
+                                    return React.createElement(
+                                        "span",
+                                        { key: Math.random() },
+                                        React.createElement(
+                                            "b",
+                                            null,
+                                            k
+                                        ),
+                                        ": ",
+                                        a[k]
+                                    );
+                                })
                             );
                         })
                     ), diseasesLoaded: true });
@@ -93,17 +89,41 @@ try {
     ReactDOM.render(React.createElement(
         "div",
         null,
-        React.createElement(CreatePostSection, null),
         React.createElement("br", null),
         React.createElement(
-            "h2",
-            null,
-            "Your Feed"
+            "div",
+            { className: "title" },
+            React.createElement(
+                "h2",
+                { style: { display: "inline" } },
+                "Diseases Explorer"
+            ),
+            React.createElement(
+                "sup",
+                { style: { display: "inline", color: "grey" } },
+                " ALPHA"
+            ),
+            React.createElement(
+                "p",
+                null,
+                "Search through the unofficially discovered diseases"
+            )
         ),
+        React.createElement(SearchDiseases, null),
         React.createElement(
             "div",
             { id: "diseases-section" },
             React.createElement(Diseases, null)
+        ),
+        React.createElement(
+            "center",
+            { style: { color: "grey", marginTop: "25px" } },
+            "Version 0.1, by ",
+            React.createElement(
+                "span",
+                { style: { color: "black" } },
+                "Thomas Catt"
+            )
         )
     ), document.getElementById('root'));
 } catch (e) {
