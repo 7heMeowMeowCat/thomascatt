@@ -47,6 +47,7 @@ body {
     background-color: #fff;
     border: 0.05vw solid #777;
     color: black;
+    box-shadow: inset 0 0 12px #ccc;
 }
 
 .search input:hover{
@@ -67,6 +68,46 @@ body {
 .grey {color: grey;}
 .grey * {color: black;}
 
+.disease-title:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: #eed;
+    box-shadow: inset 0 0 12px #ccc;
+}
+
+.disease-title:active{
+    transition-duration: 0ms;
+    background-color: #ccb;
+    box-shadow: inset 0 0 12px #bbb;
+    user-select: none;
+}
+
+#diseases-section #list, #diseases-section #desc{
+    height: 0px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.disease-app #list {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+.disease-app #desc {
+    margin-left: 25px;
+    opacity: 0;
+}
+
+.disease-open #list{
+    margin-left: -25px;
+    opacity: 0;
+}
+
+.disease-open #desc{
+    margin-left: 0px;
+    opacity: 1;
+}
 
 .loader {
     margin: 10px;
@@ -74,3 +115,21 @@ body {
     user-select: none;
     transition-duration: 0ms;
 }
+
+.credit {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-body {
+    margin: auto;
+}
+
+@media screen and (min-width: 1000px) {
+    .page-body {
+        padding: 0 25%;
+    }
+  }
+  

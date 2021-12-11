@@ -7,15 +7,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 try {
-    var loadDiseases = function loadDiseases(callback) {
-        if (location.href.includes(".github.io")) request("data.json", callback);else {
-            var data = testData;
-            setTimeout(function () {
-                return callback(data);
-            }, 200);
-        }
-    };
-
     var request = window.request;
     var testData = window.testData;
 
@@ -36,7 +27,7 @@ try {
             value: function onSearchChange(e) {
                 clearTimeout(window.searchDelay);
                 window.searchDelay = setTimeout(function () {
-                    var searchText = e.target.value; // the search text
+                    var searchText = e.target.value.toLowerCase(); // the search text
                     var searchTerms = searchText.split(" ").filter(function (a) {
                         return a != "";
                     }); // search text split on spaces to form 'terms' to match
@@ -46,7 +37,12 @@ try {
                         var searchedItems = this.props.state.diseases.filter(function (a) {
                             // performs the actual matching
                             var matches = searchTerms.map(function (t) {
-                                return a.tags.map(function (tag) {
+                                var terms = [a.tags, a.name, a.short_desc.split(" ").filter(function (a) {
+                                    return a != "";
+                                })].flat().map(function (a) {
+                                    return a.toLowerCase();
+                                });
+                                return terms.map(function (tag) {
                                     return tag.includes(t);
                                 }).reduce(function (a, b) {
                                     return a || b;
@@ -88,46 +84,167 @@ try {
         return SearchDiseases;
     }(React.Component);
 
-    var Diseases = function (_React$Component2) {
-        _inherits(Diseases, _React$Component2);
+    var loadDiseases = function loadDiseases(callback) {
+        if (location.href.includes(".github.io")) request("data.json", callback);else {
+            var data = testData;
+            setTimeout(function () {
+                return callback(data);
+            }, 200);
+        }
+    };
+
+    var OpenDisease = function (_React$Component2) {
+        _inherits(OpenDisease, _React$Component2);
+
+        function OpenDisease(props) {
+            _classCallCheck(this, OpenDisease);
+
+            return _possibleConstructorReturn(this, (OpenDisease.__proto__ || Object.getPrototypeOf(OpenDisease)).call(this, props));
+        }
+
+        _createClass(OpenDisease, [{
+            key: "render",
+            value: function render() {
+                if (this.props.data) {
+                    var details = [];
+                    var detailsKeys = Object.keys(this.props.data.details);
+                    var detailsValues = Object.values(this.props.data.details);
+                    for (var i = 0; i < detailsKeys.length; i++) {
+                        details.push(React.createElement(
+                            "p",
+                            { key: detailsKeys[i] },
+                            React.createElement(
+                                "b",
+                                { style: { textTransform: "capitalize" } },
+                                detailsKeys[i],
+                                ": "
+                            ),
+                            React.createElement(
+                                "span",
+                                null,
+                                detailsValues[i]
+                            )
+                        ));
+                    }
+                }
+                return this.props.data == false ? React.createElement("span", null) : React.createElement(
+                    "div",
+                    null,
+                    React.createElement(
+                        "span",
+                        { onClick: function onClick(e) {
+                                return navigateApp(false);
+                            }, style: { color: "grey", fontSize: "16px", padding: "16px", cursor: "pointer", userSelect: "none" } },
+                        "<",
+                        " Back"
+                    ),
+                    React.createElement(
+                        "h1",
+                        null,
+                        this.props.data.name
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        this.props.data.short_desc
+                    ),
+                    details,
+                    React.createElement("hr", null),
+                    this.props.data.content.map(function (item) {
+                        var title = Object.keys(item)[0];
+                        var descrpition = Object.values(item)[0];
+                        return React.createElement(
+                            "div",
+                            { key: title },
+                            React.createElement(
+                                "h4",
+                                null,
+                                title
+                            ),
+                            React.createElement(
+                                "p",
+                                null,
+                                descrpition
+                            )
+                        );
+                    })
+                );
+            }
+        }]);
+
+        return OpenDisease;
+    }(React.Component);
+
+    var Diseases = function (_React$Component3) {
+        _inherits(Diseases, _React$Component3);
 
         function Diseases(props) {
             _classCallCheck(this, Diseases);
 
-            var _this2 = _possibleConstructorReturn(this, (Diseases.__proto__ || Object.getPrototypeOf(Diseases)).call(this, props));
+            var _this3 = _possibleConstructorReturn(this, (Diseases.__proto__ || Object.getPrototypeOf(Diseases)).call(this, props));
 
-            _this2.state = {
+            _this3.state = {
                 loaderText: "Fetching Diseases...",
                 content: React.createElement("span", null),
+                desc: React.createElement(
+                    "span",
+                    { onClick: function onClick(e) {
+                            return navigateApp(false);
+                        }, style: { color: "blue", cursor: "pointer", userSelect: "none" } },
+                    "<",
+                    " Back"
+                ),
                 diseases: [],
+                diseaseData: false,
                 diseasesLoaded: false
             };
-            _this2.setDiseases = _this2.setDiseases.bind(_this2);
+            _this3.setDiseases = _this3.setDiseases.bind(_this3);
+            _this3.setDiseaseData = _this3.setDiseaseData.bind(_this3);
             loadDiseases(function (d) {
-                return _this2.setDiseases(d, true);
+                return _this3.setDiseases(d, true);
             });
-            return _this2;
+            return _this3;
         }
 
         _createClass(Diseases, [{
+            key: "setDiseaseData",
+            value: function setDiseaseData(data) {
+                this.setState({ diseaseData: data });
+                navigateApp(true);
+            }
+        }, {
             key: "setDiseases",
             value: function setDiseases(diseases, fetched) {
+                var _this4 = this;
+
                 var searchedTx = React.createElement("span", null);
                 if (fetched == "searched" && diseases.length < this.state.diseases.length) searchedTx = React.createElement(
                     "span",
                     { className: "grey" },
-                    "Filtered ",
-                    React.createElement(
-                        "b",
+                    diseases.length < 1 ? React.createElement(
+                        "center",
                         null,
-                        diseases.length
-                    ),
-                    " out of ",
-                    React.createElement(
-                        "b",
+                        React.createElement(
+                            "h1",
+                            { style: { color: "grey" } },
+                            "No Results"
+                        )
+                    ) : React.createElement(
+                        "span",
                         null,
-                        this.state.diseases.length,
-                        " total items"
+                        "Filtered ",
+                        React.createElement(
+                            "b",
+                            null,
+                            diseases.length
+                        ),
+                        " out of ",
+                        React.createElement(
+                            "b",
+                            null,
+                            this.state.diseases.length,
+                            " total items"
+                        )
                     )
                 );
                 this.setState({ content: React.createElement(
@@ -140,7 +257,9 @@ try {
                             diseases.map(function (a) {
                                 return React.createElement(
                                     "div",
-                                    { className: "card card-body", key: Math.random() },
+                                    { className: "card card-body disease-title", key: Math.random(), onClick: function onClick(e) {
+                                            return _this4.setDiseaseData(a);
+                                        } },
                                     React.createElement(
                                         "div",
                                         null,
@@ -168,13 +287,45 @@ try {
                     "div",
                     null,
                     React.createElement(SearchDiseases, { state: this.state, setState: this.setState, setDiseases: this.setDiseases }),
-                    this.state.diseasesLoaded ? this.state.content : React.createElement(Loading, { text: this.state.loaderText })
+                    React.createElement(
+                        "div",
+                        { className: "disease-app" },
+                        React.createElement(
+                            "div",
+                            { id: "list" },
+                            this.state.diseasesLoaded ? this.state.content : React.createElement(Loading, { text: this.state.loaderText })
+                        ),
+                        React.createElement(
+                            "div",
+                            { id: "desc", hidden: true },
+                            React.createElement(OpenDisease, { data: this.state.diseaseData })
+                        )
+                    )
                 );
             }
         }]);
 
         return Diseases;
     }(React.Component);
+
+    var navigateApp = function navigateApp(open) {
+        if (open) {
+            if (document.querySelector(".disease-app")) document.querySelector(".disease-app").className = "disease-open";
+            if (document.querySelector("#desc")) document.querySelector("#desc").hidden = "";
+        } else {
+            if (document.querySelector(".disease-open")) document.querySelector(".disease-open").className = "disease-app";
+            if (document.querySelector("#list")) document.querySelector("#list").hidden = "";
+        }
+
+        clearTimeout(window.hideList);
+        window.hideList = setTimeout(function () {
+            if (open) {
+                if (document.querySelector("#list")) document.querySelector("#list").hidden = true;
+            } else {
+                if (document.querySelector("#desc")) document.querySelector("#desc").hidden = true;
+            }
+        }, 200);
+    };
 
     ReactDOM.render(React.createElement(
         "div",
@@ -206,7 +357,7 @@ try {
         ),
         React.createElement(
             "center",
-            { style: { marginTop: "25px" }, className: "grey" },
+            { style: { marginTop: "25px" }, className: "credit grey" },
             "Version 0.1, by ",
             React.createElement(
                 "span",

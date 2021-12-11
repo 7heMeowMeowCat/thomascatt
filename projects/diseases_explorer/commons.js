@@ -19,6 +19,24 @@ try {
         },
         content: [{ "More Information:": "Helo here goes some more information regarding this disease, it looks stupid tho, :(" }]
     }, {
+        "name": "Stickerphobia",
+        "short_desc": "Annoying spamming of stickers even in inappropriate scenarios.",
+        "details": {
+            "targets": "16 - 20 year old males (saturated)",
+            "organism": "Bacteria: Streptococcus Stickominiae",
+            "organism kingdom": "Prokaryotes",
+            "causes": "Badly polluted whatsapp groups, sticker spams, high amout of saved stickers",
+            "symptoms": "Patient starts spamming whatsapp stickers in groups or direct messages with little to no regret",
+            "extreme symptoms": "Patient refuses to send anything other than senseless stickers at potentially unsuitable occasions",
+            "similarities": "none, entirely unique disease",
+            "treatment": "Yet to be uncovered",
+            "total infected patients": "1,738",
+            "total deaths": "2"
+        },
+
+        "tags": ["stickerphobia", "sticker", "disease"],
+        "content": [{ "Deaths from Stickerphobia:": "According to recent studies, it has been observed that a stickerphobia patient can cause mental pressure and anxiety for other people around him, mostly his friends or family. This phenomenon was observed in this case, when a patine t refused to take the situation seriously, even after he was forced quite heavily. 2 friends, trying their best to stop the patient, faced serious depression, and one by one, commited suicide because of the harming behaviour of the patient. This case was later proved by other people around, so it's confirmed that a stikerphobia patient can leave phenomenal effects." }]
+    }, {
         name: "Gayphobia",
         short_desc: "When gay",
         tags: ["gayphobia", "gay", "geh"],
