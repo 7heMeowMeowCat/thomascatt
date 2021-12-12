@@ -32,7 +32,7 @@ try {
                 }
                 // send the result
                 this.props.setDiseases(searchText == "" ? this.props.state.diseases : searchedItems, (searchText!= "") ? "searched" : false)
-            }.bind(this)), 200)
+            }.bind(this)), 100)
         }
         
         render() {
@@ -59,9 +59,13 @@ try {
     class OpenDisease extends React.Component {
         constructor(props) {
             super(props)
+            this.state = {
+                data: this.props.data
+            }
         }
 
         render() {
+            console.log(this.props)
             if (this.props.data) {
                 var details = []
                 var detailsKeys = Object.keys(this.props.data.details)
@@ -73,9 +77,13 @@ try {
                     </p>)
                 }
             }
-            return this.props.data == false ? <span></span> : <div>
-                <span onClick={e => navigateApp(false)} style={{color: "grey", fontSize: "16px", padding: "16px", cursor: "pointer", userSelect: "none"}}>{"<"} Back</span>
-                <h1>{this.props.data.name}</h1>
+            return this.props.data == false ? <span>No item selected.</span> : <div>
+                <h1 style={{marginTop: "15px"}}>
+                <span className="clickable" onClick={(function (e) {
+                    // document.querySelector("#desc div").innerHTML = ""
+                    navigateApp(false)
+                }).bind(this)} style={{fontSize: "18px", padding: "15px"}}><i className="fas fa-arrow-left"></i> Back</span>
+                    {this.props.data.name}</h1>
                 <p>{this.props.data.short_desc}</p>
                 {details}
                 <hr />
@@ -134,10 +142,10 @@ try {
             return <div>
                 <SearchDiseases state={this.state} setState={this.setState} setDiseases={this.setDiseases}/>
                 <div className="disease-app">
-                    <div id="list">
+                    <div id="list" style={{zIndex: '2'}}>
                         {this.state.diseasesLoaded ? this.state.content : <Loading text={this.state.loaderText}/>}
                     </div>
-                    <div id="desc" hidden={true}>
+                    <div id="desc">
                         <OpenDisease data={this.state.diseaseData}/>
                     </div>
                 </div>
@@ -148,34 +156,26 @@ try {
     var navigateApp = function (open) {
         if (open) {
             if (document.querySelector(".disease-app")) document.querySelector(".disease-app").className = "disease-open"
-            if (document.querySelector("#desc")) document.querySelector("#desc").hidden = ""
+            document.querySelector("#desc").style.zIndex = "2"
+            document.querySelector("#list").style.zIndex = "1"
         } else {
             if (document.querySelector(".disease-open")) document.querySelector(".disease-open").className = "disease-app"
-            if (document.querySelector("#list")) document.querySelector("#list").hidden = ""
-    }
-
-        clearTimeout(window.hideList)
-        window.hideList = setTimeout(() => {
-            if (open) {
-                if (document.querySelector("#list")) document.querySelector("#list").hidden = true
-            } else {
-                if (document.querySelector("#desc")) document.querySelector("#desc").hidden = true
-            }
-                
-        }, 200);
+            document.querySelector("#list").style.zIndex = "2"
+            document.querySelector("#desc").style.zIndex = "1"
+        }
     }
 
     ReactDOM.render(<div>
         <br/>
         <div className="title">
-            <h2 style={{display: "inline"}}>Diseases Explorer</h2><sup style={{display: "inline", color: "grey"}}> ALPHA</sup>
+            <h2 style={{display: "inline"}}>Diseases Explorer</h2><sup style={{display: "inline", color: "grey"}}> BETA</sup>
             <p>Search through the unofficially discovered diseases</p>
         </div>
 
         <div id="diseases-section">
             <Diseases/>
         </div>
-        <center style={{marginTop: "25px"}} className="credit grey">Version 0.1, by <span>Thomas Catt</span></center>
+        <center style={{marginTop: "25px"}} className="credit grey">Diseases Explorer - by <span>Thomas Catt</span></center>
     </div>, document.getElementById('root'))
 } catch(e) {
     ReactDOM.render(<pre>

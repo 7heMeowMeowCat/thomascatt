@@ -67,7 +67,7 @@ try {
                     }
                     // send the result
                     this.props.setDiseases(searchText == "" ? this.props.state.diseases : searchedItems, searchText != "" ? "searched" : false);
-                }.bind(this), 200);
+                }.bind(this), 100);
             }
         }, {
             key: "render",
@@ -99,12 +99,18 @@ try {
         function OpenDisease(props) {
             _classCallCheck(this, OpenDisease);
 
-            return _possibleConstructorReturn(this, (OpenDisease.__proto__ || Object.getPrototypeOf(OpenDisease)).call(this, props));
+            var _this2 = _possibleConstructorReturn(this, (OpenDisease.__proto__ || Object.getPrototypeOf(OpenDisease)).call(this, props));
+
+            _this2.state = {
+                data: _this2.props.data
+            };
+            return _this2;
         }
 
         _createClass(OpenDisease, [{
             key: "render",
             value: function render() {
+                console.log(this.props);
                 if (this.props.data) {
                     var details = [];
                     var detailsKeys = Object.keys(this.props.data.details);
@@ -127,20 +133,25 @@ try {
                         ));
                     }
                 }
-                return this.props.data == false ? React.createElement("span", null) : React.createElement(
+                return this.props.data == false ? React.createElement(
+                    "span",
+                    null,
+                    "No item selected."
+                ) : React.createElement(
                     "div",
                     null,
                     React.createElement(
-                        "span",
-                        { onClick: function onClick(e) {
-                                return navigateApp(false);
-                            }, style: { color: "grey", fontSize: "16px", padding: "16px", cursor: "pointer", userSelect: "none" } },
-                        "<",
-                        " Back"
-                    ),
-                    React.createElement(
                         "h1",
-                        null,
+                        { style: { marginTop: "15px" } },
+                        React.createElement(
+                            "span",
+                            { className: "clickable", onClick: function (e) {
+                                    // document.querySelector("#desc div").innerHTML = ""
+                                    navigateApp(false);
+                                }.bind(this), style: { fontSize: "18px", padding: "15px" } },
+                            React.createElement("i", { className: "fas fa-arrow-left" }),
+                            " Back"
+                        ),
                         this.props.data.name
                     ),
                     React.createElement(
@@ -292,12 +303,12 @@ try {
                         { className: "disease-app" },
                         React.createElement(
                             "div",
-                            { id: "list" },
+                            { id: "list", style: { zIndex: '2' } },
                             this.state.diseasesLoaded ? this.state.content : React.createElement(Loading, { text: this.state.loaderText })
                         ),
                         React.createElement(
                             "div",
-                            { id: "desc", hidden: true },
+                            { id: "desc" },
                             React.createElement(OpenDisease, { data: this.state.diseaseData })
                         )
                     )
@@ -311,20 +322,13 @@ try {
     var navigateApp = function navigateApp(open) {
         if (open) {
             if (document.querySelector(".disease-app")) document.querySelector(".disease-app").className = "disease-open";
-            if (document.querySelector("#desc")) document.querySelector("#desc").hidden = "";
+            document.querySelector("#desc").style.zIndex = "2";
+            document.querySelector("#list").style.zIndex = "1";
         } else {
             if (document.querySelector(".disease-open")) document.querySelector(".disease-open").className = "disease-app";
-            if (document.querySelector("#list")) document.querySelector("#list").hidden = "";
+            document.querySelector("#list").style.zIndex = "2";
+            document.querySelector("#desc").style.zIndex = "1";
         }
-
-        clearTimeout(window.hideList);
-        window.hideList = setTimeout(function () {
-            if (open) {
-                if (document.querySelector("#list")) document.querySelector("#list").hidden = true;
-            } else {
-                if (document.querySelector("#desc")) document.querySelector("#desc").hidden = true;
-            }
-        }, 200);
     };
 
     ReactDOM.render(React.createElement(
@@ -342,7 +346,7 @@ try {
             React.createElement(
                 "sup",
                 { style: { display: "inline", color: "grey" } },
-                " ALPHA"
+                " BETA"
             ),
             React.createElement(
                 "p",
@@ -358,7 +362,7 @@ try {
         React.createElement(
             "center",
             { style: { marginTop: "25px" }, className: "credit grey" },
-            "Version 0.1, by ",
+            "Diseases Explorer - by ",
             React.createElement(
                 "span",
                 null,
