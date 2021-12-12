@@ -13,6 +13,17 @@ try {
             ]
         },
         {
+            name: "Gayphobia", 
+            short_desc: "When gay",
+            tags: ["gayphobia", "gay", "geh"],
+            details: {
+                symptoms: "lookin geh", 
+            },
+            content: [
+                {"More Information:": "This is just a second name to being gay. Gayphobia is a widespead with over millions of patients. It's a life threatning disease."}
+            ]
+        },
+        {
             "name": "Stickerphobia",
             "short_desc": "Annoying spamming of stickers even in inappropriate scenarios.",
             "details": {
@@ -31,17 +42,6 @@ try {
             "tags": ["stickerphobia", "sticker", "disease"],
             "content": [
                 {"Deaths from Stickerphobia:": "According to recent studies, it has been observed that a stickerphobia patient can cause mental pressure and anxiety for other people around him, mostly his friends or family. This phenomenon was observed in this case, when a patine t refused to take the situation seriously, even after he was forced quite heavily. 2 friends, trying their best to stop the patient, faced serious depression, and one by one, commited suicide because of the harming behaviour of the patient. This case was later proved by other people around, so it's confirmed that a stikerphobia patient can leave phenomenal effects."}
-            ]
-        },
-        {
-            name: "Gayphobia", 
-            short_desc: "When gay",
-            tags: ["gayphobia", "gay", "geh"],
-            details: {
-                symptoms: "lookin geh", 
-            },
-            content: [
-                {"More Information:": "This is just a second name to being gay. Gayphobia is a widespead with over millions of patients. It's a life threatning disease."}
             ]
         },
     ]

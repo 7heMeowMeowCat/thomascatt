@@ -8,17 +8,13 @@ body {
 
 * {
     font-family: 'Lora', serif;
-    font-size: 0.9vw;
+    font-size: 4vw;
     transition-duration: 150ms;
 }
 
 .disease-title {
     background-color: #ddc;
 } 
-
-.title h2{
-    font-size: 2.5vw;
-}
 
 .title p{
     color: grey
@@ -54,7 +50,7 @@ body {
 .search input {
     width: 100%;
     padding: 1vw;
-    font-size: 2vw;
+    font-size: 6vw;
     background-color: #eeeddd;
     border-radius: 0.6vw;
     border: 0.05vw solid #aaa;
@@ -156,11 +152,18 @@ body {
 
 .page-body {
     margin: auto;
+    padding: 0 4%;
 }
 
 @media screen and (min-width: 1000px) {
     .page-body {
         padding: 0 25%;
+    }
+    * {
+        font-size: 0.9vw;
+    }
+    .search input {
+        font-size: 2vw;
     }
 }
   
