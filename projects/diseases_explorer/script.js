@@ -116,6 +116,7 @@ try {
             key: "render",
             value: function render() {
                 if (this.props.data) {
+                    document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "" : false;
                     var details = [];
                     var detailsKeys = Object.keys(this.props.data.details);
                     var detailsValues = Object.values(this.props.data.details);
@@ -151,7 +152,10 @@ try {
                         React.createElement(
                             "span",
                             { className: "clickable", onClick: function (e) {
-                                    // document.querySelector("#desc div").innerHTML = ""
+                                    clearTimeout(window.timeout);
+                                    window.timeout = setTimeout(function () {
+                                        document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "none" : false;
+                                    }, 150);
                                     navigateApp(false);
                                 }.bind(this), style: { padding: "2%" } },
                             React.createElement("i", { className: "fas fa-arrow-left" }),

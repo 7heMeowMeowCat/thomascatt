@@ -72,6 +72,7 @@ try {
 
         render() {
             if (this.props.data) {
+                document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "" : false
                 var details = []
                 var detailsKeys = Object.keys(this.props.data.details)
                 var detailsValues = Object.values(this.props.data.details)
@@ -85,7 +86,10 @@ try {
             return this.props.data == false ? <span>No item selected.</span> : <div>
                 <h1 style={{marginTop: "15px"}}>
                 <span className="clickable" onClick={(function (e) {
-                    // document.querySelector("#desc div").innerHTML = ""
+                    clearTimeout(window.timeout)
+                    window.timeout = setTimeout(() => {
+                        document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "none" : false
+                    }, 150)
                     navigateApp(false)
                 }).bind(this)} style={{padding: "2%"}}><i className="fas fa-arrow-left"></i> Back</span>
                     {this.props.data.name}</h1>
