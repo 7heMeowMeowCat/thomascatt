@@ -1,5 +1,24 @@
 [
     {
+        "name": "Nyanism",
+        "short_desc": "Humans pretending to be cats",
+        "details": {
+            "targets": "Teenage weebs",
+            "organism": "Virus: Nyanocattus Weabunyannyan",
+            "causes": "Obverving cats/catgirls in anime/videos",
+            "symptoms": "Patient names themselves as cats, frequently uses \"nyan\" in their speech",
+            "similarities": "Gayphobia",
+            "treatment": "Vaccines are available for prevention",
+            "total infected patients": "35,235",
+            "total deaths": "213"
+        },        
+          
+        "tags": ["cats", "neko", "nyan", "nya~", "phobia", "catgirls"],
+        "content": [
+            {"More Information:": "The patients suffering from nyanism are reffered to as <span>gays</span> due to similarity of behaviour with patients suffering from gayphobia. It's not considered a fatal disease, but is considered dangerously cringy, as suggested by researchers who have tracked some <span>deaths</span> relating to nyanism.<br><br>Researchers haven't discovered much about nyanism yet. Any updates on the topic will be reported here."}
+        ]
+    },
+    {
         "name": "Coolophobia",
         "short_desc": "People try to look cool, even when they shouldn't.",
         "details": {
