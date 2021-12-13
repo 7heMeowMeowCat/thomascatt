@@ -25,6 +25,11 @@ try {
         _createClass(SearchDiseases, [{
             key: "onSearchChange",
             value: function onSearchChange(e) {
+                document.querySelector("input").onkeydown = function (e) {
+                    if (e.key == "Enter" && e.target.value.replaceAll(" ", "") != "") {
+                        document.querySelector(".disease-title").click();
+                    }
+                };
                 clearTimeout(window.searchDelay);
                 window.searchDelay = setTimeout(function () {
                     var searchText = e.target.value.toLowerCase(); // the search text
@@ -110,7 +115,6 @@ try {
         _createClass(OpenDisease, [{
             key: "render",
             value: function render() {
-                console.log(this.props);
                 if (this.props.data) {
                     var details = [];
                     var detailsKeys = Object.keys(this.props.data.details);
@@ -129,7 +133,8 @@ try {
                                 "span",
                                 null,
                                 detailsValues[i]
-                            )
+                            ),
+                            React.createElement("br", null)
                         ));
                     }
                 }
@@ -148,17 +153,18 @@ try {
                             { className: "clickable", onClick: function (e) {
                                     // document.querySelector("#desc div").innerHTML = ""
                                     navigateApp(false);
-                                }.bind(this), style: { fontSize: "18px", padding: "15px" } },
+                                }.bind(this), style: { padding: "2%" } },
                             React.createElement("i", { className: "fas fa-arrow-left" }),
                             " Back"
                         ),
                         this.props.data.name
                     ),
                     React.createElement(
-                        "p",
+                        "h4",
                         null,
                         this.props.data.short_desc
                     ),
+                    React.createElement("br", null),
                     details,
                     React.createElement("hr", null),
                     this.props.data.content.map(function (item) {
@@ -167,16 +173,8 @@ try {
                         return React.createElement(
                             "div",
                             { key: title },
-                            React.createElement(
-                                "h4",
-                                null,
-                                title
-                            ),
-                            React.createElement(
-                                "p",
-                                null,
-                                descrpition
-                            )
+                            React.createElement("h2", { dangerouslySetInnerHTML: { __html: title } }),
+                            React.createElement("p", { className: "grey", dangerouslySetInnerHTML: { __html: descrpition } })
                         );
                     })
                 );
@@ -269,7 +267,7 @@ try {
                                 return React.createElement(
                                     "div",
                                     { className: "card card-body disease-title", key: Math.random(), onClick: function onClick(e) {
-                                            return _this4.setDiseaseData(a);
+                                            return document.querySelector(".disease-app #list .disease-title") ? _this4.setDiseaseData(a) : false;
                                         } },
                                     React.createElement(
                                         "div",

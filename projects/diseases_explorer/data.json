@@ -1,22 +1,38 @@
 [
     {
-        "name": "Coolophobia", 
-        "short_desc": "People try to look cool, even though they shouldn't.",
-        "tags": ["disease", "cool"],
+        "name": "Coolophobia",
+        "short_desc": "People try to look cool, even when they shouldn't.",
         "details": {
-            "symptoms": "Looking cool"                 
-        },
+            "targets": "Any, mostly males",
+            "causes": "Slighly more knowledge in a certain field than most people.",
+            "symptoms": "Trying to look cool, patient flexing their knowledge",
+            "similarities": "Nervous Disorders, seizures",
+            "treatment": "Psychological therapy, Social distancing from the patient",
+            "total infected patients": "2,756,835,564",
+            "total deaths": "1,279"
+        },        
+          
+        "tags": ["disease", "cool", "flex", "ahmad", "saleem"],
         "content": [
-            {"More Information:": "Helo here goes some more information regarding this disease, it looks stupid tho, :("}
+            {"Deaths from Coolophobia:": "Although coolophobia is not considered a fatal disease, some cases still have come to observation that excessively affected coolophobia patients can cause the patient to fight with others which can be fatal for the others, as well as the patient. Several cases have been observed in which the patient commits suicide along with the people around them."}
         ]
     },
     {
-        "name": "Gayphobia", 
+        "name": "Gayphobia",
         "short_desc": "When gay",
-        "tags": ["gayphobia", "gay", "geh"],
         "details": {
-            "symptoms": "lookin geh" 
-        },
+            "targets": "Any male",
+            "source": "Fortnite, Among us, BTS, and a lot of other sources are observed.",
+            "causes": "Developing affection for the mentioned sources can cause this disease.",
+            "symptoms": "Looking gay, affection for other men",
+            "extreme symptoms": "Absolutely Haram activities with other men.",
+            "similarities": "Nervous Disorders",
+            "treatment": "None, killing any gayphobia patient upon sight is suggested",
+            "total infected patients": "753,481,101",
+            "total deaths": "98,231,090"
+        },        
+          
+        "tags": ["gayphobia", "gay", "geh", "gae", "lgbt", "fortnite", "fort", "nite"],
         "content": [
             {"More Information:": "This is just a second name to being gay. Gayphobia is a widespead with over millions of patients. It's a life threatning disease."}
         ]
@@ -43,13 +59,34 @@
         ]
     },
     {
+        "name": "PUBG-o-phobia",
+        "short_desc": "Widespead disease of dangerously excessive addiction for PUBG.",
+        "details": {
+            "targets": "10 - 18 year olds",
+            "source": "Tencent",
+            "causes": "Interest in PUBG, trying out PUBG, or looking at PUBG can cause this disease.",
+            "symptoms": "Patient feels uneasy when PUBG is not available.",
+            "extreme symptoms": "Patient can trigger seizures upon unavailability of PUBG.",
+            "similarities": "Nervous Disorders, seizures",
+            "treatment": "Yet to be uncovered",
+            "total infected patients": "1,438,124,772",
+            "total deaths": "172,081"
+        },        
+          
+        "tags": ["pubg", "mobile", "addiction", "game", "gaming"],
+        "content": [
+            {"About PUBG:": "PUBG Mobile, created by <span>Lightspeed & Quantom Studios</span>, and published by <span>Tencent</span>, is an extremely popular android & iOS mobile game, based on the original <span>PUBG</span> released in 2017. PUBG Mobile is an excessively degraded version of the original PUBG, which makes the game a lot less enjoyable. There are plenty of versions of PUBG, some of them including <span>PUBG Mobile Lite, PUBG New State</span>, and many others. But by far, the original PUBG experience is the most polished, and enjoyable experience of the battle royal game."},
+            {"<a href='https://play.google.com/store/apps/details?id=com.tencent.ig' target='_blank'>Game Link</a>": ""}
+        ]
+    },
+    {
         "name": "More data coming soon", 
         "short_desc": "More information & features coming soon",
         "tags": [],
         "details": {
         },
         "content": [
-            {"More information & features coming soon": "You can contact to send some artificial diseases data too. I'll send you a template to fill up."}
+            {"More information will be added soon.": "I'm continuosly adding data to this app. You can contact to send some artificial diseases data too. I'll send you a template to fill up. "}
         ]
     }
 ]

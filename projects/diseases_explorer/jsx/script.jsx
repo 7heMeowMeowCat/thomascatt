@@ -7,8 +7,14 @@ try {
             super(props)
             this.onSearchChange = this.onSearchChange.bind(this)
         }
+        
 
         onSearchChange(e) {
+            document.querySelector("input").onkeydown = (e) => {
+                if (e.key == "Enter" && e.target.value.replaceAll(" ", "") != "") {
+                    document.querySelector(".disease-title").click()
+                }
+            }
             clearTimeout(window.searchDelay)
             window.searchDelay = setTimeout((function() {
                 var searchText = e.target.value.toLowerCase() // the search text
@@ -65,7 +71,6 @@ try {
         }
 
         render() {
-            console.log(this.props)
             if (this.props.data) {
                 var details = []
                 var detailsKeys = Object.keys(this.props.data.details)
@@ -73,7 +78,7 @@ try {
                 for (var i = 0; i < detailsKeys.length; i++) {
                     details.push(<p key={detailsKeys[i]}>
                         <b style={{textTransform: "capitalize"}}>{detailsKeys[i]}: </b>
-                        <span>{detailsValues[i]}</span>
+                        <span>{detailsValues[i]}</span><br />
                     </p>)
                 }
             }
@@ -82,17 +87,17 @@ try {
                 <span className="clickable" onClick={(function (e) {
                     // document.querySelector("#desc div").innerHTML = ""
                     navigateApp(false)
-                }).bind(this)} style={{fontSize: "18px", padding: "15px"}}><i className="fas fa-arrow-left"></i> Back</span>
+                }).bind(this)} style={{padding: "2%"}}><i className="fas fa-arrow-left"></i> Back</span>
                     {this.props.data.name}</h1>
-                <p>{this.props.data.short_desc}</p>
+                <h4>{this.props.data.short_desc}</h4><br />
                 {details}
                 <hr />
                 {this.props.data.content.map(function (item) {
                     var title = Object.keys(item)[0]
                     var descrpition = Object.values(item)[0]
                     return <div key={title}>
-                        <h4>{title}</h4>
-                        <p>{descrpition}</p>
+                        <h2 dangerouslySetInnerHTML={{ __html: title }} />
+                        <p className="grey" dangerouslySetInnerHTML={{ __html: descrpition }} />
                     </div>
                 })}
             </div>
@@ -129,7 +134,7 @@ try {
                 <div style={{borderRadius: "15px", overflowX: "hidden"}}>
                     {
                         diseases.map(a => 
-                            <div className={"card card-body disease-title"} key={Math.random()} onClick={(e) => this.setDiseaseData(a)}>
+                            <div className={"card card-body disease-title"} key={Math.random()} onClick={(e) => document.querySelector(".disease-app #list .disease-title") ? this.setDiseaseData(a) : false}>
                                 {<div><h3>{a.name}</h3><p className="grey">{a.short_desc}</p></div>}
                             </div>)
                     }

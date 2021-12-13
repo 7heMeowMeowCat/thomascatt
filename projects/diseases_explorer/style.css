@@ -12,8 +12,13 @@ body {
     transition-duration: 150ms;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
 .disease-title {
     background-color: #ddc;
+    border-radius: 2vw;
 } 
 
 .title p{
@@ -25,11 +30,6 @@ body {
     cursor: pointer;
     user-select: none;
     transition-duration: 0ms;
-}
-
-.clickable:hover, .clickable:hover * {
-    text-decoration: underline;
-    color: #666;
 }
 
 .clickable:active, .clickable:active * {
@@ -49,15 +49,15 @@ body {
 
 .search input {
     width: 100%;
-    padding: 1vw;
-    font-size: 6vw;
+    padding: 2vw;
+    font-size: 5vw;
     background-color: #eeeddd;
-    border-radius: 0.6vw;
+    border-radius: 2vw;
     border: 0.05vw solid #aaa;
     outline: none;
     color: grey;
-
 } 
+
 .search input:focus{
     background-color: #fff;
     border: 0.05vw solid #777;
@@ -65,38 +65,23 @@ body {
     box-shadow: inset 0 0 12px #ccc;
 }
 
-.search input:hover{
-    box-shadow: inset 0 0 12px #ccc;
-    color: black;
-}
-
 .search i{
     position: relative;
-    left: -3.5vw; top: 2vw;
-    margin-top: -0.5vw;
+    left: -9vw; top: 3vw;
     width: 0;
-    font-size: 2vw;
+    font-size: 6vw;
     user-select: none;
-    color: grey;
+    color: black;
+    opacity: 0.5;
 }
 
-.grey {color: grey;}
-.grey * {color: black;}
+.grey {color: #555;}
+.grey * {color: black; font-weight: 500;}
 
-.disease-title:hover{
-    cursor: pointer;
-    background-color: #eed;
-    box-shadow: inset 0 0 12px #ccc;
-}
-
-.disease-title:hover div h3{
-    text-decoration: underline;
-}
-
-.disease-title:active{
+.disease-app #list .disease-title:active{
     transition-duration: 0ms;
     background-color: #ccb;
-    box-shadow: inset 0 0 12px #bbb;
+    box-shadow: inset 0 0 1.2vw #bbb;
     user-select: none;
 }
 
@@ -117,12 +102,12 @@ body {
 }
 
 .disease-app #desc {
-    margin-left: 25px;
+    margin-left: 2vw;
     opacity: 0;
 }
 
 .disease-open #list{
-    margin-left: -25px;
+    margin-left: -2vw;
     opacity: 0;
 }
 
@@ -162,8 +147,45 @@ body {
     * {
         font-size: 0.9vw;
     }
-    .search input {
+    
+    .clickable:hover, .clickable:hover * {
+        text-decoration: underline;
+        color: #666;
+    }
+
+    .disease-app #list .disease-title:hover{
+        cursor: pointer;
+        background-color: #eed;
+        box-shadow: inset 0 0 1.2vw #ccc;
+    }
+    
+    .disease-app #list .disease-title:hover div h3{
+        text-decoration: underline;
+    }
+    
+    .search input:hover{
+        box-shadow: inset 0 0 12px #ccc;
+        color: black;
+    }
+    
+    .search input {        
+        width: 100%;
+        padding: 1vw;
         font-size: 2vw;
+        background-color: #eeeddd;
+        border-radius: 0.6vw;
+        border: 0.05vw solid #aaa;
+        outline: none;
+        color: grey;
+    }
+    .search i{
+        left: -3.5vw; top: 2vw;
+        margin-top: -0.5vw;
+        width: 0;
+        font-size: 2vw;
+    }    
+    .disease-title {
+        border-radius: 0.6vw;
     }
 }
   
