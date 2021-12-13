@@ -75,8 +75,8 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.5;
 }
 
-.grey {color: #555;}
-.grey * {color: black; font-weight: 500;}
+.grey {color: #444;}
+.grey * {color: #444; font-weight: bold;}
 
 .disease-app #list .disease-title:active{
     transition-duration: 0ms;

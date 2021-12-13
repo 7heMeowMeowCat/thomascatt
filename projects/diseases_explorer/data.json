@@ -1,5 +1,23 @@
 [
     {
+        "name": "Straightface",
+        "short_desc": "Patients disabled to have a different pose in images",
+        "details": {
+            "targets": "Unknown",
+            "organism & causes": "Unknown",
+            "symptoms": "Face of the patient becomes absolutely stable in front of a camera",
+            "similarities": "None, entirely unique disease",
+            "treatment": "Yet to be uncovered",
+            "total infected patients": "1",
+            "total deaths": "0"
+        },        
+          
+        "tags": ["stone", "solid", "ahmad saleem", "selfies"],
+        "content": [
+            {"Low Information:": "Sufficient information regarding this diseases isn't available because only one patient has been obvserved yet. Information will be added in this page as soon as observations are made. If you have information regarding this disease then you can contact me to add information about it here."}
+        ]
+    },
+    {
         "name": "Nyanism",
         "short_desc": "Humans pretending to be cats",
         "details": {
@@ -13,7 +31,7 @@
             "total deaths": "213"
         },        
           
-        "tags": ["cats", "neko", "nyan", "nya~", "phobia", "catgirls"],
+        "tags": ["cats", "neko", "nyan", "nya~", "phobia", "catgirls", "weebs", "animes"],
         "content": [
             {"More Information:": "The patients suffering from nyanism are reffered to as <span>gays</span> due to similarity of behaviour with patients suffering from gayphobia. It's not considered a fatal disease, but is considered dangerously cringy, as suggested by researchers who have tracked some <span>deaths</span> relating to nyanism.<br><br>Researchers haven't discovered much about nyanism yet. Any updates on the topic will be reported here."}
         ]
