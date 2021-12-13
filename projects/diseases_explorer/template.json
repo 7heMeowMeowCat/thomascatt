@@ -1,0 +1,30 @@
+/*
+  - DISEASES EXPLORER TEMPLATE:
+    Here's a template that you can fill up, and send to me to be added into the app.
+
+    Remove ALL the comments in the file before sending: 
+
+*/
+
+[
+    {
+        "name": "Title of your disease",
+        "short_desc": "A short description that appears with the title.",
+        "details": {
+            // Details can contain any name value pair, which will be displayed as-it-is in the webpage.
+            "name1": "value1",
+            "name2": "value2",
+            "name3": "value3",
+            // A few Examples are:
+            "symptoms": "symptoms go here",
+            "targets": "18 years or higher age"
+        },
+        
+        "tags": ["tag1", "tag2", "tag3"], // Tags are keywords that are used in the searching, and aren't visible anywhere. Add as many relevant words as you can for easier finding.
+        "content": [
+            // These appear after the details in the webpage. the first part appears as a title, and the second appears as its description
+            {"Title of section:": "Details go here (HTML works too, wrap some text in any <span>tag</span> to make it prominent)"},
+            {"Another section:": "More details go here"}
+        ]
+    }
+]

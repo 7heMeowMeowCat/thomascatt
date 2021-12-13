@@ -86,7 +86,7 @@
         "details": {
         },
         "content": [
-            {"More information will be added soon.": "I'm continuosly adding data to this app. You can contact to send some artificial diseases data too. I'll send you a template to fill up. "}
+            {"More information will be added soon.": "I'm continuosly adding data to this app. You can contact to send some artificial diseases data too. <a href='template.json' target='_blank'>Here's</a> a template to fill up. "}
         ]
     }
 ]
