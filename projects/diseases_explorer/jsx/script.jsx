@@ -72,7 +72,6 @@ try {
 
         render() {
             if (this.props.data) {
-                document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "" : false
                 var details = []
                 var detailsKeys = Object.keys(this.props.data.details)
                 var detailsValues = Object.values(this.props.data.details)
@@ -86,10 +85,6 @@ try {
             return this.props.data == false ? <span>No item selected.</span> : <div>
                 <h1 style={{marginTop: "15px"}}>
                 <span className="clickable" onClick={(function (e) {
-                    clearTimeout(window.timeout)
-                    window.timeout = setTimeout(() => {
-                        document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "none" : false
-                    }, 150)
                     navigateApp(false)
                 }).bind(this)} style={{padding: "2%"}}><i className="fas fa-arrow-left"></i> Back</span>
                     {this.props.data.name}</h1>
@@ -164,10 +159,22 @@ try {
 
     var navigateApp = function (open) {
         if (open) {
+            clearTimeout(window.timeout)
+            window.timeout = setTimeout(() => {
+                document.querySelector("#list div") ? document.querySelector("#list div").style.display = "none" : false
+            }, 150)
+            document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "" : false
+
             if (document.querySelector(".disease-app")) document.querySelector(".disease-app").className = "disease-open"
             document.querySelector("#desc").style.zIndex = "2"
             document.querySelector("#list").style.zIndex = "1"
         } else {
+            clearTimeout(window.timeout)
+            window.timeout = setTimeout(() => {
+                document.querySelector("#desc div") ? document.querySelector("#desc div").style.display = "none" : false
+            }, 150)
+            document.querySelector("#list div") ? document.querySelector("#list div").style.display = "" : false
+
             if (document.querySelector(".disease-open")) document.querySelector(".disease-open").className = "disease-app"
             document.querySelector("#list").style.zIndex = "2"
             document.querySelector("#desc").style.zIndex = "1"
