@@ -18,7 +18,7 @@ class RequestHandling extends Controller
     {
         try {
             function submitPost($request) {
-                $result = DB::insert('insert into posts (author, content, likes) values(?, ?, ?)', [Auth::user()->name, $request->content, '[]']);
+                $result = DB::insert('insert into posts (author, content, description, likes) values(?, ?, ?)', [Auth::user()->name, $request->content, $request->description, '[]']);
             }
 
             function addComment($request) {

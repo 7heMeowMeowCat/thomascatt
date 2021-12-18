@@ -225,7 +225,7 @@ try {
       }
     }, /*#__PURE__*/React.createElement("i", {
       className: "fa fa-sign-out"
-    }), " Logout"), " ", /*#__PURE__*/React.createElement("sub", null, "mce")), /*#__PURE__*/React.createElement("div", {
+    }), " Logout")), /*#__PURE__*/React.createElement("div", {
       className: "card-body"
     }, /*#__PURE__*/React.createElement("form", {
       action: "/",
@@ -298,6 +298,7 @@ try {
               key: a.id,
               author: a.author,
               content: a.content,
+              created_at: a.created_at,
               likes: a.likes == '' ? [] : JSON.parse(a.likes)
             });
           })),

@@ -233,8 +233,16 @@ try {
   window.imgbase64 = "data:image/png;base64,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";
   window.data = JSON.parse(document.querySelector('#__info').innerText);
   window.csrf_field = document.querySelector('#__info input').outerHTML;
-  window.csrf = document.querySelector('#__info input').value;
-  document.querySelector('#__info').outerHTML = "";
+  window.csrf = document.querySelector('#__info input').value; // document.querySelector('#__info').outerHTML = ""
+
+  if (window.data == undefined) window.data = {
+    id: 0,
+    name: '',
+    email: '',
+    updated_at: '',
+    created_at: ''
+  };
+  console.log(window.data);
 
   window.likePost = function (id, like) {
     request({
@@ -279,6 +287,33 @@ try {
     return s.split('\n').map(function (a) {
       return /*#__PURE__*/React.createElement("p", null, a);
     });
+  };
+
+  window.getDifferenceString = function (date) {
+    var diff = +new Date() - +date; // console.log("Difference: ", diff, " - Original: ", date)
+
+    var consts = {
+      second: 1000,
+      minute: 1000 * 60,
+      hour: 1000 * 60 * 60,
+      day: 1000 * 60 * 60 * 24,
+      month: 1000 * 60 * 60 * 24 * 30,
+      year: 1000 * 60 * 60 * 24 * 365
+    };
+    var diffUnit = "seconds";
+    var diffVal = 0;
+    Object.keys(consts).forEach(function (unit) {
+      if (diff >= consts[unit]) {
+        diffUnit = unit;
+        diffVal = Math.round(diff / consts[unit]);
+      }
+    });
+    if (diffVal > 1) diffUnit += "s";
+    return {
+      str: diffVal < 1 ? "just now" : diffVal + " " + diffUnit + " ago",
+      unit: diffUnit,
+      value: diffVal
+    };
   };
 
   window.ErrorMessage = /*#__PURE__*/function (_React$Component) {
@@ -327,6 +362,7 @@ try {
         author: _this.props.author,
         content: _this.props.content,
         id: _this.props.id,
+        created_at: _this.props.created_at,
         loaded: true,
         error: ''
       };
@@ -383,15 +419,20 @@ try {
           }
         }, /*#__PURE__*/React.createElement("span", {
           key: this.state.id
-        }, this.state.content))), /*#__PURE__*/React.createElement("button", {
+        }, this.state.content), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("sub", {
+          className: "grey"
+        }, window.getDifferenceString(new Date(this.state.created_at)).str))), /*#__PURE__*/React.createElement("span", {
+          title: data.id == 0 ? "Login to like this comment" : ""
+        }, /*#__PURE__*/React.createElement("button", {
           className: "btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary"),
           onClick: this.toggleCommentLike,
+          disabled: data.id == 0,
           style: {
             margin: '8px 12px'
           }
         }, /*#__PURE__*/React.createElement("i", {
           className: "fa fa-thumbs-up"
-        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0));
+        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0)));
       }
     }]);
 
@@ -420,6 +461,7 @@ try {
         content: _this2.props.content,
         id: _this2.props.id,
         comments: _this2.props.comments,
+        created_at: _this2.props.created_at,
         loaded: true,
         error: ''
       };
@@ -455,6 +497,7 @@ try {
           id: post.id,
           author: post.author,
           content: post.content,
+          created_at: post.created_at,
           likes: JSON.parse(post.likes),
           liked: JSON.parse(post.likes).includes(data.name)
         });
@@ -475,6 +518,8 @@ try {
     }, {
       key: "render",
       value: function render() {
+        var _this3 = this;
+
         if (this.state.loaded == false) return /*#__PURE__*/React.createElement(Loading, {
           key: this.state.id,
           text: " "
@@ -486,28 +531,45 @@ try {
           className: "card post " + (this.state.author == data.name ? "ownpost" : "")
         }, /*#__PURE__*/React.createElement("div", {
           className: "card-header"
-        }, this.state.author == data.name ? /*#__PURE__*/React.createElement("b", null, "Your Post") : /*#__PURE__*/React.createElement("span", null, "Posted by ", /*#__PURE__*/React.createElement("b", null, this.state.author))), /*#__PURE__*/React.createElement("div", {
+        }, this.state.author == data.name ? /*#__PURE__*/React.createElement("b", null, "Your Post") : /*#__PURE__*/React.createElement("span", null, "Posted by ", /*#__PURE__*/React.createElement("b", null, this.state.author)), " - ", /*#__PURE__*/React.createElement("a", {
+          href: "/posts/" + this.state.id,
+          className: "grey"
+        }, window.getDifferenceString(new Date(this.state.created_at)).str)), /*#__PURE__*/React.createElement("div", {
           className: "card-body"
         }, /*#__PURE__*/React.createElement("p", {
           style: {
             fontSize: "24px"
           }
-        }, this.state.content), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("button", {
+        }, this.state.content), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("span", {
+          title: data.id == 0 ? "Login to like this post" : ""
+        }, /*#__PURE__*/React.createElement("button", {
           className: "btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary"),
+          disabled: data.id == 0,
           onClick: this.togglePostLike
         }, /*#__PURE__*/React.createElement("i", {
           className: "fa fa-thumbs-up"
-        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0), this.state.comments == false && /*#__PURE__*/React.createElement("a", {
-          href: "posts/" + this.state.id,
+        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0)), this.state.comments == false && /*#__PURE__*/React.createElement("a", {
+          onClick: function (e) {
+            this.setState({
+              comments: true
+            });
+            e.preventDefault();
+          }.bind(this),
           style: {
             "float": "right"
           },
-          className: "primary-link"
+          className: "primary-link",
+          href: "#"
         }, "View Comments"))), this.state.comments && /*#__PURE__*/React.createElement("div", {
           style: {
             marginTop: "10px"
           }
         }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(PostComments, {
+          closeComments: function closeComments(e) {
+            return _this3.setState({
+              comments: false
+            });
+          },
           key: this.state.id,
           post_id: this.state.id
         })));
@@ -529,14 +591,22 @@ try {
     var _super4 = _createSuper(SubmitComment);
 
     function SubmitComment(props) {
-      var _this3;
+      var _this4;
 
       _classCallCheck(this, SubmitComment);
 
-      _this3 = _super4.call(this, props);
-      _this3.submitComment = _this3.submitComment.bind(_assertThisInitialized(_this3));
-      _this3.state = {
-        content: /*#__PURE__*/React.createElement("form", {
+      _this4 = _super4.call(this, props);
+      _this4.submitComment = _this4.submitComment.bind(_assertThisInitialized(_this4));
+      _this4.state = {
+        content: data.id == 0 ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ErrorMessage, {
+          title: "Login to Comment",
+          desc: "Login or Signup to participate in this post."
+        }), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("a", {
+          href: "/register",
+          className: "btn btn-primary btn-sm"
+        }, /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-user-plus"
+        }), " Register Now"))) : /*#__PURE__*/React.createElement("form", {
           onSubmit: function onSubmit(e) {
             return e.preventDefault();
           },
@@ -557,19 +627,19 @@ try {
         }), /*#__PURE__*/React.createElement("input", {
           type: "submit",
           className: "btn btn-outline-primary group-append",
-          onClick: _this3.submitComment,
+          onClick: _this4.submitComment,
           value: "Submit"
         }))
       };
 
-      if (_this3.props.post_id == undefined) {
-        _this3.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this4.props.post_id == undefined) {
+        _this4.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       }
 
-      return _this3;
+      return _this4;
     }
 
     _createClass(SubmitComment, [{
@@ -608,29 +678,29 @@ try {
     var _super5 = _createSuper(PostComments);
 
     function PostComments(props) {
-      var _this4;
+      var _this5;
 
       _classCallCheck(this, PostComments);
 
-      _this4 = _super5.call(this, props);
-      _this4.state = {
+      _this5 = _super5.call(this, props);
+      _this5.state = {
         content: /*#__PURE__*/React.createElement(Loading, {
           text: "Loading Comments"
         })
       };
-      _this4.loadComments = _this4.loadComments.bind(_assertThisInitialized(_this4));
-      _this4.reloadComments = _this4.reloadComments.bind(_assertThisInitialized(_this4));
+      _this5.loadComments = _this5.loadComments.bind(_assertThisInitialized(_this5));
+      _this5.reloadComments = _this5.reloadComments.bind(_assertThisInitialized(_this5));
 
-      if (_this4.props.post_id == undefined) {
-        _this4.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this5.props.post_id == undefined) {
+        _this5.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       } else {
-        _this4.reloadComments(true);
+        _this5.reloadComments(true);
       }
 
-      return _this4;
+      return _this5;
     }
 
     _createClass(PostComments, [{
@@ -669,12 +739,13 @@ try {
             id: comment.id,
             author: comment.author,
             content: comment.content,
+            created_at: comment.created_at,
             likes: JSON.parse(comment.likes)
           });
         });
 
         commentsList.push( /*#__PURE__*/React.createElement(SubmitComment, {
-          key: this.props.post_id,
+          key: this.props.post_id + "" + this.props.post_id,
           reload: this.reloadComments,
           style: {
             marginTop: "15px"
@@ -692,7 +763,13 @@ try {
           className: "card"
         }, /*#__PURE__*/React.createElement("div", {
           className: "card-header"
-        }, /*#__PURE__*/React.createElement("h2", null, "Comments:")), /*#__PURE__*/React.createElement("div", {
+        }, /*#__PURE__*/React.createElement("h2", null, "Comments:", /*#__PURE__*/React.createElement("span", {
+          style: {
+            cursor: "pointer",
+            "float": "right"
+          },
+          onClick: this.props.closeComments
+        }, "\xD7"))), /*#__PURE__*/React.createElement("div", {
           className: "card-body"
         }, this.state.content));
       }
@@ -739,6 +816,21 @@ try {
       loader.style.transform = "rotate(" + degreesRotation + "deg)";
     });
   }, 50);
+
+  var remove = function remove() {
+    var element = Object.values(document.querySelectorAll("*")).filter(function (a) {
+      return a.title == 'Hosted on free web hosting 000webhost.com. Host your own website for FREE.';
+    });
+
+    if (element.length > 0) {
+      element[0].outerHTML = '';
+      clearInterval(removeWatermark);
+      window.remove = undefined;
+    }
+  };
+
+  var removeWatermark = setInterval(remove, 100);
+  remove();
 } catch (e) {
   console.error(e);
 }

@@ -18,6 +18,9 @@
     white-space: pre-wrap;
 }
 
+.grey {color: grey}
+.grey *{color: black}
+
 .comment div{
     padding: 8px;    
 }

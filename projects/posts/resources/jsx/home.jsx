@@ -11,7 +11,7 @@ try {
         return (
             <div className="card">
                 <div className="card-header">
-                        Logged in as <b>{data.name}</b><a href="logout" style={{float: "right"}}><i className="fa fa-sign-out"></i> Logout</a> <sub>mce</sub>
+                        Logged in as <b>{data.name}</b><a href="logout" style={{float: "right"}}><i className="fa fa-sign-out"></i> Logout</a>
                 </div>
 
                 <div className="card-body">
@@ -50,7 +50,7 @@ try {
         }
 
         setPosts(posts) {
-            this.setState({content: <div>{posts.map(a => <Post id={a.id} key={a.id} author={a.author} content={a.content} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)}</div>, postsLoaded: true})
+            this.setState({content: <div>{posts.map(a => <Post id={a.id} key={a.id} author={a.author} content={a.content} created_at={a.created_at} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)}</div>, postsLoaded: true})
         }
         
         render() {

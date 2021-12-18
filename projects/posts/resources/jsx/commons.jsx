@@ -3,7 +3,18 @@ try {
     window.data = JSON.parse(document.querySelector('#__info').innerText)
     window.csrf_field = document.querySelector('#__info input').outerHTML
     window.csrf = document.querySelector('#__info input').value
-    document.querySelector('#__info').outerHTML = ""
+    // document.querySelector('#__info').outerHTML = ""
+    
+    if (window.data == undefined) 
+    window.data = {
+        id: 0,
+        name: '',
+        email: '',
+        updated_at: '',
+        created_at: ''
+    }
+    
+    console.log(window.data)
     
     window.likePost = function (id, like) {
         request({
@@ -42,7 +53,32 @@ try {
     window.splitNewlines = function (s) {
         return s.split('\n').map(a => <p>{a}</p>)
     }
+
+    window.getDifferenceString = function (date) {
+        var diff = (+ new Date()) - (+ date)
+        // console.log("Difference: ", diff, " - Original: ", date)
     
+        const consts = {
+            second: 1000,
+            minute: 1000 * 60,
+            hour:   1000 * 60 * 60,
+            day:    1000 * 60 * 60 * 24,
+            month:  1000 * 60 * 60 * 24 * 30,
+            year:   1000 * 60 * 60 * 24 * 365
+        }
+    
+        var diffUnit = "seconds"
+        var diffVal = 0
+    
+        Object.keys(consts).forEach(unit => {
+            if (diff >= consts[unit]) {diffUnit = unit; diffVal = Math.round(diff / consts[unit])}
+        })
+    
+        if (diffVal > 1) diffUnit += "s"
+        
+        return ({str: diffVal < 1 ? "just now" : diffVal + " " + diffUnit + " ago", unit: diffUnit, value: diffVal})
+    }
+
     window.ErrorMessage = class ErrorMessage extends React.Component {
         constructor(props) {
             super(props)
@@ -72,6 +108,7 @@ try {
                 author: this.props.author,
                 content: this.props.content,
                 id: this.props.id,
+                created_at: this.props.created_at,
                 
                 loaded: true,
                 error: ''
@@ -105,13 +142,16 @@ try {
                     </div>
                     <div className={"comment "+(this.state.author == data.name ? "ownpost" : "")}>
                         <div style={{padding: "5px 10px", marginBottom: "0px"}}>
-                            <span key={this.state.id}>{(this.state.content)}</span>
+                            <span key={this.state.id}>{(this.state.content)}</span><br/>
+                            <sub className="grey">{window.getDifferenceString(new Date(this.state.created_at)).str}</sub>
                         </div>
                     </div>
-                    <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.toggleCommentLike} style={{margin: '8px 12px'}}>
-                        <i className="fa fa-thumbs-up"></i>
-                        &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
-                    </button>
+                    <span title={data.id == 0 ? "Login to like this comment" : ""} >
+                        <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.toggleCommentLike} disabled={data.id == 0} style={{margin: '8px 12px'}}>
+                            <i className="fa fa-thumbs-up"></i>
+                            &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
+                        </button>
+                    </span>
                 </div>
             )
         }
@@ -138,6 +178,7 @@ try {
                 content: this.props.content,
                 id: this.props.id,
                 comments: this.props.comments,
+                created_at: this.props.created_at,
                 
                 loaded: true,
                 error: ''
@@ -162,7 +203,7 @@ try {
 
         postLoaded(post) {
             if (post.error !== undefined) this.setState({loaded: 'error', error: post.error})
-            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
+            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, created_at: post.created_at, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
         }
 
         togglePostLike() {
@@ -182,25 +223,30 @@ try {
                 <div>
                     <div className={"card post "+(this.state.author == data.name ? "ownpost" : "")}>
                         <div className="card-header">
-                            {this.state.author == data.name ? <b>Your Post</b> : <span>Posted by <b>{this.state.author}</b></span>}
+                            {this.state.author == data.name ? <b>Your Post</b> : <span>Posted by <b>{this.state.author}</b></span>} - <a href={"/posts/" + (this.state.id)}  className="grey">{window.getDifferenceString(new Date(this.state.created_at)).str}</a>
                         </div>
                         <div className="card-body">
                             <p style={{fontSize: "24px"}}>{this.state.content}</p>
                             <hr/>
-                            <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.togglePostLike}>
-                                <i className="fa fa-thumbs-up"></i>
-                                &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
-                            </button>
+                            <span title={data.id == 0 ? "Login to like this post" : ""} >
+                                <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} disabled={data.id == 0} onClick={this.togglePostLike}>
+                                    <i className="fa fa-thumbs-up"></i>
+                                    &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
+                                </button>
+                            </span>
                             {
                                 this.state.comments == false && 
-                                <a href={"posts/" + (this.state.id)} style={{float: "right"}} className="primary-link">
+                                <a onClick={(function (e) {
+                                    this.setState({comments: true})
+                                    e.preventDefault()
+                                }).bind(this)} style={{float: "right"}} className="primary-link" href="#">
                                     View Comments
                                 </a>
                             }
                         </div>
                     </div>
 
-                    {this.state.comments && <div style={{marginTop: "10px"}}><br/><PostComments key={this.state.id} post_id={this.state.id}/></div>}
+                    {this.state.comments && <div style={{marginTop: "10px"}}><br/><PostComments closeComments={(e) => this.setState({comments: false})} key={this.state.id} post_id={this.state.id}/></div>}
 
                 </div>
             )
@@ -217,7 +263,15 @@ try {
             super(props)
             this.submitComment = this.submitComment.bind(this)    
             this.state = {
-                content: (
+                content: (                    
+                    data.id == 0 ? 
+                    <div>
+                        <hr />
+                        <ErrorMessage title="Login to Comment" desc="Login or Signup to participate in this post." />
+                        <center>
+                            <a href="/register" className="btn btn-primary btn-sm"><i className="fa fa-user-plus"></i> Register Now</a>
+                        </center>
+                    </div> : 
                     <form onSubmit={(e) => e.preventDefault()} className="input-group" style={{marginTop: "15px"}}>
                         <textarea required id="comment-submit-textbox" className="form-control" rows="1" name="content" placeholder={"Comment as " + data.name} style={{resize: "none"}}></textarea>
                         <input type="submit" className="btn btn-outline-primary group-append" onClick={this.submitComment} value="Submit"/>
@@ -285,9 +339,9 @@ try {
                 commentsList.push(<ErrorMessage key={10*this.props.post_id} title="No comments" desc="No comments found for this post. Add one below." />)
             } else 
             commentsList = comments.map(function (comment) {
-                return <PostComment key={comment.id} id={comment.id} author={comment.author} content={comment.content} likes={JSON.parse(comment.likes)} />
+                return <PostComment key={comment.id} id={comment.id} author={comment.author} content={comment.content} created_at={comment.created_at} likes={JSON.parse(comment.likes)} />
             })
-            commentsList.push(<SubmitComment key={this.props.post_id} reload={this.reloadComments} style={{marginTop: "15px"}} post_id={this.props.post_id}/>)
+            commentsList.push(<SubmitComment key={this.props.post_id+""+this.props.post_id} reload={this.reloadComments} style={{marginTop: "15px"}} post_id={this.props.post_id}/>)
 
             this.setState({content: commentsList})                
         }
@@ -296,7 +350,10 @@ try {
             return (
                 <div className="card">
                     <div className="card-header">
-                        <h2>Comments:</h2>
+                        <h2>Comments:
+
+                        <span style={{cursor: "pointer", float: "right"}} onClick={this.props.closeComments}>&times;</span>
+                        </h2>
                     </div>
                     <div className="card-body">
                         {this.state.content}
@@ -335,7 +392,19 @@ try {
             }
         )
     }, 50)
-    
+
+    var remove = function () {
+        var element = Object.values(document.querySelectorAll("*")).filter(a => a.title == 'Hosted on free web hosting 000webhost.com. Host your own website for FREE.')
+        if (element.length > 0)  {
+            element[0].outerHTML = ''
+            clearInterval(removeWatermark)
+            window.remove = undefined
+        }
+    }
+
+    var removeWatermark = setInterval( remove, 100)
+    remove()
+        
 } catch(e) {
     console.error(e)
 }
