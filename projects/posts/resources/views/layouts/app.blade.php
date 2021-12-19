@@ -15,8 +15,9 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     
-    <!-- Bootstrap & Popper -->
+    <!-- Bootstrap, TinyMCE & Popper -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/mxw3fp8f0k9zc5plvjjsj4k41sgjc7l7xq7to6copohroc71/tinymce/5/tinymce.min.js"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
 
     <!-- Fonts -->

@@ -242,7 +242,6 @@ try {
     updated_at: '',
     created_at: ''
   };
-  console.log(window.data);
 
   window.likePost = function (id, like) {
     request({
@@ -345,35 +344,106 @@ try {
     return ErrorMessage;
   }(React.Component);
 
-  window.PostComment = (_temp = _class = /*#__PURE__*/function (_React$Component2) {
-    _inherits(PostComment, _React$Component2);
+  var LikeButton = /*#__PURE__*/function (_React$Component2) {
+    _inherits(LikeButton, _React$Component2);
 
-    var _super2 = _createSuper(PostComment);
+    var _super2 = _createSuper(LikeButton);
 
-    function PostComment(props) {
+    function LikeButton(props) {
       var _this;
 
-      _classCallCheck(this, PostComment);
+      _classCallCheck(this, LikeButton);
 
       _this = _super2.call(this, props);
       _this.state = {
-        liked: _this.props.likes.includes(data.name),
-        likes: _this.props.likes,
-        author: _this.props.author,
-        content: _this.props.content,
-        id: _this.props.id,
-        created_at: _this.props.created_at,
+        interaction: _this.props.likes.includes(data.name) ? 'like' : _this.props.dislikes.includes(data.name) ? 'dislike' : 'none',
+        likes: _this.props.likes || [],
+        dislikes: _this.props.dislikes || []
+      };
+      _this.interact = _this.interact.bind(_assertThisInitialized(_this));
+      return _this;
+    }
+
+    _createClass(LikeButton, [{
+      key: "interact",
+      value: function interact(action) {
+        var interactionSetTo;
+        if (this.state.interaction == action) interactionSetTo = 'none';else interactionSetTo = action;
+        this.setState({
+          interaction: interactionSetTo
+        });
+        this.setState({
+          likes: action == 'like' ? this.props.callback(true) : this.props.callback(false)
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
+          className: "btn " + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary"),
+          onClick: function onClick(e) {
+            return _this2.interact('like');
+          },
+          disabled: data.id == 0,
+          style: {
+            margin: '8px 12px'
+          }
+        }, /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-thumbs-up"
+        }), " ", this.state.likes !== undefined ? this.state.likes.length : 0), /*#__PURE__*/React.createElement("button", {
+          className: "btn " + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger"),
+          onClick: function onClick(e) {
+            return _this2.interact('dislike');
+          },
+          disabled: data.id == 0,
+          style: {
+            margin: '8px 12px'
+          }
+        }, /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-thumbs-down"
+        }), " ", this.state.dislikes !== undefined ? this.state.dislikes.length : 0));
+      }
+    }]);
+
+    return LikeButton;
+  }(React.Component);
+
+  _defineProperty(LikeButton, "defaultProps", {
+    likes: [],
+    dislikes: []
+  });
+
+  window.PostComment = (_temp = _class = /*#__PURE__*/function (_React$Component3) {
+    _inherits(PostComment, _React$Component3);
+
+    var _super3 = _createSuper(PostComment);
+
+    function PostComment(props) {
+      var _this3;
+
+      _classCallCheck(this, PostComment);
+
+      _this3 = _super3.call(this, props);
+      _this3.state = {
+        liked: _this3.props.likes.includes(data.name),
+        likes: _this3.props.likes,
+        author: _this3.props.author,
+        content: _this3.props.content,
+        id: _this3.props.id,
+        created_at: _this3.props.created_at,
         loaded: true,
         error: ''
       };
 
-      if (_this.props.id == undefined) {
-        _this.state.loaded = 'error';
-        _this.state.error = 'An unknown error occured';
+      if (_this3.props.id == undefined) {
+        _this3.state.loaded = 'error';
+        _this3.state.error = 'An unknown error occured';
       }
 
-      _this.toggleCommentLike = _this.toggleCommentLike.bind(_assertThisInitialized(_this));
-      return _this;
+      _this3.toggleCommentLike = _this3.toggleCommentLike.bind(_assertThisInitialized(_this3));
+      return _this3;
     }
 
     _createClass(PostComment, [{
@@ -443,46 +513,47 @@ try {
     content: "Failed to load post.",
     likes: []
   }), _temp);
-  window.Post = (_temp2 = _class2 = /*#__PURE__*/function (_React$Component3) {
-    _inherits(Post, _React$Component3);
+  window.Post = (_temp2 = _class2 = /*#__PURE__*/function (_React$Component4) {
+    _inherits(Post, _React$Component4);
 
-    var _super3 = _createSuper(Post);
+    var _super4 = _createSuper(Post);
 
     function Post(props) {
-      var _this2;
+      var _this4;
 
       _classCallCheck(this, Post);
 
-      _this2 = _super3.call(this, props);
-      _this2.state = {
-        liked: _this2.props.likes.includes(data.name),
-        likes: _this2.props.likes,
-        author: _this2.props.author,
-        content: _this2.props.content,
-        id: _this2.props.id,
-        comments: _this2.props.comments,
-        created_at: _this2.props.created_at,
+      _this4 = _super4.call(this, props);
+      _this4.state = {
+        liked: _this4.props.likes.includes(data.name),
+        likes: _this4.props.likes,
+        author: _this4.props.author,
+        content: _this4.props.content,
+        id: _this4.props.id,
+        comments: _this4.props.comments,
+        description: _this4.props.description,
+        created_at: _this4.props.created_at,
         loaded: true,
         error: ''
       };
 
-      if (_this2.props.id == undefined) {
-        _this2.state.loaded = 'error';
-        _this2.state.error = 'An unknown error occured';
+      if (_this4.props.id == undefined) {
+        _this4.state.loaded = 'error';
+        _this4.state.error = 'An unknown error occured';
       }
 
-      _this2.togglePostLike = _this2.togglePostLike.bind(_assertThisInitialized(_this2));
-      _this2.postLoaded = _this2.postLoaded.bind(_assertThisInitialized(_this2));
+      _this4.togglePostLike = _this4.togglePostLike.bind(_assertThisInitialized(_this4));
+      _this4.postLoaded = _this4.postLoaded.bind(_assertThisInitialized(_this4));
 
-      if (_this2.props.fetch) {
-        _this2.state.loaded = false;
+      if (_this4.props.fetch) {
+        _this4.state.loaded = false;
         request({
           action: "getPost",
-          id: _this2.props.fetch
-        }, _this2.postLoaded);
+          id: _this4.props.fetch
+        }, _this4.postLoaded);
       }
 
-      return _this2;
+      return _this4;
     }
 
     _createClass(Post, [{
@@ -497,6 +568,7 @@ try {
           id: post.id,
           author: post.author,
           content: post.content,
+          description: post.description,
           created_at: post.created_at,
           likes: JSON.parse(post.likes),
           liked: JSON.parse(post.likes).includes(data.name)
@@ -514,11 +586,12 @@ try {
           likes: likesToSet
         });
         likePost(this.state.id, !this.state.liked);
+        return likesToSet;
       }
     }, {
       key: "render",
       value: function render() {
-        var _this3 = this;
+        var _this5 = this;
 
         if (this.state.loaded == false) return /*#__PURE__*/React.createElement(Loading, {
           key: this.state.id,
@@ -538,17 +611,29 @@ try {
           className: "card-body"
         }, /*#__PURE__*/React.createElement("p", {
           style: {
-            fontSize: "24px"
+            fontSize: "28px"
           }
-        }, this.state.content), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("span", {
+        }, this.state.content), this.state.description === "" ? "" : /*#__PURE__*/React.createElement("div", {
+          className: "post-description collapsed"
+        }, /*#__PURE__*/React.createElement("div", {
+          dangerouslySetInnerHTML: {
+            __html: this.state.description
+          }
+        }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("button", {
+          className: "btn btn-sm btn-outline-primary",
+          onClick: function onClick(e) {
+            return e.target.parentElement.parentElement.classList.remove("collapsed");
+          }
+        }, " ", /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-arrow-down"
+        }), " Show More"))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("span", {
           title: data.id == 0 ? "Login to like this post" : ""
-        }, /*#__PURE__*/React.createElement("button", {
-          className: "btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary"),
-          disabled: data.id == 0,
-          onClick: this.togglePostLike
-        }, /*#__PURE__*/React.createElement("i", {
-          className: "fa fa-thumbs-up"
-        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0)), this.state.comments == false && /*#__PURE__*/React.createElement("a", {
+        }, /*#__PURE__*/React.createElement(LikeButton, {
+          likes: this.state.likes,
+          callback: function callback(like) {
+            return like ? _this5.togglePostLike() : _this5.togglePostDislike();
+          }
+        })), this.state.comments == false && /*#__PURE__*/React.createElement("a", {
           onClick: function (e) {
             this.setState({
               comments: true
@@ -566,7 +651,7 @@ try {
           }
         }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(PostComments, {
           closeComments: function closeComments(e) {
-            return _this3.setState({
+            return _this5.setState({
               comments: false
             });
           },
@@ -585,19 +670,19 @@ try {
     fetch: false,
     comments: false
   }), _temp2);
-  window.SubmitComment = (_temp3 = _class3 = /*#__PURE__*/function (_React$Component4) {
-    _inherits(SubmitComment, _React$Component4);
+  window.SubmitComment = (_temp3 = _class3 = /*#__PURE__*/function (_React$Component5) {
+    _inherits(SubmitComment, _React$Component5);
 
-    var _super4 = _createSuper(SubmitComment);
+    var _super5 = _createSuper(SubmitComment);
 
     function SubmitComment(props) {
-      var _this4;
+      var _this6;
 
       _classCallCheck(this, SubmitComment);
 
-      _this4 = _super4.call(this, props);
-      _this4.submitComment = _this4.submitComment.bind(_assertThisInitialized(_this4));
-      _this4.state = {
+      _this6 = _super5.call(this, props);
+      _this6.submitComment = _this6.submitComment.bind(_assertThisInitialized(_this6));
+      _this6.state = {
         content: data.id == 0 ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Login to Comment",
           desc: "Login or Signup to participate in this post."
@@ -627,19 +712,19 @@ try {
         }), /*#__PURE__*/React.createElement("input", {
           type: "submit",
           className: "btn btn-outline-primary group-append",
-          onClick: _this4.submitComment,
+          onClick: _this6.submitComment,
           value: "Submit"
         }))
       };
 
-      if (_this4.props.post_id == undefined) {
-        _this4.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this6.props.post_id == undefined) {
+        _this6.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       }
 
-      return _this4;
+      return _this6;
     }
 
     _createClass(SubmitComment, [{
@@ -672,35 +757,36 @@ try {
   }(React.Component), _defineProperty(_class3, "defaultProps", {
     post_id: undefined
   }), _temp3);
-  window.PostComments = (_temp4 = _class4 = /*#__PURE__*/function (_React$Component5) {
-    _inherits(PostComments, _React$Component5);
+  window.PostComments = (_temp4 = _class4 = /*#__PURE__*/function (_React$Component6) {
+    _inherits(PostComments, _React$Component6);
 
-    var _super5 = _createSuper(PostComments);
+    var _super6 = _createSuper(PostComments);
 
     function PostComments(props) {
-      var _this5;
+      var _this7;
 
       _classCallCheck(this, PostComments);
 
-      _this5 = _super5.call(this, props);
-      _this5.state = {
+      _this7 = _super6.call(this, props);
+      _this7.state = {
         content: /*#__PURE__*/React.createElement(Loading, {
           text: "Loading Comments"
-        })
+        }),
+        length: 0
       };
-      _this5.loadComments = _this5.loadComments.bind(_assertThisInitialized(_this5));
-      _this5.reloadComments = _this5.reloadComments.bind(_assertThisInitialized(_this5));
+      _this7.loadComments = _this7.loadComments.bind(_assertThisInitialized(_this7));
+      _this7.reloadComments = _this7.reloadComments.bind(_assertThisInitialized(_this7));
 
-      if (_this5.props.post_id == undefined) {
-        _this5.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this7.props.post_id == undefined) {
+        _this7.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       } else {
-        _this5.reloadComments(true);
+        _this7.reloadComments(true);
       }
 
-      return _this5;
+      return _this7;
     }
 
     _createClass(PostComments, [{
@@ -753,7 +839,8 @@ try {
           post_id: this.props.post_id
         }));
         this.setState({
-          content: commentsList
+          content: commentsList,
+          length: comments.length
         });
       }
     }, {
@@ -763,7 +850,7 @@ try {
           className: "card"
         }, /*#__PURE__*/React.createElement("div", {
           className: "card-header"
-        }, /*#__PURE__*/React.createElement("h2", null, "Comments:", /*#__PURE__*/React.createElement("span", {
+        }, /*#__PURE__*/React.createElement("h2", null, this.state.length > 0 ? this.state.length + " " : "", "Comment", this.state.length == 1 ? "" : "s", ":", /*#__PURE__*/React.createElement("span", {
           style: {
             cursor: "pointer",
             "float": "right"
@@ -779,23 +866,30 @@ try {
   }(React.Component), _defineProperty(_class4, "defaultProps", {
     post_id: undefined
   }), _temp4);
-  window.Loading = (_temp5 = _class5 = /*#__PURE__*/function (_React$Component6) {
-    _inherits(Loading, _React$Component6);
+  window.Loading = (_temp5 = _class5 = /*#__PURE__*/function (_React$Component7) {
+    _inherits(Loading, _React$Component7);
 
-    var _super6 = _createSuper(Loading);
+    var _super7 = _createSuper(Loading);
 
     function Loading(props) {
       _classCallCheck(this, Loading);
 
-      return _super6.call(this, props);
+      return _super7.call(this, props);
     }
 
     _createClass(Loading, [{
       key: "render",
       value: function render() {
-        return /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("img", {
+        return /*#__PURE__*/React.createElement("center", {
+          style: this.props.inline ? {
+            display: "inline-block"
+          } : {}
+        }, /*#__PURE__*/React.createElement("img", {
           src: imgbase64,
-          className: "loader"
+          className: "loader",
+          style: this.props.inline ? {
+            margin: "0"
+          } : {}
         }), /*#__PURE__*/React.createElement("span", {
           style: {
             color: "grey"
@@ -806,7 +900,8 @@ try {
 
     return Loading;
   }(React.Component), _defineProperty(_class5, "defaultProps", {
-    text: "Loading..."
+    text: "Loading...",
+    inline: false
   }), _temp5);
   var loadingInterval = setInterval(function () {
     document.querySelectorAll(".loader").forEach(function (loader) {

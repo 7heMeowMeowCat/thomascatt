@@ -109,6 +109,21 @@ function _typeof(obj) {
   return _typeof(obj);
 }
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -213,47 +228,6 @@ function _getPrototypeOf(o) {
 }
 
 try {
-  var CreatePostSection = function CreatePostSection() {
-    return /*#__PURE__*/React.createElement("div", {
-      className: "card"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "card-header"
-    }, "Logged in as ", /*#__PURE__*/React.createElement("b", null, data.name), /*#__PURE__*/React.createElement("a", {
-      href: "logout",
-      style: {
-        "float": "right"
-      }
-    }, /*#__PURE__*/React.createElement("i", {
-      className: "fa fa-sign-out"
-    }), " Logout")), /*#__PURE__*/React.createElement("div", {
-      className: "card-body"
-    }, /*#__PURE__*/React.createElement("form", {
-      action: "/",
-      method: "POST"
-    }, /*#__PURE__*/React.createElement("input", {
-      type: "hidden",
-      name: "_token",
-      value: csrf
-    }), /*#__PURE__*/React.createElement("input", {
-      type: "hidden",
-      name: "action",
-      value: "submit"
-    }), /*#__PURE__*/React.createElement("div", {
-      className: "input-group"
-    }, /*#__PURE__*/React.createElement("textarea", {
-      required: true,
-      className: "form-control",
-      rows: "1",
-      name: "content",
-      placeholder: "Post something...",
-      style: {
-        resize: "none"
-      }
-    }), /*#__PURE__*/React.createElement("button", {
-      className: "btn btn-outline-primary group-append"
-    }, "Submit")))));
-  };
-
   var loadPosts = function loadPosts(callback) {
     request({
       action: "loadPosts"
@@ -266,29 +240,171 @@ try {
   var data = window.data;
   var csrf_field = window.csrf_field;
 
-  var Posts = /*#__PURE__*/function (_React$Component) {
-    _inherits(Posts, _React$Component);
+  var CreatePostSection = /*#__PURE__*/function (_React$Component) {
+    _inherits(CreatePostSection, _React$Component);
 
-    var _super = _createSuper(Posts);
+    var _super = _createSuper(CreatePostSection);
 
-    function Posts(props) {
+    function CreatePostSection(props) {
       var _this;
 
-      _classCallCheck(this, Posts);
+      _classCallCheck(this, CreatePostSection);
 
       _this = _super.call(this, props);
       _this.state = {
+        expanded: false,
+        loading: false,
+        mceLoading: true
+      };
+      _this.submitPost = _this.submitPost.bind(_assertThisInitialized(_this));
+      return _this;
+    }
+
+    _createClass(CreatePostSection, [{
+      key: "submitPost",
+      value: function submitPost(e) {
+        e.preventDefault();
+        var postTitle = e.target.querySelector("input[name=content]").value;
+        var postDesc = tinymce.get()[0].getContent();
+        console.log("Title: ", JSON.stringify(postTitle), "\nDescription: ", JSON.stringify(postDesc));
+        this.setState({
+          loading: true
+        });
+        request({
+          action: "submit",
+          content: postTitle,
+          description: postDesc
+        }, function (response) {
+          document.querySelector('#reload-posts').click();
+          e.target.querySelector("input[name=content]").value = '';
+          tinymce.get()[0].setContent('');
+          this.setState({
+            loading: false,
+            expanded: false
+          });
+        }.bind(this));
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _tinymce$init;
+
+        return /*#__PURE__*/React.createElement("div", {
+          className: "card"
+        }, /*#__PURE__*/React.createElement("div", {
+          className: "card-header"
+        }, "Logged in as ", /*#__PURE__*/React.createElement("b", null, data.name), /*#__PURE__*/React.createElement("a", {
+          href: "logout",
+          style: {
+            "float": "right"
+          }
+        }, /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-sign-out"
+        }), " Logout")), /*#__PURE__*/React.createElement("div", {
+          className: "card-body"
+        }, /*#__PURE__*/React.createElement("form", {
+          action: "/",
+          method: "POST",
+          onSubmit: this.submitPost
+        }, /*#__PURE__*/React.createElement("input", {
+          required: true,
+          className: "form-control",
+          name: "content",
+          placeholder: "Post something...",
+          style: {
+            resize: "none",
+            fontSize: "28px"
+          }
+        }), /*#__PURE__*/React.createElement("div", {
+          hidden: !this.state.expanded
+        }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("div", {
+          name: "description",
+          placeholder: "Post Body",
+          className: "form-control"
+        })), tinymce.init((_tinymce$init = {
+          selector: "*[name=description]",
+          toolbar: true,
+          menubar: false,
+          statusbar: false,
+          plugins: 'link table autolink'
+        }, _defineProperty(_tinymce$init, "toolbar", 'bold italic underline strikethrough | aligncenter alignjustify alignleft alignright | fontselect fontsizeselect | forecolor backcolor | indent outdent | subscript superscript | link table'), _defineProperty(_tinymce$init, "toolbar_mode", "sliding"), _defineProperty(_tinymce$init, "default_link_target", "_blank"), _defineProperty(_tinymce$init, "target_list", false), _defineProperty(_tinymce$init, "height", 400), _defineProperty(_tinymce$init, "setup", function (editor) {
+          editor.on('init', function (e) {
+            this.setState({
+              mceLoading: false
+            });
+          }.bind(this));
+        }.bind(this)), _tinymce$init)) ? "" : "", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", {
+          className: "btn btn-primary",
+          style: {
+            "float": "right"
+          },
+          disabled: this.state.loading
+        }, this.state.loading ? /*#__PURE__*/React.createElement(Loading, {
+          inline: true,
+          text: ""
+        }) : /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-paper-plane"
+        }), " Submit Post"), /*#__PURE__*/React.createElement("button", {
+          onClick: function (e) {
+            e.preventDefault();
+            this.setState({
+              expanded: !this.state.expanded
+            });
+          }.bind(this),
+          className: "btn btn-outline-secondary",
+          disabled: this.state.mceLoading,
+          style: {
+            "float": "right",
+            marginRight: "5px"
+          }
+        }, this.state.mceLoading ? /*#__PURE__*/React.createElement(Loading, {
+          inline: true,
+          text: ""
+        }) : /*#__PURE__*/React.createElement("i", {
+          className: "fa fa-angle-" + (this.state.expanded ? "up" : "down")
+        }), " ", this.state.expanded ? "Collapse" : "Expand", " full editor"))));
+      }
+    }]);
+
+    return CreatePostSection;
+  }(React.Component);
+
+  var Posts = /*#__PURE__*/function (_React$Component2) {
+    _inherits(Posts, _React$Component2);
+
+    var _super2 = _createSuper(Posts);
+
+    function Posts(props) {
+      var _this2;
+
+      _classCallCheck(this, Posts);
+
+      _this2 = _super2.call(this, props);
+      _this2.state = {
         content: /*#__PURE__*/React.createElement(Loading, {
           text: "Fetching Posts..."
         }),
         postsLoaded: false
       };
-      _this.setPosts = _this.setPosts.bind(_assertThisInitialized(_this));
-      loadPosts(_this.setPosts);
-      return _this;
+      _this2.setPosts = _this2.setPosts.bind(_assertThisInitialized(_this2));
+      _this2.reloadPosts = _this2.reloadPosts.bind(_assertThisInitialized(_this2));
+      loadPosts(_this2.setPosts);
+      return _this2;
     }
 
     _createClass(Posts, [{
+      key: "reloadPosts",
+      value: function reloadPosts() {
+        this.setState({
+          postsLoaded: false,
+          content: [/*#__PURE__*/React.createElement(Loading, {
+            text: "Fetching Posts...",
+            key: "foo"
+          }), this.state.content]
+        });
+        loadPosts(this.setPosts);
+      }
+    }, {
       key: "setPosts",
       value: function setPosts(posts) {
         this.setState({
@@ -298,6 +414,7 @@ try {
               key: a.id,
               author: a.author,
               content: a.content,
+              description: a.description,
               created_at: a.created_at,
               likes: a.likes == '' ? [] : JSON.parse(a.likes)
             });
@@ -308,7 +425,11 @@ try {
     }, {
       key: "render",
       value: function render() {
-        return /*#__PURE__*/React.createElement("div", null, this.state.content);
+        return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+          hidden: true,
+          onClick: this.reloadPosts,
+          id: "reload-posts"
+        }), this.state.content);
       }
     }]);
 

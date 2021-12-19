@@ -14,8 +14,6 @@ try {
         created_at: ''
     }
     
-    console.log(window.data)
-    
     window.likePost = function (id, like) {
         request({
             action: like ? "likePost" : "unlikePost",
@@ -88,6 +86,44 @@ try {
             return <center style={{padding: "15px"}}>
                 <span style={{color: "grey"}}><b>{this.props.title}:</b> {this.props.desc} </span>
             </center>
+        }
+    }
+    
+    class LikeButton extends React.Component {
+        static defaultProps = {
+            likes: [],
+            dislikes: []
+        }
+        constructor(props) {
+            super(props)
+            this.state = {
+                interaction: this.props.likes.includes(data.name) ? 'like' : (this.props.dislikes.includes(data.name) ? 'dislike' : 'none'),
+                likes: this.props.likes || [],
+                dislikes: this.props.dislikes || [],
+            }
+
+            this.interact = this.interact.bind(this)            
+        }
+
+        interact(action) {
+            var interactionSetTo;
+            if (this.state.interaction == action) interactionSetTo = 'none'
+            else interactionSetTo = action
+            this.setState({interaction: interactionSetTo})
+            this.setState({likes: (action == 'like' ? this.props.callback(true) : this.props.callback(false))})
+        }
+
+        render() {
+            return (
+                <div>
+                    <button className={"btn " + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary")} onClick={(e) => this.interact('like')} disabled={data.id == 0} style={{margin: '8px 12px'}}>
+                        <i className="fa fa-thumbs-up"></i> {this.state.likes !== undefined ? this.state.likes.length : 0}
+                    </button>
+                    <button className={"btn " + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger")} onClick={(e) => this.interact('dislike')} disabled={data.id == 0} style={{margin: '8px 12px'}}>
+                        <i className="fa fa-thumbs-down"></i> {this.state.dislikes !== undefined ? this.state.dislikes.length : 0}
+                    </button>
+                </div>
+            )
         }
     }
     
@@ -178,6 +214,7 @@ try {
                 content: this.props.content,
                 id: this.props.id,
                 comments: this.props.comments,
+                description: this.props.description,
                 created_at: this.props.created_at,
                 
                 loaded: true,
@@ -203,7 +240,7 @@ try {
 
         postLoaded(post) {
             if (post.error !== undefined) this.setState({loaded: 'error', error: post.error})
-            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, created_at: post.created_at, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
+            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, description: post.description, created_at: post.created_at, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
         }
 
         togglePostLike() {
@@ -213,6 +250,7 @@ try {
             this.setState({liked: !this.state.liked, likes: likesToSet})
 
             likePost(this.state.id, !this.state.liked)
+            return likesToSet
         }
 
         render() {
@@ -226,13 +264,20 @@ try {
                             {this.state.author == data.name ? <b>Your Post</b> : <span>Posted by <b>{this.state.author}</b></span>} - <a href={"/posts/" + (this.state.id)}  className="grey">{window.getDifferenceString(new Date(this.state.created_at)).str}</a>
                         </div>
                         <div className="card-body">
-                            <p style={{fontSize: "24px"}}>{this.state.content}</p>
+                            <p style={{fontSize: "28px"}}>{this.state.content}</p>
+                            {
+                                this.state.description === "" ? "" : (<div className="post-description collapsed">
+                                    <div dangerouslySetInnerHTML={{__html: this.state.description}}></div>
+                                    <span><button className="btn btn-sm btn-outline-primary" onClick={(e) => e.target.parentElement.parentElement.classList.remove("collapsed")}> <i className="fa fa-arrow-down"></i> Show More</button></span>
+                                </div>)
+                            }
                             <hr/>
                             <span title={data.id == 0 ? "Login to like this post" : ""} >
-                                <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} disabled={data.id == 0} onClick={this.togglePostLike}>
+                                <LikeButton likes={this.state.likes} callback={(like) => like ? this.togglePostLike() : this.togglePostDislike()}/>
+                                {/* <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} disabled={data.id == 0} onClick={this.togglePostLike}>
                                     <i className="fa fa-thumbs-up"></i>
                                     &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
-                                </button>
+                                </button> */}
                             </span>
                             {
                                 this.state.comments == false && 
@@ -306,7 +351,8 @@ try {
         constructor(props) {
             super(props)
             this.state = {
-                content: <Loading text="Loading Comments"/>
+                content: <Loading text="Loading Comments"/>,
+                length: 0
             }
 
             this.loadComments = this.loadComments.bind(this)
@@ -343,14 +389,14 @@ try {
             })
             commentsList.push(<SubmitComment key={this.props.post_id+""+this.props.post_id} reload={this.reloadComments} style={{marginTop: "15px"}} post_id={this.props.post_id}/>)
 
-            this.setState({content: commentsList})                
+            this.setState({content: commentsList, length: comments.length})                
         }
 
         render() {
             return (
                 <div className="card">
                     <div className="card-header">
-                        <h2>Comments:
+                        <h2>{this.state.length > 0 ? this.state.length + " " : ""}Comment{this.state.length == 1 ? "" : "s"}:
 
                         <span style={{cursor: "pointer", float: "right"}} onClick={this.props.closeComments}>&times;</span>
                         </h2>
@@ -365,7 +411,8 @@ try {
 
     window.Loading = class Loading extends React.Component {
         static defaultProps = {
-            text: "Loading..."
+            text: "Loading...",
+            inline: false
         }
         constructor(props) {
             super(props)
@@ -373,8 +420,8 @@ try {
 
         render() {
             return (
-                <center>
-                    <img src={imgbase64} className="loader"/>
+                <center style={ this.props.inline ? {display: "inline-block"} : {}}>
+                    <img src={imgbase64} className="loader" style={ this.props.inline ? {margin: "0"} : {}}/>
                     <span style={{color: "grey"}}>{this.props.text}</span>
                 </center>      
             )

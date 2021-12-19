@@ -18,7 +18,9 @@ class RequestHandling extends Controller
     {
         try {
             function submitPost($request) {
-                $result = DB::insert('insert into posts (author, content, description, likes) values(?, ?, ?)', [Auth::user()->name, $request->content, $request->description, '[]']);
+                $description = isset($request->description) ? $request->description  : "";
+                $result = DB::insert('insert into posts (author, content, description, likes) values(?, ?, ?, ?)', [Auth::user()->name, $request->content, $description, '[]']);
+                return json_encode($result);
             }
 
             function addComment($request) {
@@ -77,7 +79,7 @@ class RequestHandling extends Controller
             }
     
             $action = $request->action;
-            if ($action == 'submit') submitPost($request);
+            if ($action == 'submit') return submitPost($request);
             else if ($action == "addComment") return addComment($request);
             else if ($action == "getPost") return getPost($request);
             else if ($action == "getComments") return getComments($request);
