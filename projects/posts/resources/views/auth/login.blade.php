@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <center>
-                <i class="fab fa-facebook logo-color" style="font-size: 210px;"></i>
+                <img src="https://thomas-catt.github.io/img/rounded_me.png" width="210">
                 <h1 style="font-size: 69px;">{{ config('app.name') }}</h1>
-                <p><i>A better, zucc-less facebook for all of us.</i></p>
+                <p><i>A better, zucc-less blogging site for all of us.</i></p>
                 <br>
             </center>
             <div class="card">

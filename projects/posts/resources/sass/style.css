@@ -5,6 +5,10 @@
     white-space: pre-wrap;
 }
 
+table th, table td {
+    border: 1px solid;
+}
+
 .post-description {
     position: static;
 }
@@ -41,12 +45,12 @@
 }
 
 .comment {
-    background: #efefef;
+    background: #fcfcfc;
     margin-bottom: 4px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 16px;
-    min-width: 60px;
+    min-width: 30px;
     max-width: 80%;
     font-size: 16px;
     z-index: 1000;
@@ -61,10 +65,21 @@
 }
 
 .logo-color, .logo-color * {
+    color: grey;
+    user-select: none;
+}
+
+.logo-color:hover, .logo-color *:hover {
     color: blue;
 }
 
+
+
 .ownpost {
+    background: #eef;
+}
+
+.owncomment {
     background: #eef;
 }
 

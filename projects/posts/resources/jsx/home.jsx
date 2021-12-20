@@ -23,9 +23,10 @@ try {
 
         submitPost(e) {
             e.preventDefault();
-            var postTitle = e.target.querySelector("input[name=content]").value
+            var postTitle = (e.target.querySelector("input[name=content]").value).trim()
             var postDesc = tinymce.get()[0].getContent()
-            console.log("Title: ", JSON.stringify(postTitle), "\nDescription: ", JSON.stringify(postDesc))
+            if (postTitle == "") return alert("Why do you think I would have forgotten to block this?")
+            // console.log("Title: ", JSON.stringify(postTitle), "\nDescription: ", JSON.stringify(postDesc))
             this.setState({loading: true})
             request({action: "submit", content: postTitle, description: postDesc}, (function(response) {
                 document.querySelector('#reload-posts').click()
@@ -113,7 +114,7 @@ try {
         }
 
         setPosts(posts) {
-            this.setState({content: <div>{posts.map(a => <Post id={a.id} key={a.id} author={a.author} content={a.content} description={a.description} created_at={a.created_at} likes={a.likes == ''  ? [] : JSON.parse(a.likes)}/>)}</div>, postsLoaded: true})
+            this.setState({content: <div>{posts.map(a => <Post id={a.id} key={a.id} author={a.author} content={a.content} description={a.description} created_at={a.created_at} likes={a.likes == ''  ? [] : JSON.parse(a.likes)} dislikes={a.dislikes == ''  ? [] : JSON.parse(a.dislikes)}/>)}</div>, postsLoaded: true})
         }
         
         render() {

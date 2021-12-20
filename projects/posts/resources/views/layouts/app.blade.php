@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand logo-color" href="{{ url('/') }}">
-                    <i class="fab fa-facebook"></i>
+                    <img src="https://thomas-catt.github.io/img/rounded_me.png" width="20">
                     <span class="logo-color">{{ config('app.name') }}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

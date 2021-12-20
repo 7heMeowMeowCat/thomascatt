@@ -13,10 +13,37 @@ try {
         updated_at: '',
         created_at: ''
     }
+
+    window.formatNum = function (n) {
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    window.prefixCount = function (n) {
+        var vals = {
+            k: 1000,
+            m: 1000000,
+            b: 1000000000,
+            t: 1000000000000,
+        }
+
+        var prefixNum = n;
+        var prefixName = '';
+
+        Object.keys(vals).forEach(a => {
+            if (vals[a] < n) {
+                prefixNum = Math.round(n/(vals[a]/10))/10
+                prefixName = a
+            }
+        })
+
+        return prefixNum+(prefixName.toUpperCase())
+    }
+
     
     window.likePost = function (id, like) {
         request({
             action: like ? "likePost" : "unlikePost",
+            like: true,
             id: id,
             post: true
         })
@@ -25,6 +52,25 @@ try {
     window.likeComment = function (id, like) {
         request({
             action: like ? "likePost" : "unlikePost",
+            like: true,
+            id: id,
+            post: false
+        })
+    }
+    
+    window.dislikePost = function (id, dislike) {
+        request({
+            action: dislike ? "dislikePost" : "undislikePost",
+            like: false,
+            id: id,
+            post: true
+        })
+    }
+    
+    window.dislikeComment = function (id, dislike) {
+        request({
+            action: dislike ? "dislikePost" : "undislikePost",
+            like: false,
             id: id,
             post: false
         })
@@ -43,6 +89,8 @@ try {
     }
 
     var likePost = window.likePost
+    var prefixCount = window.prefixCount
+    var formatNum = window.formatNum
     var request = window.request
     var csrf = window.csrf
     var data = window.data
@@ -50,6 +98,10 @@ try {
     
     window.splitNewlines = function (s) {
         return s.split('\n').map(a => <p>{a}</p>)
+    }
+
+    window.getInteraction = function (likes, dislikes) {
+        return likes.includes(data.name) ? 'like' : (dislikes.includes(data.name) ? 'dislike' : 'none')
     }
 
     window.getDifferenceString = function (date) {
@@ -92,12 +144,14 @@ try {
     class LikeButton extends React.Component {
         static defaultProps = {
             likes: [],
-            dislikes: []
+            dislikes: [],
+            callback: () => true,
+            small: false
         }
         constructor(props) {
             super(props)
             this.state = {
-                interaction: this.props.likes.includes(data.name) ? 'like' : (this.props.dislikes.includes(data.name) ? 'dislike' : 'none'),
+                interaction: getInteraction(this.props.likes, this.props.dislikes),
                 likes: this.props.likes || [],
                 dislikes: this.props.dislikes || [],
             }
@@ -110,18 +164,32 @@ try {
             if (this.state.interaction == action) interactionSetTo = 'none'
             else interactionSetTo = action
             this.setState({interaction: interactionSetTo})
-            this.setState({likes: (action == 'like' ? this.props.callback(true) : this.props.callback(false))})
+            this.setState(this.props.callback(action == 'like'))
         }
 
         render() {
+            var likes = this.state.likes !== undefined ? this.state.likes.length : 0
+            var dislikes = this.state.dislikes !== undefined ? this.state.dislikes.length : 0
+
+            var ratio = (likes > 0) ? (Math.floor(100*(likes-dislikes)/(likes+dislikes))) : 0
+            var ratioUnit = (likes > 0) ? "like" : "dislike"
+            
             return (
-                <div>
-                    <button className={"btn " + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary")} onClick={(e) => this.interact('like')} disabled={data.id == 0} style={{margin: '8px 12px'}}>
-                        <i className="fa fa-thumbs-up"></i> {this.state.likes !== undefined ? this.state.likes.length : 0}
+                <div style={{display: "inline-block"}}>
+                    <button className={"btn " + (this.props.small ? "btn-sm " : "") + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary")} onClick={(e) => this.interact('like')} disabled={data.id == 0} style={{margin: '8px 4px', display: "inline-block"}}>
+                        <span title={formatNum(likes) + " likes"}>
+                            <i className="fa fa-thumbs-up"></i> {prefixCount(likes)}
+                        </span>
                     </button>
-                    <button className={"btn " + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger")} onClick={(e) => this.interact('dislike')} disabled={data.id == 0} style={{margin: '8px 12px'}}>
-                        <i className="fa fa-thumbs-down"></i> {this.state.dislikes !== undefined ? this.state.dislikes.length : 0}
+                    <button className={"btn " + (this.props.small ? "btn-sm " : "") + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger")} onClick={(e) => this.interact('dislike')} disabled={data.id == 0} style={{margin: '8px 4px', display: "inline-block"}}>
+                        <span title={formatNum(dislikes) + " dislikes"}>
+                            <i className="fa fa-thumbs-down"></i> {prefixCount(dislikes)}
+                        </span>
                     </button>
+                    &nbsp;&nbsp;
+                    <span className="grey">{
+                        (likes) > 0 ? ratio+"% "+ratioUnit+"d" : ""
+                    }</span>
                 </div>
             )
         }
@@ -133,14 +201,16 @@ try {
             author: '[unknown]',
             content: "Failed to load post.",
             likes: [],
+            dislikes: [],
         }
 
         constructor(props) {
             super(props)
             this.state = {
-                liked: this.props.likes.includes(data.name),
                 likes: this.props.likes,
-
+                dislikes: this.props.dislikes,
+                interaction: getInteraction(this.props.likes, this.props.dislikes),
+                
                 author: this.props.author,
                 content: this.props.content,
                 id: this.props.id,
@@ -158,14 +228,51 @@ try {
             this.toggleCommentLike = this.toggleCommentLike.bind(this)
         }
 
-        toggleCommentLike() {
+        toggleCommentLike(action) {
             var likesToSet = this.state.likes
-            if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
-            else likesToSet = likesToSet.filter(a => a != data.name)
-            this.setState({liked: !this.state.liked, likes: likesToSet})
+            var dislikesToSet = this.state.dislikes
+            var listToModify = action ? likesToSet : dislikesToSet;
+            var otherList = action ? dislikesToSet : likesToSet;;
+                        
+            action = action ? "like" : "dislike"
+            
+            var interaction = getInteraction(this.state.likes, this.state.dislikes)
+            if (!(interaction  == action))
+                listToModify.push(data.name)
+            else
+                listToModify = listToModify.filter(a => a != data.name)
+            otherList = otherList.filter(a => a != data.name)
 
-            likeComment(this.state.id, !this.state.liked)
+            likesToSet = action == "like" ? listToModify : otherList
+            dislikesToSet = action == "like" ? otherList : listToModify
+            
+            this.setState({interaction: (interaction == action ? 'none' : action), dislikes: dislikesToSet, likes: likesToSet})
+
+            if (action == 'like') likeComment(this.state.id, interaction != action)
+            else dislikeComment(this.state.id, interaction != action)
+            return {dislikes: dislikesToSet, likes: likesToSet}
         }
+
+
+        // toggleCommentLike() {
+        //     var likesToSet = this.state.likes
+        //     if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
+        //     else likesToSet = likesToSet.filter(a => a != data.name)
+        //     this.setState({liked: !this.state.liked, likes: likesToSet})
+
+        //     likeComment(this.state.id, !this.state.liked)
+        //     return {likes: likesToSet}
+        // }
+
+        // toggleCommentDislike() {
+        //     var dislikesToSet = this.state.dislikes
+        //     if ((!this.state.disliked  == true) && !dislikesToSet.includes(data.name)) dislikesToSet.push(data.name)
+        //     else dislikesToSet = dislikesToSet.filter(a => a != data.name)
+        //     this.setState({disliked: !this.state.disliked, dislikes: dislikesToSet})
+
+        //     dislikeComment(this.state.id, !this.state.disliked)
+        //     return {dislikes: dislikesToSet}
+        // }
 
         render() {
             if (this.state.loaded == false) return <Loading text=" "/>
@@ -174,20 +281,21 @@ try {
             return (
                 <div style={{display: "block", margin: '0', padding: "4px 10px", borderBottom: "0px solid #bbb"}}>
                     <div style={{fontSize: "12px", paddingBottom: '0'}}>
-                        <b>{this.state.author}</b> commented:
+                        {this.state.author == data.name ? <b>Your Comment:</b> : <span><b>{this.state.author}</b> commented:</span>}
                     </div>
-                    <div className={"comment "+(this.state.author == data.name ? "ownpost" : "")}>
+                    <div className={"comment "+(this.state.author == data.name ? "owncomment" : "")}>
                         <div style={{padding: "5px 10px", marginBottom: "0px"}}>
                             <span key={this.state.id}>{(this.state.content)}</span><br/>
                             <sub className="grey">{window.getDifferenceString(new Date(this.state.created_at)).str}</sub>
                         </div>
                     </div>
-                    <span title={data.id == 0 ? "Login to like this comment" : ""} >
-                        <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.toggleCommentLike} disabled={data.id == 0} style={{margin: '8px 12px'}}>
+                    <div title={data.id == 0 ? "Login to interact with this comment" : ""} style={{marginBottom: "8px"}}>
+                        <LikeButton small={true} likes={this.state.likes} dislikes={this.state.dislikes} callback={(like) => this.toggleCommentLike(like)} />
+                        {/* <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} onClick={this.toggleCommentLike} disabled={data.id == 0} style={{margin: '8px 12px'}}>
                             <i className="fa fa-thumbs-up"></i>
                             &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
-                        </button>
-                    </span>
+                        </button> */}
+                    </div>
                 </div>
             )
         }
@@ -200,6 +308,7 @@ try {
             author: '[unknown]',
             content: "Failed to load post.",
             likes: [],
+            dislikes: [],
             fetch: false,
             comments: false
         }
@@ -207,9 +316,9 @@ try {
         constructor(props) {
             super(props)
             this.state = {
-                liked: this.props.likes.includes(data.name),
                 likes: this.props.likes,
-
+                dislikes: this.props.dislikes,
+                interaction: getInteraction(this.props.likes, this.props.dislikes),
                 author: this.props.author,
                 content: this.props.content,
                 id: this.props.id,
@@ -240,17 +349,55 @@ try {
 
         postLoaded(post) {
             if (post.error !== undefined) this.setState({loaded: 'error', error: post.error})
-            this.setState({loaded: true, id: post.id, author: post.author, content: post.content, description: post.description, created_at: post.created_at, likes: JSON.parse(post.likes), liked: JSON.parse(post.likes).includes(data.name)})
+            this.setState({
+                loaded: true,
+                id: post.id,
+                author: post.author,
+                content: post.content,
+                description: post.description,
+                created_at: post.created_at,
+                likes: JSON.parse(post.likes),
+                dislikes: JSON.parse(post.dislikes),
+                interaction: getInteraction(
+                    JSON.parse(post.likes),
+                    JSON.parse(post.dislikes)
+                )
+            })
         }
 
-        togglePostLike() {
+        togglePostLike(action) {
             var likesToSet = this.state.likes
-            if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
-            else likesToSet = likesToSet.filter(a => a != data.name)
-            this.setState({liked: !this.state.liked, likes: likesToSet})
+            var dislikesToSet = this.state.dislikes
+            var listToModify = action ? likesToSet : dislikesToSet;
+            var otherList = action ? dislikesToSet : likesToSet;;
+                        
+            action = action ? "like" : "dislike"
+            
+            var interaction = getInteraction(this.state.likes, this.state.dislikes)
+            if (!(interaction  == action))
+                listToModify.push(data.name)
+            else
+                listToModify = listToModify.filter(a => a != data.name)
+            otherList = otherList.filter(a => a != data.name)
 
-            likePost(this.state.id, !this.state.liked)
-            return likesToSet
+            likesToSet = action == "like" ? listToModify : otherList
+            dislikesToSet = action == "like" ? otherList : listToModify
+            
+            this.setState({interaction: (interaction == 'like' ? 'none' : 'like'), dislikes: dislikesToSet, likes: likesToSet})
+
+            if (action == 'like') likePost(this.state.id, interaction != action)
+            else dislikePost(this.state.id, interaction != action)
+            return {dislikes: dislikesToSet, likes: likesToSet}
+        }
+
+        togglePostDislike() {
+            if (!(interaction  == 'dislike')) dislikesToSet.push(data.name)
+            else dislikesToSet = dislikesToSet.filter(a => a != data.name)
+            likesToSet = likesToSet.filter(a => a != data.name)
+            this.setState({disliked: (interaction == 'dislike' ? 'none' : 'dislike'), dislikes: dislikesToSet, likes: likesToSet})
+
+            dislikePost(this.state.id)
+            return {dislikes: dislikesToSet, likes: likesToSet}
         }
 
         render() {
@@ -266,14 +413,14 @@ try {
                         <div className="card-body">
                             <p style={{fontSize: "28px"}}>{this.state.content}</p>
                             {
-                                this.state.description === "" ? "" : (<div className="post-description collapsed">
+                                (this.state.description === "" || this.state.description == undefined) ? "" : (<div className="post-description collapsed">
                                     <div dangerouslySetInnerHTML={{__html: this.state.description}}></div>
                                     <span><button className="btn btn-sm btn-outline-primary" onClick={(e) => e.target.parentElement.parentElement.classList.remove("collapsed")}> <i className="fa fa-arrow-down"></i> Show More</button></span>
                                 </div>)
                             }
                             <hr/>
-                            <span title={data.id == 0 ? "Login to like this post" : ""} >
-                                <LikeButton likes={this.state.likes} callback={(like) => like ? this.togglePostLike() : this.togglePostDislike()}/>
+                            <span title={data.id == 0 ? "Login to interact with this post" : ""} >
+                                <LikeButton likes={this.state.likes} dislikes={this.state.dislikes} callback={(like) => this.togglePostLike(like)}/>
                                 {/* <button className={"btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary")} disabled={data.id == 0} onClick={this.togglePostLike}>
                                     <i className="fa fa-thumbs-up"></i>
                                     &nbsp;{this.state.likes !== undefined ? this.state.likes.length : 0}
@@ -385,7 +532,7 @@ try {
                 commentsList.push(<ErrorMessage key={10*this.props.post_id} title="No comments" desc="No comments found for this post. Add one below." />)
             } else 
             commentsList = comments.map(function (comment) {
-                return <PostComment key={comment.id} id={comment.id} author={comment.author} content={comment.content} created_at={comment.created_at} likes={JSON.parse(comment.likes)} />
+                return <PostComment key={comment.id} id={comment.id} author={comment.author} content={comment.content} created_at={comment.created_at} likes={JSON.parse(comment.likes)} dislikes={JSON.parse(comment.dislikes)} />
             })
             commentsList.push(<SubmitComment key={this.props.post_id+""+this.props.post_id} reload={this.reloadComments} style={{marginTop: "15px"}} post_id={this.props.post_id}/>)
 

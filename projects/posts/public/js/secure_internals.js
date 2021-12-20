@@ -98,6 +98,8 @@ try {
   window.data = undefined;
   window.csrf_field = undefined;
   window.csrf = undefined;
+  window.formatNum = undefined;
+  window.prefixCount = undefined;
   window.likePost = undefined;
   window.request = undefined;
 } catch (e) {

@@ -17,14 +17,22 @@ class RequestHandling extends Controller
     public function __invoke(Request $request)
     {
         try {
+            function removeFromArray($array, $value) {
+                if (in_array($value, $array)) {
+                    unset($array[array_search($value, $array)]);
+                    $array = array_values($array);
+                }
+                return $array;
+            }
+            
             function submitPost($request) {
                 $description = isset($request->description) ? $request->description  : "";
-                $result = DB::insert('insert into posts (author, content, description, likes) values(?, ?, ?, ?)', [Auth::user()->name, $request->content, $description, '[]']);
+                $result = DB::insert('insert into posts (author, content, description, likes, dislikes) values(?, ?, ?, ?, ?)', [Auth::user()->name, $request->content, $description, '[]', '[]']);
                 return json_encode($result);
             }
 
             function addComment($request) {
-                $result = DB::insert('insert into comments (post_id, author, content, likes) values(?, ?, ?, ?)', [$request->post_id, Auth::user()->name, $request->content, '[]']);
+                $result = DB::insert('insert into comments (post_id, author, content, likes, dislikes) values(?, ?, ?, ?, ?)', [$request->post_id, Auth::user()->name, $request->content, '[]', '[]']);
                 return json_encode([]);
             }
 
@@ -55,27 +63,41 @@ class RequestHandling extends Controller
                 return $posts;
             }
     
-            function likePost($request, $like, $table) {
+            function likePost($request, $setAction, $like, $table) {
                 $post = DB::select("select * from $table where id = ? order by created_at desc", [$request->id])[0];
 
                 $post_likes = json_decode($post->likes);
-                if ($like) {
-                    if (!in_array(Auth::user()->name, $post_likes))
-                    $post_likes[] = Auth::user()->name;
+                $post_dislikes = json_decode($post->dislikes);
+
+                $list_to_modify = $like ? $post_likes : $post_dislikes;
+                $other_list = $like ? $post_dislikes : $post_likes;
+                
+                if ($setAction) {
+                    if (!in_array(Auth::user()->name, $list_to_modify))
+                    $other_list = removeFromArray($other_list, Auth::user()->name);
+                    $list_to_modify[] = Auth::user()->name;
                 } else {
-                    if (in_array(Auth::user()->name, $post_likes)) {
-                        unset($post_likes[array_search(Auth::user()->name, $post_likes)]);
-                        $post_likes = array_values($post_likes);
-                    }
+                    $list_to_modify = removeFromArray($list_to_modify, Auth::user()->name);
+                    $other_list = removeFromArray($other_list, Auth::user()->name);
                 }
+
+                $post_likes = $like ? $list_to_modify : $other_list;
+                $post_dislikes = $like ? $other_list : $list_to_modify;
+
                 $l = json_encode($post_likes);
+                $d = json_encode($post_dislikes);
                 $i = $request->id;
-                DB::update("update $table set likes = '$l' where id = $i ");
-                return $post_likes; 
+                DB::update("update $table set likes = '$l', dislikes = '$d' where id = $i");
+
+                return [
+                    'action' => ($setAction ? 'Added ' : 'Removed ') . 'a ' . ($like ? 'like' : 'dislike') . ' to '.($table).'. Likes and dislikes are:',
+                    'likes' => $post_likes,
+                    'dislikes' => $post_dislikes
+                ]; 
             }
 
             function handleLikeCall($request, $action) {
-                return likePost($request, $action == 'likePost', $request->post ? 'posts' : 'comments');
+                return likePost($request, in_array($action, ['likePost', 'dislikePost']), $request->like, $request->post ? 'posts' : 'comments');
             }
     
             $action = $request->action;
@@ -84,7 +106,7 @@ class RequestHandling extends Controller
             else if ($action == "getPost") return getPost($request);
             else if ($action == "getComments") return getComments($request);
             else if ($action == "loadPosts") return loadPosts($request);
-            else if (in_array($action, ['likePost', 'unlikePost'])) return handleLikeCall($request, $action);
+            else if (in_array($action, ['likePost', 'unlikePost', 'dislikePost', 'undislikePost'])) return handleLikeCall($request, $action);
             else return json_encode(["Unknown action: $action"]);
     
             return redirect("/");

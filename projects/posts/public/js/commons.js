@@ -243,9 +243,32 @@ try {
     created_at: ''
   };
 
+  window.formatNum = function (n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  window.prefixCount = function (n) {
+    var vals = {
+      k: 1000,
+      m: 1000000,
+      b: 1000000000,
+      t: 1000000000000
+    };
+    var prefixNum = n;
+    var prefixName = '';
+    Object.keys(vals).forEach(function (a) {
+      if (vals[a] < n) {
+        prefixNum = Math.round(n / (vals[a] / 10)) / 10;
+        prefixName = a;
+      }
+    });
+    return prefixNum + prefixName.toUpperCase();
+  };
+
   window.likePost = function (id, like) {
     request({
       action: like ? "likePost" : "unlikePost",
+      like: true,
       id: id,
       post: true
     });
@@ -254,6 +277,25 @@ try {
   window.likeComment = function (id, like) {
     request({
       action: like ? "likePost" : "unlikePost",
+      like: true,
+      id: id,
+      post: false
+    });
+  };
+
+  window.dislikePost = function (id, dislike) {
+    request({
+      action: dislike ? "dislikePost" : "undislikePost",
+      like: false,
+      id: id,
+      post: true
+    });
+  };
+
+  window.dislikeComment = function (id, dislike) {
+    request({
+      action: dislike ? "dislikePost" : "undislikePost",
+      like: false,
       id: id,
       post: false
     });
@@ -277,6 +319,8 @@ try {
   };
 
   var likePost = window.likePost;
+  var prefixCount = window.prefixCount;
+  var formatNum = window.formatNum;
   var request = window.request;
   var csrf = window.csrf;
   var data = window.data;
@@ -286,6 +330,10 @@ try {
     return s.split('\n').map(function (a) {
       return /*#__PURE__*/React.createElement("p", null, a);
     });
+  };
+
+  window.getInteraction = function (likes, dislikes) {
+    return likes.includes(data.name) ? 'like' : dislikes.includes(data.name) ? 'dislike' : 'none';
   };
 
   window.getDifferenceString = function (date) {
@@ -356,7 +404,7 @@ try {
 
       _this = _super2.call(this, props);
       _this.state = {
-        interaction: _this.props.likes.includes(data.name) ? 'like' : _this.props.dislikes.includes(data.name) ? 'dislike' : 'none',
+        interaction: getInteraction(_this.props.likes, _this.props.dislikes),
         likes: _this.props.likes || [],
         dislikes: _this.props.dislikes || []
       };
@@ -372,38 +420,52 @@ try {
         this.setState({
           interaction: interactionSetTo
         });
-        this.setState({
-          likes: action == 'like' ? this.props.callback(true) : this.props.callback(false)
-        });
+        this.setState(this.props.callback(action == 'like'));
       }
     }, {
       key: "render",
       value: function render() {
         var _this2 = this;
 
-        return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
-          className: "btn " + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary"),
+        var likes = this.state.likes !== undefined ? this.state.likes.length : 0;
+        var dislikes = this.state.dislikes !== undefined ? this.state.dislikes.length : 0;
+        var ratio = likes > 0 ? Math.floor(100 * (likes - dislikes) / (likes + dislikes)) : 0;
+        var ratioUnit = likes > 0 ? "like" : "dislike";
+        return /*#__PURE__*/React.createElement("div", {
+          style: {
+            display: "inline-block"
+          }
+        }, /*#__PURE__*/React.createElement("button", {
+          className: "btn " + (this.props.small ? "btn-sm " : "") + (this.state.interaction == 'like' ? "btn-primary" : "btn-outline-primary"),
           onClick: function onClick(e) {
             return _this2.interact('like');
           },
           disabled: data.id == 0,
           style: {
-            margin: '8px 12px'
+            margin: '8px 4px',
+            display: "inline-block"
           }
+        }, /*#__PURE__*/React.createElement("span", {
+          title: formatNum(likes) + " likes"
         }, /*#__PURE__*/React.createElement("i", {
           className: "fa fa-thumbs-up"
-        }), " ", this.state.likes !== undefined ? this.state.likes.length : 0), /*#__PURE__*/React.createElement("button", {
-          className: "btn " + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger"),
+        }), " ", prefixCount(likes))), /*#__PURE__*/React.createElement("button", {
+          className: "btn " + (this.props.small ? "btn-sm " : "") + (this.state.interaction == 'dislike' ? "btn-danger" : "btn-outline-danger"),
           onClick: function onClick(e) {
             return _this2.interact('dislike');
           },
           disabled: data.id == 0,
           style: {
-            margin: '8px 12px'
+            margin: '8px 4px',
+            display: "inline-block"
           }
+        }, /*#__PURE__*/React.createElement("span", {
+          title: formatNum(dislikes) + " dislikes"
         }, /*#__PURE__*/React.createElement("i", {
           className: "fa fa-thumbs-down"
-        }), " ", this.state.dislikes !== undefined ? this.state.dislikes.length : 0));
+        }), " ", prefixCount(dislikes))), "\xA0\xA0", /*#__PURE__*/React.createElement("span", {
+          className: "grey"
+        }, likes > 0 ? ratio + "% " + ratioUnit + "d" : ""));
       }
     }]);
 
@@ -412,7 +474,11 @@ try {
 
   _defineProperty(LikeButton, "defaultProps", {
     likes: [],
-    dislikes: []
+    dislikes: [],
+    callback: function callback() {
+      return true;
+    },
+    small: false
   });
 
   window.PostComment = (_temp = _class = /*#__PURE__*/function (_React$Component3) {
@@ -427,8 +493,9 @@ try {
 
       _this3 = _super3.call(this, props);
       _this3.state = {
-        liked: _this3.props.likes.includes(data.name),
         likes: _this3.props.likes,
+        dislikes: _this3.props.dislikes,
+        interaction: getInteraction(_this3.props.likes, _this3.props.dislikes),
         author: _this3.props.author,
         content: _this3.props.content,
         id: _this3.props.id,
@@ -448,20 +515,54 @@ try {
 
     _createClass(PostComment, [{
       key: "toggleCommentLike",
-      value: function toggleCommentLike() {
+      value: function toggleCommentLike(action) {
         var likesToSet = this.state.likes;
-        if (!this.state.liked == true && !likesToSet.includes(data.name)) likesToSet.push(data.name);else likesToSet = likesToSet.filter(function (a) {
+        var dislikesToSet = this.state.dislikes;
+        var listToModify = action ? likesToSet : dislikesToSet;
+        var otherList = action ? dislikesToSet : likesToSet;
+        ;
+        action = action ? "like" : "dislike";
+        var interaction = getInteraction(this.state.likes, this.state.dislikes);
+        if (!(interaction == action)) listToModify.push(data.name);else listToModify = listToModify.filter(function (a) {
           return a != data.name;
         });
+        otherList = otherList.filter(function (a) {
+          return a != data.name;
+        });
+        likesToSet = action == "like" ? listToModify : otherList;
+        dislikesToSet = action == "like" ? otherList : listToModify;
         this.setState({
-          liked: !this.state.liked,
+          interaction: interaction == action ? 'none' : action,
+          dislikes: dislikesToSet,
           likes: likesToSet
         });
-        likeComment(this.state.id, !this.state.liked);
-      }
+        if (action == 'like') likeComment(this.state.id, interaction != action);else dislikeComment(this.state.id, interaction != action);
+        return {
+          dislikes: dislikesToSet,
+          likes: likesToSet
+        };
+      } // toggleCommentLike() {
+      //     var likesToSet = this.state.likes
+      //     if ((!this.state.liked  == true) && !likesToSet.includes(data.name)) likesToSet.push(data.name)
+      //     else likesToSet = likesToSet.filter(a => a != data.name)
+      //     this.setState({liked: !this.state.liked, likes: likesToSet})
+      //     likeComment(this.state.id, !this.state.liked)
+      //     return {likes: likesToSet}
+      // }
+      // toggleCommentDislike() {
+      //     var dislikesToSet = this.state.dislikes
+      //     if ((!this.state.disliked  == true) && !dislikesToSet.includes(data.name)) dislikesToSet.push(data.name)
+      //     else dislikesToSet = dislikesToSet.filter(a => a != data.name)
+      //     this.setState({disliked: !this.state.disliked, dislikes: dislikesToSet})
+      //     dislikeComment(this.state.id, !this.state.disliked)
+      //     return {dislikes: dislikesToSet}
+      // }
+
     }, {
       key: "render",
       value: function render() {
+        var _this4 = this;
+
         if (this.state.loaded == false) return /*#__PURE__*/React.createElement(Loading, {
           text: " "
         });else if (this.state.loaded == 'error') return /*#__PURE__*/React.createElement(ErrorMessage, {
@@ -480,8 +581,8 @@ try {
             fontSize: "12px",
             paddingBottom: '0'
           }
-        }, /*#__PURE__*/React.createElement("b", null, this.state.author), " commented:"), /*#__PURE__*/React.createElement("div", {
-          className: "comment " + (this.state.author == data.name ? "ownpost" : "")
+        }, this.state.author == data.name ? /*#__PURE__*/React.createElement("b", null, "Your Comment:") : /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, this.state.author), " commented:")), /*#__PURE__*/React.createElement("div", {
+          className: "comment " + (this.state.author == data.name ? "owncomment" : "")
         }, /*#__PURE__*/React.createElement("div", {
           style: {
             padding: "5px 10px",
@@ -491,18 +592,19 @@ try {
           key: this.state.id
         }, this.state.content), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("sub", {
           className: "grey"
-        }, window.getDifferenceString(new Date(this.state.created_at)).str))), /*#__PURE__*/React.createElement("span", {
-          title: data.id == 0 ? "Login to like this comment" : ""
-        }, /*#__PURE__*/React.createElement("button", {
-          className: "btn btn-sm " + (this.state.liked ? "btn-primary" : "btn-outline-primary"),
-          onClick: this.toggleCommentLike,
-          disabled: data.id == 0,
+        }, window.getDifferenceString(new Date(this.state.created_at)).str))), /*#__PURE__*/React.createElement("div", {
+          title: data.id == 0 ? "Login to interact with this comment" : "",
           style: {
-            margin: '8px 12px'
+            marginBottom: "8px"
           }
-        }, /*#__PURE__*/React.createElement("i", {
-          className: "fa fa-thumbs-up"
-        }), "\xA0", this.state.likes !== undefined ? this.state.likes.length : 0)));
+        }, /*#__PURE__*/React.createElement(LikeButton, {
+          small: true,
+          likes: this.state.likes,
+          dislikes: this.state.dislikes,
+          callback: function callback(like) {
+            return _this4.toggleCommentLike(like);
+          }
+        })));
       }
     }]);
 
@@ -511,7 +613,8 @@ try {
     id: undefined,
     author: '[unknown]',
     content: "Failed to load post.",
-    likes: []
+    likes: [],
+    dislikes: []
   }), _temp);
   window.Post = (_temp2 = _class2 = /*#__PURE__*/function (_React$Component4) {
     _inherits(Post, _React$Component4);
@@ -519,41 +622,42 @@ try {
     var _super4 = _createSuper(Post);
 
     function Post(props) {
-      var _this4;
+      var _this5;
 
       _classCallCheck(this, Post);
 
-      _this4 = _super4.call(this, props);
-      _this4.state = {
-        liked: _this4.props.likes.includes(data.name),
-        likes: _this4.props.likes,
-        author: _this4.props.author,
-        content: _this4.props.content,
-        id: _this4.props.id,
-        comments: _this4.props.comments,
-        description: _this4.props.description,
-        created_at: _this4.props.created_at,
+      _this5 = _super4.call(this, props);
+      _this5.state = {
+        likes: _this5.props.likes,
+        dislikes: _this5.props.dislikes,
+        interaction: getInteraction(_this5.props.likes, _this5.props.dislikes),
+        author: _this5.props.author,
+        content: _this5.props.content,
+        id: _this5.props.id,
+        comments: _this5.props.comments,
+        description: _this5.props.description,
+        created_at: _this5.props.created_at,
         loaded: true,
         error: ''
       };
 
-      if (_this4.props.id == undefined) {
-        _this4.state.loaded = 'error';
-        _this4.state.error = 'An unknown error occured';
+      if (_this5.props.id == undefined) {
+        _this5.state.loaded = 'error';
+        _this5.state.error = 'An unknown error occured';
       }
 
-      _this4.togglePostLike = _this4.togglePostLike.bind(_assertThisInitialized(_this4));
-      _this4.postLoaded = _this4.postLoaded.bind(_assertThisInitialized(_this4));
+      _this5.togglePostLike = _this5.togglePostLike.bind(_assertThisInitialized(_this5));
+      _this5.postLoaded = _this5.postLoaded.bind(_assertThisInitialized(_this5));
 
-      if (_this4.props.fetch) {
-        _this4.state.loaded = false;
+      if (_this5.props.fetch) {
+        _this5.state.loaded = false;
         request({
           action: "getPost",
-          id: _this4.props.fetch
-        }, _this4.postLoaded);
+          id: _this5.props.fetch
+        }, _this5.postLoaded);
       }
 
-      return _this4;
+      return _this5;
     }
 
     _createClass(Post, [{
@@ -571,27 +675,63 @@ try {
           description: post.description,
           created_at: post.created_at,
           likes: JSON.parse(post.likes),
-          liked: JSON.parse(post.likes).includes(data.name)
+          dislikes: JSON.parse(post.dislikes),
+          interaction: getInteraction(JSON.parse(post.likes), JSON.parse(post.dislikes))
         });
       }
     }, {
       key: "togglePostLike",
-      value: function togglePostLike() {
+      value: function togglePostLike(action) {
         var likesToSet = this.state.likes;
-        if (!this.state.liked == true && !likesToSet.includes(data.name)) likesToSet.push(data.name);else likesToSet = likesToSet.filter(function (a) {
+        var dislikesToSet = this.state.dislikes;
+        var listToModify = action ? likesToSet : dislikesToSet;
+        var otherList = action ? dislikesToSet : likesToSet;
+        ;
+        action = action ? "like" : "dislike";
+        var interaction = getInteraction(this.state.likes, this.state.dislikes);
+        if (!(interaction == action)) listToModify.push(data.name);else listToModify = listToModify.filter(function (a) {
+          return a != data.name;
+        });
+        otherList = otherList.filter(function (a) {
+          return a != data.name;
+        });
+        likesToSet = action == "like" ? listToModify : otherList;
+        dislikesToSet = action == "like" ? otherList : listToModify;
+        this.setState({
+          interaction: interaction == 'like' ? 'none' : 'like',
+          dislikes: dislikesToSet,
+          likes: likesToSet
+        });
+        if (action == 'like') likePost(this.state.id, interaction != action);else dislikePost(this.state.id, interaction != action);
+        return {
+          dislikes: dislikesToSet,
+          likes: likesToSet
+        };
+      }
+    }, {
+      key: "togglePostDislike",
+      value: function togglePostDislike() {
+        if (!(interaction == 'dislike')) dislikesToSet.push(data.name);else dislikesToSet = dislikesToSet.filter(function (a) {
+          return a != data.name;
+        });
+        likesToSet = likesToSet.filter(function (a) {
           return a != data.name;
         });
         this.setState({
-          liked: !this.state.liked,
+          disliked: interaction == 'dislike' ? 'none' : 'dislike',
+          dislikes: dislikesToSet,
           likes: likesToSet
         });
-        likePost(this.state.id, !this.state.liked);
-        return likesToSet;
+        dislikePost(this.state.id);
+        return {
+          dislikes: dislikesToSet,
+          likes: likesToSet
+        };
       }
     }, {
       key: "render",
       value: function render() {
-        var _this5 = this;
+        var _this6 = this;
 
         if (this.state.loaded == false) return /*#__PURE__*/React.createElement(Loading, {
           key: this.state.id,
@@ -613,7 +753,7 @@ try {
           style: {
             fontSize: "28px"
           }
-        }, this.state.content), this.state.description === "" ? "" : /*#__PURE__*/React.createElement("div", {
+        }, this.state.content), this.state.description === "" || this.state.description == undefined ? "" : /*#__PURE__*/React.createElement("div", {
           className: "post-description collapsed"
         }, /*#__PURE__*/React.createElement("div", {
           dangerouslySetInnerHTML: {
@@ -627,11 +767,12 @@ try {
         }, " ", /*#__PURE__*/React.createElement("i", {
           className: "fa fa-arrow-down"
         }), " Show More"))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("span", {
-          title: data.id == 0 ? "Login to like this post" : ""
+          title: data.id == 0 ? "Login to interact with this post" : ""
         }, /*#__PURE__*/React.createElement(LikeButton, {
           likes: this.state.likes,
+          dislikes: this.state.dislikes,
           callback: function callback(like) {
-            return like ? _this5.togglePostLike() : _this5.togglePostDislike();
+            return _this6.togglePostLike(like);
           }
         })), this.state.comments == false && /*#__PURE__*/React.createElement("a", {
           onClick: function (e) {
@@ -651,7 +792,7 @@ try {
           }
         }, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(PostComments, {
           closeComments: function closeComments(e) {
-            return _this5.setState({
+            return _this6.setState({
               comments: false
             });
           },
@@ -667,6 +808,7 @@ try {
     author: '[unknown]',
     content: "Failed to load post.",
     likes: [],
+    dislikes: [],
     fetch: false,
     comments: false
   }), _temp2);
@@ -676,13 +818,13 @@ try {
     var _super5 = _createSuper(SubmitComment);
 
     function SubmitComment(props) {
-      var _this6;
+      var _this7;
 
       _classCallCheck(this, SubmitComment);
 
-      _this6 = _super5.call(this, props);
-      _this6.submitComment = _this6.submitComment.bind(_assertThisInitialized(_this6));
-      _this6.state = {
+      _this7 = _super5.call(this, props);
+      _this7.submitComment = _this7.submitComment.bind(_assertThisInitialized(_this7));
+      _this7.state = {
         content: data.id == 0 ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Login to Comment",
           desc: "Login or Signup to participate in this post."
@@ -712,19 +854,19 @@ try {
         }), /*#__PURE__*/React.createElement("input", {
           type: "submit",
           className: "btn btn-outline-primary group-append",
-          onClick: _this6.submitComment,
+          onClick: _this7.submitComment,
           value: "Submit"
         }))
       };
 
-      if (_this6.props.post_id == undefined) {
-        _this6.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this7.props.post_id == undefined) {
+        _this7.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       }
 
-      return _this6;
+      return _this7;
     }
 
     _createClass(SubmitComment, [{
@@ -763,30 +905,30 @@ try {
     var _super6 = _createSuper(PostComments);
 
     function PostComments(props) {
-      var _this7;
+      var _this8;
 
       _classCallCheck(this, PostComments);
 
-      _this7 = _super6.call(this, props);
-      _this7.state = {
+      _this8 = _super6.call(this, props);
+      _this8.state = {
         content: /*#__PURE__*/React.createElement(Loading, {
           text: "Loading Comments"
         }),
         length: 0
       };
-      _this7.loadComments = _this7.loadComments.bind(_assertThisInitialized(_this7));
-      _this7.reloadComments = _this7.reloadComments.bind(_assertThisInitialized(_this7));
+      _this8.loadComments = _this8.loadComments.bind(_assertThisInitialized(_this8));
+      _this8.reloadComments = _this8.reloadComments.bind(_assertThisInitialized(_this8));
 
-      if (_this7.props.post_id == undefined) {
-        _this7.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
+      if (_this8.props.post_id == undefined) {
+        _this8.state.content = /*#__PURE__*/React.createElement(ErrorMessage, {
           title: "Failed to load comments",
           desc: "Post ID not received"
         });
       } else {
-        _this7.reloadComments(true);
+        _this8.reloadComments(true);
       }
 
-      return _this7;
+      return _this8;
     }
 
     _createClass(PostComments, [{
@@ -826,7 +968,8 @@ try {
             author: comment.author,
             content: comment.content,
             created_at: comment.created_at,
-            likes: JSON.parse(comment.likes)
+            likes: JSON.parse(comment.likes),
+            dislikes: JSON.parse(comment.dislikes)
           });
         });
 
