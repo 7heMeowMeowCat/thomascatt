@@ -96,12 +96,15 @@
 try {
   var post_id = parseInt(document.querySelector('#post_id').innerText);
   document.querySelector('#post_id').outerHTML = "";
-  ReactDOM.render( /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Post, {
-    fetch: post_id,
-    comments: true
-  })), document.getElementById('root'));
+  ReactDOM.render( /*#__PURE__*/React.createElement(App, {
+    app: /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Post, {
+      fetch: post_id,
+      comments: true
+    }))
+  }), document.getElementById('root'));
+  var reportError = window.reportError;
 } catch (e) {
-  ReactDOM.render( /*#__PURE__*/React.createElement("div", null, "HOly shit error lmao", /*#__PURE__*/React.createElement("br", null), e, /*#__PURE__*/React.createElement("sup", null, "sigma balls :)")), document.getElementById('root'));
+  reportError(e);
 }
 
 /***/ }),

@@ -438,11 +438,15 @@ try {
     return Posts;
   }(React.Component);
 
-  ReactDOM.render( /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CreatePostSection, null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Your Feed"), /*#__PURE__*/React.createElement("div", {
-    id: "posts-section"
-  }, /*#__PURE__*/React.createElement(Posts, null))), document.getElementById('root'));
+  ReactDOM.render( /*#__PURE__*/React.createElement(App, {
+    app: /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CreatePostSection, null), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("h2", null, "Your Feed"), /*#__PURE__*/React.createElement("div", {
+      id: "posts-section"
+    }, /*#__PURE__*/React.createElement(Posts, null)))
+  }), document.getElementById('root'));
+  var reportError = window.reportError;
+  window.onerror = reportError;
 } catch (e) {
-  ReactDOM.render( /*#__PURE__*/React.createElement("div", null, "HOly shit error lmao", /*#__PURE__*/React.createElement("br", null), e, /*#__PURE__*/React.createElement("sup", null, "sigma balls :)")), document.getElementById('root'));
+  reportError(e);
 }
 
 /***/ }),

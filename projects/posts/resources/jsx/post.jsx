@@ -4,13 +4,10 @@ try {
     document.querySelector('#post_id').outerHTML = ""
 
     
-    ReactDOM.render(<div>
+    ReactDOM.render(<App app={<div>
         <Post fetch={post_id} comments={true}/>
-    </div>, document.getElementById('root'))
+    </div>}/>, document.getElementById('root'))
+    var reportError = window.reportError
 } catch(e) {
-    ReactDOM.render(<div>
-        HOly shit error lmao<br/>
-        {e}
-        <sup>sigma balls :)</sup>
-    </div>, document.getElementById('root'))
+    reportError(e)
 }

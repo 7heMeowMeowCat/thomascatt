@@ -11,6 +11,7 @@ table th, table td {
 
 .post-description {
     position: static;
+    overflow-x: hidden;
 }
 
 .post-description > div{
@@ -32,7 +33,7 @@ table th, table td {
     overflow-y: hidden;
     position: relative;
 }
-.post-description.collapsed div{
+.post-description.collapsed > div{
     position: absolute;
 }
 
@@ -73,7 +74,17 @@ table th, table td {
     color: blue;
 }
 
+.error-screen {
+    background-color: #d44;
+    border-radius: 5px;
+    border: 3px solid #a44;
+    padding: 16px;
+    color: white;
+}
 
+.error-screen a{
+    color: lightblue;
+}
 
 .ownpost {
     background: #eef;

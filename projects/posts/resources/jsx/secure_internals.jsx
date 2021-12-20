@@ -4,6 +4,7 @@ try {
     window.data = undefined
     window.csrf_field = undefined
     window.csrf = undefined
+    // window.reportError = undefined
 
     window.formatNum = undefined
     window.prefixCount = undefined

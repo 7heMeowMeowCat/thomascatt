@@ -4,6 +4,7 @@ try {
     var csrf = window.csrf
     var data = window.data
     var csrf_field = window.csrf_field
+
     
     
     
@@ -121,20 +122,19 @@ try {
             return <div><span hidden={true} onClick={this.reloadPosts} id="reload-posts"></span>{this.state.content}</div>
         }
     }
+
     
-    ReactDOM.render(<div>
+    ReactDOM.render(<App app={<div>
         <CreatePostSection/>
         <br/><h2>Your Feed</h2>
         <div id="posts-section">
             <Posts/>
         </div>
-    </div>, document.getElementById('root'))
+    </div>}/>, document.getElementById('root'))
+    var reportError = window.reportError
+    window.onerror = reportError
 
 
 } catch(e) {
-    ReactDOM.render(<div>
-        HOly shit error lmao<br/>
-        {e}
-        <sup>sigma balls :)</sup>
-    </div>, document.getElementById('root'))
+    reportError(e)
 }
