@@ -66,6 +66,7 @@
             }
             .styled header h1{
                 position: absolute;
+                margin-top: 25px;
                 top: 0px;
                 left: 40px;
             }
@@ -111,6 +112,7 @@
 
             .styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
                 /* border-bottom: 1px solid #aaa; */
+                margin-top: 50px;
                 font-weight: 100;
                 text-transform: uppercase;
                 color: white;
@@ -180,6 +182,10 @@
                 border: 1px solid #444;
                 background: #663;
 
+            }
+
+            .styled img{
+                box-shadow: 0 0 4px #000;
             }
 
             .styled .task-to-do{
@@ -404,17 +410,22 @@
             <p>A document for people with low knowledge on web development, and are looking to start. Also contains the instructions about requirements to get started with coding.</p>
             <h1>Table of contents:</h1>
             <ul>
-                <li><a href="#section-1">Web Development</a></li>
+                <li><a href="#section-1">What is Web Development?</a></li>
                 <li><a href="#section-2">Which language for what?</a></li>
                 <li><a href="#section-3">What's for me?</a></li>
-                <li><a href="#section-4">Getting started: Code Editors</a></li>
-                <li><a href="#section-5">Getting started: Creating an HTML file</a></li>
+                <li>
+                    <a href="#section-4">Getting started</a>
+                    <ul>
+                        <li><a href="#section-5">Introduction to Code Editors</a></li>
+                        <li><a href="#section-6">Creating an HTML file</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <hr>
 
             <div id="section-1">
-                <h1>Web Development</h1>
+                <h1>What is Web Development?</h1>
                 <p>Quickly explained, Web Development is simply the process of creating webpages. It covers a wide variety of websites, including webapps. Webapps are just web pages enable to function as an application.</p>
                 <p>Though with HTML, you can create the UIs of websites. Soon, as you progress, you will be able to add beauty, and functionality to website by applying CSS and JavaScript.</p>
             </div>
@@ -429,15 +440,98 @@
             <div id="section-3">
                 <h1>What's for me?</h1>
                 <p>It greatly depends on what is your goal. If you want to get deep into web development, then you can start with HTML, and CSS and get deep into JavaScript and its libraries to create webapps.</p>
-                <p>If you just want to get some programming experience, then you can go with some HTML and directly jump onto JavaScript. Though in that case, using other programming languages might be better since JavaScript is kinda weird. You might need to get advices from other people if you are looking for a programming languages. However, for me, I prefer older langauges to start with like C++, Java, etc. since they are more strict and may be more successful in teaching new concepts.</p>
+                <p>If you just want to get some programming experience, then you can go with some HTML and directly jump onto JavaScript. Though in that case, using other programming languages might be better since JavaScript is kinda weird. You might need to get advices from other people if you are looking for programming languages. However, for me, I prefer older langauges to start with like C++, Java, etc. since they are more strict and may be more successful in teaching new concepts.</p>
             </div>
 
+            <hr>
+            
             <div id="section-4">
-                <h1>Getting started: Code Editors</h1>
+                <h1>Getting started</h1>
+                <p>Here are some instructions to get started with HTML, right from scratch:</p>
             </div>
 
             <div id="section-5">
-                <h1>Getting started: Creating an HTML file</h1>
+                <h2>Introduction to Code Editors</h2>
+                <p>The software which you will need to edit and save your code. Code Editors are a personal choice. You could use something as simple as even Notepad, but that won't have any shortcuts to work with.</p>
+                <p>There's a difference between an IDE (Integraded Development Environment) and a simple code editor:</p>
+                
+                <ul>
+                    <li>
+                        <h3>IDE:</h3>
+                        <p>An IDE is a software, which contains all related tools you need, to work with a specific development category. They aren't general purpose, and are only used for a specific category. They are bulkier but are rich in features, like:</p>
+                        <ul>
+                            <li><b>Visual Studio</b>: Used for a variety of languages like C, C++, C# and (probably) more. It is modular so it is able to be used in a variety of categories for programming.</li>
+                            <li><b>Android Studio</b>: For Android App Development</li>
+                            <li><b>IntelliJ Idea</b>: Related to programming in Java</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Code Editor:</h3>
+                        <p>Simpler, lighter, faster, general purpose softwares built for programming. They don't come with much tools by default, but are handy for working with languages in which various tools aren't required, like HTML. A few of them are:</p>
+                        <ul>
+                            <li><a href="https://www.sublimetext.com/"><b>Sublime Text</b></a> <i>(ex-favourite)</i>: I've used it a lot, and recently switched over to VS Code:</li>
+                            <li><a href="https://code.visualstudio.com/"><b>VS Code (Visual Studio Code)</b></a> <i>(currently using)</i>: For Android App Development</li>
+                            <li>And probably <a href="https://www.google.com/search?q=text+editors">a lot more</a>.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>I don't care, just tell me which one do I get:</h3>
+                        <p>I've used both, Sublime, and VS Code, and can say that both are great. VS Code is actually more modular, but Sublime also doesn't stop there. Both have extension support, and have great set of shortcuts. if you are considering these two, then you can VS Code, but you are not limited to it; you can get either of them.</p>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div id="section-6">
+                <h2>Creating an HTML file</h2>
+                <p>An oversimplified guide on how to create an HTML file:</p>
+                <ol>
+                    <li>
+                        <h3>Show File Name Extensions:</h3>
+                        <p>First, make sure that the <i>File Name Extensions</i> option is turned on in the Windows Explorer:</p>
+                        <img src="https://i.imgur.com/9gz1N2C.png" alt="Show File Name Extensions in Windows Explorer" width="70%">
+                    </li>
+                    <li>
+                        <h3>Navigate to the desired directory, and create a text file there:</h3>
+                        <p>Simple is that, open the folder, or go to the desktop if you want to start on the desktop. Then <b>right click > New > Text Document</b> to create a new text file.</p>
+                        <img src="https://i.imgur.com/Ohznd4h.png" alt="Create a Text File" width="70%">
+                    </li>
+                    <li>
+                        <h3>Rename the created file accordingly:</h3>
+                        <p>Now, after the <b>dot (.)</b> in the file name, you should see a <code>.txt</code> there. (If you don't, then you probably missed the first step) Replace the <code>.txt</code> with <code>.html</code>.</p>
+                        <p>For the left side of the dot, i.e. the file name, you can give it anything you like. Though, usually, the home page is called <code>index</code> so going with that will be a great start. <span class="hint">i.e. change the name of the whole file name too <code>index.html</code></span></p>
+                        <div style="cursor: zoom-in;" onclick="Object.values(this.children).forEach(function (a) {
+                            a.style.width = (a.style.width == '30%') ? '70%' : '30%'
+                            event.target.style.cursor = (a.style.width == '30%') ? 'zoom-in' : 'zoom-out'
+                        })">
+                            <img style="display: block; width: 30%; transition-duration: 100ms;" src="https://i.imgur.com/GrYepPC.png" alt="Renaming the file: Step 1">
+                            <img style="display: block; width: 30%; transition-duration: 200ms;" src="https://i.imgur.com/FeV7voY.png" alt="Renaming the file: Step 2">
+                            <img style="display: block; width: 30%; transition-duration: 300ms;" src="https://i.imgur.com/2FIe3zZ.png" alt="Renaming the file: Step 3">
+                            <img style="display: block; width: 30%; transition-duration: 400ms;" src="https://i.imgur.com/qWxU1AV.png" alt="Renaming the file: Step 4">
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Done: Open the .html file:</h3>
+                        <p>Now, you need this file open in both, your browser, and in your code editor.</p>
+
+                        <ul>
+                            <li>
+                                <p><b>For the browser:</b> It's simple. Just double click the file and it will automatically open up.</p>
+                            </li>
+                            <li>
+                                <p><b>For the code editor:</b> Open your editor first. Then you can either drag the <code>.html</code> file and toss it into your editor, and the editor will automatically pick it up. Or you can right click on the <code>.html</code> file, then go to <b>Open With > Choose another app</b>, then select your code editor in the list (Make sure the <i>Always use this app to open .html files</i> is turned <b>OFF</b>). Your editor will open your file.</p>
+                            </li>
+                        </ul>
+
+                        <p>The browser window, is the output location for the code you edit. So each time you edit your code, you have to save the changes (<code>Ctrl + S</code>), and refresh the browser window to see the changes you made in action.</p>
+                    </li>
+                </ol>
+                
+                <br>
+                <p>You will need to repeat the last step each time you start coding.</p>
+                <hr>
+                <br>
+                <h2>With all this done, you can head over to the <a href="HTML-Document-1.html">1st HTML Document</a> I have made, to get started with HTML.</h2>
             </div>
 
         </div>
