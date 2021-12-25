@@ -4,13 +4,17 @@
 		<title>JavaScript Document 0: Introduction</title>
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		<link rel="stylesheet" href="style.css">
+		<link id="hljs-theme" rel="stylesheet"
+      href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+		
 	</head>
 	<body class="styled dark">
 		<header class="card">
-			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 0: Introduction</h1>
+			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 0 — Introduction</h1>
 			<div id="other-body">
-				<p>A small Introduction on programming with JavaScript. Read if you are looking to start with my documents.
-					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark')"><i class="fa fa-adjust"></i></button>
+				<p>A small introduction on programming with JavaScript. Read if you are looking to start with my documents.
+					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
 					<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
 				</p>
 			</div>
@@ -88,7 +92,26 @@
 				<ol>
 					<li>
 						<h2>The Normal Method: <code>script</code> tag:</h2>
-
+						<p>This works the same way as the CSS <code>style</code> tag. Details about this will be mentioned in the next docs.</p>
+					</li>
+					<li>
+						<h2>The Browser Console Method:</h2>
+						<p>If you have used the console before, then you know what this means. But if you haven't, then it's not hard to pull out the console either:</p>
+						<ul>
+							<li>While sitting in any browser tab, hit <code>F12</code>.</li>
+							<li>This will show a pane on the right side. This is called <code>DevTools</code>, and it is <b>filled</b> with features. Learning the DevTools is just another field you can say :)</li>
+							<li>Next, head over to the <code>Console</code> tab in the DevTools</li>
+							<li>This will open up an text input area. Any JavaScript you enter here, will be executed and the result will be displayed back into the console. All the errors and warnings of the page are also reported here.
+								<br>
+								<br>
+								<div style="width: 70%; text-align: center;">
+									<img src="https://i.imgur.com/QirqXLh.png" width="100%">			
+									<span class="hint">The DevTools Section of this page.</span>
+								</div>
+							</li>
+						</ul>
+						<p>You can try executing this JavaScript code and see the result: </p>
+						<pre><code class="default language-js">alert("Welcome to JavaScript :)")</code></pre>
 					</li>
 				</ol>
 			</div>
@@ -127,6 +150,23 @@
 					else header.classList.value = ('card')
 				}
 
+				hljs.highlightAll()
+				updateFormatterTheme()
+			}
+
+			hljs_lightThemeVal = 'stackoverflow-light'
+			var hljs_lightTheme = (s) => s === undefined ? hljs_lightThemeVal : (function (s) { hljs_lightThemeVal = s; updateFormatterTheme() })(s)
+
+			hljs_darkThemeVal = 'stackoverflow-dark'
+			var hljs_darkTheme = (s) => (s === undefined) ? hljs_darkThemeVal : (function (s) { hljs_darkThemeVal = s; updateFormatterTheme() })(s)
+			
+			function updateFormatterTheme(t) {
+				var theme = document.body.classList.contains('dark') ? hljs_darkTheme() : hljs_lightTheme()
+				if (t !== undefined) theme = t
+				var link = 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
+				document.querySelector("#hljs-theme").href = link
+
+				return document.querySelector("#hljs-theme").href
 			}
 			
 			try {
@@ -134,6 +174,7 @@
 			} catch(e) {
 				document.body.innerHTML = "<pre class='card' style='color: red;'>"+e
 			}
+			
 		</script>
 	</body>
 </html>

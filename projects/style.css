@@ -9,7 +9,7 @@
 	padding: 40px;
 	margin: auto;
 	width: 75%;
-	/* text-align: justify; */
+	color: #888;
 }
 @media screen and (max-width: 1000px){
 	.styled, .styled header{
@@ -29,7 +29,6 @@
 
 
 .styled header{
-	/* height: 150px; */
 	padding: 40px;
 	position: fixed;
 	top: 20px;
@@ -50,11 +49,11 @@
 	padding: 25px;
 	width: 100%;
 	background-color: #00000033;
-	box-shadow: 0 0 50px 50px #00000033;				
+	box-shadow: 0 0 50px 50px #00000033;
 }
 .styled.dark header.sticky-header {
 	background-color: #000000aa;
-	box-shadow: 0 0 50px 50px #000000aa;
+	box-shadow: 0 0 34px 34px #000000aa;
 }
 .styled header #other-body{
 	margin-top: 50px;
@@ -108,7 +107,7 @@
 	box-shadow: 0 0 50px 2px #080808;
 }
 
-.styled code, .styled .mono{
+.styled code:not(.default), .styled .mono{
 	font-family: consolas;
 	background: #eee;
 	border-radius: 3px;
@@ -132,7 +131,6 @@
 }
 
 .styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
-	/* border-bottom: 1px solid #aaa; */
 	margin-top: 50px;
 	font-weight: 100;
 	text-transform: uppercase;
@@ -208,7 +206,10 @@
 .styled.dark .ptn{
 	border: 1px solid #444;
 	background: #663;
+}
 
+.styled .ptn h1, .styled .ptn h2, .styled .ptn h3, .styled .ptn h4, .styled .ptn h5, .styled .ptn h6 {
+	margin: 0;
 }
 
 .styled img{
