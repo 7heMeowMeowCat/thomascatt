@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript Document 0: Introduction</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<style type="text/css">
+
+			.hidden {
+				display: none;
+			}
+
+			.styled{
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background-color: #ffd;
+				padding: 40px;
+				margin: auto;
+				width: 75%;
+				text-align: justify;
+			}
+			@media screen and (max-width: 1000px){
+				.styled, .styled header{
+					width: 95%;
+					padding: 20px;
+					margin: 0;
+				}
+			}
+			* {
+				transition-duration: 300ms;
+			}
+
+			.styled.dark {
+				background: #11110f;
+				color: #aaa;
+			}
+
+			
+			.styled header{
+				/* height: 150px; */
+				padding: 40px;
+				position: fixed;
+				top: 20px;
+				left: 50%;
+				transform: translate(-50%);
+				width: 70%;
+				transition-duration: 250ms;
+				overflow-y: hidden;
+				z-index: 10000000;
+				border: none;
+			}
+			
+			.styled header.sticky-header {
+				margin: 0;
+				top: 0px;
+				border-radius: 0px;
+				height: 30px;
+				padding: 25px;
+				width: 100%;
+				background-color: #00000033;
+				box-shadow: 0 0 50px 50px #00000033;				
+			}
+			.styled.dark header.sticky-header {
+				background-color: #000000aa;
+				box-shadow: 0 0 50px 50px #000000aa;
+			}
+			.styled header #other-body{
+				margin-top: 50px;
+			}
+			.styled header.sticky-header #other-body{
+				opacity: 0;
+			}
+			.styled header h1{
+				position: absolute;
+				margin-top: 25px;
+				top: 0px;
+				left: 40px;
+			}
+			.styled header.sticky-header h1{
+				top: 0px;
+				left: 50%;
+				font-size: 25px;
+				transform: translate(-50%);
+			}
+			.styled hr {
+				opacity: 0.2;
+			}
+
+			.styled a{
+				color: royalblue;
+				font-style: italic;
+				text-decoration: none;
+			}
+
+			.styled.dark a{
+				color: lightblue;
+				font-style: italic;
+			}
+
+			.styled a:hover{
+				color: blue;
+			}
+
+			.styled .card{
+				background-color: #ffffe0;
+				border: 1px solid #eee;
+				box-shadow: 0 0 50px 2px #ddd;
+				border-radius: 15px;
+				padding: 40px;
+				margin: 10px 0;
+			}
+
+			.styled.dark .card{
+				background: #171714;
+				border: 1px solid #222;
+				box-shadow: 0 0 50px 2px #080808;
+			}
+
+			.styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+				/* border-bottom: 1px solid #aaa; */
+				margin-top: 50px;
+				font-weight: 100;
+				text-transform: uppercase;
+				color: black;
+			}
+			.styled.dark h1,.styled.dark h2,.styled.dark h3,.styled.dark h4,.styled.dark h5,.styled.dark h6{
+				color: white
+			}
+
+			.styled code, .styled .mono{
+				font-family: consolas;
+				background: #eee;
+				border-radius: 3px;
+				padding: 2px;
+				margin: 3px;
+				word-break: break-word;
+				white-space: nowrap;
+				border: 1px solid #777;
+				font-size: 12px;
+			}
+
+			.styled pre.mono {
+				color: black;
+				padding: 8px;
+				font-size: 2.5vh;
+				line-height: 1.5;
+			}
+
+			.styled.dark pre.mono {
+				color: white;
+			}
+			
+			.styled .tag {
+				padding: 10px;
+				margin: 5px; 
+				background-color: #88888844;
+				border-radius: 20px;
+				border: 1px solid #888;
+			}
+
+			.styled pre{
+				overflow-x: auto;
+				white-space: pre-wrap;
+				font-size: 18px;
+				padding: 10px;
+			}
+
+			.styled.dark code, .styled.dark .mono{
+				background: #666;
+				color: white;
+			}			
+			.styled .hint{
+				color: #666;
+			}
+			.styled.dark .hint code, .styled.dark .hint .mono{
+				color: #fff;
+
+			}
+			.styled .p-tag{
+				display: block;
+				width: 100%
+			}
+
+			.styled li{
+				margin-bottom: 15px;
+			}
+			.styled img{
+				margin: 5px;
+				box-shadow: 0 0 4px #ddd;
+				border-radius: 5px;
+			}
+
+			.styled .inline-image {
+				display: inline-block;
+				padding: 0;
+				margin: -2px 3px;
+				width: 14px
+			}
+
+			.styled .default-image {
+				margin: none;
+				box-shadow: none;
+				border-radius: none;
+			}
+
+			.styled .ptn{
+				background: #ffa;
+				width:30%;
+				padding: 10px;
+				border: 1px solid #ccc;
+				margin: 15px 0;
+				border-radius: 4px;
+			}
+
+			.styled.dark .ptn{
+				border: 1px solid #444;
+				background: #663;
+
+			}
+
+			.styled img{
+				box-shadow: 0 0 4px #000;
+			}
+
+			.styled .task-to-do{
+				background: #aaf;
+				width:30%;
+				padding: 10px;
+				border: 1px solid #ccc;
+				margin: 15px 0;
+				border-radius: 4px;
+			}
+
+			.styled.dark .task-to-do{
+				border: 1px solid #444;
+				background: #88a;
+
+			}
+
+			.styled select{
+				padding: 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				border: 1px solid #fff;
+				background: #eee;
+			}
+
+			.styled button{
+				padding: 10px;
+				background-color: royalblue;
+				border: none;
+				margin: 2px;
+				color: white;
+				box-shadow: 0 0 3px #333;
+				cursor: pointer;
+				transition-duration: 200ms;
+				font-size: 15px;
+				border-radius: 4px;
+			}
+
+			.styled button.btn-secondary{
+				background: #00000000;
+				border: 1px solid royalblue;
+				color: royalblue;
+			}
+
+			.styled button:hover{
+				background-color: white;
+				box-shadow: 0 0 10px #666;
+				color: royalblue;
+			}
+			.styled button:active{
+				transition-duration: 0ms;
+				opacity: 0.5;
+				transform: scale(0.95);
+			}
+			.styled input{
+				padding: 10px;
+				margin: 10px;
+				border-radius: 5px;
+				border: 2px solid #aaf;
+				transition-duration: 200ms;
+				background-color: #fff;
+			}
+			.styled input:hover{
+				box-shadow: 0 0 5px royalblue;
+			}
+			.styled input:focus{
+				border: 2px solid royalblue;
+				background-color: #ddf;
+				outline: none;
+				box-shadow: 0 0 5px royalblue;
+			}
+			.styled input[type=checkbox], input[type=file]{
+				cursor: pointer;
+			}
+
+			.styled .html-editor{
+				border: 1px solid #888;
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 0 8px #ccc;
+			}
+			.styled.dark .html-editor{
+				border: 1px solid #444;
+				box-shadow: 0 0 8px #000;
+			}
+
+			.styled .html-editor textarea:focus{
+				background: #fff;
+			}
+			.styled .html-editor textarea{
+				background: #eee;
+				transition-duration: 100ms;
+				border: none;
+				resize: none;
+				outline: none;
+				font-size: 17px;
+				width: 50%;
+				padding: 10px;
+				height: 100%;
+				font-family: Consolas;
+				border-right: 1px solid #888;
+				min-height: 75vh;
+				font-weight: 100;
+			}
+			
+			.styled.dark .html-editor textarea{
+				background: #333;
+				color: white;
+			}
+			.styled.dark .html-editor textarea:focus{
+				background: #181818;
+			}
+
+			.styled .html-editor #output{
+				width: 50%;
+				height: 100%;
+				padding: 10px;
+				overflow-x: auto;
+				text-overflow: ellipsis;
+			}
+
+			.styled .play-btn{
+				transition-duration: 200ms;
+				border-radius: 5%;
+			}
+			.styled .play-btn:hover{
+				background-color: #f8f8f8;
+				box-shadow: 0 0 8px #ccc;
+			}
+			.styled .play-btn:active{
+				box-shadow: 0 0 4px #888;
+			}
+
+			.styled table {
+				width: 100%;
+				border-collapse: collapse;
+				border: 1px solid #aaa;
+			}
+			.styled table th{
+				background: #ddd;
+				border: 1px solid #aaa;
+			}
+			.styled table .styled tr, .styled th, .styled td{
+				border: 1px solid #aaa;
+				padding: 10px;
+				color: black;
+			}
+
+			.styled.dark table {
+				border: 1px solid #444;			
+			}
+			.styled.dark table th{
+				background: #666;
+				border: 1px solid #333;
+			}
+			.styled.dark table tr, .styled.dark th, .styled.dark td{
+				border: 1px solid #666;
+				color: white;
+			}
+			.styled .collabsible {
+				border-radius: 5px;
+				background-color: #00000022;
+				height: 0px;
+				transition-duration: 300ms;
+				overflow-y: auto;
+			}
+			.styled .sticky {
+				position: sticky;
+				top: -15px;;
+				left: -15px;
+				background:#00000066;
+			}
+			.styled #end-letters span {
+				transition-duration: 500ms;
+				border: 1px solid #00000000;
+				font-weight: 100;
+			}
+			.styled #end-letters span:hover {
+				font-weight: 1000;
+				margin: 10px;
+				font-size: 60px;
+				cursor: none;
+			}
+
+			/*copied from w3schools :D*/
+			/* width */
+			.styled::-webkit-scrollbar {
+				
+			width: 5px;
+			}
+
+			/* Track */
+			.styled::-webkit-scrollbar-track {
+			background: #888;
+			border-radius: 10px;
+			}
+
+			.styled::-webkit-scrollbar-track:hover {
+			background: #ccc;
+			border-radius: 10px; 
+			}
+
+			/* Handle */
+			.styled::-webkit-scrollbar-thumb {
+			background: #444;
+			border-radius: 10px;
+			}
+
+			/* Handle on hover */
+			.styled::-webkit-scrollbar-thumb:hover {
+			background: #333;
+			}
+
+			/* Handle on hover */
+			.styled::-webkit-scrollbar-thumb:active {
+			background: #111;
+			}
+		</style>	   
+	</head>
+	<body class="styled dark">
+		<header class="card">
+			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 0: Introduction</h1>
+			<div id="other-body">
+				<p>A small Introduction on programming with JavaScript. Read if you are looking to start with my documents.
+					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark')"><i class="fa fa-adjust"></i></button>
+					<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+				</p>
+			</div>
+		</header>
+		<div style="margin-top: 200px;">
+			<h1>Table of contents:</h1>
+			<ul>
+				<li><a href="#section-1">What is JavaScript?</a></li>
+				<li><a href="#section-2">What can JavaScript do?</a></li>
+				<li><a href="#section-3">JavaScript Divisions</a></li>
+				<li><a href="#section-4">My Documents on JavaScript</a></li>
+			</ul>
+
+			<hr>
+
+			<div id="section-1">
+				<h1><i class="fa fa-question"></i> What is JavaScript?</h1>
+				<p>A programming language, used widely in web development. JavaScript can be as easy, or as complicated as you want. It runs easily with simple to undestand code, with only a few lines of code leaving visible results.</p>
+				<p>JavaScript is easy on limits, and tries its best not to send any error, and figure out things on its own. So, it becomes a little easy to work with, but advanced programming in JavaScript can be a bit of a problem. That is irrelevant at this point. Sometimes JavaScript acts surprisingly weird, but apart from that it is a usable language.</p>
+			</div>
+
+			<div id="section-2">
+				<h1><i class="fa fa-cogs"></i> What can JavaScript do?</h1>
+				<p>It can add functionality to a website. A simple explaination in one sentence. But that definitely leaves you clueless about what exactly it's capable of.</p>
+				<p>
+					It can interact with the HTML and CSS of the page to act logically. It can also open some
+					
+					<a href="#" onclick="return NaN == alert('I am an alert box triggered by JavaScript :)')">alert boxes</a>,
+					
+					<a href="#" onclick="var p = window.open(); p.document.body.innerText = 'This was opened through JavaScript :)'; return false">popup windows</a>, and create
+					
+					<a href="https://google.com"
+						onclick="location.href = 'https:\/\/www.youtube.com/watch?v=dQw4w9WgXcQ'; return false;"
+						onmouseenter="document.getElementById('corner-tip').classList = ''"
+						onmouseleave="document.getElementById('corner-tip').classList = 'hidden'">fake links</a>
+					too.
+				</p>
+				<p>There's a lot what JavaScript can do, and it's a long and fun journey getting used to it.</p>
+			</div>
+
+			<div id="section-3">
+				<h1><i class="fa fa-list"></i> JavaScript Divisions</h1>
+				<p>Now, for my documents, I will be dividing JavaScript into two sections. One of them will be related to <b>regular programming</b>, and the other one related to <b>interaction with the document</b>:</p>
+
+				<ul>
+					<li>
+						<h3>Regular programming</h3>
+						<p>This will be related to the normal programming conceptual training. For people who have had programming experience before, this is optional.<br>However, for people who are new to getting into programming, this section is mandatory, as without it, you will be left clueless about what is happening in the other documents.</p>
+					</li>
+					<li>
+						<h3>Interaction with the document</h3>
+						<p>This will lead to JavaScript specific concepts, and functions to interact with the document, and to actually perform actions related to the web page. Comparatively smaller than the previous section, this section mostly acts like reference documents.</p>
+					</li>
+				</ul>
+				
+				
+			</div>
+
+			<div id="section-4">
+				<h1><i class="fa fa-copy"></i> My Documents on JavaScript</h1>
+				<p>Here's how I plan to structure my JavaScript documents:</p>
+				<ul>
+					<li><h4 style="margin: 0;">JavaScript Document 0: <b>Introduction</b></h4></li>
+					<li><h4 style="margin: 0;">JavaScript Document 1: <b>Programming</b></h4></li>
+					<li><h4 style="margin: 0;">JavaScript Document 2: <b>More Programming</b></h4></li>
+					<li><h4 style="margin: 0;">JavaScript Document 3: <b>DOM</b></h4></li>
+					<li><h4 style="margin: 0;">JavaScript Document 4: <b>More Functions</b></h4></li>
+					<li><h4 style="margin: 0;">JavaScript Document 5: <b>Quirky Stuff</b></h4></li>
+				</ul>
+			</div>	
+
+			<hr>
+			<h2 style="float: right; text-align: right;">Next: <a href="JavaScript-Document-1.html">JavaScript Document 1</a></h2>
+		</div>	
+		<div id="corner-tip" class="hidden" style="background: #666; position: fixed; bottom: 30px; left: 50px; padding: -5px; box-shadow: 0 0 6px 10px #666;">
+			<span>
+				<h3 class="fa fa-arrow-down" style="transform: rotate(45deg); font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+				<div style="display: inline-block;">
+					<h3 style="margin: 0; display: inline-block;">Look at the bottom left corner here</h3><br>
+					<span>You can see where this link <i>should</i> take you</span>
+				</div>
+			</span>
+		</div>
+
+		<script>
+			function init() {
+				console.log("hey what are you doing here? :\\")
+				var header = document.querySelector('header')
+
+				function setInnerText(el, t) {
+					t.split("\n").forEach(function (line, index) {
+						var tabs = line.replace(line.replaceAll("\t", ""), "").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;")
+
+						var newline = (index == 0) ? '' : "<br>"
+						el.innerHTML += newline+tabs
+						el.innerText += line
+					})
+				}
+
+				document.body.onscroll = function (event) {
+					var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+
+					if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
+					else header.classList.value = ('card')
+				}
+
+			}
+			
+			try {
+				init()
+			} catch(e) {
+				document.body.innerHTML = "<pre class='card' style='color: red;'>"+e
+			}
+		</script>
+	</body>
+</html>
