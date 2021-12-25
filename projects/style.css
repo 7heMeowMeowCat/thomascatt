@@ -1,46 +1,202 @@
 
-body{
-	font-family: Arial;
-	background-color: #eee;
-	padding: 40px;
+.hidden {
+	display: none;
 }
 
-.card{
+.styled{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #fafafa;
+	padding: 40px;
+	margin: auto;
+	width: 75%;
+	/* text-align: justify; */
+}
+@media screen and (max-width: 1000px){
+	.styled, .styled header{
+		width: 95%;
+		padding: 20px;
+		margin: 0;
+	}
+}
+* {
+	transition-duration: 300ms;
+}
+
+.styled.dark {
+	background: #111;
+	color: #aaa;
+}
+
+
+.styled header{
+	/* height: 150px; */
+	padding: 40px;
+	position: fixed;
+	top: 20px;
+	left: 50%;
+	transform: translate(-50%);
+	width: 70%;
+	transition-duration: 250ms;
+	overflow-y: hidden;
+	z-index: 10000000;
+	border: none;
+}
+
+.styled header.sticky-header {
+	margin: 0;
+	top: 0px;
+	border-radius: 0px;
+	height: 30px;
+	padding: 25px;
+	width: 100%;
+	background-color: #00000033;
+	box-shadow: 0 0 50px 50px #00000033;				
+}
+.styled.dark header.sticky-header {
+	background-color: #000000aa;
+	box-shadow: 0 0 50px 50px #000000aa;
+}
+.styled header #other-body{
+	margin-top: 50px;
+}
+.styled header.sticky-header #other-body{
+	opacity: 0;
+}
+.styled header h1{
+	position: absolute;
+	margin-top: 25px;
+	top: 0px;
+	left: 40px;
+}
+.styled header.sticky-header h1{
+	top: 0px;
+	left: 50%;
+	font-size: 25px;
+	transform: translate(-50%);
+}
+.styled hr {
+	opacity: 0.2;
+}
+
+.styled a{
+	color: royalblue;
+	font-style: italic;
+	text-decoration: none;
+}
+
+.styled.dark a{
+	color: lightblue;
+	font-style: italic;
+}
+
+.styled a:hover{
+	color: blue;
+}
+
+.styled .card{
 	background-color: #fff;
-	padding: 20px;
-	border: 1px solid #ccc;
-	box-shadow: 0 0 8px #ccc;
-	border-radius: 10px;
-	padding: 60px;
+	border: 1px solid #eee;
+	box-shadow: 0 0 50px 2px #ddd;
+	border-radius: 15px;
+	padding: 40px;
 	margin: 10px 0;
 }
 
-h1, h2, h3, h4, h5, h6{
-	border-bottom: 1px solid #aaa;
-	font-weight: bolder;
+.styled.dark .card{
+	background: #171717;
+	border: 1px solid #222;
+	box-shadow: 0 0 50px 2px #080808;
 }
 
-.mono{
+.styled code, .styled .mono{
 	font-family: consolas;
 	background: #eee;
 	border-radius: 3px;
 	padding: 2px;
 	margin: 3px;
+	word-break: break-word;
+	white-space: nowrap;
 	border: 1px solid #777;
+	font-size: 12px;
 }
-li{
-	margin-bottom: 15px;
+
+.styled pre.mono {
+	color: black;
+	padding: 8px;
+	font-size: 2.5vh;
+	line-height: 1.5;
 }
-.hint{
+
+.styled.dark pre.mono {
+	color: white;
+}
+
+.styled h1,.styled h2,.styled h3,.styled h4,.styled h5,.styled h6{
+	/* border-bottom: 1px solid #aaa; */
+	margin-top: 50px;
+	font-weight: 100;
+	text-transform: uppercase;
+	color: black;
+}
+
+.styled.dark h1,.styled.dark h2,.styled.dark h3,.styled.dark h4,.styled.dark h5,.styled.dark h6{
+	color: white
+}
+
+.styled .tag {
+	padding: 10px;
+	margin: 5px; 
+	background-color: #88888844;
+	border-radius: 20px;
+	border: 1px solid #888;
+}
+
+.styled pre{
+	overflow-x: auto;
+	white-space: pre-wrap;
+	font-size: 18px;
+	padding: 10px;
+}
+
+.styled.dark code, .styled.dark .mono{
+	background: #666;
+	color: white;
+}			
+.styled .hint{
 	color: #666;
 }
-img{
+.styled.dark .hint code, .styled.dark .hint .mono{
+	color: #fff;
+
+}
+.styled .p-tag{
+	display: block;
+	width: 100%
+}
+
+.styled li{
+	margin-bottom: 15px;
+}
+.styled img{
 	margin: 5px;
 	box-shadow: 0 0 4px #ddd;
 	border-radius: 5px;
 }
 
-.ptn{
+.styled .inline-image {
+	display: inline-block;
+	padding: 0;
+	margin: -2px 3px;
+	width: 14px
+}
+
+.styled .default-image {
+	margin: none;
+	box-shadow: none;
+	border-radius: none;
+}
+
+.styled .ptn{
 	background: #ffa;
 	width:30%;
 	padding: 10px;
@@ -48,7 +204,41 @@ img{
 	margin: 15px 0;
 	border-radius: 4px;
 }
-button{
+
+.styled.dark .ptn{
+	border: 1px solid #444;
+	background: #663;
+
+}
+
+.styled img{
+	box-shadow: 0 0 4px #000;
+}
+
+.styled .task-to-do{
+	background: #aaf;
+	width:30%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	margin: 15px 0;
+	border-radius: 4px;
+}
+
+.styled.dark .task-to-do{
+	border: 1px solid #444;
+	background: #88a;
+
+}
+
+.styled select{
+	padding: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid #fff;
+	background: #eee;
+}
+
+.styled button{
 	padding: 10px;
 	background-color: royalblue;
 	border: none;
@@ -60,18 +250,24 @@ button{
 	font-size: 15px;
 	border-radius: 4px;
 }
-button:hover{
-	font-weight: bold;
+
+.styled button.btn-secondary{
+	background: #00000000;
+	border: 1px solid royalblue;
+	color: royalblue;
+}
+
+.styled button:hover{
 	background-color: white;
 	box-shadow: 0 0 10px #666;
 	color: royalblue;
 }
-button:active{
-	transition-duration: 0;
+.styled button:active{
+	transition-duration: 0ms;
 	opacity: 0.5;
-	transform: scale(0.99);
+	transform: scale(0.95);
 }
-input, textarea{
+.styled input{
 	padding: 10px;
 	margin: 10px;
 	border-radius: 5px;
@@ -79,30 +275,34 @@ input, textarea{
 	transition-duration: 200ms;
 	background-color: #fff;
 }
-input:hover, textarea:hover{
+.styled input:hover{
 	box-shadow: 0 0 5px royalblue;
 }
-input:focus, textarea:focus{
+.styled input:focus{
 	border: 2px solid royalblue;
 	background-color: #ddf;
 	outline: none;
 	box-shadow: 0 0 5px royalblue;
 }
-input[type=checkbox], input[type=file]{
+.styled input[type=checkbox], input[type=file]{
 	cursor: pointer;
 }
 
-.html-editor{
+.styled .html-editor{
 	border: 1px solid #888;
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 0 8px #ccc;
 }
+.styled.dark .html-editor{
+	border: 1px solid #444;
+	box-shadow: 0 0 8px #000;
+}
 
-.html-editor textarea:focus{
+.styled .html-editor textarea:focus{
 	background: #fff;
 }
-.html-editor textarea{
+.styled .html-editor textarea{
 	background: #eee;
 	transition-duration: 100ms;
 	border: none;
@@ -117,10 +317,116 @@ input[type=checkbox], input[type=file]{
 	min-height: 75vh;
 	font-weight: 100;
 }
-.html-editor #output{
+
+.styled.dark .html-editor textarea{
+	background: #333;
+	color: white;
+}
+.styled.dark .html-editor textarea:focus{
+	background: #181818;
+}
+
+.styled .html-editor #output{
 	width: 50%;
 	height: 100%;
 	padding: 10px;
 	overflow-x: auto;
 	text-overflow: ellipsis;
+}
+
+.styled .play-btn{
+	transition-duration: 200ms;
+	border-radius: 5%;
+}
+.styled .play-btn:hover{
+	background-color: #f8f8f8;
+	box-shadow: 0 0 8px #ccc;
+}
+.styled .play-btn:active{
+	box-shadow: 0 0 4px #888;
+}
+
+.styled table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #aaa;
+}
+.styled table th{
+	background: #ddd;
+	border: 1px solid #aaa;
+}
+.styled table .styled tr, .styled th, .styled td{
+	border: 1px solid #aaa;
+	padding: 10px;
+	color: black;
+}
+
+.styled.dark table {
+	border: 1px solid #444;			
+}
+.styled.dark table th{
+	background: #666;
+	border: 1px solid #333;
+}
+.styled.dark table tr, .styled.dark th, .styled.dark td{
+	border: 1px solid #666;
+	color: white;
+}
+.styled .collabsible {
+	border-radius: 5px;
+	background-color: #00000022;
+	height: 0px;
+	transition-duration: 300ms;
+	overflow-y: auto;
+}
+.styled .sticky {
+	position: sticky;
+	top: -15px;;
+	left: -15px;
+	background:#00000066;
+}
+.styled #end-letters span {
+	transition-duration: 500ms;
+	border: 1px solid #00000000;
+	font-weight: 100;
+}
+.styled #end-letters span:hover {
+	font-weight: 1000;
+	margin: 10px;
+	font-size: 60px;
+	cursor: none;
+}
+
+/*copied from w3schools :D*/
+/* width */
+.styled::-webkit-scrollbar {
+	
+width: 5px;
+}
+
+/* Track */
+.styled::-webkit-scrollbar-track {
+background: #888;
+border-radius: 10px;
+}
+
+.styled::-webkit-scrollbar-track:hover {
+background: #ccc;
+border-radius: 10px; 
+}
+
+/* Handle */
+.styled::-webkit-scrollbar-thumb {
+background: #444;
+border-radius: 10px;
+}
+
+/* Handle on hover */
+.styled::-webkit-scrollbar-thumb:hover {
+background: #333;
+}
+
+/* Handle on hover */
+.styled::-webkit-scrollbar-thumb:active {
+background: #111;
 }

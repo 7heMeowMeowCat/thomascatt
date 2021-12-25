@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript Document 1: Programming</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="style.css">
+   
+	</head>
+	<body class="styled dark">
+		<header class="card">
+			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 1: Programming</h1>
+			<div id="other-body">
+				<p>The first document in this series, related to getting started with programming
+					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark')"><i class="fa fa-adjust"></i></button>
+					<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+				</p>
+			</div>
+		</header>
+		<div style="margin-top: 200px;">
+			<h1>Table of contents:</h1>
+			<ul>
+				<li><a href="#section-1">What is JavaScript?</a></li>
+				<li><a href="#section-2">What can JavaScript do?</a></li>
+				<li><a href="#section-3">JavaScript Divisions</a></li>
+				<li><a href="#section-4">My Documents on JavaScript</a></li>
+			</ul>
+
+			<hr>
+
+			<hr>
+			<h2 style="float: right; text-align: right;">Next: <a href="JavaScript-Document-2.html">JavaScript Document 2</a></h2>
+		</div>	
+
+		<script>
+			function init() {
+				console.log("hey what are you doing here? :\\")
+				var header = document.querySelector('header')
+
+				function setInnerText(el, t) {
+					t.split("\n").forEach(function (line, index) {
+						var tabs = line.replace(line.replaceAll("\t", ""), "").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;")
+
+						var newline = (index == 0) ? '' : "<br>"
+						el.innerHTML += newline+tabs
+						el.innerText += line
+					})
+				}
+
+				document.body.onscroll = function (event) {
+					var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+
+					if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
+					else header.classList.value = ('card')
+				}
+
+			}
+			
+			try {
+				init()
+			} catch(e) {
+				document.body.innerHTML = "<pre class='card' style='color: red;'>"+e
+			}
+		</script>
+	</body>
+</html>
