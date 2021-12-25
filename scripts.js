@@ -1,6 +1,7 @@
 window.tmplts = {
     htmldoc: "Beginner Document for HTML Learning",
     cssdoc: "Document for Intermediate level CSS Learning",
+    jsdoc: "Document for learning JavaScript Programming",
     jsprac: "Document containing small tasks to do for basic JavaScript Practice",
     jsass: "Document containing a large JavaScript, HTML, and CSS inclusive assignment",
 
