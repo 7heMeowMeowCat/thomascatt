@@ -112,6 +112,21 @@
 			<li><a target="_blank" href="https://www.w3schools.com/css/css_border_shorthand.asp">Borders Shortcut</a></li>
 		</ul>
 	</div>
+
+	<div id="error-reporting" class="hidden">
+		<div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
+			<h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+			<h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
+			<div style="display: inline-block;">
+				<b style="width: 100%; display: inline-block;">
+					This page ran into a JavaScript error, functions may not behave as intended.
+				</b>
+				<p style="display: inline-block; padding: 0; margin: 0;"></p>
+			</div>
+		</div>
+	</div>
+
+	
 <script type="text/javascript">
 	try{
 		var cursor = document.getElementById('stonks')
@@ -145,7 +160,8 @@
 
 		document.body.style.opacity = 1
 	} catch (e) {
-		document.body.innerHTML = ("<span style='color: red;'><h1>JS ERROR CAME</h1>Ok g error scene :(((((((((((((<br><br>Heres the details: </span><pre>"+e+"</pre>")
+		document.getElementById("error-reporting").classList = ""
+		document.querySelector("#error-reporting p").innerText = e
 	}
 
 </script>
