@@ -176,7 +176,7 @@
 			function updateFormatterTheme(t) {
 				var theme = document.body.classList.contains('dark') ? hljs_darkTheme() : hljs_lightTheme()
 				if (t !== undefined) theme = t
-				var link = 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
+				var link = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
 				document.querySelector("#hljs-theme").href = link
 
 				return document.querySelector("#hljs-theme").href
