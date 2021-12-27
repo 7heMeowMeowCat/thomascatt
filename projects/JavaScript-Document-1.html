@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>JavaScript Document 0: Introduction</title>
+		<title>JavaScript Document 1 — Programming</title>
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		<link rel="stylesheet" href="style.css">
 		<link id="hljs-theme" rel="stylesheet"
@@ -27,8 +27,8 @@
 				<li><a href="#section-2">Variables</a></li>
 				<ul>
 					<li><a href="#section-2-1">Variable Prefix</a></li>
-					<li><a href="#section-2-2">Data Types</a></li>
-					<li><a href="#section-2-3">Concatenation</a></li>
+					<li><a href="#section-2-2">Concatenation</a></li>
+					<li><a href="#section-2-3">Data Types</a></li>
 				</ul>
 
 			</ul>
@@ -94,21 +94,25 @@ alert("I am in an alert box! :D");
 				</code></pre>
 				<p>This will display a popup box above the webpage, and gives an <code>OK</code> option with it.</p>
 
-
+				<div class="task-to-do">
+					<h3>Task to do <span class="number"></span>: Show an alert</h3>
+					<p>Use the <code>alert</code> function to alert out the text: <b>I love JavaScript</b> (even if you don't).</p>
+					<p>Use the console to run your code.</p>
+				</div>
 			</div>
 
 			<div id="section-2">
 				<h1>Variables:</h1>
 				<p>The entities that hold data in a program are called variables. Variables can contain various kinds of data, like numbers, strings, arrays, objects, and more. Variables have lots of data types, and are the first concept that you learn in programming.</p>
 				<p>Variables are like math variables; a name which holds a value. Like <code>x</code> contains a value of <code>2</code>. With variables your program can keep track of the current state of the program. Variables are a concept in every language. In JavaScript, <b>variables are declared</b> like this:</p>
-				<pre><code class="default langauge-js">
+				<pre><code class="default">
 var x = 2;
 // Now x holds a value of 2
 				</code></pre>	
 				<p>When the above line is executed, a section in your memory is allocated for this variable to sit, and hold it's value. Different langauges have different methods of storing their variables, but you don't need to care about that at this stage.</p>
 				
 				<p>The value of a variable can be changed by this:</p>
-				<pre><code class="default langauge-js">					
+				<pre><code class="default">					
 var cars = 4; // Say you have 4 cars,
 
 // But now you have another one,
@@ -117,8 +121,8 @@ var cars = 4; // Say you have 4 cars,
 cars = 5 // Now the cars variable will have the value 5
 				</code></pre>
 
-				<p>You can also use <code>console.log</code> to print the value of a variable as well:</p>
-				<pre><code class="default langauge-js">
+				<p>Since variables are basically values, you can also use <code>console.log</code> to print the value of a variable as well:</p>
+				<pre><code class="default">
 var greetings = "Welcome!";
 
 console.log(greetings); // Will print "Welcome!"
@@ -130,7 +134,7 @@ alert(greetings); // Will show "Welcome!" in an alert box
 					<li>
 						<h2 id="section-2-1">Variable Prefix:</h2>
 						<p>The very first word that you use when declaring a variable has a number of types. They can change the way a variable behaves.</p>
-						<pre><code class="default langauge-js">
+						<pre><code class="default">
 var x = 2;
 
 const name = "Thomas";
@@ -141,14 +145,14 @@ let favouriteFruit = "Apple";
 							<li>
 								<h3>The <code>var</code> keyword:</h3>
 								<p>It makes regular form of a variable. Nothing else to care about, it simply creates a variable. This is what you'll mostly need:</p>
-								<pre><code class="default langauge-js">
+								<pre><code class="default">
 var age = 10; // not really tho :)
 								</code></pre>
 							</li>
 							<li>
 								<h3>The <code>let</code> keyword:</h3>
 								<p>The <code>let</code> keyword makes a variable, that can not be declared again. If they are declared again, you receive an error:</p>
-								<pre><code class="default langauge-js">
+								<pre><code class="default">
 let fruits = 5; // fruits now contains value 5
 
 let fruits = "None"; // Will throw an error:
@@ -158,17 +162,51 @@ let fruits = "None"; // Will throw an error:
 							<li>
 								<h3>The <code>const</code></h3>
 								<p>The value of a variable declared with the <code>const</code> keyword cannot be modified once it's declared (An error will be thrown upon an attempt). These variables are used to hold data that will stay constant throughout the working of an application. Like API Keys, name of the app, etc.</p>
-								<pre><code class="default langauge-js">
+								<pre><code class="default">
 const appName = "Pizza App";
 appName = "MyPizzaApp"; // Will throw an error:
 						// TypeError: Assignment to constant variable.
 								</code></pre>
 							</li>
 						</ul>
+						<p>Because it's JavaScript, i's not required to use these prefixes to achieve a variable at all. You <b>can</b> simply do this;</p>
+						<pre><code class="default">
+name = "Thomas";
+						</code></pre>
+						<p>and the variable will be created. But it's deeply discouraged to do it this way, and it might cause problems, so it's better to use something like <code>var</code> if you want to create a variable.</p>
+
+						<div class="task-to-do">
+							<h3>Task to do <span class="number"></span>: Print a variable</h3>
+							<p>Declare a variable with the value being your name. Then use <code>console.log</code> to print that value out.</p>
+							<p>Use the console to run your code.</p>
+						</div>
+						
+						<h2 id="section-2-3">Concatenation:</h2>
+						<p>Concatenation simply means to join values together. It's a really simple process, but sometimes gets a bit confusing.</p>
+
+						<h2 id="section-2-3">Data Types:</h2>
+						<p>There are a lot of different types of data you can store in a variable. In strict languages like C++, Java, C#, etc., a variable of one type is bound to it's own; such that it can't easily interact with other variables of varying data types.</p>
+						<p>Though, in JavaScript, the procedure is a lot less strict. Data types are not required to be specified. This may seem good news at first, but this sometimes causes headaches due to it. This is because of the clumsiness of JavaScript.</p>
+						<p>Anyway, here goes the list of data types of variables:</p>
 					</li>
 				</ul>
 			</div>
 			
+			<div>
+				<div>
+					<span class="collapse-trigger" onclick="toggleCollapse(document.querySelector('#task-to-do-answers'), event.target)"><i class="fa fa-chevron-right"></i></span>
+					&nbsp;<h1 style="display: inline-block;">Task to do answers:</h1>
+				</div>
+				<ol id="task-to-do-answers" class="collapse-target">
+					<li><h2></h2><pre><code class="default">
+alert("I love JavaScript");
+					</code></pre></li>
+					<li><h2></h2><pre><code class="default">
+var name = "Thomas";
+console.log(name);
+					</code></pre></li>
+				</ol>
+			</div>
 			<hr>
 			<h2 style="float: right; text-align: right;">Next: <a href="JavaScript-Document-2.html">JavaScript Document 2</a></h2>
 		</div>
@@ -216,8 +254,20 @@ appName = "MyPizzaApp"; // Will throw an error:
 					el.parentElement.classList = 'language-js'
 				})
 
+				var taskToDoNum = 0;
+				document.querySelectorAll(".task-to-do .number").forEach(e => e.innerText = ++taskToDoNum);
+				
 				hljs.highlightAll()
 				updateFormatterTheme()
+			}
+
+			function toggleCollapse(element, button) {
+				element.style.transitionDuration = '0ms'
+				element.classList.toggle("expanded")
+				button.classList.toggle("expanded")
+				if (element.classList.contains("expanded")) element.style.height = (element.scrollHeight+1)+"px"
+				else element.style.height = '0px'
+				element.style.transitionDuration = ''
 			}
 
 			hljs_lightThemeVal = 'stackoverflow-light'
