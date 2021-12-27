@@ -9,7 +9,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
 		
 	</head>
-	<body class="styled dark">
+	<body class="styled dark" style="opacity: 0;">
 		<header class="card">
 			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 1 — Programming</h1>
 			<div id="other-body">
@@ -26,13 +26,14 @@
 				<li><a href="#section-1">Basic Interaction: Output</a></li>
 				<li><a href="#section-2">Variables</a></li>
 				<ul>
-					<li><a href="#section-2-1">Data Types</a></li>
-					<li><a href="#section-2-2">Concatenation</a></li>
+					<li><a href="#section-2-1">Variable Prefix</a></li>
+					<li><a href="#section-2-2">Data Types</a></li>
+					<li><a href="#section-2-3">Concatenation</a></li>
 				</ul>
 
 			</ul>
 
-			<div id="section-1">
+			<div id="section-0">
 				<h1>Basic Concepts:</h1>
 				<p>Here are a few concepts that you should know before getting started with programming.</p>
 				<ul>
@@ -79,6 +80,8 @@ console.log("I'm learning JavaScript :)");
 console.log('Hello, "World"!'); // Using single quotes
 				</code></pre>
 
+				<p class="hint">You can try running the above lines and modify them however you want from the <b>Console</b>.</p>
+				
 				<h2>Displaying an alert box:</h2>
 				<p>This may seem a bit complicated when you hear it, but it is in fact really simple:</p>
 				<pre><code class="default language-js">
@@ -89,10 +92,83 @@ alert(text);
 				<pre><code class="default language-js">
 alert("I am in an alert box! :D");
 				</code></pre>
+				<p>This will display a popup box above the webpage, and gives an <code>OK</code> option with it.</p>
 
 
 			</div>
 
+			<div id="section-2">
+				<h1>Variables:</h1>
+				<p>The entities that hold data in a program are called variables. Variables can contain various kinds of data, like numbers, strings, arrays, objects, and more. Variables have lots of data types, and are the first concept that you learn in programming.</p>
+				<p>Variables are like math variables; a name which holds a value. Like <code>x</code> contains a value of <code>2</code>. With variables your program can keep track of the current state of the program. Variables are a concept in every language. In JavaScript, <b>variables are declared</b> like this:</p>
+				<pre><code class="default langauge-js">
+var x = 2;
+// Now x holds a value of 2
+				</code></pre>	
+				<p>When the above line is executed, a section in your memory is allocated for this variable to sit, and hold it's value. Different langauges have different methods of storing their variables, but you don't need to care about that at this stage.</p>
+				
+				<p>The value of a variable can be changed by this:</p>
+				<pre><code class="default langauge-js">					
+var cars = 4; // Say you have 4 cars,
+
+// But now you have another one,
+// You can change its value
+
+cars = 5 // Now the cars variable will have the value 5
+				</code></pre>
+
+				<p>You can also use <code>console.log</code> to print the value of a variable as well:</p>
+				<pre><code class="default langauge-js">
+var greetings = "Welcome!";
+
+console.log(greetings); // Will print "Welcome!"
+alert(greetings); // Will show "Welcome!" in an alert box
+				</code></pre>
+				
+				<p>The definition of a variable can have a number of variations, made by different requirements. They are explained below: </p>
+				<ul>
+					<li>
+						<h2 id="section-2-1">Variable Prefix:</h2>
+						<p>The very first word that you use when declaring a variable has a number of types. They can change the way a variable behaves.</p>
+						<pre><code class="default langauge-js">
+var x = 2;
+
+const name = "Thomas";
+
+let favouriteFruit = "Apple";
+						</code></pre>
+						<ul>
+							<li>
+								<h3>The <code>var</code> keyword:</h3>
+								<p>It makes regular form of a variable. Nothing else to care about, it simply creates a variable. This is what you'll mostly need:</p>
+								<pre><code class="default langauge-js">
+var age = 10; // not really tho :)
+								</code></pre>
+							</li>
+							<li>
+								<h3>The <code>let</code> keyword:</h3>
+								<p>The <code>let</code> keyword makes a variable, that can not be declared again. If they are declared again, you receive an error:</p>
+								<pre><code class="default langauge-js">
+let fruits = 5; // fruits now contains value 5
+
+let fruits = "None"; // Will throw an error:
+					 // SyntaxError: Identifier 'fruits' has already been declared
+								</code></pre>
+							</li>
+							<li>
+								<h3>The <code>const</code></h3>
+								<p>The value of a variable declared with the <code>const</code> keyword cannot be modified once it's declared (An error will be thrown upon an attempt). These variables are used to hold data that will stay constant throughout the working of an application. Like API Keys, name of the app, etc.</p>
+								<pre><code class="default langauge-js">
+const appName = "Pizza App";
+appName = "MyPizzaApp"; // Will throw an error:
+						// TypeError: Assignment to constant variable.
+								</code></pre>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			
 			<hr>
 			<h2 style="float: right; text-align: right;">Next: <a href="JavaScript-Document-2.html">JavaScript Document 2</a></h2>
 		</div>
@@ -109,10 +185,11 @@ alert("I am in an alert box! :D");
 			</div>
 		</div>
 
-		<script>
+		<script async>
 			function init() {
 				console.log("hey what are you doing here? :\\")
 				var header = document.querySelector('header')
+				document.body.style.opacity = "1"
 
 				function setInnerText(el, t) {
 					t.split("\n").forEach(function (line, index) {
@@ -134,6 +211,9 @@ alert("I am in an alert box! :D");
 				document.querySelectorAll("pre code.default").forEach(function (el) {
 					var text = el.innerText
 					el.innerHTML = text.trim().replaceAll('\t', '    ')
+					el.style.transitionDuration = '0ms'
+					el.parentElement.style.transitionDuration = '0ms'
+					el.parentElement.classList = 'language-js'
 				})
 
 				hljs.highlightAll()
@@ -155,11 +235,16 @@ alert("I am in an alert box! :D");
 				return document.querySelector("#hljs-theme").href
 			}
 			
+			window.onerror = function (e) {
+				document.getElementById("error-reporting").classList = ""
+				document.querySelector("#error-reporting p").innerText = e
+				document.body.style.opacity = "1"
+			}
+			
 			try {
 				init()
 			} catch(e) {
-				document.getElementById("error-reporting").classList = ""
-				document.querySelector("#error-reporting p").innerText = e
+				window.onerror(e)
 			}
 			
 		</script>
