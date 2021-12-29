@@ -291,6 +291,18 @@ x -= 3; // 3 is subtracted from 5, i.e., 5 - 3, and x is now 2
 console.log(x); // Prints 2
 											</code></pre>
 										</li>
+										<li>
+											If you want to increase or decrease the value of a number by one, then you can use the <code>++</code> or <code>--</code> operator respectively:
+											<pre><code class="default">
+var x = 3;
+x++; // 3 is increased by 1, i.e., 3 + 1, and x is now 4
+console.log(x); // Prints 4
+
+// -- works in the same way too:
+x--; // 4 is decreased by 1, i.e., 4 - 1, and x is now 3
+console.log(x); // Prints 3
+											</code></pre>
+										</li>
 									</ul>
 									<p>Here's a table of how these shortcuts are working:</p>
 									<table style="width: initial;">
@@ -326,6 +338,16 @@ var isDocumentGood = false; // :(
 var areApplesSweet = true;
 									</code></pre>
 									<p>The definition of a boolean variable is described here. You will use booleans and learn more about them in a later document.</p>
+								</li>
+								<li>
+									<h2>Special Types:</h2>
+									<p>There are some values which are neither of the above, but they exist on their own, these are:</p>
+									<ul>
+										<li><pre><code class="default">null</code></pre> Indicates that the variable is defined to be null, can be used to convey that no data is returned.</li>
+										<li><pre><code class="default">undefined</code></pre> Indicates that the variable is not properly defined. <code>undefined</code> and <code>null</code> are similar in ways but <code>undefined</code> gets a bit harder to handle.</li>
+										<li><pre><code class="default">NaN</code></pre> Stands for <b>Not a Number</b>. Forms when a number is moulded into weirder terms. E.g., when a pure string is converted to a number, <code>NaN</code> is returned. Use <code>isNaN(value)</code> function to check if a certain value is <code>NaN</code>, since simple comparisons on <code>NaN</code> simply don't work.</li>
+										<li><pre><code class="default">Infinity</code></pre> Seen less frequently. Forms when a number is divided by zero.</li>
+									</ul>
 								</li>
 							</ul>
 						</div>
