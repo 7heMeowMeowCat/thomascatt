@@ -13,9 +13,10 @@
 		<header class="card">
 			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 1 — Programming</h1>
 			<div id="other-body">
-				<p>The first document in this series, related to getting started with programming<br><b style="color: #f00;">This is a work in progress.</b>
-					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
-					<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+				<p>The first document in this series, related to getting started with programming
+					<!-- <br><b style="color: #f00;">This is a work in progress.</b> -->
+					<button tabindex="-1" id="darkmode" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
+					<button tabindex="-1" id="togglecss" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
 				</p>
 			</div>
 		</header>
@@ -28,8 +29,8 @@
 				<ul>
 					<li><a href="#section-2-1">Variable Prefix</a></li>
 					<li><a href="#section-2-2">Data Types</a></li>
-					<li><a href="#section-2-3">Concatenation</a></li>
 				</ul>
+				<li><a href="#section-3">Concatenation</a></li>
 
 			</ul>
 
@@ -50,16 +51,16 @@
 						<h2>Comments:</h2>
 						<p>Comments are lines of code which are not executed. They are used to leave notes around parts of codes, for easy recognition. They are represented by a grey color in code editors, and are written using a <code>//</code>:</p>
 						<pre><code class="default language-js">
-// This is a comment, This will not be executed
+							// This is a comment, This will not be executed
 						</code></pre>
-						<p>If you want to add a comment that spans multiple lines, then that is possible by a pair of <code>/*</code> and <code>*/</code>. Anything enclosed in them will be treated as a comment:</p>
+						<p>If you want to add a comment that spans multiple lines, then that is possible by a pair of <code class="no-color">/*</code> and <code>*/</code>. Anything enclosed in them will be treated as a comment:</p>
 						<pre><code class="default language-js">
-/*  
-	This is a comment that
-	spans multiple lines on
-	the screen, and will not
-	be executed.
-*/
+							/*  
+								This is a comment that
+								spans multiple lines on
+								the screen, and will not
+								be executed.
+							*/
 						</code></pre>
 					</li>
 				</ul>
@@ -70,14 +71,14 @@
 				<p>First of all, you should know how you can print stuff to the user. Every language has some sort of printing function. For JavaScript, it's the <code>console.log</code> function. Here's how to use it:</p>
 
 				<pre><code class="default language-js">
-// Syntax:
-console.log(text);
+					// Syntax:
+					console.log(text);
 				</code></pre>
 				<p>Where <code>text</code> is a <b>string</b>, which represents your choice of text. Your text <b>must</b> be enclosed in <b>quotes</b> (<code>""</code> or <code>''</code>):</p>
 				<pre><code class="default language-js">
-console.log("I'm learning JavaScript :)");
+					console.log("I'm learning JavaScript :)");
 
-console.log('Hello, "World"!'); // Using single quotes
+					console.log('Hello, "World"!'); // Using single quotes
 				</code></pre>
 
 				<p class="hint">You can try running the above lines and modify them however you want from the <b>Console</b>.</p>
@@ -85,12 +86,12 @@ console.log('Hello, "World"!'); // Using single quotes
 				<h2>Displaying an alert box:</h2>
 				<p>This may seem a bit complicated when you hear it, but it is in fact really simple:</p>
 				<pre><code class="default language-js">
-// Syntax:
-alert(text);
+					// Syntax:
+					alert(text);
 				</code></pre>
 				<p>Where <code>text</code> text is a <b>string</b> of the text you want to be displayed.</p>
 				<pre><code class="default language-js">
-alert("I am in an alert box! :D");
+					alert("I am in an alert box! :D");
 				</code></pre>
 				<p>This will display a popup box above the webpage, and gives an <code>OK</code> option with it.</p>
 
@@ -106,27 +107,27 @@ alert("I am in an alert box! :D");
 				<p>The entities that hold data in a program are called variables. Variables can contain various kinds of data, like numbers, strings, arrays, objects, and more. Variables have lots of data types, and are the first concept that you learn in programming.</p>
 				<p>Variables are like math variables; a name which holds a value. Like <code>x</code> contains a value of <code>2</code>. With variables your program can keep track of the current state of the program. Variables are a concept in every language. In JavaScript, <b>variables are declared</b> like this:</p>
 				<pre><code class="default">
-var x = 2;
-// Now x holds a value of 2
+					var x = 2;
+					// Now x holds a value of 2
 				</code></pre>	
 				<p>When the above line is executed, a section in your memory is allocated for this variable to sit, and hold it's value. Different langauges have different methods of storing their variables, but you don't need to care about that at this stage.</p>
 				
 				<p>The value of a variable can be changed by this:</p>
 				<pre><code class="default">					
-var cars = 4; // Say you have 4 cars,
+					var cars = 4; // Say you have 4 cars,
 
-// But now you have another one,
-// You can change its value
+					// But now you have another one,
+					// You can change its value
 
-cars = 5 // Now the cars variable will have the value 5
+					cars = 5 // Now the cars variable will have the value 5
 				</code></pre>
 
 				<p>Since variables are basically values, you can also use <code>console.log</code> to print the value of a variable as well:</p>
 				<pre><code class="default">
-var greetings = "Welcome!";
+					var greetings = "Welcome!";
 
-console.log(greetings); // Will print "Welcome!"
-alert(greetings); // Will show "Welcome!" in an alert box
+					console.log(greetings); // Will print "Welcome!"
+					alert(greetings); // Will show "Welcome!" in an alert box
 				</code></pre>
 				
 				<p>The definition of a variable can have a number of variations, made by different requirements. They are explained below: </p>
@@ -135,43 +136,43 @@ alert(greetings); // Will show "Welcome!" in an alert box
 						<h2 id="section-2-1">Variable Prefix:</h2>
 						<p>The very first word that you use when declaring a variable has a number of types. They can change the way a variable behaves.</p>
 						<pre><code class="default">
-var x = 2;
+							var x = 2;
 
-const name = "Thomas";
+							const name = "Thomas";
 
-let favouriteFruit = "Apple";
+							let favouriteFruit = "Apple";
 						</code></pre>
 						<ul>
 							<li>
 								<h3>The <code>var</code> keyword:</h3>
 								<p>It makes regular form of a variable. Nothing else to care about, it simply creates a variable. This is what you'll mostly need:</p>
 								<pre><code class="default">
-var age = 10; // not really tho :)
+									var age = 10; // not really tho :)
 								</code></pre>
 							</li>
 							<li>
 								<h3>The <code>let</code> keyword:</h3>
 								<p>The <code>let</code> keyword makes a variable, that can not be declared again. If they are declared again, you receive an error:</p>
 								<pre><code class="default">
-let fruits = 5; // fruits now contains value 5
+									let fruits = 5; // fruits now contains value 5
 
-let fruits = "None"; // Will throw an error:
-					 // SyntaxError: Identifier 'fruits' has already been declared
+									let fruits = "None"; // Will throw an error:
+														// SyntaxError: Identifier 'fruits' has already been declared
 								</code></pre>
 							</li>
 							<li>
-								<h3>The <code>const</code></h3>
+								<h3>The <code>const</code> keyword:</h3>
 								<p>The value of a variable declared with the <code>const</code> keyword cannot be modified once it's declared (An error will be thrown upon an attempt). These variables are used to hold data that will stay constant throughout the working of an application. Like API Keys, name of the app, etc.</p>
 								<pre><code class="default">
-const appName = "Pizza App";
-appName = "MyPizzaApp"; // Will throw an error:
-						// TypeError: Assignment to constant variable.
+									const appName = "Pizza App";
+									appName = "MyPizzaApp"; // Will throw an error:
+															// TypeError: Assignment to constant variable.
 								</code></pre>
 							</li>
 						</ul>
 						<p>Because it's JavaScript, i's not required to use these prefixes to achieve a variable at all. You <b>can</b> simply do this;</p>
 						<pre><code class="default">
-name = "Thomas";
+							name = "Thomas";
 						</code></pre>
 						<p>and the variable will be created. But it's deeply discouraged to do it this way, and it might cause problems, so it's better to use something like <code>var</code> if you want to create a variable.</p>
 
@@ -198,47 +199,48 @@ name = "Thomas";
 										<li>
 											Values written in backticks can span multiple lines without requiring to close the quote, unlike other quotes:
 											<pre><code class="default">
-var lipsum = `
-	Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-	Necessitatibus nulla consequuntur vitae aperiam laboriosam
-	quo at molestias eum placeat error voluptas, labore magnam?
-	Modi ab sapiente et commodi, totam nihil.
-`; // Works fine
+												var lipsum = `
+													Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+													Necessitatibus nulla consequuntur vitae aperiam laboriosam
+													quo at molestias eum placeat error voluptas, labore magnam?
+													Modi ab sapiente et commodi, totam nihil.
+												`; // Works fine
 
-var lipsumWithQuotes = "
-	Lorem ipsum dolor sit amet consectetur adipisicing elit.
-	Aut laudantium iure officia rem maxime minima eius!
-	Maxime corporis nobis ad, repellendus, similique quae
-	maiores eum amet beatae eaque illo nisi.
-"; // SyntaxError: Invalid or unexpected token
+												var lipsumWithQuotes = "
+													Lorem ipsum dolor sit amet consectetur adipisicing elit.
+													Aut laudantium iure officia rem maxime minima eius!
+													Maxime corporis nobis ad, repellendus, similique quae
+													maiores eum amet beatae eaque illo nisi.
+												"; // SyntaxError: Invalid or unexpected token
 											</code></pre>
 										</li>
 										<li>
 											<h4>Special Characters & Escaping:</h4>
 											<p>Sometimes a combination of characters refer to an item, which is not easy to handle as itself, like new lines and tabs. In programming, these are written with a <code>\n</code> and <code>\t</code> respectively (<code>\n</code> for a new line and <code>\t</code> for a tab).</p>
 											<pre><code class="default">
-var indentedText = "\n\tThis is some text with an indent.\n";
-console.log(indentedText); /*
+												var indentedText = "\n\tThis is some text with an indent.\n";
+												console.log(indentedText); /*
 
-	This is some text with an indent.
-*/											</code></pre>
+													This is some text with an indent.
+												*/	
+											</code></pre>
 											<p>There are probably a lot more character combinations like this, but only these two are relevant.</p>
 											<br>
 											<p>But what if you want to, let's say, do something evil like printing a <code>\n</code> as it's own. Like you want to see the symbol itself? Or, let's say you want to <code>console.log</code> out all the three types of quotes, something like <code>"'`</code>? Can you do that?</p>
 											<pre><code class="default">
-console.log(` "'` `);
-// Uh it doesn't seem to look fine doesn't it?
+												console.log(` "'` `);
+												// Uh it doesn't seem to look fine doesn't it?
 											</code></pre>
 											<p>Here comes escaping. Escaping means to "escape" the actual purpose of a symbol, and specify it as itself. It's not used much, but when it is, it becomes sort of a headache. Escaping is a common concept in most programming languages, and it's achieved by placing a <code>\</code> (backslash) character before the character you want to escape. Once done, the escaped character will become part of the string:</p>
 											<pre><code class="default">
-console.log("\\n"); // Prints: \n
+												console.log("\\n"); // Prints: \n
 
 
-console.log("\"'`"); // Prints: "'`
-					 // This one looks complicated, so you can look at a simpler example below:
-					 
-console.log("\"\""); // Prints: ""
-					   // The two slashes prevent the quotes after them from closing the string quotes, and make them the part of the string.
+												console.log("\"'`"); // Prints: "'`
+																	// This one looks complicated, so you can look at a simpler example below:
+																	
+												console.log("\"\""); // Prints: ""
+																	// The two slashes prevent the quotes after them from closing the string quotes, and make them the part of the string.
 											</code></pre>
 											<p class="hint">If this seems complicated to you, then you can easily skip it for now. Since at this level, you don't need to get into escaping yet, since you are not going to be playing with quotes at this level (even if you are, you can simply use a different pair of quotes).</p>
 										</li>
@@ -250,26 +252,26 @@ console.log("\"\""); // Prints: ""
 
 									<h3>Addition:</h3>
 									<pre><code class="default">
-var apples = 6;
-var bananas = 4;
-var fruits = apples + bananas;
-console.log(fruits); // Prints 10
+										var apples = 6;
+										var bananas = 4;
+										var fruits = apples + bananas;
+										console.log(fruits); // Prints 10
 									</code></pre>
 
 									<h3>Subtraction:</h3>
 									<pre><code class="default">
-var totalStudents = 60;
-var boys = 40;
-var girls = totalStudents - boys;
-console.log(girls); // Prints 20
+										var totalStudents = 60;
+										var boys = 40;
+										var girls = totalStudents - boys;
+										console.log(girls); // Prints 20
 									</code></pre>
 
 									<h3>Multiplication & Division:</h3>
 									<pre><code class="default">
-var a = 12;
-var b = 4;
-console.log(a * b); // Multiplication: Prints 48
-console.log(a / b); // Division: Prints 3
+										var a = 12;
+										var b = 4;
+										console.log(a * b); // Multiplication: Prints 48
+										console.log(a / b); // Division: Prints 3
 									</code></pre>
 									<div class="task-to-do">
 										<h3>Task to do <span class="number"></span>: Divide a number by zero:</h3>
@@ -282,25 +284,25 @@ console.log(a / b); // Division: Prints 3
 										<li>
 											If you want to add something into a number, then you can use <code>+=</code>:
 											<pre><code class="default">
-var x = 3;
-x += 2; // 2 is added to 3, i.e., 2 + 3, and x is now 5
-console.log(x); // Prints 5
+												var x = 3;
+												x += 2; // 2 is added to 3, i.e., 2 + 3, and x is now 5
+												console.log(x); // Prints 5
 
-// -= works in the same way too:
-x -= 3; // 3 is subtracted from 5, i.e., 5 - 3, and x is now 2
-console.log(x); // Prints 2
+												// -= works in the same way too:
+												x -= 3; // 3 is subtracted from 5, i.e., 5 - 3, and x is now 2
+												console.log(x); // Prints 2
 											</code></pre>
 										</li>
 										<li>
 											If you want to increase or decrease the value of a number by one, then you can use the <code>++</code> or <code>--</code> operator respectively:
 											<pre><code class="default">
-var x = 3;
-x++; // 3 is increased by 1, i.e., 3 + 1, and x is now 4
-console.log(x); // Prints 4
+												var x = 3;
+												x++; // 3 is increased by 1, i.e., 3 + 1, and x is now 4
+												console.log(x); // Prints 4
 
-// -- works in the same way too:
-x--; // 4 is decreased by 1, i.e., 4 - 1, and x is now 3
-console.log(x); // Prints 3
+												// -- works in the same way too:
+												x--; // 4 is decreased by 1, i.e., 4 - 1, and x is now 3
+												console.log(x); // Prints 3
 											</code></pre>
 										</li>
 									</ul>
@@ -333,61 +335,120 @@ console.log(x); // Prints 3
 									<h2>Booleans:</h2>
 									<p>Booleans are the simplest form of data types, which only have two possible values; <code>true</code> or <code>false</code>. It cannot contain any other quantity. Booleans are used to make decisions in if-else statements (you will learn about them later), loops, and a lot more.</p>
 									<pre><code class="default">
-var isJavaScriptFun = true;
-var isDocumentGood = false; // :(
-var areApplesSweet = true;
+										var isJavaScriptFun = true;
+										var isDocumentGood = false; // :(
+										var areApplesSweet = true;
 									</code></pre>
 									<p>The definition of a boolean variable is described here. You will use booleans and learn more about them in a later document.</p>
 								</li>
 								<li>
 									<h2>Special Types:</h2>
 									<p>There are some values which are neither of the above, but they exist on their own, these are:</p>
-									<ul>
-										<li><pre><code class="default">null</code></pre> Indicates that the variable is defined to be null, can be used to convey that no data is returned.</li>
-										<li><pre><code class="default">undefined</code></pre> Indicates that the variable is not properly defined. <code>undefined</code> and <code>null</code> are similar in ways but <code>undefined</code> gets a bit harder to handle.</li>
-										<li><pre><code class="default">NaN</code></pre> Stands for <b>Not a Number</b>. Forms when a number is moulded into weirder terms. E.g., when a pure string is converted to a number, <code>NaN</code> is returned. Use <code>isNaN(value)</code> function to check if a certain value is <code>NaN</code>, since simple comparisons on <code>NaN</code> simply don't work.</li>
-										<li><pre><code class="default">Infinity</code></pre> Seen less frequently. Forms when a number is divided by zero.</li>
-									</ul>
+									<table>
+										<tr><th>Type</th><th>Description</th></tr>
+										<tr><td><pre><code class="default">null</code></pre></td> <td>Indicates that the variable is defined to be null, can be used to convey that no data is returned.</td></tr>
+										<tr><td><pre><code class="default">undefined</code></pre></td> <td>Indicates that the variable is not properly defined. <code>undefined</code> and <code>null</code> are similar in ways but <code>undefined</code> gets a bit harder to handle.	</td></tr>
+										<tr><td><pre><code class="default">NaN</code></pre></td> <td>Stands for <b>Not a Number</b>. Forms when a number is moulded into weirder terms. E.g., when a pure string is converted to a number, <code>NaN</code> is returned. Use <code>isNaN(value)</code> function to check if a certain value is <code>NaN</code>, since simple comparisons on <code>NaN</code> simply don't work.	</td></tr>
+										<tr><td><pre><code class="default">Infinity</code></pre></td> <td>Seen less frequently. Forms when a number is divided by zero.	</td></tr>
+									</table>
 								</li>
 							</ul>
 						</div>
 					</li>
 					
 					</li>
-						<div id="section-2-3"> 
-
-							<h2>Concatenation:</h2>
+					</ul>
+						<div id="section-3"> 
+							<h1>Concatenation:</h1>
 							<p>Concatenation simply means to join values together. It's a really simple process, but sometimes gets a bit confusing. Here's a few combinations in practice:</p>
 							<ul>
 								<li>
-									<h3>String Concatenation:</h3>
+									<h2>String Concatenation:</h2>
 									<p>String values can easily be concatenated by using the <code>+</code> symbol:</p>
 									<pre><code class="default">
-var name = "Thomas";
-console.log("Hello " + name); // Prints out "Hello Thomas"
+										var name = "Thomas";
+										console.log("Hello " + name); // Prints out "Hello Thomas"
 									</code></pre>
 									<p>The concatenated value can be stored into a variable as well:</p>
 									<pre><code class="default">
 										var name = "Thomas";
-var greetings = "Hello " + name; // Storing the joined value
-console.log(greetings); // Prints out "Hello Thomas"
-								</code></pre>
-								<p>Multiple values can be concatenated too:</p>
-								<pre><code class="default">
-var name = "Thomas";
-var age = 10;
-var favouriteFruit = "Apple";
+										var greetings = "Hello " + name; // Storing the joined value
+										console.log(greetings); // Prints out "Hello Thomas"
+									</code></pre>
+									<p>Multiple values can be concatenated too:</p>
+									<pre><code class="default">
+										var name = "Thomas";
+										var age = 10;
+										var favouriteFruit = "Apple";
 
-console.log("Hi, I am " + name + ", " + age + " years old, and my favourite fruit is " + favouriteFruit + ".");
+										console.log("Hi, I am " + name + ", " + age + " years old, and my favourite fruit is " + favouriteFruit + ".");
 
-// "Hi, I am Thomas, 10 years old, and my favourite fruit is Apple."
-								</code></pre>
+										// "Hi, I am Thomas, 10 years old, and my favourite fruit is Apple."
+									</code></pre>
 
+								</li>
+								<li>
+									<h2>Number Concatenation:</h2>
+									<p>Concatenating numbers can be a little confusing, since the <code>+</code> operator is used for adding numbers and concatenating. If you try to concatenate numbers like strings:</p>
+									<pre><code class="default">
+var num1 = 5;
+var num2 = 7;
+console.log(num1 + num2); // Prints 12
+									</code></pre>
+									<p>We get their sum. How do we concatenate them now?</p>
+									<p>An easy way that I use is this; First, convert each of them into a string, then do normal string concatenation. The conversion can be achieved in a number of ways:</p>
+									<pre><code class="default">
+var num1 = 5;
+var num2 = 7;
+console.log( (num1 + "") + (num2 + "") ); // Prints 57
+									</code></pre>
+									<p>What is happening here?</p>
+									<ul>
+										<li>
+											In JavaScript, like maths, bracketed expressions are prefered over the other ones.
+										</li>
+										<li>
+											In the third line, look at the expressions in brackets. Both of the numbers are concatenated with a string first.
+										</li>
+										<li>
+											This converts both of the number values into a string, since concatenating a string with anything makes that value a string too. (<code>1 + ""</code> will be a string <code>"1"</code>, which is friendly for concatenating.)
+										</li>
+										<li>
+											This way, the numbers are converted to strings, and string concatenations are applied.
+										</li>
+									</ul>
+									<p>A shortcut for this will be:</p>
+									<pre><code class="default">
+										var num1 = 5;
+										var num2 = 7;
+										console.log(num1 + "" + num2); // Also prints 57
+									</code></pre>
 								</li>
 							</ul>
 						</div>
 					</li>
 				</ul>
+				<div class="task-to-do">
+					<h3>Task to do <span class="number"></span>: Count the fruits</h3>
+					<p>There are 4 apples and 6 bananas in the bag. Such that <code>var apples = 4;</code> and <code>var bananas = 6;</code>.</p>
+					<p>Print a statement, which shows the total number of fruits using addition, somehting like <code>"There are 10 fruits in the bag."</code></p>
+				</div>
+			</div>
+
+			<div>
+				<h1>Winding up...</h1>
+				<p>You learned:</p>
+				<ul>
+					<li>Comments are parts of code which aren't executed. They are written by prefixing a line with a <code>//</code> or wrapping the desired code in a <code>/* */</code> block.</li>
+					<li><code>console.log</code> and <code>alert</code> can be used to view output to the user. <code>alert</code> shows an interactable alert box.</li>
+					<li>Variables are entities that can store data. Different prefixes in the variable declaration effect it's behaviour.</li>
+					<li>Strings are values that can contain text data. Different characters like <code>\n</code> and <code>\t</code> can be used to insert special characters like newlines and tabs.</li>
+					<li>Numbers mostly behave like math numbers, and arithmatic operations work too.</li>
+					<li>Booleans are used to express a <code>true</code> or a <code>false</code> in a program.</li>
+					<li>Concatenation means to join values together. Strings are concatenated with a <code>+</code> symbol between two values.</li>
+					<li>Concatenating numbers causes them to be added into each other. To preven this, the numbers are converted to a string before concatenation, so that regular string concatenation is applied to the numbers.</li>
+				</ul>
+				<p>Make sure that you understand most of the stuff in the document (if you don't, it's okay, you'll get it later) and try to practice these as much as you can. Try new things, like concatenating an <code>undefiend</code> with a string and see what happens, or try to find the difference of using <code>var</code> and declaring a variable without any prefix. Once done, you are welcome to move to the next document :)</p>
 			</div>
 			
 			<div>
@@ -396,16 +457,24 @@ console.log("Hi, I am " + name + ", " + age + " years old, and my favourite frui
 					&nbsp;<h1 style="display: inline-block;">Task to do answers:</h1>
 				</div>
 				<ol id="task-to-do-answers" class="collapse-target">
+					<p>Please try to do them yourself before consulting these answers :(</p>
 					<li><h2></h2><pre><code class="default">
-alert("I love JavaScript");
+						alert("I love JavaScript");
 					</code></pre></li>
 					<li><h2></h2><pre><code class="default">
-var name = "Thomas";
-console.log(name);
+						var name = "Thomas";
+						console.log(name);
 					</code></pre></li>
 					<li><h2></h2><pre><code class="default">
-var a = 12;
-console.log(a / 0); // Division by zero: Prints Infinity
+						var a = 12;
+						console.log(a / 0); // Prints Infinity
+					</code></pre></li>
+					<li><h2></h2><pre><code class="default">
+						var apples = 4;
+						var bananas = 6;
+						var totalFruits = apples + bananas;
+
+						console.log("There are " + totalFruits + " fruits in the bag.");
 					</code></pre></li>
 				</ol>
 			</div>
@@ -448,18 +517,54 @@ console.log(a / 0); // Division by zero: Prints Infinity
 					else header.classList.value = ('card')
 				}
 
-				document.querySelectorAll("pre code.default").forEach(function (el) {
+				window.removeSpaces = function(s) {
+					if (s.split("\n").join("").trim() == "") return s
+					s = s.replaceAll('    ', '\t').replaceAll('	', '\t')
+
+					var lines = s.split("\n")
+					if (lines[0].trim() == '') lines.shift()
+					if (lines[lines.length-1].trim() == '') lines.pop()
+					var cleaned = false
+					
+					while (true) {
+						cleaned = true
+						lines.forEach(l => {
+							if (l == "") {
+							} else if (l.substr(0,1) !== "\t") {
+								cleaned = false
+							}
+						})
+
+						if (!cleaned) break
+						
+						lines.forEach( (l, i) => {
+							l = l.replace('\t', '')
+							lines[i] = l
+						})
+					}
+
+					return lines.join("\n")
+				}
+				
+				document.querySelectorAll("code:not(.no-color)").forEach(function (el) {
 					var text = el.innerText
-					el.innerHTML = text.trim().replaceAll('\t', '    ')
-					el.style.transitionDuration = '0ms'
-					el.parentElement.style.transitionDuration = '0ms'
-					el.parentElement.classList = 'language-js'
+					
+					el.innerHTML = removeSpaces(text).trim().replaceAll('\t', '    ')
+					if (el.parentElement.tagName == 'pre' && el.parentElement.classList == 'hl-code') {
+						el.parentElement.style.transitionDuration = '0ms'
+						el.parentElement.classList.add('language-js')
+						hljs.highlightElement(el.parentElement)
+					} else {
+						el.style.transitionDuration = '0ms'
+						el.classList.add('language-js')
+						hljs.highlightElement(el)
+					}
 				})
 
 				var taskToDoNum = 0;
 				document.querySelectorAll(".task-to-do .number").forEach(e => e.innerText = ++taskToDoNum);
 				
-				hljs.highlightAll()
+				document.body.onkeydown = (e) => (e.key == 'd') ? document.querySelector("#darkmode").click() : ((e.key == 'C') ? document.querySelector("#togglecss").click() : true)
 				updateFormatterTheme()
 			}
 
