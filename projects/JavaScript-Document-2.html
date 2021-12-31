@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript Document 2 — More Programming</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="style.css">
+		<link id="hljs-theme" rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/stackoverflow-dark.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+		
+	</head>
+	<body class="styled dark" style="opacity: 0;">
+		<header class="card">
+			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 2 — More Programming</h1>
+			<div id="other-body">
+				<p>The second document continues the first one, further discussing concepts in JavaScript programming
+					<!-- <br><b style="color: #f00;">This is a work in progress.</b> -->
+					<button tabindex="-1" id="darkmode" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
+					<button tabindex="-1" id="togglecss" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+				</p>
+			</div>
+		</header>
+		<div style="margin-top: 200px;">
+			<h1>Table of contents:</h1>
+			<ul>
+				<li><a href="#section-0">Taking Input from user</a></li>
+				<ul>
+					<li><a href="#section-0-1">A bit detail about it</a></li>
+					<li><a href="#section-0-2">Performing Arithmatic with Input</a></li>
+					<li><a href="#section-0-3">The confirm function</a></li>
+				</ul>
+				<li><a href="#section-1">If statements</a></li>
+				<ul>
+					<li><a href="#section-1-1">Using Booleans</a></li>
+					<li><a href="#section-1-2">Matching multiple conditions</a></li>
+				</ul>
+				<li><a href="#section-2">Arrays</a></li>
+				<li><a href="#section-3">Loops</a></li>
+				<ul>
+					<li><a href="#section-3-1">While loop</a></li>
+					<li><a href="#section-3-2">For loop</a></li>
+					<li><a href="#section-3-2">More loops</a></li>
+				</ul>
+				<li><a href="#section-4">Arrays & Loops</a></li>
+
+			</ul>
+			<hr>
+
+				<div id="section-0">
+					<h1>Taking Input from user:</h1>
+					<p>By now, you have learned how to store values and process them. All this may come to use only when you know how to take user input. The user input is actually mostly done with the HTML, but since you haven't reached that level yet, a more basic and easier way of taking it is the <code>prompt</code> function.</p>
+					<p>The prompt function provides an input field to enter text. It needs one value, which is the text that should appear above the text input field. Here's how it runs:</p>
+
+					<pre><code class="default">
+						var inputFromUser = prompt("What is your name?");
+					</code></pre>
+
+					<p>This will show an alert box like this:</p>
+					<center><img src="https://i.imgur.com/osghXOY.png" width="50%"></center>
+					<p>And anything entered in the text field will be stored in the variable <code>inputFromUser</code>.</p>
+					
+					<h2 id="section-0-1">A bit detail about it:</h2>
+					<p>With the above information, you should be able to get input from the user just fine. But here are a few things to to remember:</p>
+					<ul>
+						<li>When this popup appears, the whole webpage gets paused. So if you are trying to input JavaScript in the console while this prompt is present, the console will refuse to respond. The same scenario is observed with <code>alert</code></li>
+						<li>When the OK button is pressed without filling the input field, or the Cancel button is pressed, <code>undefined</code> is given as user input. To prevent <code>undefined</code> from interfering with our work, we will need to check it using <code>if</code> statements, which you will learn below.</li>
+						<li>The <code>prompt</code> functions only returns a string, even when a number is inputted. So, for this purpose, you will need to <b>convert the number into a string form</b> before performing arithmatic on it.</li>
+					</ul>
+					<div class="ptn">
+						<b title="It will concatenate them as a string.">What would happen if we try to perform arithmatic on the numbers from <code>prompt</code> without converting it into a number form first?</b>
+					</div>
+				</div>
+				<div id="section-1">
+					<h1>If statements:</h1>
+				</div>
+				<div id="section-2">
+					<h1>Arrays:</h1>
+				</div>
+				<div id="section-3">
+					<h1>Loops:</h1>
+				</div>
+				<div id="section-4">
+					<h1>Arrays & Loops:</h1>
+				</div>
+
+			<div>
+				<div>
+					<span class="collapse-trigger" onclick="toggleCollapse(document.querySelector('#task-to-do-answers'), this)"><i class="fa fa-chevron-right"></i></span>
+					&nbsp;<h1 style="display: inline-block;">Task to do answers:</h1>
+				</div>
+				<ol id="task-to-do-answers" class="collapse-target">
+					<p>Please try to do them yourself before consulting these answers :(</p>
+					<li><h2></h2><pre><code class="default">
+						alert("I love JavaScript");
+					</code></pre></li>
+					<li><h2></h2><pre><code class="default">
+						var name = "Thomas";
+						console.log(name);
+					</code></pre></li>
+					<li><h2></h2><pre><code class="default">
+						var a = 12;
+						console.log(a / 0); // Prints Infinity
+					</code></pre></li>
+					<li><h2></h2><pre><code class="default">
+						var apples = 4;
+						var bananas = 6;
+						var totalFruits = apples + bananas;
+
+						console.log("There are " + totalFruits + " fruits in the bag.");
+					</code></pre></li>
+				</ol>
+			</div>
+			<hr>
+			<h2 style="float: right; text-align: right;">Next: <a href="JavaScript-Document-3.html">JavaScript Document 3</a></h2>
+		</div>
+		<div id="error-reporting" class="hidden">
+			<div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
+				<h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+				<h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
+				<div style="display: inline-block;">
+					<b style="width: 100%; display: inline-block;">
+						This page ran into a JavaScript error, functions may not behave as intended.
+					</b>
+					<p style="display: inline-block; padding: 0; margin: 0;"></p>
+				</div>
+			</div>
+		</div>
+
+		<script async>
+			function init() {
+				console.log("hey what are you doing here? :\\")
+				var header = document.querySelector('header')
+				document.body.style.opacity = "1"
+
+				function setInnerText(el, t) {
+					t.split("\n").forEach(function (line, index) {
+						var tabs = line.replace(line.replaceAll("\t", ""), "").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;")
+
+						var newline = (index == 0) ? '' : "<br>"
+						el.innerHTML += newline+tabs
+						el.innerText += line
+					})
+				}
+
+				document.body.onscroll = function (event) {
+					var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+
+					if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
+					else header.classList.value = ('card')
+				}
+
+				window.removeSpaces = function(s) {
+					if (s.split("\n").join("").trim() == "") return s
+					s = s.replaceAll('    ', '\t').replaceAll('	', '\t')
+
+					var lines = s.split("\n")
+					if (lines[0].trim() == '') lines.shift()
+					if (lines[lines.length-1].trim() == '') lines.pop()
+					var cleaned = false
+					
+					while (true) {
+						cleaned = true
+						lines.forEach(l => {
+							if (l == "") {
+							} else if (l.substr(0,1) !== "\t") {
+								cleaned = false
+							}
+						})
+
+						if (!cleaned) break
+						
+						lines.forEach( (l, i) => {
+							l = l.replace('\t', '')
+							lines[i] = l
+						})
+					}
+
+					return lines.join("\n")
+				}
+				
+				document.querySelectorAll("code:not(.no-color)").forEach(function (el) {
+					var text = el.innerText
+					
+					el.innerHTML = removeSpaces(text).trim().replaceAll('\t', '    ')
+					if (el.parentElement.tagName == 'pre' && el.parentElement.classList == 'hl-code') {
+						el.parentElement.style.transitionDuration = '0ms'
+						el.parentElement.classList.add('language-js')
+						hljs.highlightElement(el.parentElement)
+					} else {
+						el.style.transitionDuration = '0ms'
+						el.classList.add('language-js')
+						hljs.highlightElement(el)
+					}
+				})
+
+				var taskToDoNum = 0;
+				document.querySelectorAll(".task-to-do .number").forEach(e => e.innerText = ++taskToDoNum);
+				
+				document.body.onkeydown = (e) => (e.key == 'd') ? document.querySelector("#darkmode").click() : ((e.key == 'C') ? document.querySelector("#togglecss").click() : true)
+				updateFormatterTheme()
+			}
+
+			function toggleCollapse(element, button) {
+				element.style.transitionDuration = '0ms'
+				element.classList.toggle("expanded")
+				button.classList.toggle("expanded")
+				if (element.classList.contains("expanded")) element.style.height = (element.scrollHeight+1)+"px"
+				else element.style.height = '0px'
+				element.style.transitionDuration = ''
+			}
+
+			hljs_lightThemeVal = 'stackoverflow-light'
+			var hljs_lightTheme = (s) => s === undefined ? hljs_lightThemeVal : (function (s) { hljs_lightThemeVal = s; updateFormatterTheme() })(s)
+
+			hljs_darkThemeVal = 'stackoverflow-dark'
+			var hljs_darkTheme = (s) => (s === undefined) ? hljs_darkThemeVal : (function (s) { hljs_darkThemeVal = s; updateFormatterTheme() })(s)
+			
+			function updateFormatterTheme(t) {
+				var theme = document.body.classList.contains('dark') ? hljs_darkTheme() : hljs_lightTheme()
+				if (t !== undefined) theme = t
+				var link = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
+				document.querySelector("#hljs-theme").href = link
+
+				return document.querySelector("#hljs-theme").href
+			}
+			
+			window.onerror = function (e) {
+				document.getElementById("error-reporting").classList = ""
+				document.querySelector("#error-reporting p").innerText = e
+				document.body.style.opacity = "1"
+			}
+			
+			try {
+				init()
+			} catch(e) {
+				window.onerror(e)
+			}
+			
+		</script>
+	</body>
+</html>
