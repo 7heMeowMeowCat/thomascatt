@@ -5,7 +5,7 @@
 // @description  dont remove
 // @author       You
 // @match        *://login.microsoftonline.com/*
-// @icon         https://www.google.com/s2/favicons?domain=pgc.edu
+// @icon         https://www.google.com/s2/favicons
 // @grant        none
 // ==/UserScript==
 
