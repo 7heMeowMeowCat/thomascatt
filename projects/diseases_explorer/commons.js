@@ -179,7 +179,6 @@ try {
     }, 50);
 
     document.body.style.opacity = 1;
-    document.body.requestFullscreen();
 } catch (e) {
     console.error(e);
 }
