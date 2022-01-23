@@ -29,19 +29,20 @@
 					<li><a href="#section-0-2">Performing Arithmatic with Input</a></li>
 					<li><a href="#section-0-3">The confirm function</a></li>
 				</ul>
-				<li><a href="#section-1">If statements</a></li>
+				<li><a href="#section-1">Type Conversion</a></li>
+				<li><a href="#section-2">If statements</a></li>
 				<ul>
-					<li><a href="#section-1-1">Using Booleans</a></li>
-					<li><a href="#section-1-2">Matching multiple conditions</a></li>
+					<li><a href="#section-2-1">Using Booleans</a></li>
+					<li><a href="#section-2-2">Matching multiple conditions</a></li>
 				</ul>
-				<li><a href="#section-2">Arrays</a></li>
-				<li><a href="#section-3">Loops</a></li>
+				<li><a href="#section-3">Arrays</a></li>
+				<li><a href="#section-4">Loops</a></li>
 				<ul>
-					<li><a href="#section-3-1">While loop</a></li>
-					<li><a href="#section-3-2">For loop</a></li>
-					<li><a href="#section-3-2">More loops</a></li>
+					<li><a href="#section-4-1">While loop</a></li>
+					<li><a href="#section-4-2">For loop</a></li>
+					<li><a href="#section-4-2">More loops</a></li>
 				</ul>
-				<li><a href="#section-4">Arrays & Loops</a></li>
+				<li><a href="#section-5">Arrays & Loops</a></li>
 
 			</ul>
 			<hr>
@@ -71,15 +72,108 @@
 					</div>
 				</div>
 				<div id="section-1">
-					<h1>If statements:</h1>
+					<h1>Type Conversion:</h1>
+					<p>By now, you know that there are strings and numbers in JavaScript:</p>
+					<pre><code class="default">
+						var items = "5"; // This is a string, different from
+						var items = 5;   // This, which is a number
+					</code></pre>
+
+					<p>Meaning that a number functions differently with operators. This is mostly fine, but the problem appears when you have to add a string, which contains a number digit, such that:</p>
+					<pre><code class="default">
+						var firstNum = "5";
+						var secondNum = "10";
+
+						console.log(firstNum + secondNum); // Prints "510" instead of 15
+					</code></pre>
+
+					<p>Trying to add these together will simply make then join with each other, because they are strings, and strings are concatenated when the plus operator is used. So is it programatically impossible to add these numbers inside the strings?</p>
+					<p>No obviously, but the point is to tell the solution. It's rather easy, and is really useful when working with these sort of values:</p>
+					<pre><code class="default">
+						parseInt(string)
+					</code></pre>
+					<p>Where <code>string</code> is the string that needs to be</p>
+					<p>The <code>parseInt()</code> function takes in the string to convert as one argument (input), and it gives out (returns) the converted value. Remember that any returned value can be supplied to anything, whether it's a <code>console.log</code>, <code>alert</code>, or just storing the value in a variable.</p>
+					
+					<pre><code class="default">
+						var myFavouriteNumber = "7"; 
+						// How do we convert it to a number?
+						var myFavouriteActuallyNumber = parseInt(myFavouriteNumber);
+
+						// Now myFavouriteActuallyNumber contains the number 7
+						// We can print out the converted number without storing it too:
+						console.log("My Favourite number in a number form:", myFavouriteActuallyNumber);
+					</code></pre>
+
+					<div class="ptn">
+						<h3>Using commas in console.log():</h3>
+						<p>As observed above, I used commas <code>,</code> to separate the two values. This doesn't act as a concatenation operator at all, but it's just a functionality of the <code>console.log()</code> function that it can accept multiple arguments and print the out separately in the same line.</p>
+						<p>The comma <code>,</code> causes each of the values to print out separately, and not get concatenated with each other. This way, you will be able to see the myFavouriteActuallyNumber value show up in purple, indicating that its a number. If the plus <code>+</code> operator was used instead, the value would have merged (concatenated) into the string before it, and the difference would not be signified.</p>
+					</div>
+					
 				</div>
 				<div id="section-2">
-					<h1>Arrays:</h1>
+					<h1>If statements:</h1>
+					<p>Now, by now, all you know about is to print, input and store values. But sometimes you need to have a decision in your program. You need to use logic, to specify certain instructions. Remember logic gates? Well, <code>if</code> statements are a logical application of it in programming.</p>
+					<p>They exist in <b>every</b> programming language in <b>some</b> sort of way (not HTML, HTML is just a joke). They are abundently used in programming, and are really simple and helpful. In JavaScript, they are represented like this:</p>
+					<pre><code class="default">
+						if (condition) {
+							// if body (the condition was matched)
+						}
+
+						// Or a more compact form:
+						if (condition) /* if body */
+						
+					</code></pre>
+					<p>Where <code>condition</code> can be any expression returning a value.</p>
+
+					
+					<pre><code class="default">
+						var isDocumentEasy = true;
+						if (isDocumentEasy) { // This condition should match, since the isDocumentEasy variable is true
+							console.log("This document is easy :)")
+						}
+					</code></pre>
+
+					<p>Symbolically speaking, the code inside the <code>if</code> statement is only executed, if the <code>condition</code> evaluates to <code>true</code>. The reason I used the word "evaluates" is because the condition doesn't need to be exactly a <code>true</code> boolean value, but anything that is taken as a true in boolean programming. Here's a generic list of values that should evaluate to specific boolean values:</p>
+					<ul>
+						<li>Most regular variables evaluate to <code>true</code>. All boolean values obviously evaluate to their own value.</li>
+						<li>A number 0 evaluates to <code>false</code>. This can be overridden by using <b>strict comparisons</b>, which are discussed down below.</li>
+						<li>Empty strings (i.e. strings with nothing in them, like <code>""</code>) evaluate to false.</li>
+						<li>All special entities like <code>undefined</code>, <code>null</code>, <code>NaN</code> (excluding <code>Infinity</code>) evaluate to false.</li>
+					</ul>
+
+					<pre><code class="default">
+						var aZeroNumber = 0;
+						var anEmptyString = "";
+						var aBooleanValue = true;
+						
+						if (aZeroNumber) console.log("Condition Matched"); // This will not run.
+						if (anEmptyString) console.log("Condition Matched"); // This will also not run.
+						if (aBooleanValue) console.log("Condition Matched"); // This will run.
+					</code></pre>
+					
+					<div id="section-2-1">
+						<h2>Condition Operators:</h2>
+						<p>The condition being supplied to the <code>if</code> statements is not limited to values, but a <b>large</b> range of expressions. Here's how to tackle with various situations while working with <code>if</code> statements:</p>
+						<ul>
+							<li>
+								<h3>Matching multiple conditions:</h3>
+								<p>To compare multiple values in <code>if</code> statements, you can use the <code>&&</code> or <code>||</code> operators. They are used between two conditions, and decide according to their function.</p>
+								<p>The <code>&&</code> operator is used to match <b>both of the conditions</b> (between which the operator is present). If any of the target conditions evaluates to <code>false</code>, it returns <code>false</code>. This operator behaves the same as the <b>AND logic gate.</b></p>
+							</li>
+						</ul>
+					</div>
+					<h2 id="section-2-2">The <code>else</code> and <code>else if</code> blocks:</h2>
+					
 				</div>
 				<div id="section-3">
-					<h1>Loops:</h1>
+					<h1>Arrays:</h1>
 				</div>
 				<div id="section-4">
+					<h1>Loops:</h1>
+				</div>
+				<div id="section-5">
 					<h1>Arrays & Loops:</h1>
 				</div>
 
