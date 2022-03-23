@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shortcuts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Shortcuts</h1>
+    <p>Select an option: </p>
+    <ul>
+      <li><button onclick="trigger(cod-key)">CoD4 Key</button></li>
+    </ul>
+    
+    <script>
+      
+      trigger = function (name) {
+        location = "https://raw.githubusercontent.com/thomas-catt/shortcuts/main/" + name    
+      }
+      
+      if (location.hash.length > 0) trigger(location.hash);
+    </script>
+</body>
+</html>
+
+
+
+
