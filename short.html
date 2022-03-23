@@ -15,10 +15,10 @@
     
         trigger = function (event, name) {
             event.preventDefault()
-            location = "https://raw.githubusercontent.com/thomas-catt/shortcuts/main/" + name.toLowerCase().substr(1)    
+            location = "https://raw.githubusercontent.com/thomas-catt/shortcuts/main/" + name.toLowerCase()
         }
       
-      if (location.hash.length > 0) trigger(location.hash);
+      if (location.hash.length > 0) trigger(location.hash.substr(1));
       window.onerror = (msg) => (alert(msg))
     </script>
 
