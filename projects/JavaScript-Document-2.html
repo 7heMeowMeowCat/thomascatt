@@ -14,7 +14,7 @@
 			<h1><i class="fab fa-js-square" style="color: #ee6;"></i> JavaScript Document 2 — More Programming</h1>
 			<div id="other-body">
 				<p>The second document continues the first one, further discussing concepts in JavaScript programming
-					<!-- <br><b style="color: #f00;">This is a work in progress.</b> -->
+					<br><b style="color: #f00;">This is a work in progress.</b>
 					<button tabindex="-1" id="darkmode" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
 					<button tabindex="-1" id="togglecss" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
 				</p>
@@ -32,17 +32,20 @@
 				<li><a href="#section-1">Type Conversion</a></li>
 				<li><a href="#section-2">If statements</a></li>
 				<ul>
-					<li><a href="#section-2-1">Using Booleans</a></li>
-					<li><a href="#section-2-2">Matching multiple conditions</a></li>
+					<li><a href="#section-2-1">Using Variables</a></li>
+					<li><a href="#section-2-2">The else block</a></li>
+					<li><a href="#section-2-3">Condition Operators</a></li>
+					<li><a href="#section-2-4">The else if block</a></li>
 				</ul>
-				<li><a href="#section-3">Arrays</a></li>
-				<li><a href="#section-4">Loops</a></li>
+				<li><a href="#section-3">String & Number Methods</a></li>
+				<!-- <li><a href="#section-4">Arrays</a></li>
+				<li><a href="#section-5">Loops</a></li>
 				<ul>
-					<li><a href="#section-4-1">While loop</a></li>
-					<li><a href="#section-4-2">For loop</a></li>
-					<li><a href="#section-4-2">More loops</a></li>
+					<li><a href="#section-5-1">While loop</a></li>
+					<li><a href="#section-5-2">For loop</a></li>
+					<li><a href="#section-5-2">More loops</a></li>
 				</ul>
-				<li><a href="#section-5">Arrays & Loops</a></li>
+				<li><a href="#section-6">Arrays & Loops</a></li> -->
 
 			</ul>
 			<hr>
@@ -65,10 +68,31 @@
 					<ul>
 						<li>When this popup appears, the whole webpage gets paused. So if you are trying to input JavaScript in the console while this prompt is present, the console will refuse to respond. The same scenario is observed with <code>alert</code></li>
 						<li>When the OK button is pressed without filling the input field, or the Cancel button is pressed, <code>undefined</code> is given as user input. To prevent <code>undefined</code> from interfering with our work, we will need to check it using <code>if</code> statements, which you will learn below.</li>
-						<li>The <code>prompt</code> functions only returns a string, even when a number is inputted. So, for this purpose, you will need to <b>convert the number into a string form</b> before performing arithmatic on it.</li>
+						<li>The <code>prompt</code> functions only returns (gives out) a string, even when a number is inputted. So, for this purpose, you will need to <b>convert the number into a string form</b> before performing arithmatic on it.</li>
 					</ul>
 					<div class="ptn">
 						<b title="It will concatenate them as a string.">What would happen if we try to perform arithmatic on the numbers from <code>prompt</code> without converting it into a number form first?</b>
+					</div>
+					
+					<h2 id="section-0-2">Performing Arithmatic with Input:</h2>
+					<p>As stated above, the value obtained from the <code>prompt</code> function is always a string. Meaning that performing arithmatic with this value (aiming for making a simple calculator) can be a bit of a problem. To convert the string value obtained from it into a number, we use the <code>parseInt</code> function. It's functionality is demonstrated below in the <a href="#section-1">Type Conversion</a> section.</p>
+					
+					<h2 id="section-0-3">The <code>confirm</code> function:</h2>
+					<p>The <code>confirm</code> function, as part of the family of these alert box functions, opens up a confirmation dialog. This can be used to obtain a "Yes or no" input from the user, or, speaking programatically, getting a <code>true</code> or <code>false</code> value from the user. It's usage is similar to the other two <code>alert</code> and <code>prompt</code> functions:</p>
+					<pre><code class="default">
+						var isDocumentEasy = confirm("Is this document easy to understand?");
+					</code></pre>
+					<p>This will show an alert box like this:</p>
+					<center><img src="https://i.imgur.com/fmJDZRf.png" width="50%"></center>
+
+					<p>The alert box presented by the <code>confirm</code> function has two buttons, <b>OK</b> and <b>Cancel</b>. When the OK button is pressed, a <code>true</code> value is received. And similarly, the Cancel button returns (gives out) a <code>false</code> value.</p>
+					<div class="ptn"><p>Trying to escape the alert box by pressing <code>Esc</code> also returns (gives out) a <code>false</code> value.</p></div>
+
+					<div class="ptn" style="width: 60% !important;">
+						<h3>Why can't we change the buttons text?</h3>
+						<p>You've seen that we are only allowed to modify the alert box description, and nothing else. That's because the alert box is supposed to be providing a very basic functionality for user interaction. Also, allowing developers to edit this very trustable looking alert box would allow them to make malicious alerts looking trusted. Let's say your grandma is browsing the web, and this alert box opens up saying <i><b>"Chrome Update Available" "A new version of chrome is ready to install"</b></i> with buttons text saying <b>"Install now"</b> and <b>"Delete Everything and Install Virus"</b>. Now yes this alert box does feel absolutely dumb like why do I need to exit chrome if I can't update now, but for some inexperienced users, this may be looking like a regular software update, and they might fall for it. This also answers the question that why is the title of the alert box not editable.</p>
+						<p>If you want to have a better alert box with more buttons, better colors and more, then you'll have to make it yourself using HTML, and running JS behind to make it functional.</p>
+						<p>Here's <a href="https://stackoverflow.com/a/823799">a stackoverflow link</a> to help understand it better.</p>
 					</div>
 				</div>
 				<div id="section-1">
@@ -79,7 +103,7 @@
 						var items = 5;   // This, which is a number
 					</code></pre>
 
-					<p>Meaning that a number functions differently with operators. This is mostly fine, but the problem appears when you have to add a string, which contains a number digit, such that:</p>
+					<p>Meaning that a number functions differently with operators (like the + sign). This is mostly fine, but the problem appears when you have to add a string, which contains a number digit, such that:</p>
 					<pre><code class="default">
 						var firstNum = "5";
 						var secondNum = "10";
@@ -92,37 +116,51 @@
 					<pre><code class="default">
 						parseInt(string)
 					</code></pre>
-					<p>Where <code>string</code> is the string that needs to be</p>
-					<p>The <code>parseInt()</code> function takes in the string to convert as one argument (input), and it gives out (returns) the converted value. Remember that any returned value can be supplied to anything, whether it's a <code>console.log</code>, <code>alert</code>, or just storing the value in a variable.</p>
+					<p>Where <code>string</code> is the string that needs to be converted.</p>
+					<p>The <code>parseInt()</code> function takes in the string to convert as one argument (or input), and it returns (gives out) the converted numeric value. Remember that any returned value can be supplied to anything, whether it's a <code>console.log</code>, <code>alert</code>, or just storing the value in a variable.</p>
 					
 					<pre><code class="default">
 						var myFavouriteNumber = "7"; 
 						// How do we convert it to a number?
+						parseInt(myFavouriteNumber); // Returns a numeric value 7
+						
+						// We can store it in a variable:
 						var myFavouriteActuallyNumber = parseInt(myFavouriteNumber);
-
 						// Now myFavouriteActuallyNumber contains the number 7
+
 						// We can print out the converted number without storing it too:
 						console.log("My Favourite number in a number form:", parseInt(myFavouriteNumber));
 					</code></pre>
 
 					<div class="ptn">
 						<h3>Using commas in console.log():</h3>
-						<p>As observed above, I used commas <code>,</code> to separate the two values. This doesn't act as a concatenation operator at all, but it's just a functionality of the <code>console.log()</code> function that it can accept multiple arguments and print the out separately in the same line.</p>
-						<p>The comma <code>,</code> causes each of the values to print out separately, and not get concatenated with each other. This way, you will be able to see the myFavouriteActuallyNumber value show up in purple, indicating that its a number. If the plus <code>+</code> operator was used instead, the value would have merged (concatenated) into the string before it, and the difference would not be signified.</p>
+						<p>As observed above, I used commas <code>,</code> to separate the two values. This doesn't act as a concatenation operator at all, but it's just a functionality of the <code>console.log()</code> function alone, that it can accept multiple arguments (inputs) and print the output separately in the same line.</p>
+						<p>The comma <code>,</code> causes each of the values to print out separately, and not get concatenated with each other. This way, you will be able to see the <code>myFavouriteActuallyNumber</code> value show up in purple, indicating that its a number. If the plus <code>+</code> operator was used instead, the value would have merged (concatenated) into the string before it, and the difference would not be signified.</p>
 					</div>
-					
+					<div class="task-to-do">
+						<h3>Task to do <span class="number"></span>: A simple calculator</h3>
+						<p>You can successfully input a number through the above functions you learned. Combine the knowledge together and build a simple addition calculator, which inputs two numbers (through <code>prompt</code> function), converts both of them to numeric values (suitable for arithmatic) (using the <code>prompt</code> function), and alerts out their sum (using the <code>alert</code> function)</p>
+						<p>Use variables to store the values obtained from <code>prompt</code>, or from the conversion, however you are suitable with.</p>
+					</div>
+					<div class="task-to-do">
+						<h3>Task to do <span class="number"></span>: A simple calculator without variables</h3>
+						<p>The above task to do can be done in a single line too! Can you think of a way to do it?</p>
+						<p class="hint">Don't store values in variables :)</p>
+					</div>
 				</div>
 				<div id="section-2">
 					<h1>If statements:</h1>
-					<p>Now, by now, all you know about is to print, input and store values. But sometimes you need to have a decision in your program. You need to use logic, to specify certain instructions. Remember logic gates? Well, <code>if</code> statements are a logical application of it in programming.</p>
-					<p>They exist in <b>every</b> programming language in <b>some</b> sort of way (not HTML, HTML is just a joke). They are abundently used in programming, and are really simple and helpful. In JavaScript, they are represented like this:</p>
+					<p>By now, all you know about is to print, input and store values. But sometimes you need to have a decision in your program. You need to use logic, to specify certain instructions. Remember logic gates? Well, <code>if</code> statements are a logical application of it in programming.</p>
+					<p>They're an fundamental concept, and exist in <b>every</b> programming language in <b>some</b> sort of way (not HTML, HTML is just a joke). They are abundently used in programming, and are really simple and helpful. In JavaScript, they are represented like this:</p>
 					<pre><code class="default">
 						if (condition) {
 							// if body (the condition was matched)
 						}
 
 						// Or a more compact form:
-						if (condition) /* if body */
+						if (condition) /* if body, cannot exceed more than one line */
+
+						// If you didn't understand the second form quite well, then it's entirely safe to ignore it entirely.
 						
 					</code></pre>
 					<p>Where <code>condition</code> can be any expression returning a value.</p>
@@ -135,12 +173,25 @@
 						}
 					</code></pre>
 
-					<p>Symbolically speaking, the code inside the <code>if</code> statement is only executed, if the <code>condition</code> evaluates to <code>true</code>. The reason I used the word "evaluates" is because the condition doesn't need to be exactly a <code>true</code> boolean value, but anything that is taken as a true in boolean programming. Here's a generic list of values that should evaluate to specific boolean values:</p>
+					<p>Symbolically speaking, the code inside the <code>if</code> statement is only executed, if the <code>condition</code> <b>evaluates</b> to <code>true</code>. The reason I used the word "evaluates" is because the condition doesn't need to be exactly a <code>true</code> boolean value, but anything that is taken as a true in boolean programming. Here's a generic list of values that should evaluate to specific boolean values:</p>
 					<ul>
-						<li>Most regular variables evaluate to <code>true</code>. All boolean values obviously evaluate to their own value.</li>
-						<li>A number 0 evaluates to <code>false</code>. This can be overridden by using <b>strict comparisons</b>, which are discussed down below.</li>
-						<li>Empty strings (i.e. strings with nothing in them, like <code>""</code>) evaluate to false.</li>
-						<li>All special entities like <code>undefined</code>, <code>null</code>, <code>NaN</code> (excluding <code>Infinity</code>) evaluate to false.</li>
+						<li>
+							Most regular variables evaluate to <code>true</code>. All boolean values obviously evaluate to their own value.
+							<pre><code class="default">
+								"Hello" // true
+								123 // true
+								[1, 2, 3] // true (this is an array, which you will learn about later)
+							</code></pre>
+						</li>
+						<li>
+							A number <code>0</code> evaluates to <code>false</code>. This can be overridden by using <b>strict comparisons</b>, which are discussed down below.
+						</li>
+						<li>
+							Empty strings (i.e. strings with nothing in them, like <code>""</code>) evaluate to false.
+						</li>
+						<li>
+							All special entities like <code>undefined</code>, <code>null</code>, <code>NaN</code> (excluding <code>Infinity</code>) evaluate to false.
+						</li>
 					</ul>
 
 					<pre><code class="default">
@@ -148,34 +199,290 @@
 						var anEmptyString = "";
 						var aBooleanValue = true;
 						
-						if (aZeroNumber) console.log("Condition Matched"); // This will not run.
-						if (anEmptyString) console.log("Condition Matched"); // This will also not run.
-						if (aBooleanValue) console.log("Condition Matched"); // This will run.
+						if (aZeroNumber) {
+							console.log("Condition Matched"); // This will not run.
+						}
+
+						if (anEmptyString) {
+							console.log("Condition Matched"); // This will also not run.
+						}
+
+						if (aBooleanValue) {
+							console.log("Condition Matched"); // This will run.
+						}
+
 					</code></pre>
-					
-					<div id="section-2-1">
-						<h2>Condition Operators:</h2>
-						<p>The condition being supplied to the <code>if</code> statements is not limited to values, but a <b>large</b> range of expressions. Here's how to tackle with various situations while working with <code>if</code> statements:</p>
-						<ul>
-							<li>
-								<h3>Matching multiple conditions:</h3>
-								<p>To compare multiple values in <code>if</code> statements, you can use the <code>&&</code> or <code>||</code> operators. They are used between two conditions, and decide according to their function.</p>
-								<p>The <code>&&</code> operator is used to match <b>both of the conditions</b> (between which the operator is present). If any of the target conditions evaluates to <code>false</code>, it returns <code>false</code>. This operator behaves the same as the <b>AND logic gate.</b></p>
-							</li>
-						</ul>
+
+					<div class="task-to-do">
+						<h3>Task to do <span class="number"></span>: If statements without brackets</h3>
+						<p>Try typing the above three if conditions without using the <code>{}</code> brackets, as mentioned above as "compact form".</p>
 					</div>
-					<h2 id="section-2-2">The <code>else</code> and <code>else if</code> blocks:</h2>
+						
+					<ul>
+						<li id="section-2-1">
+							<h2>Using Variables:</h2>
+							<p>From above, you can see how giving values to the <code>if</code> statements is done. If you want to perform a check in your code, you can do it in this way:</p>
+							<pre><code class="default">
+								var isDocumentEasy = confirm("Is the document easy?");
+								if (isDocumentEasy) {
+									alert("That's cool!");
+								}
+							</code></pre>
+							<p>Obviously, you can directly supply values as well:</p>
+							<pre><code class="default">
+								if (confirm("Is the document easy?")) {
+									alert("That's cool!");
+								}
+							</code></pre>
+						</li>
+
+						<li id="section-2-2">
+							<h2>The <code>else</code> block:</h2>
+							<p>You have observed that you can conditionally run specific blocks of code if the value is <code>true</code> just fine, but what if you need to run the code if it's <code>false</code>? Or what if you want to run something else if the <code>if</code> doesn't match?</p>
+							<p>Here comes the <code>else</code> block. The <code>else</code> block is closely related to the <code>if</code> blocks, and it is bound to be only used with an already present <code>if</code> block. Since the <code>if</code> block runs it's code when the condition is <code>true</code>, the <code>else</code> block runs it's code when the <code>if</code> condition isn't matched.</p>
+
+							<pre><code class="default">
+								var isDocumentEasy = confirm("Is the document easy?");
+								if (isDocumentEasy) {
+									alert("That's cool!");
+								} else {
+									alert("You can try to read less of this document at a time, and focus on concepts more strongly. This can help making this document feel easy.");
+								}
+							</code></pre>
+							
+							<p class="hint">The above condition block is now complete. You can run it to see some results :D</p>
+							
+							<p>The <code>else</code> block makes things a bit more complicated, and is relatively harder to understand. Here are a few points to keep in mind about this:</p>
+							<ul>
+								<li>The <code>else</code> block always comes after the <code>if</code> block, after the brackets (if any). It doesn't need any conditions since it runs against the condition supplied to the <code>if</code> block.</li>
+								<li>When the <code>if</code> block has a <code>true</code> condition, the <code>else</code> block is skipped entirely. Similarly if it's <code>false</code>, then the <code>if</code> block is skipped.</li>
+								<li>Like the <code>if</code> block, the <code>else</code> block can run without brackets <code>{}</code> as well.</li>
+								<li>An <code>else</code> block ends the series of <code>if</code>s and <code>else</code>s, such that another <code>else</code> block can't come after one.</li>
+							</ul>
+						</li>
+							
+						<li id="section-2-3">
+							<h2>Condition Operators:</h2>
+							<p>The condition being supplied to the <code>if</code> statements is not limited to values, but a <b>large</b> range of expressions. Here's how to tackle with various situations while working with <code>if</code> statements:</p>
+							<ul>
+								<li>
+									<h3>Matching multiple conditions:</h3>
+									<p>To compare multiple values in <code>if</code> statements, you can use the <code>&&</code> (And operator) or <code>||</code> (Or operator) operators. They are used between two values, and decide according to their values.</p>
+									
+									<ul>									
+										<li>
+											<h3>The And && Operator:</h3>
+											<p>The And operator, represneted by two &s like <code>&&</code>, is used to match <b>both of the values together</b> (between which the operator is present). If any of the target values evaluates to <code>false</code>, it returns <code>false</code>. This operator behaves the same as the <b>AND logic gate</b>. For the operator to return <code>true</code>, both of the values need to return <code>true</code>.</p>
+											<p>Let's consider a little real life example. We want to eat some pizza 🤤 but we won't be ordering it until we check that we have some good apples at home first. So first we see that we have apples, and they are good too (we don't want to eat bad rotten apples), so we will eat apples instead. If any of the two conditions is incorrect, we order a pizza instead.</p>
+											<pre><code class="default">
+												var weHaveApples = true;
+												var applesAreGood = true;
+
+												if (weHaveApples && applesAreGood) { // If we have apples, and apples are good too
+													eatSomeApples(); // Then eat some apples
+													
+													// This code will only let us eat apples if they are available as well as are good in taste - we don't want to eat bad apples
+												} else {
+													orderAPizza(); // else order a pizza instead :D
+
+													// We will only be ordering a pizza if we don't have good apples
+												}
+											</code></pre>
+
+											<div class="ptn">
+												This:
+												<pre><code class="default">
+													if (A && B) {
+														X();
+													}
+												</code></pre>
+												is same as this:
+												<pre><code class="default">
+													if (A) {
+														if (B) {
+															X();
+														}
+													}
+												</code></pre>
+												but shorter and simpler. (where <code>A</code> and <code>B</code> are two variables or values, and <code>X</code> is a function.)
+											</div>
+
+											<div class="ptn">
+												<h3>Dummy Functions:</h3>
+												<p>Functions are simply <b>tasks that we can perform</b>. Functions are wide spread through JavaScript. All the jobs we perform like <code>console.log()</code>, <code>alert()</code> and <code>parseInt()</code> etc. are all functions.</p>
+												<p>We obviously know that anything like <code>eatSomeApples()</code> or <code>orderAPizza()</code> as mentioned above isn't a real function. This is just to represent a task that will be performed. Functions can be user defined as well, but that is an advanced topic. You might find examples online representing some example code (like telling a rough idea about what will happen in a certain line of code) as functions, since coding with well defined functions is a good idea, since it improves code readability.</p>
+												<p>The <code>eatSomeApples()</code> function is just a dummy function used for explaination only, representing a real life task in this case.</p>
+											</div>
+										</li>
+										<li>
+											<h3>The Or || Operator:</h3>
+											<p>The <code>||</code> operator acts as an <b>"OR"</b> between two values. This will <b>return <code>true</code>, of either of the target values is true.</b></p>
+											<p>Let's take an example here as well. We want to eat (again), and now we have two fruits to eat. We want to eat fruit, if any one of them is available.</p>
+											<pre><code class="default">
+												var weHaveApples = true;
+												var weHaveBananas = false; // We don't have bananas at home :(
+												
+												if (weHaveApples || weHaveBananas) { // If we have apples or bananas
+													eatFruit(); // We eat fruit 😋
+												} else { // Else we cry about it 😢
+													alert("Nothing to eat! :(");
+												}
+											</code></pre>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h3>Comparing values:</h3>
+									<p>By now, you have learned how to manipulate booleans with <code>if</code> statements in various ways. That's mostly enough for booleans. But there are <b>lots</b> of other expressions that work like booleans too, like string comparisons, number comparisons, or obviously functions too (as you have used <code>confirm</code> functions inside <code>if</code> conditions). <code>if</code> statements are <b>very</b> common, so they are really flexible as well. Here, we will look at comparing strings, and numbers.</p>
+									<p>If you want to match two values, like to check if two values are equal, you use the <code>==</code> (equals) operator. This works with strings as well as numbers.</p>
+									<p class="ptn">The equals operator matching is case sensitive.</p>
+
+									<pre><code class="default">
+										var questionInput = prompt("Do you like this document? (say 'Yes' or 'No')");
+
+										if (questionInput == "Yes") {
+											alert(":)");
+										} else {
+											if (questionInput == "No") {
+												alert(":(");
+											}
+										}
+									</code></pre>
+									<p>Since the equals operator matching is case sensitive, we can use the <code>||</code> (or) operator to match multiple values with varying cases:</p>
+									<pre><code class="default">
+										var questionInput = prompt("Do you like this document? (say 'Yes' or 'No')");
+
+										if (questionInput == "Yes" || questionInput == "yes" || questionInput == "YES") {
+											alert(":)");
+										} else {
+											if (questionInput == "No" || questionInput == "no" || questionInput == "NO") {
+												alert(":(");
+											}
+										}
+									</code></pre>
+									<p>This is a bit lengthy, isn't there a way to convert strings into uppercase or lowercase? So that we can convert the user input to lowercase, and compare a lowercase "yes" or "no" with the input (so that the uppercase or lowercase doesn't matter anymore)? This topic belongs to the <a href="#section-3">String & Number Methods</a> below.</p>
+
+									<div class="ptn">
+										This:
+										<pre><code class="default">
+											if (A) {
+												// ...
+											} else {
+												if (B) {
+													X();
+												}
+											}
+										</code></pre>
+										is same as this:
+										<pre><code class="default">
+											if (A) {
+												// ...
+											} else if (B) {
+												X();
+											}
+										</code></pre>
+										but shorter and simpler. (where <code>A</code> and <code>B</code> are two variables or values, and <code>X</code> is a function.)
+									</div>
+
+									<p>Comparing numbers is same as how you do it in Maths. All the <code>></code> (less than), <code><</code> (greater than), <code>==</code> (equals), <code><=</code> (less than or equal to) and <code>>=</code> (greater than or equal to) operators work exactly like maths.</p>
+									<p>Here's a large example demonstrating all of these operators:</p>
+
+									<pre><code class="default">
+										var age = parseInt(prompt("How old are you?")); // Converting to number since we need age in numeric form
+
+										// Some Normal Responses
+										if (age >= 18) {
+											// Age is equal to or above 18
+											alert("You're an adult!");
+										} else if (age < 18) {
+											// Age is less than 18
+											alert("You're a teenager.");
+										} else if (age < 13) {
+											// Age is less than 13
+											alert("Heh, kiddo.");
+										}
+
+										// Some funny ones
+										if (age == 69) {
+											// Age is 69
+											alert("Nice!");
+										} else if (age < 0) {
+											// Age is negative
+											alert("Stop messing with me and enter a real age 😡");
+										} else if (age > 150) {
+											// Age is above 150
+											alert("How are you even alive 🤔");
+										}
+									</code></pre>
+
+									<div class="ptn" title="They respond with using their lengths, and tell on the basis of the bigger and smaller strings.">Try running these operators with strings, and observe the behaviour. I checked it today and was honestly surprised.</div>
+									
+								</li>
+							</ul>
+						</li>
+						
+						<li id="section-2-4">
+							<h2>The <code>else if</code> blocks:</h2>
+							<p>As mentioned above, the <code>else if</code> operator is just short for using a nested <code>else</code> and <code>if</code> combo.</p>
+							<p>Since an <code>if</code> block or an <code>else</code> block can be used without braces, a nested <code>if</code> block can directly be written right after the <code>else</code> keyword.</p>
+							<p>Look at this step by step example simplfying the nested form into the <code>else if</code> form:</p>
+							<pre><code class="default">
+								if (A) {
+									// ...
+								} else {
+									if (B) {
+										X();
+									}
+								} 
+							</code></pre>
+							<pre><code class="default">
+								if (A) {
+									// ...
+								} else {if (B) {
+									X(); // remove extra new lines, tabs and spaces
+								}}
+							</code></pre>
+							<pre><code class="default">
+								if (A) {
+									// ...
+								} else if (B) {
+									X(); // remove extra brackets
+								}
+							</code></pre>
+							<p>You might be thinking, that if the brackets are to be removed, the body of the block must not exceed one line, but here, another if is being fitted into the else block, which can't exceed one line. That's because since the <code>if</code> statement has it's own brackets, so any lines inside those brackets are included in the <code>if</code> block, and are part of that. That one mandatory line is the <code>if (B)</code> part, which ends here and starts brackets.</p>
+							<p>I know you didn't understand anything above. But try to practice various conditions using the <code>else if</code> block. They're used a lot in programming so you should have lots of practice for them. Here are some tasks to do related to it:</p>
+							<div class="task-to-do">
+								<h3>Task to do <span class="number"></span>: Tell if user is an adult, teenager or none.</h3>
+								<p>Really simple, input their age, and respond with if they are an adult or not (age is 18 or more).</p>
+							</div>
+							<div class="task-to-do">
+								<h3>Task to do <span class="number"></span>: Tell if inputted number is even</h3>
+								<p>Simply input number and check if its even or not, google how to check even number in JavaScript. Your googling skills need to be tested too.</p>
+							</div>
+							<div class="task-to-do">
+								<h3>Task to do <span class="number"></span>: Password Checking</h3>
+								<p>Make a variable <code>password</code>, and put some string in it. Next, input a password from the user, and respond with whether the password was correct or not.</p>
+							</div>
+							<div class="task-to-do">
+								<h3>Task to do <span class="number"></span>: Rock Paper Scissors</h3>
+								<p>Make one round of a rock paper scissors game. Input the user's choice and store it in a variable (this is where you cheat ;) ). Then respond against the user's input, so that you can never lose. E.g. if the user inputs <b>Rock</b>, then respond with a <b>scissors</b>. Show the user's choice with your response (like "You chose: Rock. I chose: Paper. You lose.")</p>
+							</div>
+						</li>
+					</ul>
 					
 				</div>
 				<div id="section-3">
+					<h1>String & Number Methods:</h1>
+				</div>
+				<!-- <div id="section-4">
 					<h1>Arrays:</h1>
 				</div>
-				<div id="section-4">
+				<div id="section-5">
 					<h1>Loops:</h1>
 				</div>
-				<div id="section-5">
+				<div id="section-6">
 					<h1>Arrays & Loops:</h1>
-				</div>
+				</div> -->
 
 			<div>
 				<div>
@@ -184,23 +491,69 @@
 				</div>
 				<ol id="task-to-do-answers" class="collapse-target">
 					<p>Please try to do them yourself before consulting these answers :(</p>
-					<li><h2></h2><pre><code class="default">
-						alert("I love JavaScript");
-					</code></pre></li>
-					<li><h2></h2><pre><code class="default">
-						var name = "Thomas";
-						console.log(name);
-					</code></pre></li>
-					<li><h2></h2><pre><code class="default">
-						var a = 12;
-						console.log(a / 0); // Prints Infinity
-					</code></pre></li>
-					<li><h2></h2><pre><code class="default">
-						var apples = 4;
-						var bananas = 6;
-						var totalFruits = apples + bananas;
+					<li><pre><code class="default">
+						var firstInput = prompt("Enter the first number:");
+						var secondInput = prompt("Enter the second number:");
+						
+						var firstNum = parseInt(firstInput);
+						var secondNum = parseInt(secondInput);
 
-						console.log("There are " + totalFruits + " fruits in the bag.");
+						var sum = firstNum + secondNum;
+						alert("The sum of the two numbers is:\n" + sum);
+					</code></pre></li>
+					<li><pre><code class="default">
+						alert("The sum of the two numbers is:\n" + (parseInt(prompt("Enter the first number:")) + parseInt(prompt("Enter the second number:")))); // So many brackets! This is bad readability, should be prevented
+
+						// The reason I used brackets around the sum is so that the compiler solves the sum before it joins all values together. If no brackets are used, then the compiler begins to join values from left to right, resulting in both the numbers joined into a string (The left most part).
+					</code></pre></li>
+					<li><pre><code class="default">
+						if (aZeroNumber) console.log("Condition Matched"); // This will not run.
+						if (anEmptyString) console.log("Condition Matched"); // This will also not run.
+						if (aBooleanValue) console.log("Condition Matched"); // This will run.
+					</code></pre></li>
+					<li><pre><code class="default">
+						var age = parseInt(prompt("Enter your age"));
+						
+						if (age >= 18) alert("You're an adult.");
+						else if (age >= 13) alert("You're a teenager.");
+						else alert("You're just a kid.");
+					</code></pre></li>
+					<li><pre><code class="default">
+						var x = parseInt(prompt("Enter a number"));
+						
+						if (x % 2 == 0) alert("The number is even");
+						else alert("The number is odd");
+					</code></pre></li>
+					<li><pre><code class="default">
+						var password = "MyLittlePony";
+
+						var inputPassword = prompt("Enter Password");
+						if (password == inputPassword) {
+							alert("The password was correct");
+						else {
+							alert("The password was incorrect");
+						}
+					</code></pre></li>
+					<li><pre><code class="default">
+						var response; // This is called creating a variable without initialization. Strict languages like C++ and Java require this, but here it's only for practice to create your variables at the beginning of your program.
+						var usersResponse;
+
+						var usersTurn = prompt("Welcome to Rock Paper Scissors!\n\nEnter your choice:\nR for Rock\nP for Paper\nS for Scissors");
+						
+						if (usersTurn == "R") {
+							usersResponse = "Rock";
+							response = "Paper";
+						}
+						else if (usersTurn == "P") {
+							usersResponse = "Paper";
+							response = "Scissors";
+						}
+						else if (usersTurn == "S") {
+							usersResponse = "Scissors";
+							response = "Rock";
+						}
+						
+						alert("You chose: " + usersResponse + "\nI chose: " + response + "\n\nYou Lose!");
 					</code></pre></li>
 				</ol>
 			</div>
