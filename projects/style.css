@@ -112,7 +112,7 @@
 }
 
 .styled code:not(.default), .styled .mono{
-	font-family: consolas;
+	font-family: monospace, consolas;
 	background: #eee;
 	border-radius: 3px;
 	padding: 2px;
