@@ -8,14 +8,15 @@
     <h1>Shortcuts</h1>
     <p>Select an item: </p>
     <ul>
-      <li><a href="#" onclick="trigger(event,'cod-key')">CoD4 Key</a> A Cod4 Key that actually works</li>
+      <li><a href="#" onclick="trigger('cod-key')">CoD4 Key</a> A Cod4 Key that actually works</li>
+      <li><a href="#" onclick="trigger('treble.apk')">Treble Checker</a> Very lightweight android treble support checker (60KB)</li>
     </ul>
     
     <script>
     
-        trigger = function (event, name) {
-            event.preventDefault()
+        trigger = function (name) {
             location = "https://raw.githubusercontent.com/thomas-catt/shortcuts/main/" + name.toLowerCase()
+            return false
         }
       
       if (location.hash.length > 0) trigger(location.hash.substr(1));
