@@ -198,11 +198,9 @@
 			subInfoLoad.style.right = "-15%"
 
 			for (var i = 0; i < subInfo.data.length; i++) {
-				nsfwWarning = ""
 				imgTag = ""
 				if (subInfo.data[i].url.includes("i.redd.it")) imgTag = "<a href='" + subInfo.data[i].url + "'><img src='" + subInfo.data[i].url + "' class='postImg'></img></a>"
-				if (subInfo.data[i].over_18) nsfwWarning = "<span class='error'>NSFW</span>"
-				subInfoDivStr += "<div class='card'>" + imgTag + nsfwWarning + "<span class='subNameSpan'>r/" + subInfo.data[i].subreddit + ":</span><br><a href='" + subInfo.data[i].full_link + "'>" + subInfo.data[i].title + "</a></div>"
+				if (!subInfo.data[i].over_18) subInfoDivStr += "<div class='card'>" + imgTag + "<span class='subNameSpan'>r/" + subInfo.data[i].subreddit + ":</span><br><a href='" + subInfo.data[i].full_link + "'>" + subInfo.data[i].title + "</a></div>"
 			}
 
 			subInfoDiv.innerHTML = subInfoDivStr
