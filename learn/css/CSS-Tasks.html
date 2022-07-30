@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Assignment 3</title>
+	<style type="text/css">	
+
+	.tasks {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 40px;
+	}
+	.tasks .card {
+		padding: 5%;
+	}
+	</style>
+
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body class="styled dark">
+
+	<div style="margin: auto;">
+		<h1 style="text-align: center">ASSIGNMENT 3: CSS ASSIGNMENT</h1>		
+		<p>This assignment is a collection of several CSS tasks, which help you understand CSS concepts and improve common practices.</p>
+		<p class="hint">Don't forget to use google if you are stuck at something. Google helps more than I can :D</p>
+
+		<h1 style="text-align: center">TASKS:</h1>
+		<p>Following are the tasks to do. Make sure to read the guidelines <b>carefully</b> before starting work on each.</p>
+		<div class="tasks">
+			<div class="card">
+				<h3><span style="font-size: 60px;">#1: </span>Color</h3>
+				<p><b>CSS method:</b> Inline Styling</p>
+				<p><b>Difficulty:</b> <b style="color: green;">Easy</b></p>
+				<p><b>Time:</b> Tiny</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Type some text in a <span class="mono">h1</span> tag, and give it a purple color.
+				</p>
+			</div>	
+			<div class="card">
+				<h3><span style="font-size: 60px;">#2: </span>Font</h3>
+				<p><b>CSS method:</b> Inline Styling</p>
+				<p><b>Difficulty:</b> <b style="color: green;">Easy</b></p>
+				<p><b>Time:</b> Tiny</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Type some text, and change its font to <b style="font-family: Arial;">Arial</b>.
+				</p>
+			</div>	
+			<div class="card">
+				<h3><span style="font-size: 60px;">#3: </span>Custom Heading</h3>
+				<p><b>CSS method:</b> Style tag (use classes)</p>
+				<p><b>Difficulty:</b> <b style="color: orange;">Moderate</b></p>
+				<p><b>Time:</b> Small</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Modify a <span class="mono">p</span> tag to make your own <span class="mono">h1</span> tag. (Replicate the size, weight)
+				</p>
+			</div>	
+			<div class="card">
+				<h3><span style="font-size: 60px;">#4: </span>Sizing & Centering</h3>
+				<p><b>CSS method:</b> Inline Styling</p>
+				<p><b>Difficulty:</b> <b style="color: green;">Easy</b></p>
+				<p><b>Time:</b> Small</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Give a <span class="mono">div</span> tag a width, height and any background color (so that it is visible on the screen), and center it horizontally.
+				</p>
+			</div>	
+			<div class="card">
+				<h3><span style="font-size: 60px;">#5: </span><span class="mono">div</span> customization</h3>
+				<p><b>CSS method:</b> Style tag (use classes)</p>
+				<p><b>Difficulty:</b> <b style="color: orange;">Moderate</b></p>
+				<p><b>Time:</b> Moderate</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Make a card, by customizing a <span class="mono">div</span> (give it a <b>card</b> class and apply CSS to that class). Use these properties:
+					<ul>
+						<li>Shadow</li>
+						<li>Border</li>
+						<li>Padding</li>
+						<li>Rounded Corners</li>
+					</ul>
+				</p>
+			</div>
+			<div class="card">
+				<h3><span style="font-size: 60px;">#6: </span>Page font</h3>
+				<p><b>CSS method:</b> No limitation</p>
+				<p><b>Difficulty:</b> <b style="color: orange;">Moderate</b></p>
+				<p><b>Time:</b> Tiny</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Add Some content to a page (headings and paragraphs, use <a href="https://lipsum.com" target="_blank">lorem ipsum text</a>, or quickly copy some of it by <a href="#" onclick='copyLorem(event)'>clicking me</a>), and change the font of the <i>whole</i> page to <b style="font-family: Consolas, monospace;">Consolas</b>.
+				</p>
+			</div>
+			<div class="card">
+				<h3><span style="font-size: 60px;">#7: </span>Spacing</h3>
+				<p><b>CSS method:</b> Inline Styling</p>
+				<p><b>Difficulty:</b> <b style="color: green;">Easy</b></p>
+				<p><b>Time:</b> Tiny</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Create 3 <span class="mono">div</span>s, make them squares of considerable size (let's say, 100px). Give all of them three different colors. 
+					<br>Now, you will see something like this:
+					<div>
+						<div style="width: 100px; height: 100px; background-color: red"></div>
+						<div style="width: 100px; height: 100px; background-color: green"></div>
+						<div style="width: 100px; height: 100px; background-color: blue"></div>
+					</div>
+					These all are packed together. Your task is to make them having spacing around each other, so that none touches any other. Like this:
+					<br><img src="https://i.imgur.com/Mgc0vyn.png" style="box-shadow: none;">
+					<p class="hint">Please don't even think to use the <span class="mono">br</span> tag to achieve spacing.</p>
+				</p>
+			</div>	
+			<div class="card">
+				<h3><span style="font-size: 60px;">#8: </span> Circle</h3>
+				<p><b>CSS method:</b> No limitation</p>
+				<p><b>Difficulty:</b> <b style="color: red;">Hard</b></p>
+				<p><b>Time:</b> Moderate</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					By using <i>any</i> CSS property, Modify <i>any</i> element to make it look like a circle outline, like this:<br>
+					<br><img src="https://i.imgur.com/aX2TRfO.png" style="box-shadow: none;">
+				</p>
+			</div>
+			<div class="card">
+				<h3><span style="font-size: 60px;">#9: </span> Button customization</h3>
+				<p><b>CSS method:</b> External CSS</p>
+				<p><b>Difficulty:</b> <b style="color: orange;">Moderate</b></p>
+				<p><b>Time:</b> Long</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Mimic the behaviour (layout, <b>and</b> hover effect) of the button below. Customize the <span class="mono">button</span> tag directly, <b>NOT</b> using any class.
+					<br>
+					
+					<div style="display: flex; justify-content: center; align-items: center;">	
+						<button style="transition-duration: 0ms;">Button</button>
+					</div>
+
+					<p>These are the properties to keep in mind:</p>
+					<ul>
+						<li>Background Color</li>
+						<li>Text Color</li>
+						<li>Shadow</li>
+						<li>Padding</li>
+						<li>Font weight (changed on hover)</li>
+						<li>Corner Radius</li>
+					</ul>
+					<p onclick="cliccLol(this)" class="hint">If you are confused about how to customize button layout when the button is hovered, then read the doc again lol</p>
+				</p>
+			</div>
+			<div class="card">
+				<h3><span style="font-size: 60px;">#10: </span> Mono class</h3>
+				<p><b>CSS method:</b> External CSS <b>[Use the same <span class="mono">style.css</span> file as before, don't create a new one]</b></p>
+				<p><b>Difficulty:</b> <b style="color: orange;">Moderate</b></p>
+				<p><b>Time:</b> Long</p>
+				<br>
+				<p>
+					<b style="font-size: 20px;" class="bottom-border">Description:</b>
+					Mimic the behaviour of the text below. Use the <span class="mono">mono</span> class to target your CSS, not the tag directly.
+					<br>Use the <span class="mono">span</span> tag to show your output.
+
+					<br>
+					
+					<div style="display: flex; justify-content: center; align-items: center;">	
+						<span class="mono">I am some text</span>
+					</div>
+
+					<p>These are the properties to keep in mind:</p>
+					<ul>
+						<li>Background Color</li>
+						<li>Padding</li>
+						<li>Font family</li>
+						<li>Border</li>
+						<li>Corner Radius</li>
+					</ul>
+				</p>
+			</div>
+		</div>
+
+		<div class="ptn" style="margin: auto;">
+			<h2>MCQ</h2>
+			<div id="mcq-response">
+				<p>How hard do you think these tasks are?</p>
+				<input type="radio" name="MCQ" id="option-1"><label for="option-1"> Very Easy</label><br>
+				<input type="radio" name="MCQ" id="option-2"><label for="option-2"> Fine</label><br>
+				<input type="radio" name="MCQ" id="option-3"><label for="option-3"> Hard</label><br>
+				<input type="radio" name="MCQ" id="option-4"><label for="option-4"> Insane</label><br>				
+				<button onclick="submitMcq()">Submit</button>
+			</div>
+		</div>
+
+		<br><hr><br>
+
+		<div class="card">
+			<h1 style="text-align: center">SUBMISSION:</h1>
+			<p>Pack your project in a <span class="mono">.zip</span> file. Following folder structure is expected:</p>
+			<ul>
+				<li><span class="mono">assignment-3.zip</span></li>
+				<ul>
+					<li><span class="mono">style.css</span></li>
+					<li><span class="mono">task-1.html</span></li>
+					<li><span class="mono">task-2.html</span></li>
+					<li><span class="mono">task-3.html</span></li>
+					<li style="list-style: none;"><span>...and so on, till:</span></li>
+					<li><span class="mono">task-10.html</span></li>
+				</ul>
+			</ul>
+			<p>Send the <span class="mono">.zip</span> file to me</p>
+		</div>
+
+
+		<div class="card">
+			<h1 style="text-align: center">MARKING:</h1>
+			<table>
+					<tr>
+						<th style="width: 70%;">Item</th>
+						<th>Important points</th>
+						<th>Marks</th>
+					</tr>
+					<tr>
+						<td>Task #1: Color</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+							</ul>
+						</td>
+						<td class="task-marks">1</td>
+					</tr>
+					<tr>
+						<td>Task #2: Font</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+							</ul>
+						</td>
+						<td class="task-marks">1</td>
+					</tr>
+					<tr>
+						<td>Task #3: Custom Heading</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+							</ul>
+						</td>
+						<td class="task-marks">3</td>
+					</tr>
+					<tr>
+						<td>Task #4: Sizing & Centering</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+							</ul>
+						</td>
+						<td class="task-marks">2</td>
+					</tr>
+					<tr>
+						<td>Task #5: div customization</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+								<li>All properties replicated</li>
+							</ul>
+						</td>
+						<td class="task-marks">5</td>
+					</tr>
+					<tr>
+						<td>Task #6: Page font</td>
+						<td>
+							-
+						</td>
+						<td class="task-marks">1</td>
+					</tr>
+					<tr>
+						<td>Task #7: Spacing</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>
+								<li>Correctly sized <span class="mono">div</span> elements</li>
+							</ul>
+						</td>
+						<td class="task-marks">3</td>
+					</tr>
+					<tr>
+						<td>Task #8: Circle</td>
+						<td>
+							<ul>
+								<li>Border</li>
+							</ul>
+						</td>
+						<td class="task-marks">4</td>
+					</tr>
+					<tr>
+						<td>Task #9: Button customization</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>		
+								<li>All properties replicated</li>
+							</ul>
+						</td>
+						<td class="task-marks">5</td>
+					</tr>
+					<tr>
+						<td>Task #10: Mono class</td>
+						<td>
+							<ul>
+								<li>Correct CSS method used</li>		
+								<li>All properties replicated</li>
+							</ul>
+						</td>
+						<td class="task-marks">5</td>
+					</tr>
+					<tr>
+						<th>TOTAL:</th>
+						<th></th>
+						<th id="marks-sum">...</th>
+					</tr>
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function copyLorem(event) {
+			event.preventDefault()
+			navigator.clipboard.writeText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis sodales ex, sed laoreet risus viverra pretium. In condimentum neque id laoreet consectetur. Nunc tempor in ante id accumsan. Maecenas aliquet, lectus et aliquet facilisis, arcu metus mollis magna, vel dictum purus ex eget diam. Nam ullamcorper, tellus vel aliquam sagittis, velit ipsum ultricies eros, a venenatis urna erat non elit. Nam non est et dolor vulputate elementum vel vitae sapien. Mauris porttitor ex a magna rhoncus, sit amet elementum ex pharetra. Integer varius risus interdum justo lacinia interdum sed vitae erat.\n\nMorbi interdum lorem arcu, ut molestie quam congue non. Integer dignissim porttitor fermentum. Phasellus maximus tempor dolor elementum cursus. Cras a tortor et risus pretium placerat. Suspendisse congue nisi vel mi imperdiet, in euismod enim placerat. Curabitur cursus ex sodales neque imperdiet, et varius dolor eleifend. Ut tempus mi orci, vel dictum sapien finibus ut. Fusce non purus nec leo commodo bibendum. Phasellus mattis sapien commodo sem porta, eu egestas nulla dapibus. Quisque a efficitur nunc. Duis eros nunc, ultricies et lectus vel, volutpat feugiat augue. Fusce id porttitor erat. Maecenas aliquam nibh accumsan ex facilisis mollis. Maecenas efficitur quis turpis a dapibus. Donec posuere dolor pharetra, interdum diam at, fermentum magna.\n\nIn vel elit dui. Integer et ante orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In scelerisque vel orci ut luctus. Mauris non purus sapien. In facilisis accumsan turpis vel pharetra. Duis faucibus eros quis nisl finibus rutrum. Duis vitae nunc a odio vestibulum bibendum id ac nibh. Praesent blandit dolor in elit sollicitudin finibus. Aenean auctor euismod orci ut sagittis. Duis non porttitor enim. In vulputate posuere nisi ut varius. Mauris porta consequat lacinia.\n\nIn hac habitasse platea dictumst. In tempor tempor magna, a pulvinar ex pulvinar ac. Nam id ex et enim vulputate eleifend eu vitae erat. Fusce risus metus, bibendum a magna quis, dignissim posuere mi. Phasellus posuere varius blandit. Aenean at tellus luctus, iaculis lorem non, bibendum velit. Nulla at orci velit. Aliquam eu leo in elit porta dapibus in sit amet magna. Ut sodales turpis ac laoreet gravida. Interdum et malesuada fames ac ante ipsum primis in faucibus.\n\nNunc commodo, ante porta ultrices maximus, nibh metus dictum erat, id venenatis elit quam sed nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse porta elementum velit. Praesent in arcu eu metus mollis malesuada. Maecenas vitae pellentesque massa. Nam dapibus, massa vitae pulvinar condimentum, diam dolor suscipit justo, a dictum turpis urna in purus. Sed porta condimentum est, sit amet eleifend ex mattis non. Aliquam faucibus in lorem quis vulputate. Phasellus vitae leo ac enim pretium tincidunt eu ac ipsum.\n\nInteger laoreet ex eleifend mauris auctor posuere. Praesent faucibus nibh non purus feugiat, vitae malesuada urna porta. Ut felis eros, molestie molestie ligula vitae, aliquet vehicula odio. Cras euismod imperdiet felis, id pellentesque felis malesuada non. Aliquam erat volutpat. Aenean vitae nisl vehicula, lobortis elit a, commodo nisl. Duis sollicitudin facilisis turpis quis semper. Vivamus porta augue vitae libero ornare dapibus. Sed nec ante sapien. Sed felis odio, maximus nec interdum ut, fermentum et leo. Nullam bibendum, orci ac efficitur rutrum, velit neque dapibus velit, sed sagittis elit metus vitae lorem. Aliquam hendrerit venenatis nibh, semper suscipit massa fringilla id.\n\nQuisque imperdiet arcu suscipit mi porta semper. Nam felis ligula, placerat vitae tempor in, tristique vitae neque. Nullam felis mauris, feugiat nec enim ac, commodo porta dui. Proin felis ipsum, tristique at molestie id, convallis non neque. Curabitur tristique dui nec ullamcorper elementum. Morbi nunc ex, posuere ac consequat eu, pretium ut purus. Morbi vel purus iaculis, commodo sapien eu, posuere lorem. Donec auctor enim ligula, eu tincidunt velit volutpat non. Integer nec lacus vitae justo semper interdum. Nulla in pulvinar lacus. Nulla id lacus efficitur, mattis sapien tristique, tristique sapien. Phasellus iaculis urna ut leo porta, vitae iaculis neque consectetur. Quisque sed sem ac enim efficitur rutrum id aliquet felis. Fusce condimentum magna non justo malesuada vehicula. Donec vel facilisis lacus.\n\nNunc non velit nibh. Praesent vulputate pharetra nisi non vulputate. Pellentesque et ultrices turpis. Duis porttitor velit et dui rutrum efficitur. Aliquam erat volutpat. Pellentesque tristique, ex sed accumsan lobortis, magna mauris suscipit libero, a ultrices erat tortor eget dui. Nunc convallis euismod nunc tristique sagittis. Nulla convallis massa nec tortor volutpat aliquet.\n\nSuspendisse euismod, felis nec fringilla finibus, nisl augue consequat massa, eu luctus enim tellus mattis ipsum. Fusce et lectus ipsum. Aenean sagittis blandit tellus quis tincidunt. Aenean nisl purus, pulvinar eget scelerisque vel, molestie a lorem. Sed placerat aliquam tortor, eget sollicitudin elit. Sed venenatis hendrerit velit eget feugiat. Pellentesque pellentesque, ante in vulputate porttitor, metus nisl auctor turpis, vel condimentum tellus ante ac nisl. Donec condimentum venenatis malesuada.\n\nVivamus consequat ex et ligula ultrices faucibus. Suspendisse pharetra consectetur ullamcorper. Curabitur ac urna feugiat, luctus arcu quis, suscipit enim. Aliquam placerat lectus vitae libero efficitur tristique. In id lorem at velit venenatis tincidunt nec et velit. Morbi consectetur scelerisque ex. Sed et lacinia velit. Phasellus in ante sem. Duis leo urna, consectetur et gravida ac, finibus ut turpis. In maximus posuere placerat. Nulla rhoncus a urna eu vulputate. Duis sit amet sapien dictum, eleifend sapien vitae, efficitur nulla. Nullam suscipit odio nisl, sed consectetur ex eleifend eget. Morbi id mi luctus est scelerisque sodales a eu sapien. Vestibulum eget efficitur nibh. Nullam non urna arcu.\n\nMorbi ante dui, malesuada sit amet nisl nec, luctus rhoncus orci. Pellentesque ornare vel lectus sit amet placerat. Maecenas tempor et turpis non dignissim. Donec odio eros, posuere in magna at, dictum viverra urna. Mauris sed semper diam. Integer vehicula odio id faucibus rutrum. Praesent et risus neque. In fringilla congue sem, ultricies ullamcorper quam congue vitae. Suspendisse tincidunt purus quis dolor tristique viverra. Donec ultrices neque ex, in imperdiet metus rhoncus a. Phasellus placerat sed enim tempus facilisis. Proin malesuada neque turpis, quis finibus urna varius in. Donec sodales neque quis iaculis placerat.\n\nNullam hendrerit massa sed erat ultrices, ut scelerisque ipsum ultrices. Donec ut metus a lorem mattis egestas. Mauris ut ipsum sed augue ornare suscipit. Sed in metus est. Maecenas ultricies, justo ac pellentesque feugiat, elit eros vestibulum purus, id vehicula odio urna malesuada lorem. Nulla at lacinia urna. Suspendisse potenti. Integer sed eros quis arcu laoreet fringilla. Nunc sollicitudin velit sit amet mattis pretium. Donec et commodo tortor, et convallis nulla. Suspendisse lacus mi, scelerisque non pharetra aliquet, varius et nulla. Nunc eu velit quis justo rutrum porttitor.\n\nNulla ac tempus metus. Aenean vitae feugiat nulla, non vulputate nibh. Vestibulum sollicitudin massa vel ornare dictum. Vivamus mollis laoreet dignissim. Suspendisse malesuada metus a gravida dapibus. Suspendisse venenatis nulla in maximus eleifend. Vestibulum dictum libero nec eleifend cursus.\n\nNulla quis lacus a enim ullamcorper consectetur ac id odio. Suspendisse sed efficitur libero, facilisis ultrices neque. Integer ac mollis lectus. Vestibulum efficitur, tellus et elementum mollis, nunc eros aliquam lacus, at sodales tortor mauris eget ante. Nulla lacinia imperdiet tortor, non cursus tortor condimentum at. Aliquam at leo eu ante sagittis pellentesque at quis eros. Morbi nec commodo nisl, et pharetra ante. Aliquam et commodo tellus, finibus tempor nunc. Suspendisse potenti. Sed eget aliquet tortor, vitae interdum augue. Nullam et vehicula arcu. Duis tristique dui lorem, molestie pellentesque sapien tristique eu. Nullam at quam ut purus dictum interdum eu quis nibh. Mauris quis venenatis felis, non suscipit augue. Nulla accumsan ullamcorper tortor ut fermentum.\n\nDonec libero libero, aliquam nec ornare in, semper at nunc. Aliquam risus quam, auctor eu enim ut, finibus aliquam metus. Curabitur sollicitudin tempor tellus sit amet pretium. Aenean suscipit sodales magna, euismod hendrerit orci imperdiet ut. Cras dolor felis, tempus eget eros quis, auctor eleifend lacus. Donec sit amet tempus magna. Nullam id rhoncus enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas accumsan laoreet velit consectetur porta.\n\nUt aliquet, elit ultrices ullamcorper dignissim, sem est rutrum nibh, et pretium enim sem eget nisi. Vestibulum hendrerit fringilla facilisis. Integer vitae aliquet ex, sed elementum sapien. Vivamus varius scelerisque eros, venenatis pretium lacus tempor sed. Aliquam non ex id massa dictum fringilla eget maximus mi. Phasellus pellentesque iaculis nunc vitae luctus. Aliquam maximus, dui non vehicula laoreet, lacus felis pharetra ex, ut dictum erat magna et tortor. Vivamus lobortis nunc et nibh tempus, ac malesuada dolor volutpat. Aenean sagittis ipsum nisi, id maximus quam eleifend in.\n\nFusce imperdiet ullamcorper dui quis mattis. Vestibulum feugiat finibus erat non euismod. Suspendisse in neque consectetur, cursus arcu sed, tempor ligula. Etiam pharetra sagittis finibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc tristique metus eget consectetur viverra. Nullam ante mauris, luctus vitae ante vitae, laoreet ultrices nisi.\n\nAliquam posuere neque lectus, ut ultricies libero volutpat et. Phasellus commodo elit non pulvinar faucibus. Praesent imperdiet tellus id eros vestibulum sollicitudin. Cras nec elementum lacus, eu pulvinar nulla. Morbi pretium condimentum tortor eget vulputate. Integer sit amet egestas elit. Integer auctor sed elit sed venenatis. Mauris lacus ligula, elementum at sem ac, egestas aliquet sem. Proin nec pharetra ex. Etiam augue ex, rhoncus id dui at, pulvinar sagittis purus. Vivamus eu rutrum arcu. Donec nec est faucibus est malesuada convallis. Integer eleifend ut dui in auctor. Nullam id neque ut augue consequat efficitur. Nunc dapibus non nibh ac tincidunt.\n\nDuis vitae tellus eget purus hendrerit tincidunt. Mauris dolor diam, egestas in commodo in, auctor in nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras ut lacus sed dui dictum elementum. Fusce scelerisque auctor libero ut maximus. Fusce eu mauris ut lacus luctus dapibus. Sed id lacus pharetra, luctus orci sit amet, ullamcorper nisi. Curabitur varius leo a ipsum tempus semper. Suspendisse iaculis, ligula sit amet consectetur fermentum, ante tortor pretium lacus, aliquet maximus lacus tellus vel urna. Donec id lorem pharetra, mattis magna ac, feugiat quam. Praesent dictum sem vel magna hendrerit varius. Suspendisse velit justo, molestie quis metus non, posuere mattis diam.\n\nDonec feugiat urna quam. Pellentesque at rhoncus lectus, eu luctus tortor. Fusce sit amet iaculis mauris, eget molestie nunc. Donec ac sapien eleifend leo luctus commodo. Vivamus ut nunc consectetur, maximus diam vel, mattis massa. Duis odio enim, congue a interdum ut, dignissim nec risus. Proin viverra ornare leo id porttitor. Donec varius tincidunt orci. Vivamus laoreet ullamcorper elementum. Nulla arcu dui, rhoncus ac molestie at, auctor eu mauris. In hac habitasse platea dictumst.\n\nAenean sed interdum est, quis luctus felis. Nullam pulvinar est nec ultricies laoreet. Maecenas id sollicitudin ex, bibendum elementum nulla. Quisque in ex enim. Proin nec est hendrerit, aliquet mauris sit amet, placerat turpis. Etiam felis lacus, interdum vel neque in, luctus faucibus neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin posuere arcu et justo tincidunt, a cursus quam lobortis.\n\nPraesent tristique, neque quis ultricies dapibus, nulla felis ornare odio, ac fermentum est tortor id lacus. In porta vel lectus ac gravida. Nullam sagittis consectetur ligula, sed faucibus libero commodo eu. In rhoncus sodales est ut semper. Fusce et placerat justo. Aliquam malesuada sed quam et eleifend. In lobortis ligula diam, sed porttitor turpis placerat ut. Nunc eu nunc posuere, tempor enim nec, venenatis enim. Vestibulum mi ipsum, euismod eu lacus et, dapibus euismod nisl. Etiam vitae pharetra orci. Proin ex justo, congue a orci sit amet, pellentesque rhoncus nunc. Aliquam porta convallis dolor nec commodo. Praesent lobortis posuere est at lobortis. Duis id venenatis purus. Aenean aliquam luctus sapien, et tempor metus pretium ac.\n\nCurabitur ac maximus justo, sit amet venenatis orci. Pellentesque ac diam enim. Integer eleifend semper dui, in luctus dolor pretium quis. Donec hendrerit viverra mi, sit amet maximus enim pharetra in. Ut facilisis leo vitae eros vestibulum consequat. Curabitur dapibus velit sed congue ornare. Ut a nisl at leo convallis commodo non ac lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent id ligula vitae nunc ultricies congue ornare at diam. Nunc quis arcu at dui facilisis aliquam. Cras sit amet odio euismod, condimentum purus quis, congue sem. Donec at volutpat erat. Donec eget dapibus ante. Donec non ante lobortis ligula vehicula aliquam. In eleifend diam nec sapien laoreet, vel bibendum velit vulputate. Curabitur imperdiet magna nec tempor tristique.\n\nMaecenas pellentesque enim magna, pellentesque dapibus ligula sollicitudin in. Quisque sit amet nisi et justo ultricies pretium. Nunc ac suscipit augue, sed laoreet ligula. Donec ornare eu libero eget accumsan. Etiam nec lorem a enim rhoncus scelerisque. Ut pellentesque lorem augue, a interdum odio varius at. Ut nisl magna, tincidunt non arcu quis, fermentum euismod enim.\n\nNullam varius arcu consequat, scelerisque ipsum eu, malesuada enim. Vestibulum odio risus, tincidunt vitae nunc vitae, mattis vehicula purus. Phasellus lectus risus, blandit id sagittis sed, fermentum a sem. Phasellus non cursus massa, ut porttitor nulla. Vestibulum pulvinar vestibulum lectus, eu dignissim odio. Duis consequat justo eget lectus vulputate gravida. Nunc et sem in leo finibus consectetur. Mauris diam lorem, eleifend sit amet lectus eu, pretium pulvinar lorem. Duis id nunc sapien. Nam luctus auctor nisi, non dapibus lacus dapibus sit amet. Etiam faucibus velit nec dui tempor blandit. Aliquam ac nisi sed magna gravida ornare. Vivamus finibus commodo libero, nec bibendum lectus tristique vel.\n\nCurabitur lacus diam, ultrices ut tortor quis, interdum porttitor ante. Phasellus diam velit, congue ac sagittis quis, mollis nec nisi. Sed quis ex ante. Nam nec tortor ut dui feugiat lobortis ut non est. Sed in nisl quis nunc molestie dignissim. Ut non diam vel velit luctus iaculis accumsan vitae diam. Quisque vel mi vitae purus efficitur rhoncus eu id neque. Ut vel leo tellus. Cras at dapibus eros, vel suscipit augue. Praesent eu eros vitae leo consectetur pretium. Nullam vehicula velit non lacus eleifend facilisis. Vestibulum rhoncus nunc vitae consequat gravida. Vestibulum at mauris mi.\n\nMorbi massa massa, vestibulum vitae tellus sit amet, lacinia fringilla erat. Sed nec efficitur lacus. Aenean semper ornare ante eget porttitor. Integer cursus metus in dictum pulvinar. Etiam consequat tellus eu sem ultricies, vitae pellentesque turpis efficitur. Fusce sed mi lobortis, pharetra mi et, auctor sem. Cras et elit vel urna vulputate pretium. Sed fermentum viverra laoreet. Integer at eros risus. In blandit augue lorem, nec eleifend enim bibendum id. Nunc in erat vel nisl venenatis efficitur. Suspendisse at ex a sem efficitur pellentesque et vel dolor. Mauris dignissim bibendum velit et blandit. Fusce hendrerit condimentum placerat.\n\nDonec lacinia ligula iaculis, vehicula erat ac, cursus risus. Mauris ac imperdiet leo. Pellentesque sagittis augue nunc, sed aliquam augue bibendum consectetur. Aliquam vel augue sit amet lacus interdum lobortis.")
+			setTimeout(function () {
+				window.prompt("Text copied. Try pasting it here to confirm if it works:")
+			}, 100)
+		}
+		function cliccLol(self) {
+			if (self.clicks == undefined) self.clicks = 0
+			self.clicks += 1
+			if (self.clicks == 2) {
+				self.innerHTML += "<br>Keep in mind google helps :D"
+			}
+
+		}
+		function submitMcq() {
+			responseDiv = document.querySelector("#mcq-response")
+			var response = ""
+			if (document.querySelector("#option-1").checked) {response = "Oh, cool. Good luck :D"}
+			else if (document.querySelector("#option-2").checked) {response = "Yes it was supposed to be slightly challanging. Good luck and don't forget to google stuff in case you need to :D"}
+			else if (document.querySelector("#option-3").checked) {response = "I guess you will need to refer to the document a little. Nothing is out of syllabus :)"}
+			else if (document.querySelector("#option-4").checked) {response = "What have you even been doing? I don't want to see a terrible response, so do some preparation, read the document, do some googling. Nothing is out of syllabus. It's just you who's being lazy."}
+
+			if (response == "") {alert("Select an option first"); return;}
+			responseDiv.innerHTML = response
+		}
+		var taskMarks = document.querySelectorAll(".task-marks")
+		var marksSum = 0
+		for (var i = 0; i < taskMarks.length; i++) {
+			marksSum += parseInt(taskMarks[i].innerText)
+		}
+		document.querySelector("#marks-sum").innerText = marksSum
+	</script>
+
+</body>
+</html>

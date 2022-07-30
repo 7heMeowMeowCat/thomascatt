@@ -1,3 +1,5 @@
+// Common Footer:
+
 var footerHTML = `
 <div style="width: 50%;">                
     <h2>Thanos Catt</h2>
@@ -14,3 +16,11 @@ var footerHTML = `
 </div>`
 
 document.querySelector("footer").innerHTML = footerHTML;
+
+// Page Entering Transition:
+
+document.body.style = "transition-duration: 600ms;"
+document.body.className = "b"
+setTimeout(() => {
+    document.body.style = ""
+}, 600);

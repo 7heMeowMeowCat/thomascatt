@@ -1,7 +1,7 @@
 html {background: #1a1a1a;}
 * {
 	transition-duration: 150ms; 
-	font-family: 'Segoe UI', Arial;
+	font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-weight: 100;
 	color: #ddd;
 }
@@ -13,7 +13,7 @@ body {
 	background: #222;
 	min-height: 85vh;
 	font-size: 1vw;
-	/* opacity: 0; */
+	box-shadow: 0 0 128px 120px #222;
 }
 
 #page-title {
@@ -23,31 +23,50 @@ body {
 .b {box-shadow: #222 0 0 20px 16px; opacity: 1;}
 
 h1, h2, h3, h4, h5, h6, h1, h2, h3, h4, h5, h6 {
-	font-family: 'Segoe UI', Arial;
 	font-weight: bold;
 }
+
+h1.main-heading {
+	text-align: center;
+	padding: 0px 20px;
+	font-weight: bold;
+	font-size: 70px;
+}
+
 b {
 	font-weight: bold;
 }
 
-a,a:visited {
+a, a:visited, a > * {
 	color: #bbf;
+}
+
+a:hover, a:hover > * {
+	color: #fff;
+	border-color: #fff;
+}
+
+a, a:visited{
 	text-decoration: none;
 	font-style: italic;
 	border-bottom: 0.1vw solid #bbf;
 	border-radius: 5px;
-	font-weight: bold;
-	margin-right: 3px;
 }
 
 a:hover {
-	color: #ccf;
-	border-bottom: 0.6vw solid #ccf;
+	border-bottom: 0.15vw solid #fff;
+	border-radius: 0px;
 }
 
 a:active {
-	border-bottom: 0.3vw solid #bbf;
+	border-radius: 4px !important;
+	outline: 0.2vw solid #7575f855;
+	background-color: #7575f855;
 	opacity: 0.5;
+}
+
+hr.half {
+	width: 50%;
 }
 
 body .body{
@@ -85,6 +104,16 @@ footer p{
 	background: #ddF;
 	
 }
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-container > div {
+	flex: 1;
+}
+
 
 @media only screen and (max-width: 1000px) {
 	body {

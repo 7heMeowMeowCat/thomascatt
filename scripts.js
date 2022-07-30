@@ -34,13 +34,6 @@ function init() {
     sections.forEach(a => {
         document.querySelector('#introduction').innerHTML += '<center style="padding-top: 10%; color: #aaa; text-transform: uppercase;">'+a[0]+'</center><h1 style=" padding: 10%; padding-top: 0;"><center style="font-size: 36px; color: #eee; font-weight: 100;">'+a[1]+'<br><p style=\"font-size: 50%;\">'+(a[2] || '')+'</center></h1><br><hr><br>'
     })
-
-
-    document.body.style = "transition-duration: 600ms;"
-    document.body.className = "b"
-    setTimeout(() => {
-        document.body.style = ""
-    }, 600);
 }
 
 init()
