@@ -142,5 +142,8 @@ footer p{
 	.header td img {
 		width: 100vw;
 		margin: auto;
-	}	
+	}
+	.flex-container {
+		flex-direction: column;
+	}
 }
