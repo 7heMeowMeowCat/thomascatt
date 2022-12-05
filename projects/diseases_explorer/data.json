@@ -1,5 +1,23 @@
 [
     {
+        "name": "Abnoctic Labs Pvt. Ltd.",
+        "short_desc": "Introduction to Abnoctic Laboratories and their works",
+        "details": {
+            "founder (CEO)": "Dr. Abnockingstarrlight",
+            "co-founders": "Dr. Thomas Catt",
+            "established": "2023 —",
+            "codename": "ABX-420",
+            "certifications offered": "ABX-420 Certification, ABX-420 Attestation",
+            "technologies researched": "Birchbox theory, nuclear implosion, implosion grenades, Tiddiosis Nigosis research, and much more.",
+        },
+        
+        "tags": ["abnoc", "abnox", "abnockinstarr", "abnockingstarr", "abnockingstarrlight", "abx-420", "abx", "abx420", "abnoctic", "lab"], // Tags are keywords that are used in the searching, and aren't visible anywhere. Add as many relevant words as you can for easier finding.
+        "content": [
+            {"Introduction:": "<span>Abnoctic Laboratories Pvt. Ltd. Est. 2023</span> is an abnoctic laboratory created by <i>Dr. Abnockingstarrlight</i>, in association with <i>Dr. Thomas Catt</i>. Here at Abnoctic labs, we struggle with our lives to provide the latest and advanced research on various new abnoctic technology. Read more about our history below."},
+            {"History:": "..."}
+        ]
+    },
+    {
         "name": "Straightface",
         "short_desc": "Patients disabled to have a different pose in images",
         "details": {
