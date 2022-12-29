@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./style.css">
+    <link id="hljs-theme" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <title>Command Line Introduction</title>
+</head>
+<body class="styled dark">
+    <header class="card">
+        <h1><i class="fas fa-terminal" style="color: rgb(40, 105, 246);"></i> Command Line Introduction</h1>
+        <div id="other-body">
+            <p>Introduction and common points to know about the Windows/Linux/Mac command line.</p>
+            <button tabindex="-1" id="darkmode" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
+            <button tabindex="-1" id="togglecss" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+        </div>
+    </header>
+
+
+    <div class="card" style="margin-top: 24vh;">
+        <h1>Introduction:</h1>
+        <p>Up until now, you probably have only used <code>cmd</code> for cool quirky stuff. Maybe copy pasting some lines from the internet hoping those fix your Rainbow Six Siege not connecting to the internet.</p>
+        <p>Learning command line basics is something you should already know before programming. Command line isn't difficult, but it can get as complex as you want it to be. However, some vital basics are explained here.</p>
+        <h2>Platforms:</h2>
+        <p>Different platforms have different commmand lines. Although they behave similar to each other, they do have some major differences. Windows is far apart from Linux and Mac, whereas the latter two are similar.</p>
+
+        <p>This is how the <b>Windows</b> <code class="no-color">Command Prompt</code> looks like:</p>
+        <pre><code class="default platform-windows">
+            
+        </code></pre>
+
+        <p>Here's how the linux shell looks in general:</p>
+        <pre><code class="default platform-linux">
+            
+        </code></pre>
+
+        <p>And this is how the <code class="no-color">zsh</code> Terminal app appears on Mac:</p>
+        <pre><code class="default platform-mac">
+            
+        </code></pre>
+    </div>
+
+    <div class="card">
+        <h1>Directories:</h1>
+        <p>Directories are the "folders" on the storage. Each directory (folder) can have a file or another directory, and so on.</p>
+        
+        <h2>Current Directory:</h2>
+        <p>As you may have noticed, all of the terminals are showing a path. In Windows, the path <code>C:\Users\Thomas</code> is apparent. Linux and Mac show the <code>/</code> which means the root (topmost) directory. </p>
+
+        <p>This specified directory is the current directory the terminal session has. Applications can use the current directory for their work. For example, if you are about to create a new Node project, running the <code>npm init</code> command will create a project in that directory</p>
+
+        <div class="ptn">
+            <h3>Home directory</h3>
+            <p>As observed above, the Mac terminal shows <code>~</code> as the path. The <code>~</code> directory is called the <b>Home directory</b>. It is used in Mac and Linux.</p>
+        </div>
+
+        <h2>Changing the current directory:</h2>
+        <p>Use the <code>cd</code> command to change the directory to the specified one:</p>
+        <pre><code class="default">
+            cd /Users
+        </code></pre>
+
+        
+        <div class="ptn">
+            <h3>Path Separators:</h3>
+            <p>In windows, to separate two directories in a path, the backslash character <code>\</code> is used, whereas in linux and mac, the forward slash <code>/</code> is used. Windows now supports both slashes, but I've seen that <code>\</code> works better with autocompletion.</p>
+        </div>
+
+        <h2>Relative Path:</h2>
+        <p>Sometimes you want to specify path relative to the current path. For example, if you want go to the previous directory (parent directory). The <code>.</code> and <code>..</code> are used to specify relative paths.</p>
+        <table>
+            <tr>
+                <th>Path</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td><code>./</code></td>
+                <td>Explcitly specify current directory. E.g, if you want to refer <code>file.txt</code> in the current directory, you can do <code>./file.txt</code></td>
+            </tr>
+            <tr>
+                <td><code>../</code></td>
+                <td>Previous directory. This refers to the directory parent to the current directory. E.g., if you are in <code>C:\Users\Thomas\</code> then doing a <code>cd ../</code> will change the directory to <code>C:\Users\</code></td>
+            </tr>
+        </table>
+
+        <p>Let's finish this off with an example. Suppose we are in <code>/Foo</code> and want to go to <code>/Bar</code>, then you should do this:</p>
+        <pre><code class="default" data-path="/Foo">
+            cd ..\Bar
+        </code></pre>
+        <p>and then the path will be changed:</p>
+        <pre><code class="default" data-path="/Bar">
+
+        </code></pre>
+    </div>
+
+    <div class="card">
+        <h1>Shortcuts:</h1>
+        <p>Almost all command lines provide a set of shortcuts to effeciently run commands. Command lines are different from your regular text fields, so copy and paste usually doesn't work as-is. Here's a list of important shortcuts:</p>
+        <table>
+            <tr>
+                <th>Shortcut</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><code>↑</code>/<code>↓</code></td>
+                <td>Cycle through the history of all the commands that you have attempted to execute. Very handy when you made a slight mistake in the last command and you want to correct it.</td>
+            </tr>
+            <tr>
+                <td><code>↹</code></td>
+                <td>Attempts to autocomplete the word you're typing to a path or a program, etc.</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + C</code> or <code>Ctrl + X</code></td>
+                <td>Exit the currently running task.</td>
+            </tr>
+        </table>
+
+        <h3>Copying and pasting:</h3>
+        <p>In Windows, click and drag through the text you want to copy, then right click on it. The selected text will be copied once the right click is pressed. Similarly, to paste some text, right click anywhere without selection.</p>
+        <p>Linux and Mac usually provide a simple context menu option to copy or paste text.</p>
+    </div>
+
+    <div class="card">
+        <h1>Executing programs:</h1>
+        <p>Generally, anything written in the command line is written in this form:</p>
+        <pre><code class="default">
+            program-name param1 param2 param3 ...
+        </code></pre>
+        <p>Where <code>param1</code>, <code>param2</code> and <code>param3</code> are the values given to the program. </p>
+        <p>So, when we are doing <code>npm init</code>, we are running the <code>npm</code> program, and giving the value <code>init</code> to it.</p>
+        <p>We have to always make sure that the computer understands what <code>program-name</code> refers to.</p>
+    </div>
+
+    <div id="error-reporting" class="hidden">
+        <div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
+            <h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+            <h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
+            <div style="display: inline-block;">
+                <b style="width: 100%; display: inline-block;">
+                    This page ran into a JavaScript error, functions may not behave as intended.
+                </b>
+                <p style="display: inline-block; padding: 0; margin: 0;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script async>
+        const bashIntros = {
+            mac: "thomascatt@ThomasCatts-MacBook-Pro ~ % ",
+            windows: "Microsoft Windows [Version 10.0.22000.1098]<br>(c) Microsoft Corporation. All rights reserved.<br><br>C:\\Users\\Thomas> ",
+            linux: "thomas@linux-desktop:/$ ",
+
+            path: (p) => {
+                if (p) {
+                    p = p.split("\\").join("/")
+                    p = (p[0] == '/') ? p : ('/' + p)
+                }
+
+                return {
+                    mac: `thomascatt@ThomasCatts-MacBook-Pro ${p || "~"} % `,
+                    windows: `Microsoft Windows [Version 10.0.22000.1098]<br>(c) Microsoft Corporation. All rights reserved.<br><br>C:${p ? p.split("/").join("\\") : "\\Users\\Thomas"}> `,
+                    linux: `thomas@linux-desktop:${p || "/"}$ `
+                }   
+
+            }
+        }
+        function getOs() {
+            var userAgent = navigator.userAgent.toLowerCase()
+            if (userAgent.includes('mac')) return 'mac'
+            else if (userAgent.includes('windows')) return 'windows'
+            else if (userAgent.includes('linux')) return 'linux'
+            else return 'windows'
+        }
+
+        function init() {
+            console.log("hey what are you doing here? ://")
+            var header = document.querySelector('header')
+            document.body.style.opacity = "1"
+
+
+            function setInnerText(el, t) {
+                t.split("\n").forEach(function (line, index) {
+                    var tabs = line.replace(line.split("\t").join(""), "").split("\t").join("&nbsp;&nbsp;&nbsp;&nbsp;")
+
+                    var newline = (index == 0) ? '' : "<br>"
+                    el.innerHTML += newline+tabs
+                    el.innerText += line
+                })
+            }
+
+            document.body.onscroll = function (event) {
+                var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+
+                if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
+                else header.classList.value = ('card')
+            }
+
+            window.removeSpaces = function(s) {
+                if (s.split("\n").join("").trim() == "") return s
+                s = s.split('    ').join('\t').split('	').join('\t')
+
+                var lines = s.split("\n")
+                if (lines[0].trim() == '') lines.shift()
+                if (lines[lines.length-1].trim() == '') lines.pop()
+                var cleaned = false
+                
+                while (true) {
+                    cleaned = true
+                    lines.forEach(l => {
+                        if (l == "") {
+                        } else if (l.substr(0,1) !== "\t") {
+                            cleaned = false
+                        }
+                    })
+
+                    if (!cleaned) break
+                    
+                    lines.forEach( (l, i) => {
+                        l = l.replace('\t', '')
+                        lines[i] = l
+                    })
+                }
+
+                return lines.join("\n")
+            }
+            
+            document.querySelectorAll("code:not(.no-color)").forEach(function (el) {
+                var text = el.innerText
+                var langName = [...el.classList].find(a => a.startsWith('language-')) || 'language-js'
+                
+                el.innerHTML = removeSpaces(text).trim().split('\t').join('    ')
+                if (el.parentElement.tagName == 'pre' && el.parentElement.classList == 'hl-code') {
+                    el.parentElement.style.transitionDuration = '0ms'
+                    el.parentElement.classList.add(langName)
+                    hljs.highlightElement(el.parentElement)
+                } else {
+                    el.style.transitionDuration = '0ms'
+                    el.classList.add(langName)
+                    hljs.highlightElement(el)
+                }
+            })
+
+            var taskToDoNum = 0;
+            document.querySelectorAll(".task-to-do .number").forEach(e => e.innerText = ++taskToDoNum);
+            
+            document.body.onkeydown = (e) => (e.key == 'd') ? document.querySelector("#darkmode").click() : ((e.key == 'C') ? document.querySelector("#togglecss").click() : true)
+            updateFormatterTheme()
+        }
+
+        function toggleCollapse(element, button) {
+            element.style.transitionDuration = '0ms'
+            element.classList.toggle("expanded")
+            button.classList.toggle("expanded")
+            if (element.classList.contains("expanded")) element.style.height = (element.scrollHeight+1)+"px"
+            else element.style.height = '0px'
+            element.style.transitionDuration = ''
+        }
+
+        hljs_lightThemeVal = 'stackoverflow-light'
+        var hljs_lightTheme = (s) => s === undefined ? hljs_lightThemeVal : (function (s) { hljs_lightThemeVal = s; updateFormatterTheme() })(s)
+
+        hljs_darkThemeVal = 'stackoverflow-dark'
+        var hljs_darkTheme = (s) => (s === undefined) ? hljs_darkThemeVal : (function (s) { hljs_darkThemeVal = s; updateFormatterTheme() })(s)
+        
+        function updateFormatterTheme(t) {
+            var theme = document.body.classList.contains('dark') ? hljs_darkTheme() : hljs_lightTheme()
+            if (t !== undefined) theme = t
+            var link = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
+            document.querySelector("#hljs-theme").href = link
+
+            return document.querySelector("#hljs-theme").href
+        }
+        
+        window.onerror = function (e) {
+            document.getElementById("error-reporting").classList = ""
+            document.querySelector("#error-reporting p").innerText = e
+            document.body.style.opacity = "1"
+        }
+
+
+        document.querySelectorAll('pre code').forEach(a => {
+            var platform = getOs()
+            if ([...a.classList].find(b => b.startsWith("platform-")))
+                platform = [...a.classList].find(b => b.startsWith("platform-")).replace('platform-', '')
+
+            a.innerHTML =  bashIntros.path(a.dataset.path)[platform] + a.innerText.replace(/^\s+/g, '');
+        })
+
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('pre code').forEach(a => {
+                // a.innerHTML += "&nbsp;"
+                var cursor = document.createElement('cursor')
+                cursor.innerText = '_'
+                
+                a.appendChild(cursor)
+            })
+        })
+        
+        setInterval( () => {
+            document.querySelectorAll('cursor').forEach(cursor => {
+                cursor.style.opacity = cursor.style.opacity == '0' ? '1' : '0'
+            })
+        }, 500)
+
+
+        
+        try {
+            init()
+        } catch(e) {
+            window.onerror(e)
+        }
+        
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../style.css">
+    <link id="hljs-theme" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <title>NodeJS Introduction</title>
+</head>
+<body class="styled dark">
+    <header class="card">
+        <h1><i class="fab fa-node-js" style="color: rgb(74, 158, 22);"></i> NodeJS Introduction</h1>
+        <div id="other-body">
+            <p>Here's a little NodeJS introduction document that might help you understand what's NodeJS.</p>
+            <button tabindex="-1" id="darkmode" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark'); updateFormatterTheme()"><i class="fa fa-adjust"></i></button>
+            <button tabindex="-1" id="togglecss" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+        </div>
+    </header>
+
+
+    <div class="card" style="margin-top: 24vh;">
+        <h1>Introduction:</h1>
+        <p>NodeJS is just server-sided JavaScript. It takes quite the effort to explain that phrase but if you understand it now, then that's pretty much what NodeJS is. If you google NodeJS you get:</p>
+        <p class="hint">Node.js is a back-end JavaScript runtime environment. Node.js runs on the V8 JavaScript Engine and executes JavaScript code outside a web browser.</p>
+
+        <h2>The JavaScript you know:</h2>
+        <p>You make an <code>html</code> file. You have some HTML in it. Maybe links to your beautiful CSS, and JavaScript. When you open that file, that file is given to the chrome browser (or any other shitty browser you may use). Chrome looks at the code, all the HTML, CSS and JavaScript. And executes it right away.</p>
+        <p>This is a simple model without any servers or anything. Code, given to a software. That's it. The JavaScript written there is <i>client-sided</i>, meaning it executes on the client's computer.</p>
+
+        <h2>Server-sided JavaScript:</h2>
+        <p>Now, if you go ahead and open a chrome tab, and go to <code>google.com</code> and press enter, it shows a spinny. Then after some time the spinny turns blue, means it got a response. When the response is received, it's executed normally like the JS you are aware of.</p>
+        <p>Node is just one technology to program servers. <code>google.com</code> probably runs on a hundred times more advanced software. Let's take an imaginary website called <i>Gaagle.com</i> which simply uses NodeJS for backend.</p>
+        <p>When you go to <code>gaagle.com</code>, the browser sends an <b>HTTP Request</b> to the <code>gaagle.com</code> server. The server isn't a magical black box. It can be a simple computer accepting HTTP requests, and simply responding them back. So, <code>gaagle.com</code> also has some JavaScript code, written with NodeJS, which accepts HTTP Requests, and responds to them.</p>
+        <p>That code is on the server side. It resides on the server, answers any requests, and responds with some HTML, for your browser to run.</p>
+        <br>
+        <p><i>That</i> JavaScript is called <i>Server-sided JavaScript</i>. Node is used to program servers. It runs on the server side, is installed on the server.</p>
+
+        <div class="ptn">
+            <h3>NodeJS isn't exactly HTTP Web Servers</h3>
+            <p>If you want to create an application exactly like <code>gaagle.com</code>, then you'd need <i>Express.js</i>, a <b>NodeJS library</b>. Most of the time Node is used as a boilerplate for the popular libraries like <b>ReactJS</b>, <b>Express.js</b>, and many more.</p>
+        </div>
+    </div>
+
+    <ul class="card">
+        <h1>What who where when how and why:</h1>
+        <p>Every question that came in your mind, answered:</p>
+        <li>
+            <h3>What is Server Sided JavaScript?</h3>
+            <p>JavaScript code which runs on the server computer, mostly for handling requests as a web server.</p>
+        </li>
+
+        <li>
+            <h3>Who is Server Sided JavaScript?</h3>
+            <p>Umm you mean what's the thing that does the server sided thing? It's called NodeJS. its a popular "server environment" (as google describes). Or if you mean who's the guy programming in Server-sided JavaScript, then it's a <b>backend developer</b> who does it.</p>
+        </li>
+
+        <li>
+            <h3>Where is Server Sided JavvaScript?</h3>
+            <p>On the backend server. Kinda obvious since it's kinda like in the name you know 👉👈</p>
+        </li>
+
+        <li>
+            <h3>When is Server Sided JavaScript?</h3>
+            <p>Um if you mean when does Server-sided js run???? Then it depends. Servers just run kinda like... forever. Yea. Like my discord server (should) runs all the time for it to keep responding. That is a NodeJS project with a tiny library called "DiscordJS". these kinda servers mostly listen for some sort of activity, and respond. e.g. the <code>gaagle.com</code> server runs all the time, but only gives the home page when asked for it. Similarly, my chess app (should) only respond to socket related requests (connections, emissions). but Yea. servers run all the time.</p>
+        </li>
+
+        <li>
+            <h3>How is Server Sided JavaScript?</h3>
+            <p>I'm running outta answers. well so if you want to get started, then just install NodeJS for your machine. Create a node project in a directory with <code>npm init</code> (just makes a <code>package.json</code> file thats mostly what a node project is). After that you can make a js file like <code>index.js</code>, write some js, and run it with node index.js. That's basics of how to run NodeJS.</p>
+            <p class="hint">Don't worry, there will be a proper installation & setup guide later on. This is just a rough intro.</p>
+        </li>
+
+        <li>
+            <h3>Why is Server Sided JavaScript?</h3>
+            <p>If you're asking about why servers exist in general, then uhhhh thats humm uhhggn thats how the internet works, kid. It's a buncha servers. If you're asking particularly about why this new NodeJS shit why not something better old fashioned like the good ol' php that I learned in 1997? why not that?? Well umm idk the answer, but NodeJS is just yet another technology with its own pros and cons. idk much but imo I like to have my client app (the JS you use currently) and my server app (<code>gaagle.com</code>, plot twist, i own it) to both use the same language, kinda convenient. But it's upto you why you want to prioritize older web server implementations over new ones. That all is just for using NodeJS as a web server technology. If you're gonna slap React on it, then it wont really be a "webserver tech" anymore tbh.</p>
+        </li>
+    </ul>
+
+    <div class="card">
+        <h1>Installing NodeJS:</h1>
+        <p>Head over to <a target="_blank" href="https://nodejs.org/en/download/">their download page</a>, download setup, and install. While installing, make sure any option related to "Adding to PATH" is checked (if you don't find one, then it's okay).</p>
+        <p>Once installed, open up <code>Command prompt</code> (or <code>terminal</code>), and enter:</p>
+        <pre><code class="default language-bash">
+            node -v
+        </code></pre>
+        <p>You should see the version of NodeJS installed. If so, then you're good to go.</p>
+    </div>
+
+    <div class="card">
+        <h1>Prerequisites:</h1>
+        <p>Before NodeJS, there's some things you should know about to properly learn NodeJS. Good thing is that I'd be covering most of it in this document:</p>
+        <ul>
+            <li><b>JavaScript:</b> I mean of course, NodeJS literally has JS in the name. You must know some JavaScript before getting started with Node.</li>
+            <li><b>Packages and NPM:</b> NPM is <i>Node Package Manager</i>. As I said, NodeJS acts as a boilerplate for most of the popular libraries. These libraries install as a package, through a package manager. You'll learn more about these below. It's a part of Node, but people don't really care to explain it well.</li>
+            <li><b>Basic command line knowledge:</b> You will be using NodeJS and NPM with <code>cmd</code> or <code>terminal</code>, depending on your platform. <code>cmd</code> from Windows works a bit differently than a linux <code>terminal</code>. I'll cover <code>cmd</code> because that's what most of the people use.</li>
+        </ul>
+
+        <h2>Packages and NPM:</h2>
+        <p>Node is mostly all about it's packages. A package is a library. A library is some helping code files for a project. C language has native libraries (<code>stdlib.h</code>, <code>stdio.h</code>, etc.). C++ also has some native libraries (<code>iostream</code>).</p>
+        <p>A package is structurally a Node project, being used in another Node project. <b>NPM</b> stands for <i>Node Package Manager</i>. It acts like the Play store for packages. You can browse, search and install packages from NPM.</p>
+        <p>If you go to any Node library, they will always have an <i>Installation</i> section guiding to install their package with it's name.</p>
+        
+        <h3>A bit deeper into NPM:</h3>
+        <p>NPM comes with Node. It's a package manager, like any other package manager. NodeJS projects are managed with <code>npm</code> as well. To create a project, install it's dependencies, and more. <code>node</code> is only used to execute a NodeJS project.</p>
+        <p>NPM is also used to create a NodeJS project. You can execute <code>npm init -y</code> to create a <code>package.json</code> for a new project. This file will be explained later on.</p>
+
+        <h2>The Command line:</h2>
+        <p>Understanding some command line basics isn't difficult. I have covered them in my <a target="_blank" href="../Command-Line.html">Command Line Document</a>. It's short, don't be afraid to open it.</p>
+    </div>
+
+    <div id="error-reporting" class="hidden">
+        <div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
+            <h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+            <h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
+            <div style="display: inline-block;">
+                <b style="width: 100%; display: inline-block;">
+                    This page ran into a JavaScript error, functions may not behave as intended.
+                </b>
+                <p style="display: inline-block; padding: 0; margin: 0;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script async>
+        function init() {
+            console.log("hey what are you doing here? :\\")
+            var header = document.querySelector('header')
+            document.body.style.opacity = "1"
+
+            function setInnerText(el, t) {
+                t.split("\n").forEach(function (line, index) {
+                    var tabs = line.replace(line.replaceAll("\t", ""), "").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;")
+
+                    var newline = (index == 0) ? '' : "<br>"
+                    el.innerHTML += newline+tabs
+                    el.innerText += line
+                })
+            }
+
+            document.body.onscroll = function (event) {
+                var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+
+                if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
+                else header.classList.value = ('card')
+            }
+
+            window.removeSpaces = function(s) {
+                if (s.split("\n").join("").trim() == "") return s
+                s = s.replaceAll('    ', '\t').replaceAll('	', '\t')
+
+                var lines = s.split("\n")
+                if (lines[0].trim() == '') lines.shift()
+                if (lines[lines.length-1].trim() == '') lines.pop()
+                var cleaned = false
+                
+                while (true) {
+                    cleaned = true
+                    lines.forEach(l => {
+                        if (l == "") {
+                        } else if (l.substr(0,1) !== "\t") {
+                            cleaned = false
+                        }
+                    })
+
+                    if (!cleaned) break
+                    
+                    lines.forEach( (l, i) => {
+                        l = l.replace('\t', '')
+                        lines[i] = l
+                    })
+                }
+
+                return lines.join("\n")
+            }
+            
+            document.querySelectorAll("code:not(.no-color)").forEach(function (el) {
+                var text = el.innerText
+                var langName = [...el.classList].find(a => a.startsWith('language-')) || 'language-js'
+                
+                el.innerHTML = removeSpaces(text).trim().replaceAll('\t', '    ')
+                if (el.parentElement.tagName == 'pre' && el.parentElement.classList == 'hl-code') {
+                    el.parentElement.style.transitionDuration = '0ms'
+                    el.parentElement.classList.add(langName)
+                    hljs.highlightElement(el.parentElement)
+                } else {
+                    el.style.transitionDuration = '0ms'
+                    el.classList.add(langName)
+                    hljs.highlightElement(el)
+                }
+            })
+
+            var taskToDoNum = 0;
+            document.querySelectorAll(".task-to-do .number").forEach(e => e.innerText = ++taskToDoNum);
+            
+            document.body.onkeydown = (e) => (e.key == 'd') ? document.querySelector("#darkmode").click() : ((e.key == 'C') ? document.querySelector("#togglecss").click() : true)
+            updateFormatterTheme()
+        }
+
+        function toggleCollapse(element, button) {
+            element.style.transitionDuration = '0ms'
+            element.classList.toggle("expanded")
+            button.classList.toggle("expanded")
+            if (element.classList.contains("expanded")) element.style.height = (element.scrollHeight+1)+"px"
+            else element.style.height = '0px'
+            element.style.transitionDuration = ''
+        }
+
+        hljs_lightThemeVal = 'stackoverflow-light'
+        var hljs_lightTheme = (s) => s === undefined ? hljs_lightThemeVal : (function (s) { hljs_lightThemeVal = s; updateFormatterTheme() })(s)
+
+        hljs_darkThemeVal = 'stackoverflow-dark'
+        var hljs_darkTheme = (s) => (s === undefined) ? hljs_darkThemeVal : (function (s) { hljs_darkThemeVal = s; updateFormatterTheme() })(s)
+        
+        function updateFormatterTheme(t) {
+            var theme = document.body.classList.contains('dark') ? hljs_darkTheme() : hljs_lightTheme()
+            if (t !== undefined) theme = t
+            var link = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/'+theme+'.min.css'
+            document.querySelector("#hljs-theme").href = link
+
+            return document.querySelector("#hljs-theme").href
+        }
+        
+        window.onerror = function (e) {
+            document.getElementById("error-reporting").classList = ""
+            document.querySelector("#error-reporting p").innerText = e
+            document.body.style.opacity = "1"
+        }
+        
+        try {
+            init()
+        } catch(e) {
+            window.onerror(e)
+        }
+        
+    </script>
+        
+</body>
+</html>
