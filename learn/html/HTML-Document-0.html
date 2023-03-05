@@ -1,255 +1,218 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>HTML Document 0: Introduction</title>
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-		<link rel="stylesheet" href="../style.css">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="../style.css">
+	<link id="hljs-theme" rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/stackoverflow-dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+	<title>HTML Document 0: Introduction</title>
 	</head>
-	<body class="styled dark">
-		<header class="card">
-			<h1>HTML Document 0: Introduction</h1>
-			<div id="other-body">
-				<p>All the very basic knowledge you need to know before getting started with the first web development language; HTML.
-					<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark')"><i class="fa fa-adjust"></i></button>
-					<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
-				</p>
-			</div>
-		</header>
-		<div style="margin-top: 200px;">
-			<h1>What is this?</h1>
-			<p>A document for people with low knowledge on web development, and are looking to start. Also contains the instructions about requirements to get started with coding.</p>
-			<h1>Table of contents:</h1>
+<body class="styled dark">
+	<header class="card">
+		<h1>HTML Document 0: Introduction</h1>
+		<div id="other-body">
+			<p>All the very basic knowledge you need to know before getting started with the first web development language; HTML.
+				<button tabindex="-1" title="Toggle Theme" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('dark')"><i class="fa fa-adjust"></i></button>
+				<button tabindex="-1" title="Toggle CSS" style="float: right;" class="btn-secondary" onclick="document.body.classList.toggle('styled')"><i class="fab fa-css3"></i></button>
+			</p>
+		</div>
+	</header>
+	<div style="margin-top: 200px;">
+		<h1>What is this?</h1>
+		<p>A document for people with low knowledge on web development, and are looking to start. Also contains the instructions about requirements to get started with coding.</p>
+		<h1>Table of contents:</h1>
+		<ul>
+			<li><a href="#section-1">What is Web Development?</a></li>
+			<li><a href="#section-2">Which language for what?</a></li>
+			<li><a href="#section-3">What's for me?</a></li>
+			<li><a href="#section-4">Getting started</a></li>
 			<ul>
-				<li><a href="#section-1">What is Web Development?</a></li>
-				<li><a href="#section-2">Which language for what?</a></li>
-				<li><a href="#section-3">What's for me?</a></li>
-				<li><a href="#section-4">Getting started</a></li>
-				<ul>
-					<li><a href="#section-5">Introduction to Code Editors</a></li>
-					<li><a href="#section-6">Creating an HTML file</a></li>
-					<li><a href="#section-7">Writing the basic HTML Code</a></li>
-				</ul>
+				<li><a href="#section-5">Introduction to Code Editors</a></li>
+				<li><a href="#section-6">Creating an HTML file</a></li>
+				<li><a href="#section-7">Writing the basic HTML Code</a></li>
 			</ul>
+		</ul>
 
-			<hr>
+		<hr>
 
-			<div id="section-1">
-				<h1>What is Web Development?</h1>
-				<p>Quickly explained, Web Development is simply the process of creating webpages. It covers a wide variety of websites, including webapps. Webapps are just web pages enable to function as an application.</p>
-				<p>Though with HTML, you can create the UIs of websites. Soon, as you progress, you will be able to add beauty, and functionality to website by applying CSS and JavaScript.</p>
-			</div>
-				
-			<div id="section-2">
-				<h1>Which language for what?</h1>
-				<p><b>HTML:</b> Defines the interface of websites</p>
-				<p><b>CSS:</b> Enables websites to have custom styles like colors, spacing, alignment, transitions, and a lot more.</p>
-				<p><b>JavaScript:</b> Programming language. Used to add functionality to any website.</p>
-			</div>
-
-			<div id="section-3">
-				<h1>What's for me?</h1>
-				<p>It greatly depends on what is your goal. If you want to get deep into web development, then you can start with HTML, and CSS and get deep into JavaScript and its libraries to create webapps.</p>
-				<p>If you just want to get some programming experience, then you can go with some HTML and directly jump onto JavaScript. Though in that case, using other programming languages might be better since JavaScript is kinda weird. You might need to get advices from other people if you are looking for programming languages. However, for me, I prefer older langauges to start with like C++, Java, etc. since they are more strict and may be more successful in teaching new concepts.</p>
-			</div>
-
-			<hr>
+		<div id="section-1">
+			<h1>What is Web Development?</h1>
+			<p>Quickly explained, Web Development is simply the process of creating webpages. It covers a wide variety of websites, including webapps. Webapps are just web pages enabled to function as an application.</p>
+			<p>Though with HTML, you can create the UIs of websites. Soon, as you progress, you will be able to add beauty, and functionality to website by applying CSS and JavaScript.</p>
+		</div>
 			
-			<div id="section-4">
-				<h1>Getting started</h1>
-				<p>Here are some instructions to get started with HTML, right from scratch:</p>
-			</div>
+		<div id="section-2">
+			<h1>Which language for what?</h1>
+			<p><b>HTML:</b> Defines the interface of websites</p>
+			<p><b>CSS:</b> Enables websites to have custom styles like colors, spacing, alignment, transitions, and a lot more.</p>
+			<p><b>JavaScript:</b> Programming language. Used to add functionality to any website.</p>
+		</div>
 
-			<div id="section-5">
-				<h2>Introduction to Code Editors</h2>
-				<p>The software which you will need to edit and save your code. Code Editors are a personal choice. You could use something as simple as even Notepad, but that won't have any shortcuts to work with.</p>
-				<p>There's a difference between an IDE (Integraded Development Environment) and a simple code editor:</p>
-				
-				<ul>
-					<li>
-						<h3>IDE:</h3>
-						<p>An IDE is a software, which contains all related tools you need, to work with a specific development category. They aren't general purpose, and are only used for a specific category. They are bulkier but are rich in features, like:</p>
-						<ul>
-							<li><b>Visual Studio</b>: Used for a variety of languages like C, C++, C# and (probably) more. It is modular so it is able to be used in a variety of categories for programming.</li>
-							<li><b>Android Studio</b>: For Android App Development</li>
-							<li><b>IntelliJ Idea</b>: Related to programming in Java</li>
-						</ul>
-					</li>
-					<li>
-						<h3>Code Editor:</h3>
-						<p>Simpler, lighter, faster, general purpose softwares built for programming. They don't come with much tools by default, but are handy for working with languages in which various tools aren't required, like HTML. A few of them are:</p>
-						<ul>
-							<li><a href="https://www.sublimetext.com/"><b>Sublime Text</b></a> <i>(ex-favourite)</i>: I've used it a lot, and recently switched over to VS Code:</li>
-							<li><a href="https://code.visualstudio.com/"><b>VS Code (Visual Studio Code)</b></a> <i>(currently using)</i></li>
-							<li>And probably <a href="https://www.google.com/search?q=text+editors">a lot more</a>.</li>
-						</ul>
-					</li>
-					<li>
-						<h3>I don't care, just tell me which one do I get:</h3>
-						<p>I've used both, Sublime, and VS Code, and can say that both are great. VS Code is actually more modular, but Sublime also doesn't stop there. Both have extension support, and have great set of shortcuts. if you are considering these two, then you can go with VS Code, but you are not limited to it; you can get any of them.</p>
-					</li>
-				</ul>
-				<h3>Code Editor shortcuts:</h3>
-				<p>Now, you should be aware of the shortcuts your text editor provides at this point. They are in a <b>large</b> quantity, and you can never stop discovering new ones. The first shortcut that you need to know, which works in most editors, is the <code>Ctrl</code> + <code>space</code> hotkey.</p>
-				<p>This will trigger a popup box to open beside your text cursor, and will predict what you are trying to type. This is really helpful and accurate most of the time, and can also autocomplete stuff for you.</p>
-				<p class="hint"><b>Sublime Text:</b> If you are using Sublime Text 3, then hitting the <code>tab</code> key will autocomplete with the first value in the suggestion box. That means you won't need to open the suggestion box by pressing the <code>Ctrl</code> + <code>space</code> keys, when you are sure of the first option in the box.</p>
-			</div>
+		<div id="section-3">
+			<h1>What's for me?</h1>
+			<p>It greatly depends on what is your goal. If you want to get deep into web development, then you can start with HTML, and CSS and get deep into JavaScript and its libraries to create webapps.</p>
+			<p>If you just want to get some programming experience, then you can go with some HTML and directly jump onto JavaScript. Though in that case, using other programming languages might be better since JavaScript is kinda weird. You might need to get advices from other people if you are looking for programming languages. However, for me, I prefer older langauges to start with like C++, Java, etc. since they are more strict and may be more successful in teaching new concepts.</p>
+		</div>
 
-			<div id="section-6">
-				<h2>Creating an HTML file</h2>
-				<p>An oversimplified guide on how to create an HTML file. All you need to do is to create a text file and change its extension to <code>.html</code>. Here's how to do that:</p>
-				<ol>
-					<li>
-						<h3>Show File Name Extensions:</h3>
-						<p>First, make sure that the <i>File Name Extensions</i> option is turned on in the Windows Explorer:</p>
-						<ul>
-							<li>Open the <code><img src="data:image/png;base64,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" width="20" class="default-image inline-image">Windows Explorer</code></li>
-							<li>Go to the <i>View</i> tab on the top</li>
-							<li>Check the <i>File Name Extensions</i> option</li>
-						</ul>
-						<img src="https://i.imgur.com/9gz1N2C.png" alt="Show File Name Extensions in Windows Explorer" width="70%">
-					</li>
-					<li>
-						<h3>Navigate to the desired directory, and create a text file there:</h3>
-						<p>Simple is that, open the folder, or go to the desktop if you want to start on the desktop. Then <b>right click > New > Text Document</b> to create a new text file.</p>
-						<img src="https://i.imgur.com/Ohznd4h.png" alt="Create a Text File" width="70%">
-					</li>
-					<li>
-						<h3>Rename the created file accordingly:</h3>
-						<p>Now, after the <b>dot (.)</b> in the file name, you should see a <code>.txt</code> there. (If you don't, then you probably missed the first step) Replace the <code>.txt</code> with <code>.html</code>.</p>
-						<p>For the left side of the dot, i.e. the file name, you can give it anything you like. Though, usually, the home page is called <code>index</code> so going with that will be a great start. <span class="hint">i.e. change the name of the whole file name too <code>index.html</code></span></p>
-						<div style="cursor: zoom-in;" onclick="Object.values(this.children).forEach(function (a) {
-							a.style.width = (a.style.width == '30%') ? '70%' : '30%'
-							event.target.style.cursor = (a.style.width == '30%') ? 'zoom-in' : 'zoom-out'
-						})">
-							<img style="display: block; width: 30%; transition-duration: 100ms;" src="https://i.imgur.com/GrYepPC.png" alt="Renaming the file: Step 1">
-							<img style="display: block; width: 30%; transition-duration: 200ms;" src="https://i.imgur.com/FeV7voY.png" alt="Renaming the file: Step 2">
-							<img style="display: block; width: 30%; transition-duration: 300ms;" src="https://i.imgur.com/2FIe3zZ.png" alt="Renaming the file: Step 3">
-							<img style="display: block; width: 30%; transition-duration: 400ms;" src="https://i.imgur.com/qWxU1AV.png" alt="Renaming the file: Step 4">
-						</div>
-					</li>
-					<li>
-						<h3>Open the .html file:</h3>
-						<p>Now, you need this file open in both, your browser, and in your code editor.</p>
+		<hr>
+		
+		<div id="section-4">
+			<h1>Getting started</h1>
+			<p>Here are some instructions to get started with HTML, right from scratch:</p>
+		</div>
 
-						<ul>
-							<li>
-								<p><b>For the browser:</b> It's simple. Just double click the file and it will automatically open up.</p>
-							</li>
-							<li>
-								<p><b>For the code editor:</b> Open your editor first. Then you can either drag the <code>.html</code> file and toss it into your editor, and the editor will automatically pick it up. Or you can right click on the <code>.html</code> file, then go to <b>Open With > Choose another app</b>, then select your code editor in the list (Make sure the <i>Always use this app to open .html files</i> is turned <b>OFF</b>). Your editor will open the file.</p>
-							</li>
-						</ul>
-					</li>
-				</ol>
-				
-				<br>
-				<p>The browser window, is the output location for the code you edit. So each time you edit your code, you have to save the changes (<code>Ctrl + S</code>), and refresh the browser window to see the changes you made in action. You may need to repeat the last step each time you restart coding.</p>
-			</div>
+		<div id="section-5">
+			<h2>Introduction to Code Editors</h2>
+			<p>The software which you will need to edit and save your code. Code Editors are a personal choice. You could use something as simple as even Notepad, but that won't have any shortcuts to work with.</p>
+			<p>There's a difference between an IDE (Integraded Development Environment) and a simple code editor:</p>
 			
-			<div id="section-7">
-				<h2>Writing the basic HTML Code</h2>
-				<p>Now, with everything set up, it's time to write the basic HTML code. For anything you learn in HTML, you need to write the code in this guided way:</p>
-				<pre class="mono" id="html-template"></pre>
-				<p>Looks overwhelming?</p>
-				<ul>
-					<li>Yes? Good, because it's supposed to. Not like it's hard, just that it <i>looks</i> big, but breaking it all down, it's absolutely simple.</li>
-					<li>No? Then that's also fine. If you can see how simple this code is, then it would be easier for you to understand it too.</li>
-				</ul>
+			<ul>
+				<li>
+					<h3>IDE:</h3>
+					<p>An IDE is a software, which contains all related tools you need, to work with a specific development category. They aren't general purpose, and are only used for a specific category. They are bulkier but are rich in features, like:</p>
+					<ul>
+						<li><b>Visual Studio</b>: Used for a variety of languages like C, C++, C# and (probably) more. It is modular so it is able to be used in a variety of categories for programming.</li>
+						<li><b>Android Studio</b>: For Android App Development.</li>
+						<li><b>IntelliJ Idea</b>: Related to programming in Java.</li>
+					</ul>
+				</li>
+				<li>
+					<h3>Code Editor:</h3>
+					<p>Simpler, lighter, faster, general purpose softwares built for programming. They don't come with much tools by default, but are handy for working with languages in which various tools aren't required, like HTML. A few of them are:</p>
+					<ul>
+						<li><a href="https://www.sublimetext.com/"><b>Sublime Text</b></a> <i>(ex-favourite)</i>: I've used it a lot, and recently switched over to VS Code:</li>
+						<li><a href="https://code.visualstudio.com/"><b>VS Code (Visual Studio Code)</b></a> <i>(currently using)</i></li>
+						<li>And probably <a href="https://www.google.com/search?q=text+editors">a lot more</a>.</li>
+					</ul>
+				</li>
+				<li>
+					<h3>I don't care, just tell me which one do I get:</h3>
+					<p>I've used both, Sublime, and VS Code, and can say that both are great. VS Code is actually more modular, but Sublime also doesn't stop there. Both have extension support, and have great set of shortcuts. if you are considering these two, then you can go with VS Code, but you are not limited to it; you can get any of them.</p>
+				</li>
+			</ul>
+			<h3>Code Editor shortcuts:</h3>
+			<p>You should be aware of the shortcuts that your text editor provides at this point. They are in a <b>large</b> quantity, and you can never stop discovering new ones. The first shortcut that you need to know, which works in most editors, is the <code>Ctrl</code> + <code>space</code> hotkey.</p>
+			<p>This will trigger a popup box to open beside your text cursor, and will predict what you are trying to type. This is really helpful and accurate most of the time, and can also autocomplete stuff for you.</p>
+			<p class="hint"><b>Sublime Text:</b> If you are using Sublime Text 3, then hitting the <code>tab</code> key will autocomplete with the first value in the suggestion box. That means you won't need to open the suggestion box by pressing the <code>Ctrl</code> + <code>space</code> keys, when you are sure of the first option in the box.</p>
+		</div>
 
-				<h3>Shortcut to write this:</h3>
-				<p>Type <code>html</code>, then open the sugggestions box by <code>Ctrl</code> + <code>space</code>, and then select the <code>html</code> option (<code>html:5</code> option in VS Code). Then see the result. It will autocomplete with the same code as above (with some extra <code>meta</code> tags, which you can remove if you like).</p>
-				
-				<h3>Understanding the basic code:</h3>
-				<p>Let's break down that huge pile of HTML lines into smaller parts:</p>
-				<ul>
-					<li>
-						<h3>The <code><span><</span>!DOCTYPE html></code> Part:</h3>
-						<p>This simply tells the browser that <i>"Hey! I am an HTML Document, alright?"</i>. Your HTML code will work just fine without it, but behind the scenes, the browser struggles to understand what this file means, and applies stuff it understands. This can rarely result in unexpected behaviour. So, it's suggested to keep this instead of removing it.</p>
-					</li>
-					<li>
-						<h3>The <code>html</code> tag:</h3>
-						This tag wraps <b>all</b> the HTML that you have to write. Simple.
-						<ul>
-							<li>
-								<h3>The <code>head</code> part:</h3>
-								<p>A regular HTML document is made up of a head and a body. The head contains information that doesn't need to be printed into the webpage, like some metadata information, title, styles, link tags, the favicon, and more. For now, only the <code>title</code> tag is relevant.</p>
-								<ul>
-									<li>
-										<h4>The title tag:</h4>
-										<p>The title tag defines the title of the page. The title is visible in the browser, where the tabs are displayed, alongside the icon.</p>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<h3>The <code>body</code> tag:</h3>
-									<p>The last tag in the list. This, being the opposite of the <code>head</code> tag, contains <b>everything</b> that needs to be displayed in the webpage. (Almost) All the HTML code that you will be taught, will go in this tag.</p>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<br>
-				<p>Now, you should be ready to type some HTML, with your cursor sitting in the <code>body</code> tag.</p>
-			</div>
+		<div id="section-6">
+			<h2>Creating an HTML file</h2>
+			<p>An oversimplified guide on how to create an HTML file. All you need to do is to create a text file and change its extension to <code>.html</code>. Here's how to do that:</p>
+			<ol>
+				<li>
+					<h3>Show File Name Extensions:</h3>
+					<p>First, make sure that the <i>File Name Extensions</i> option is turned on in the Windows Explorer:</p>
+					<ul>
+						<li>Open the <code><img src="data:image/png;base64,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" width="20" class="default-image inline-image">Windows Explorer</code></li>
+						<li>Go to the <i>View</i> tab on the top</li>
+						<li>Check the <i>File Name Extensions</i> option</li>
+					</ul>
+					<img src="https://i.imgur.com/9gz1N2C.png" alt="Show File Name Extensions in Windows Explorer" width="70%">
+				</li>
+				<li>
+					<h3>Navigate to the desired directory, and create a text file there:</h3>
+					<p>Simple is that, open the folder, or go to the desktop if you want to start on the desktop. Then <b>right click > New > Text Document</b> to create a new text file.</p>
+					<img src="https://i.imgur.com/Ohznd4h.png" alt="Create a Text File" width="70%">
+				</li>
+				<li>
+					<h3>Rename the created file accordingly:</h3>
+					<p>Now, after the <b>dot (.)</b> in the file name, you should see a <code>.txt</code> there. (If you don't, then you probably missed the first step) Replace the <code>.txt</code> with <code>.html</code>.</p>
+					<p>For the left side of the dot, i.e. the file name, you can give it anything you like. Though, usually, the home page is called <code>index</code> so going with that will be a great start. <span class="hint">i.e. change the name of the whole file name too <code>index.html</code></span></p>
+					<div style="cursor: zoom-in;" onclick="Object.values(this.children).forEach(function (a) {
+						a.style.width = (a.style.width == '30%') ? '70%' : '30%'
+						event.target.style.cursor = (a.style.width == '30%') ? 'zoom-in' : 'zoom-out'
+					})">
+						<img style="display: block; width: 30%; transition-duration: 100ms;" src="https://i.imgur.com/GrYepPC.png" alt="Renaming the file: Step 1">
+						<img style="display: block; width: 30%; transition-duration: 200ms;" src="https://i.imgur.com/FeV7voY.png" alt="Renaming the file: Step 2">
+						<img style="display: block; width: 30%; transition-duration: 300ms;" src="https://i.imgur.com/2FIe3zZ.png" alt="Renaming the file: Step 3">
+						<img style="display: block; width: 30%; transition-duration: 400ms;" src="https://i.imgur.com/qWxU1AV.png" alt="Renaming the file: Step 4">
+					</div>
+				</li>
+				<li>
+					<h3>Open the .html file:</h3>
+					<p>Now, you need this file open in both, your browser, and in your code editor.</p>
+
+					<ul>
+						<li>
+							<p><b>For the browser:</b> It's simple. Just double click the file and it will automatically open up.</p>
+						</li>
+						<li>
+							<p><b>For the code editor:</b> Open your editor first. Then you can either drag the <code>.html</code> file and toss it into your editor, and the editor will automatically pick it up. Or you can right click on the <code>.html</code> file, then go to <b>Open With > Choose another app</b>, then select your code editor in the list (Make sure the <i>Always use this app to open .html files</i> is turned <b>OFF</b>). Your editor will open the file.</p>
+						</li>
+					</ul>
+				</li>
+			</ol>
 			
-			<hr>
-			<h2>With all this done, you can head over to the <a href="HTML-Document-1.html">1st HTML Document</a> I have made, to get started with HTML.</h2>
+			<br>
+			<p>The browser window, is the output location for the code you edit. So each time you edit your code, you have to save the changes (<code>Ctrl + S</code>), and refresh the browser window to see the changes you made in action. You may need to repeat the last step each time you restart coding.</p>
 		</div>
 		
-		<div id="error-reporting" class="hidden">
-			<div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
-				<h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
-				<h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
-				<div style="display: inline-block;">
-					<b style="width: 100%; display: inline-block;">
-						This page ran into a JavaScript error, functions may not behave as intended.
-					</b>
-					<p style="display: inline-block; padding: 0; margin: 0;"></p>
-				</div>
+		<div id="section-7">
+			<h2>Writing the basic HTML Code</h2>
+			<p>Now, with everything set up, it's time to write the basic HTML code. For anything you learn in HTML, you need to write the code in this guided way:</p>
+			<pre class="mono" id="html-template"></pre>
+			<p>Looks overwhelming?</p>
+			<ul>
+				<li>Yes? Good, because it's supposed to. Not like it's hard, just that it <i>looks</i> big, but breaking it all down, it's absolutely simple.</li>
+				<li>No? Then that's also fine. If you can see how simple this code is, then it would be easier for you to understand it too.</li>
+			</ul>
+
+			<h3>Shortcut to write this:</h3>
+			<p>Type <code>html</code>, then open the sugggestions box by <code>Ctrl</code> + <code>space</code>, and then select the <code>html</code> option (<code>html:5</code> option in VS Code). Then see the result. It will autocomplete with the same code as above (with some extra <code>meta</code> tags, which you can remove if you like).</p>
+			
+			<h3>Understanding the basic code:</h3>
+			<p>Let's break down that huge pile of HTML lines into smaller parts:</p>
+			<ul>
+				<li>
+					<h3>The <code><span><</span>!DOCTYPE html></code> Part:</h3>
+					<p>This simply tells the browser that <i>"Hey! I am an HTML Document, alright?"</i>. Your HTML code will work just fine without it, but behind the scenes, the browser struggles to understand what this file means, and applies stuff it understands. This can rarely result in unexpected behaviour. So, it's suggested to keep this instead of removing it.</p>
+				</li>
+				<li>
+					<h3>The <code>html</code> tag:</h3>
+					This tag wraps <b>all</b> the HTML that you have to write. Simple.
+					<ul>
+						<li>
+							<h3>The <code>head</code> part:</h3>
+							<p>A regular HTML document is made up of a head and a body. The head contains information that doesn't need to be printed into the webpage, like some metadata information, title, styles, link tags, the favicon, and more. For now, only the <code>title</code> tag is relevant.</p>
+							<ul>
+								<li>
+									<h4>The title tag:</h4>
+									<p>The title tag defines the title of the page. The title is visible in the browser, where the tabs are displayed, alongside the icon.</p>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h3>The <code>body</code> tag:</h3>
+								<p>The last tag in the list. This, being the opposite of the <code>head</code> tag, contains <b>everything</b> that needs to be displayed in the webpage. (Almost) All the HTML code that you will be taught, will go in this tag.</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<br>
+			<p>Now, you should be ready to type some HTML, with your cursor sitting in the <code>body</code> tag.</p>
+		</div>
+		
+		<hr>
+		<h2>With all this done, you can head over to the <a href="HTML-Document-1.html">1st HTML Document</a> I have made, to get started with HTML.</h2>
+	</div>
+	
+	<div id="error-reporting" class="hidden">
+		<div style='width: 100%; background: red; color: white; position: fixed; top: 0; left: 0; padding: 10px; z-index: 9999999999999999;'>
+			<h3 class="fa fa-exclamation-triangle" style="font-size: 48px; font-weight: normal; margin: 0; display: inline-block; "></h3>
+			<h3 class="fa fa-times" style="color: #ccc; font-size: 24px; font-weight: normal; margin: 0; padding: 0 24px; float: right; cursor: pointer;" onmouseenter="this.style.color = '#aaf'" onmouseleave="this.style.color = '#ccc'" onclick="document.getElementById('error-reporting').classList = 'hidden'" ></h3>
+			<div style="display: inline-block;">
+				<b style="width: 100%; display: inline-block;">
+					This page ran into a JavaScript error, functions may not behave as intended.
+				</b>
+				<p style="display: inline-block; padding: 0; margin: 0;"></p>
 			</div>
 		</div>
+	</div>
 
-		<script>
-			function init() {
-				console.log("hey what are you doing here? :\\")
-				var header = document.querySelector('header')
+	<script src="../script.js" async></script>
 
-				function setInnerText(el, t) {
-					t.split("\n").forEach(function (line, index) {
-						var tabs = line.replace(line.replaceAll("\t", ""), "").replaceAll("\t", "&nbsp;&nbsp;&nbsp;&nbsp;")
-
-						var newline = (index == 0) ? '' : "<br>"
-						el.innerHTML += newline+tabs
-						el.innerText += line
-					})
-				}
-
-				setInnerText(document.querySelector("#html-template"), "" +
-				"<!DOCTYPE html>\n" +
-				"<html>\n" +
-				"\t<head>\n" +
-				"\t\t<title>Document Title</title>\n" +
-				"\t</head>\n" +
-				"\n" +
-				"\t<body>\n" +
-				"\t\tYOUR HTML CODE HERE\n" +
-				"\t</body>\n" +
-				"</html>\n")
-
-				document.body.onscroll = function (event) {
-					var bodyScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-
-					if (document.documentElement.scrollTop > 175) header.classList.value = ('sticky-header')
-					else header.classList.value = ('card')
-				}
-
-			}
-			
-			try {
-				init()
-			} catch(e) {
-				document.getElementById("error-reporting").classList = ""
-				document.querySelector("#error-reporting p").innerText = e
-			}
-		</script>
-	</body>
+</body>
 </html>

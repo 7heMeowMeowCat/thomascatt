@@ -21,12 +21,12 @@ function init() {
         ],
         [
             'Why programming?', 
-            "Programmig is fun and I love the idea how a normal person can get started so easily if they are interested.",
+            "Programming is fun and I love the idea how a normal person can get started so easily if they are interested.",
             'With the skill of programming you seem to have the sense of creating any sort of application you want, which is joyful in my case. I love bringing those thoughts to reality.</p>'
         ],
         [
             'Isn\'t programming hard?', 
-            "Programmig is as simple as talking to someone.",
+            "Programming is as simple as talking to someone.",
             "Quite literally though.<br>The listener is the computer, and you are the speaker.<br>For interested people, programming can be really fun and also addicting.<br><br>But the point at which things seem to get a bit difficult is to keep the fact in mind that computers aren't humans, so their way of understanding is different, and perhaps too literal. Our minds are used to 'autocompleting' the every single bit of information, so, because of that, many beginners usually seem to 'assume' parts of code in their mind, with the computer utterly confused about the user's requirement.<br><br>If you're interested in getting started, I'll suggest getting started with strict languages like C#, Java, etc. (keep in mind I'm not a professional when it comes to suggestions) In my opinion, they are better for beginners in building up basic concepts more powerfully due to their strictness for them.<p>"
         ]
     ]
